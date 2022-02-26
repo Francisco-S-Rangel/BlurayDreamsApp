@@ -1,0 +1,35 @@
+.card {
+    margin: 50px;
+    height: 360px;
+    width: 300px;
+    background-color: rgb(231, 231, 231);
+    
+}
+.card img {
+    width: 274px;
+    height: 240px;
+    margin-bottom: 15px;
+    transition: 0.3s ease-in-out;
+}
+
+.card:hover {
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
+}
+.dvd {
+    margin-left: 8px;
+}
+.bluray {
+    margin-left: 16px;
+}
+.btn-carrinho{
+    margin-top: 6px;
+    background-color: rgb(35,35,142);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    height: 2rem;
+}
+.btn-carrinho:hover {
+    background-color: rgb(20,20,102);
+}
