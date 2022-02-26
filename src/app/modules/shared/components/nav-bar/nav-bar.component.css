@@ -1,3 +1,16 @@
-.example-spacer {
-    flex: 1 1 auto;
-  }
+.btn-busca{
+    border: none;
+    border-radius: 4px;
+}
+.pesquisarImg {
+    width: 30px;
+    height: 30px;
+}
+.carrinhoImg {
+    width: 34px;
+    height: 34px;
+}
+.pessoaImg {
+    width: 32px;
+    height: 32px;
+}

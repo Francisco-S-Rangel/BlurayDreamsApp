@@ -9,11 +9,13 @@ import { NavBarComponent } from './modules/shared/components/nav-bar/nav-bar.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavBar2Component } from './modules/shared/components/nav-bar2/nav-bar2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent
+    NavBarComponent,
+    NavBar2Component
   ],
   imports: [
     BrowserModule,
