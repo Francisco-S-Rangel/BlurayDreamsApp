@@ -1,15 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" >Bluray Dreams</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(218, 218, 218);">
+  <div class="container-fluid">
+     <a class="navbar-brand mb-0 h1">
+       <img class="d-inline-block align-top" src="https://yt3.ggpht.com/ytc/AKedOLQgaH2MFA4htJp7fQ5eS94Y5do6vHuszose4JTJsA=s900-c-k-c0x00ffffff-no-rj" width="30" height="30"/>
+        BlurayDreams
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link">Departamentos</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" >
+            <a class="nav-link" ><img class="carrinhoImg" src=".\assets\icons8-carrinho-de-compras-com-dinheiro-80.png"/>Carrinho</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+              <img class="pessoaImg" src=".\assets\icons8-pessoa-do-sexo-masculino-64.png"/>Minha Conta
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" >Login</a></li>
+              <li><a class="dropdown-item" >Cadastro</a></li>
+            </ul>
           </li>
         </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" style="width:400px;" type="search" placeholder="Busque aqui pelo Filme, Diretor ou Ator" aria-label="Search">
+          <button class="btn-busca" type="submit"><img class="pesquisarImg" src=".\assets\icons8-pesquisar-50.png"/></button>
+        </form>
       </div>
-    </div>
-  </nav>
+  </div>
+</nav>
+

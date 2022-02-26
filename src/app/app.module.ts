@@ -2,16 +2,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './modules/shared/components/nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavBar2Component } from './modules/shared/components/nav-bar2/nav-bar2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent
+    NavBarComponent,
+    NavBar2Component
   ],
   imports: [
     BrowserModule,
@@ -20,6 +24,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     FormsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
