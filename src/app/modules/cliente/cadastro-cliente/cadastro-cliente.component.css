@@ -15,3 +15,22 @@
     font-size: 12px;
     font-weight: normal;
 }
+
+form {
+    display: flex;
+    flex-direction: column; /* Coloca os elementos do form em colunas, um em baixo do outro*/
+    margin-top: 20px;
+}
+
+.container {
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+mat-card {
+  width: 50%;
+  margin-top: 16px;
+}

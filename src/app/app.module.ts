@@ -4,14 +4,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NavBarComponent } from './modules/shared/components/nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input'
+
+
+
+import { AppComponent } from './app.component';
 import { NavBar2Component } from './modules/shared/components/nav-bar2/nav-bar2.component';
 import { CadastroClienteComponent } from './modules/cliente/cadastro-cliente/cadastro-cliente.component';
 import { TelaInicialComponent } from './modules/cliente/tela-inicial/tela-inicial.component';
+import { NavBarComponent } from './modules/shared/components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,9 @@ import { TelaInicialComponent } from './modules/cliente/tela-inicial/tela-inicia
     FormsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    NgbModule
+    NgbModule,
+    MatCardModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
