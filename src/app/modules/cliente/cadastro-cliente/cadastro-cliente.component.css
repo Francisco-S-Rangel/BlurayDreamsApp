@@ -1,0 +1,17 @@
+.custom-btn-back {
+    background-repeat: no-repeat;
+    background-position: 15% 55%;
+    background-color: #0E4E96;
+    background-size: 5px;
+    border-radius: 5px;
+    color: white;
+    width: 100px;
+    height: 25px;
+    border: 1px solid #0E4E96;
+    outline: none;
+    margin: 2px;
+    cursor: pointer;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+}
