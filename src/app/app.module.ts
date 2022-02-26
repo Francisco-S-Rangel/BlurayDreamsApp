@@ -21,6 +21,8 @@ import { NavBar2Component } from './modules/shared/components/nav-bar2/nav-bar2.
 import { CadastroClienteComponent } from './modules/cliente/cadastro-cliente/cadastro-cliente.component';
 import { TelaInicialComponent } from './modules/cliente/tela-inicial/tela-inicial.component';
 import { NavBarComponent } from './modules/shared/components/nav-bar/nav-bar.component';
+import { CadastroEnderecoComponent } from './modules/cliente/cadastro-endereco/cadastro-endereco.component';
+import { CadastroCartaoComponent } from './modules/cliente/cadastro-cartao/cadastro-cartao.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { NavBarComponent } from './modules/shared/components/nav-bar/nav-bar.com
     NavBarComponent,
     NavBar2Component,
     CadastroClienteComponent,
-    TelaInicialComponent
+    TelaInicialComponent,
+    CadastroEnderecoComponent,
+    CadastroCartaoComponent
   ],
   imports: [
     BrowserModule,

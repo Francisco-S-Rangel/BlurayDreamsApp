@@ -15,4 +15,6 @@ export class CadastroClienteComponent implements OnInit {
 
   backPage() { this.router.navigate(['']); }
 
+  irParaEndereco(){ this.router.navigate(['/cadastrar-endereco'])}
+
 }
