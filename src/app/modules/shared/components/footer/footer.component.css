@@ -1,0 +1,59 @@
+.footer {
+    margin-top: 40px;
+    padding: 40px 0;
+    background-color: rgb(218, 218, 218);;
+}
+.footer .social {
+    text-align: center;
+    padding-bottom: 25px;
+}
+.footer .social a {
+    font-size: 24px;
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    display: inline-block;
+    text-align: center;
+    margin: 0 8px;
+    opacity: 0.8;
+}
+.footer .social a:hover {
+    opacity: 1;
+}
+.footer ul {
+   margin-top: 0;
+   padding: 0;
+   list-style: none;
+   font-size: 18px;
+   line-height: 1.6;
+   margin-bottom: 0;
+   text-align: center;
+}
+.footer ul li{
+    display: inline-block;
+}
+.footer ul li a{
+    text-decoration: none;
+    color: black;
+    opacity: 0.8;
+}
+.footer ul li a:hover{
+    opacity: 1;
+}
+.espacologo{
+    padding: 0 15px;
+    font-weight: 600;
+}
+.espaco {
+    padding: 0 15px;
+}
+.footer .copyright{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+img {
+    width: 30px;
+    height: 30px;
+}
