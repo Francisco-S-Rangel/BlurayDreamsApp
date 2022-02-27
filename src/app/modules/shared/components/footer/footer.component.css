@@ -1,0 +1,7 @@
+.foot {
+    display: flex;
+    position: relative;
+    margin-top: 3.2rem;
+    background: black;
+    height: 4vh;
+}

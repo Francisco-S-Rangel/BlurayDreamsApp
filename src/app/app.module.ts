@@ -12,9 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatInputModule } from '@angular/material/input'
-
-
+import { MatInputModule } from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { NavBar2Component } from './modules/shared/components/nav-bar2/nav-bar2.component';
@@ -23,6 +21,7 @@ import { TelaInicialComponent } from './modules/cliente/tela-inicial/tela-inicia
 import { NavBarComponent } from './modules/shared/components/nav-bar/nav-bar.component';
 import { CadastroEnderecoComponent } from './modules/cliente/cadastro-endereco/cadastro-endereco.component';
 import { CadastroCartaoComponent } from './modules/cliente/cadastro-cartao/cadastro-cartao.component';
+import { FooterComponent } from './modules/shared/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,8 @@ import { CadastroCartaoComponent } from './modules/cliente/cadastro-cartao/cadas
     CadastroClienteComponent,
     TelaInicialComponent,
     CadastroEnderecoComponent,
-    CadastroCartaoComponent
+    CadastroCartaoComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
