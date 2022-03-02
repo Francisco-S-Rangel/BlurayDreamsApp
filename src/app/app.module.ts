@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,7 @@ import { NavBarComponent } from './modules/shared/components/nav-bar/nav-bar.com
 import { CadastroEnderecoComponent } from './modules/cliente/cadastro-endereco/cadastro-endereco.component';
 import { CadastroCartaoComponent } from './modules/cliente/cadastro-cartao/cadastro-cartao.component';
 import { FooterComponent } from './modules/shared/components/footer/footer.component';
+import { ConsultarClientesComponent } from './modules/admin/consultar-clientes/consultar-clientes.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { FooterComponent } from './modules/shared/components/footer/footer.compo
     TelaInicialComponent,
     CadastroEnderecoComponent,
     CadastroCartaoComponent,
-    FooterComponent
+    FooterComponent,
+    ConsultarClientesComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { FooterComponent } from './modules/shared/components/footer/footer.compo
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

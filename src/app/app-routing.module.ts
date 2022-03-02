@@ -5,13 +5,15 @@ import { TelaInicialComponent } from './modules/cliente/tela-inicial/tela-inicia
 import { CadastroClienteComponent } from './modules/cliente/cadastro-cliente/cadastro-cliente.component';
 import { CadastroEnderecoComponent } from './modules/cliente/cadastro-endereco/cadastro-endereco.component';
 import { CadastroCartaoComponent } from './modules/cliente/cadastro-cartao/cadastro-cartao.component';
+import { ConsultarClientesComponent } from './modules/admin/consultar-clientes/consultar-clientes.component';
 
 
 const routes: Routes = [
   {path: "", component: TelaInicialComponent},
   {path: "cadastrar-cliente", component: CadastroClienteComponent},
   {path: "cadastrar-endereco", component: CadastroEnderecoComponent},
-  {path: "cadastrar-cartao", component: CadastroCartaoComponent}
+  {path: "cadastrar-cartao", component: CadastroCartaoComponent},
+  {path: "consultar-clientes", component: ConsultarClientesComponent}
 ];
 
 @NgModule({
