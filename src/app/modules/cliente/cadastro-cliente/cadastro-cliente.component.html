@@ -66,15 +66,21 @@
       <div class="col-3">
         <label class="form-label">Senha</label>
         <input type="password" class="form-control" id="senha" [ngClass]="{'is-invalid': f.Senha.errors && f.Senha.touched}" formControlName="Senha" placeholder="Digite sua Senha">
-        <div class="invalid-feedback">
+        <div *ngIf="f.Senha.errors?.minlength" class="invalid-feedback">
+          Senha deve conter 8 ou mais caracteres.
+        </div >
+        <div *ngIf="f.Senha.errors?.required" class="invalid-feedback">
           Senha é obrigatorio
         </div>
       </div>
       <div class="col-3">
         <label class="form-label">Confirmar Senha</label>
         <input type="password" class="form-control" id="confsenha" [ngClass]="{'is-invalid': f.confSenha.errors && f.confSenha.touched}" formControlName="confSenha" placeholder="Confirme sua Senha">
-        <div class="invalid-feedback">
+        <div *ngIf="f.confSenha.errors?.required" class="invalid-feedback">
           É obrigatorio confirmar senha
+        </div>
+        <div *ngIf="f.confSenha.errors?.notEqual" class="invalid-feedback">
+          A senha não esta igual.
         </div>
       </div>
       <div class="col-12 text-center">
@@ -82,66 +88,12 @@
       </div>
     </form>
   </div>
+  <div class="col-12 text-center mt-5">
+    <button type="button" class="btn btn-primary" (click)="backPage()">Retornar</button>
+  </div>
 </div>
 
 
 
 
 
-
-
-<!--div class="container">
-  <mat-card class="mat-elevation-z4">
-
-    <mat-card-title fxLayoutAlign="center">Cadastro de Conta</mat-card-title>
-
-    <form class="m-t-25" fxLayout="column">
-      <mat-form-field class="big-input">
-        <input matInput placeholder="Nome" name="nome">
-      </mat-form-field>
-
-      <div>
-        <mat-form-field class="medium-input m-r-2p">
-          <input matInput placeholder="Data de Nascimento" name="sobrenome">
-        </mat-form-field>
-        <mat-form-field class="medium-input">
-          <input matInput placeholder="Telefone" name="telefone">
-        </mat-form-field>
-      </div>
-
-      <mat-form-field class="big-input">
-        <input matInput placeholder="CPF" name="cpf">
-      </mat-form-field>
-
-      <mat-form-field class="big-input">
-        <input matInput placeholder="Email" name="email">
-      </mat-form-field>
-
-      <mat-form-field class="big-input">
-        <input matInput placeholder="Endereço Residencial" name="email">
-      </mat-form-field>
-
-      <div>
-        <mat-form-field class="medium-input m-r-2p">
-          <input matInput placeholder="Senha" name="senha">
-        </mat-form-field>
-        <mat-form-field class="medium-input">
-          <input matInput placeholder="Confirmar Senha" name="confsenha">
-        </mat-form-field>
-      </div>
-
-      <div class="m-t-25" fxLayoutAlign="center">
-        <button mat-raised-button type="button" (click)="irParaEndereco()">Prosseguir</button>
-      </div>
-
-    </form>
-  </mat-card>
-
-  <div class="m-t-25">
-    <div>Ja possui conta? <a [routerLink]="''">Clique Aqui!</a></div>
-  </div>
-
-  <div class="m-t-65">
-    <button mat-raised-button type="button" (click)="backPage()">Retornar</button>
-  </div>
-</-div -->
