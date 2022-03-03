@@ -1,3 +1,4 @@
+import { InformacaoClienteComponent } from './modules/admin/informacao-cliente/informacao-cliente.component';
 import { AppComponent } from './app.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: "cadastrar-cliente", component: CadastroClienteComponent},
   {path: "cadastrar-endereco", component: CadastroEnderecoComponent},
   {path: "cadastrar-cartao", component: CadastroCartaoComponent},
-  {path: "consultar-clientes", component: ConsultarClientesComponent}
+  {path: "consultar-clientes", component: ConsultarClientesComponent},
+  {path: "informacao-cliente", component: InformacaoClienteComponent}
 ];
 
 @NgModule({

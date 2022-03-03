@@ -15,4 +15,6 @@ export class ConsultarClientesComponent implements OnInit {
 
   backPage() { this.router.navigate(['']); }
 
+  irInformacaoCliente() {this.router.navigate(['informacao-cliente']);}
+
 }

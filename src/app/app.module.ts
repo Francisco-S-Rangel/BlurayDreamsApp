@@ -24,6 +24,7 @@ import { CadastroEnderecoComponent } from './modules/cliente/cadastro-endereco/c
 import { CadastroCartaoComponent } from './modules/cliente/cadastro-cartao/cadastro-cartao.component';
 import { FooterComponent } from './modules/shared/components/footer/footer.component';
 import { ConsultarClientesComponent } from './modules/admin/consultar-clientes/consultar-clientes.component';
+import { InformacaoClienteComponent } from './modules/admin/informacao-cliente/informacao-cliente.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ConsultarClientesComponent } from './modules/admin/consultar-clientes/c
     CadastroEnderecoComponent,
     CadastroCartaoComponent,
     FooterComponent,
-    ConsultarClientesComponent
+    ConsultarClientesComponent,
+    InformacaoClienteComponent
   ],
   imports: [
     BrowserModule,

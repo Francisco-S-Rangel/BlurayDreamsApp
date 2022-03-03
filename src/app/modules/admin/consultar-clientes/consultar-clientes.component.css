@@ -53,3 +53,33 @@
     font-size: 13px;
     color: rgb(65,105,225);
 }
+/*tabela de botoes*/
+/*Tabela*/
+.custom-table tbody {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+}
+.custom-table-form-box {
+    border: 1px solid #E6E6E6;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+
+.custom-table thead th, .custom-table thead td{
+    border: none;
+    color: rgb(65,105,225);
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.custom-table td, .table th {
+    padding: .50rem .50rem .50rem .50rem;
+}
+
+.custom-table tbody th, .custom-table tbody td {
+    border-bottom: 1px solid #E6E6E6;
+    border-top: none;
+    margin-top: 2%;
+}
