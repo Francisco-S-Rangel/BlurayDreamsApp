@@ -1,5 +1,60 @@
-﻿
-<div class="container">
+﻿<div class="container">
+  <div class="card">
+    <div class="col-12 text-center">
+      <label class="label">Cadastro de Conta</label>
+    </div>
+    <form class="row g-3" [formGroup]="form">
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Nome</label>
+        <input type="email" class="form-control" id="inputEmail4" formControlName="Nome" placeholder="Digite seu Nome Completo">
+      </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Email</label>
+        <input type="password" class="form-control" id="inputPassword4" formControlName="Email" placeholder="Digite seu Email">
+      </div>
+      <div class="col-3">
+        <label for="inputAddress" class="form-label">Data de Nascimento</label>
+        <input type="text" class="form-control" id="inputAddress" formControlName="DataNascimento" placeholder="Digite sua Data de Nascimento">
+      </div>
+      <div class="col-3">
+        <label for="inputAddress" class="form-label">DDD</label>
+        <input type="text" class="form-control" id="inputAddress" formControlName="DDD" placeholder="Digite seu DDD">
+      </div>
+      <div class="col-3">
+        <label for="inputAddress" class="form-label">Telefone</label>
+        <input type="text" class="form-control" id="inputAddress" formControlName="Telefone" placeholder="Digite seu Numero de Celular/Telefone">
+      </div>
+      <div class="col-3">
+        <label for="inputAddress" class="form-label">Tipo de Telefone</label>
+        <input type="text" class="form-control" id="inputAddress" formControlName="TipoTelefone" placeholder="Celular, Telefone...">
+      </div>
+
+      <div class="col-6">
+        <label for="inputAddress2" class="form-label">CPF</label>
+        <input type="text" class="form-control" id="inputAddress2" formControlName="CPF" placeholder="Digite seu CPF">
+      </div>
+      <div class="col-3">
+        <label for="inputCity" class="form-label">Senha</label>
+        <input type="text" class="form-control" id="inputCity" formControlName="Senha" placeholder="Digite sua Senha">
+      </div>
+      <div class="col-3">
+        <label for="inputCity" class="form-label">Confirmar Senha</label>
+        <input type="text" class="form-control" id="inputCity" formControlName="ConfSenha" placeholder="Confirme sua Senha">
+      </div>
+      <div class="col-12 text-center">
+        <button type="button" class="btn btn-primary mt-3" (click)="irParaEndereco()">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!--div class="container">
   <mat-card class="mat-elevation-z4">
 
     <mat-card-title fxLayoutAlign="center">Cadastro de Conta</mat-card-title>
@@ -53,5 +108,4 @@
   <div class="m-t-65">
     <button mat-raised-button type="button" (click)="backPage()">Retornar</button>
   </div>
-</div>
-
+</-div -->
