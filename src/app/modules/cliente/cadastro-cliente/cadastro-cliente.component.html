@@ -5,44 +5,80 @@
     </div>
     <form class="row g-3" [formGroup]="form">
       <div class="col-md-6">
-        <label for="inputEmail4" class="form-label">Nome</label>
-        <input type="email" class="form-control" id="inputEmail4" formControlName="Nome" placeholder="Digite seu Nome Completo">
+        <label class="form-label">Nome</label>
+        <input type="email" class="form-control" id="nome" [ngClass]="{ 'is-invalid': f.Nome.errors && f.Nome.touched }" formControlName="Nome" placeholder="Digite seu Nome Completo">
+        <div *ngIf="f.Nome.errors?.required" class="invalid-feedback">
+          Nome é obrigatorio.
+        </div>
+        <div *ngIf="f.Nome.errors?.minlength" class="invalid-feedback">
+          Nome deve ter no mínimo 5 caracteres.
+        </div>
+        <div *ngIf="f.Nome.errors?.maxlength" class="invalid-feedback">
+          Nome deve ter no mínimo 50 caracteres.
+        </div>
       </div>
       <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Email</label>
-        <input type="password" class="form-control" id="inputPassword4" formControlName="Email" placeholder="Digite seu Email">
+        <label class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" [ngClass]="{'is-invalid': f.Email.errors && f.Email.touched}" formControlName="Email" placeholder="Digite seu Email">
+        <div *ngIf="f.Email.errors?.required" class="invalid-feedback">
+          Email é obrigatorio.
+        </div>
+        <div *ngIf="f.Email.errors?.email" class="invalid-feedback">
+          Email deve ser valido.
+        </div>
       </div>
       <div class="col-3">
-        <label for="inputAddress" class="form-label">Data de Nascimento</label>
-        <input type="text" class="form-control" id="inputAddress" formControlName="DataNascimento" placeholder="Digite sua Data de Nascimento">
+        <label class="form-label">Data de Nascimento</label>
+        <input type="text" class="form-control" id="nascimento" [ngClass]="{'is-invalid': f.DataNascimento.errors && f.DataNascimento.touched}" formControlName="DataNascimento" placeholder="Digite sua Data de Nascimento">
+        <div class="invalid-feedback">
+          Data de Nascimento é obrigatorio
+        </div>
       </div>
       <div class="col-3">
-        <label for="inputAddress" class="form-label">DDD</label>
-        <input type="text" class="form-control" id="inputAddress" formControlName="DDD" placeholder="Digite seu DDD">
+        <label class="form-label">DDD</label>
+        <input type="text" class="form-control" id="ddd" [ngClass]="{'is-invalid': f.ddd.errors && f.ddd.touched}" formControlName="ddd" placeholder="Digite seu DDD">
+        <div class="invalid-feedback">
+          DDD é obrigatorio
+        </div>
       </div>
       <div class="col-3">
-        <label for="inputAddress" class="form-label">Telefone</label>
-        <input type="text" class="form-control" id="inputAddress" formControlName="Telefone" placeholder="Digite seu Numero de Celular/Telefone">
+        <label class="form-label">Telefone</label>
+        <input type="text" class="form-control" id="numero" [ngClass]="{'is-invalid': f.Telefone.errors && f.Telefone.touched}" formControlName="Telefone" placeholder="Digite seu Numero de Celular/Telefone">
+        <div class="invalid-feedback">
+          Telefone é obrigatorio
+        </div>
       </div>
       <div class="col-3">
-        <label for="inputAddress" class="form-label">Tipo de Telefone</label>
-        <input type="text" class="form-control" id="inputAddress" formControlName="TipoTelefone" placeholder="Celular, Telefone...">
+        <label class="form-label">Tipo de Telefone</label>
+        <input type="text" class="form-control" id="tipotel" [ngClass]="{'is-invalid': f.TipoTelefone.errors && f.TipoTelefone.touched}" formControlName="TipoTelefone" placeholder="Celular, Telefone...">
+        <div class="invalid-feedback">
+          Tipo de Telefone é obrigatorio
+        </div>
       </div>
 
       <div class="col-6">
-        <label for="inputAddress2" class="form-label">CPF</label>
-        <input type="text" class="form-control" id="inputAddress2" formControlName="CPF" placeholder="Digite seu CPF">
+        <label class="form-label">CPF</label>
+        <input type="text" class="form-control " id="cpf" [ngClass]="{'is-invalid': f.CPF.errors && f.CPF.touched}" formControlName="CPF" placeholder="Digite seu CPF">
+        <div class="invalid-feedback">
+          CPF é obrigatorio
+        </div>
       </div>
       <div class="col-3">
-        <label for="inputCity" class="form-label">Senha</label>
-        <input type="text" class="form-control" id="inputCity" formControlName="Senha" placeholder="Digite sua Senha">
+        <label class="form-label">Senha</label>
+        <input type="password" class="form-control" id="senha" [ngClass]="{'is-invalid': f.Senha.errors && f.Senha.touched}" formControlName="Senha" placeholder="Digite sua Senha">
+        <div class="invalid-feedback">
+          Senha é obrigatorio
+        </div>
       </div>
       <div class="col-3">
-        <label for="inputCity" class="form-label">Confirmar Senha</label>
-        <input type="text" class="form-control" id="inputCity" formControlName="ConfSenha" placeholder="Confirme sua Senha">
+        <label class="form-label">Confirmar Senha</label>
+        <input type="password" class="form-control" id="confsenha" [ngClass]="{'is-invalid': f.confSenha.errors && f.confSenha.touched}" formControlName="confSenha" placeholder="Confirme sua Senha">
+        <div class="invalid-feedback">
+          É obrigatorio confirmar senha
+        </div>
       </div>
       <div class="col-12 text-center">
-        <button type="button" class="btn btn-primary mt-3" (click)="irParaEndereco()">Cadastrar</button>
+        <button type="button" class="btn btn-primary mt-3" [disabled]="!form.valid" (click)="irParaEndereco()">Cadastrar</button>
       </div>
     </form>
   </div>

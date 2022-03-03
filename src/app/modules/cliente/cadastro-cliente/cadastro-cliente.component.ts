@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,9 +11,15 @@ export class CadastroClienteComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor( private router: Router) { }
+  get f(): any {
+    return this.form.controls;
+  }
+
+
+  constructor( private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.validacao();
   }
 
   backPage() { this.router.navigate(['']); }
@@ -21,16 +27,16 @@ export class CadastroClienteComponent implements OnInit {
   irParaEndereco(){ this.router.navigate(['/cadastrar-endereco'])}
 
   public validacao(): void {
-    this.form = new FormGroup({
-      Nome: new FormControl(),
-      DataNascimento: new FormControl(),
-      DDD: new FormControl(),
-      Telefone: new FormControl(),
-      TipoTelefone: new FormControl(),
-      CPF: new FormControl(),
-      Email: new FormControl(),
-      Senha: new FormControl(),
-      confSenha: new FormControl()
+    this.form = this.fb.group({
+      Nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]],
+      DataNascimento: ['', Validators.required],
+      ddd: ['', Validators.required],
+      Telefone: ['', Validators.required],
+      TipoTelefone: ['', Validators.required],
+      CPF: ['', Validators.required],
+      Email: ['', [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(60)]],
+      Senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
+      confSenha: ['', Validators.required]
     })
   }
 
