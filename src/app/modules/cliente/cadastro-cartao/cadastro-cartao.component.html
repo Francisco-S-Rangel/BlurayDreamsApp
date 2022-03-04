@@ -1,36 +1,44 @@
-﻿
-<div class="container">
-  <mat-card class="mat-elevation-z4">
-
-    <mat-card-title fxLayoutAlign="center">Cadastro de Cartão de Crédito</mat-card-title>
-
-    <form class="m-t-25" fxLayout="column">
-      <mat-form-field class="big-input">
-        <input matInput placeholder="Número do Cartão" name="cartnum">
-      </mat-form-field>
-
-      <div>
-        <mat-form-field class="medium-input m-r-2p">
-          <input matInput placeholder="Bandeira do Cartão" name="cartband">
-        </mat-form-field>
-        <mat-form-field class="medium-input">
-          <input matInput placeholder="CVV" name="cartcvv">
-        </mat-form-field>
+﻿<div class="container">
+  <div class="card">
+    <div class="col-12 text-center">
+      <label class="label">Cadastro de Cartão</label>
+    </div>
+    <form class="row g-3" [formGroup]="formCartao">
+      <div class="col-md-6">
+        <label class="form-label">Número do Cartão</label>
+        <input type="email" class="form-control" id="numeroCartao" [ngClass]="{ 'is-invalid': f.numeroCartao.errors && f.numeroCartao.touched }" formControlName="numeroCartao" placeholder="Digite seu Número do Cartão" [(ngModel)]="cartaoCredito.numeroCartao">
+        <div *ngIf="f.numeroCartao.errors?.required" class="invalid-feedback">
+          Número do Cartão é obrigatorio.
+        </div>
       </div>
-
-      <mat-form-field class="big-input">
-        <input matInput placeholder="Nome do Titular" name="cpf">
-      </mat-form-field>
-
-      <div class="m-t-25" fxLayoutAlign="center">
-        <button mat-raised-button type="button" (click)="VoltarTelaInicial()">Finalizar</button>
+      <div class="col-md-6">
+        <label class="form-label">Nome do Titular</label>
+        <input type="text" class="form-control" id="NomeTitular" [ngClass]="{'is-invalid': f.NomeTitular.errors && f.NomeTitular.touched}" formControlName="NomeTitular" placeholder="Digite o Nome do Titular" [(ngModel)]="cartaoCredito.nomeTitular">
+        <div *ngIf="f.NomeTitular.errors?.required" class="invalid-feedback">
+          Nome do Titular é obrigatorio.
+        </div>
       </div>
-
+      <div class="col-6">
+        <label class="form-label">Bandeira do Cartão</label>
+        <input type="text" class="form-control" id="bandeiraCartao" [ngClass]="{'is-invalid': f.BandeiraCartao.errors && f.BandeiraCartao.touched}" formControlName="BandeiraCartao" placeholder="Digite sua Bandeira do Cartão" [(ngModel)]="cartaoCredito.bandeiraCartao">
+        <div class="invalid-feedback">
+          Bandeira do Cartão é obrigatorio.
+        </div>
+      </div>
+      <div class="col-6">
+        <label class="form-label">CVV</label>
+        <input type="text" class="form-control" id="cvv" [ngClass]="{'is-invalid': f.cvv.errors && f.cvv.touched}" formControlName="cvv" placeholder="Digite seu CVV" [(ngModel)]="cartaoCredito.cvv">
+        <div class="invalid-feedback">
+          CVV é obrigatorio.
+        </div>
+      </div>
+      <div class="col-12 text-center">
+        <button type="button" class="btn btn-primary mt-3" [disabled]="!formCartao.valid" (click)="cadastrarCartao()">Cadastrar</button>
+      </div>
     </form>
-  </mat-card>
-
-  <div class="m-t-35">
-    <button mat-raised-button type="button" (click)="backPage()">Retornar</button>
+  </div>
+  <label class="label2 col-12 text-center mt-3">Deseja cadastrar o Cartão depois? <span (click)="naoCadastrarCartao()"> Cadastrar sem cartão</span></label>
+  <div class="col-12 text-center mt-4">
+    <button type="button" class="btn btn-primary" (click)="backPage()">Retornar</button>
   </div>
 </div>
-
