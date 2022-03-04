@@ -20,6 +20,12 @@
   padding-top: 10px;
 }
 
+.label2 {
+  font-size: 20px;
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+
 .form-label {
   font-weight: bold;
 }
@@ -27,3 +33,7 @@
 .invalid-feedback{
   padding-left: 4px;
 }
+
+
+
+
