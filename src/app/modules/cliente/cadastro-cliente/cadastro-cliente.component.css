@@ -1,56 +1,23 @@
-
-/* --- Card e Container --- */
 .container {
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  margin-top: 120px;
+  margin-bottom: 120px;
 }
 
-mat-card {
-  width: 50%;
-  margin-top: 16px;
+.card {
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-mat-card-title {
+.label {
+  font-size: 25px;
+  padding-bottom: 30px;
   padding-top: 10px;
 }
 
-
-/* --- Margins e Paddings --- */
-.m-t-25 {
-  margin-top: 25px;
+.form-label {
+  font-weight: bold;
 }
 
-.m-t-65 {
-  margin-top: 65px;
-}
-
-.m-r-2p {
-  margin-right: 2%;
-}
-
-
-/* --- Inputs --- */
-
-.medium-input {
-  width: 48%;
-}
-
-.big-input {
-  width: 98%;
-}
-
-
-/* --- Button --- */
-
-button {
-  font-size: 20px;
-  padding: 4px 50px;
-  background-color: rgb(218, 218, 218);
-}
-
-button:hover {
-  background-color: rgb(142, 142, 142);
+.invalid-feedback{
+  padding-left: 4px;
 }
