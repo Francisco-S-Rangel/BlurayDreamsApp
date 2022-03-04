@@ -1,3 +1,4 @@
+import { SharedDataService } from './../../shared/services/shared-data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -11,11 +12,43 @@ export class CadastroEnderecoComponent implements OnInit {
 
   formEndereco!: FormGroup;
 
+  cliente: any
+
+  str: any
+
+  enderecoEntrega = {
+    cep: "",
+    tipoResidencia: "",
+    logradouro: "",
+    tipoLogradouro: "",
+    bairro: "",
+    cidade: "",
+    estado: "",
+    pais: "",
+    numero: "",
+    apelido: "",
+    observacao: ""
+  }
+
+  enderecoCobranca = {
+    cep: "",
+    tipoResidencia: "",
+    logradouro: "",
+    tipoLogradouro: "",
+    bairro: "",
+    cidade: "",
+    estado: "",
+    pais: "",
+    numero: ""
+  }
+
   get f(): any {
     return this.formEndereco.controls;
   }
 
-  constructor(private router: Router, private fb: FormBuilder) { }
+  constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService) {
+    this.cliente = this.shared.getClientes()
+  }
 
 
   ngOnInit() {
@@ -25,6 +58,13 @@ export class CadastroEnderecoComponent implements OnInit {
   backPage() { this.router.navigate(['/cadastrar-cliente']); }
 
   irParaCartao(){ this.router.navigate(['/cadastrar-cartao'])}
+
+  cadastrarCliEnd() {
+    this.cliente.enderecoCobranca = this.enderecoCobranca
+    this.cliente.enderecoEntrega = this.enderecoEntrega
+    this.shared.setClientes(this.cliente)
+    this.irParaCartao();
+  }
 
   public validacao(): void {
 

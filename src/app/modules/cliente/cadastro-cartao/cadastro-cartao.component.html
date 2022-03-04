@@ -6,34 +6,34 @@
     <form class="row g-3" [formGroup]="formCartao">
       <div class="col-md-6">
         <label class="form-label">Número do Cartão</label>
-        <input type="email" class="form-control" id="numeroCartao" [ngClass]="{ 'is-invalid': f.numeroCartao.errors && f.numeroCartao.touched }" formControlName="numeroCartao" placeholder="Digite seu Número do Cartão">
+        <input type="email" class="form-control" id="numeroCartao" [ngClass]="{ 'is-invalid': f.numeroCartao.errors && f.numeroCartao.touched }" formControlName="numeroCartao" placeholder="Digite seu Número do Cartão" [(ngModel)]="cartaoCredito.numeroCartao">
         <div *ngIf="f.numeroCartao.errors?.required" class="invalid-feedback">
           Número do Cartão é obrigatorio.
         </div>
       </div>
       <div class="col-md-6">
         <label class="form-label">Nome do Titular</label>
-        <input type="text" class="form-control" id="NomeTitular" [ngClass]="{'is-invalid': f.NomeTitular.errors && f.NomeTitular.touched}" formControlName="NomeTitular" placeholder="Digite o Nome do Titular">
+        <input type="text" class="form-control" id="NomeTitular" [ngClass]="{'is-invalid': f.NomeTitular.errors && f.NomeTitular.touched}" formControlName="NomeTitular" placeholder="Digite o Nome do Titular" [(ngModel)]="cartaoCredito.nomeTitular">
         <div *ngIf="f.NomeTitular.errors?.required" class="invalid-feedback">
           Nome do Titular é obrigatorio.
         </div>
       </div>
       <div class="col-6">
         <label class="form-label">Bandeira do Cartão</label>
-        <input type="text" class="form-control" id="bandeiraCartao" [ngClass]="{'is-invalid': f.BandeiraCartao.errors && f.BandeiraCartao.touched}" formControlName="BandeiraCartao" placeholder="Digite sua Data de Nascimento">
+        <input type="text" class="form-control" id="bandeiraCartao" [ngClass]="{'is-invalid': f.BandeiraCartao.errors && f.BandeiraCartao.touched}" formControlName="BandeiraCartao" placeholder="Digite sua Bandeira do Cartão" [(ngModel)]="cartaoCredito.bandeiraCartao">
         <div class="invalid-feedback">
           Bandeira do Cartão é obrigatorio.
         </div>
       </div>
       <div class="col-6">
         <label class="form-label">CVV</label>
-        <input type="text" class="form-control" id="cvv" [ngClass]="{'is-invalid': f.cvv.errors && f.cvv.touched}" formControlName="cvv" placeholder="Digite seu DDD">
+        <input type="text" class="form-control" id="cvv" [ngClass]="{'is-invalid': f.cvv.errors && f.cvv.touched}" formControlName="cvv" placeholder="Digite seu CVV" [(ngModel)]="cartaoCredito.cvv">
         <div class="invalid-feedback">
           CVV é obrigatorio.
         </div>
       </div>
       <div class="col-12 text-center">
-        <button type="button" class="btn btn-primary mt-3" [disabled]="!formCartao.valid" (click)="VoltarTelaInicial()">Cadastrar</button>
+        <button type="button" class="btn btn-primary mt-3" [disabled]="!formCartao.valid" (click)="cadastrarCartao()">Cadastrar</button>
       </div>
     </form>
   </div>

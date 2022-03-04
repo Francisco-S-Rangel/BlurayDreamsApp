@@ -1,3 +1,4 @@
+import { SharedDataService } from './../../shared/services/shared-data.service';
 import { ValidadorSenha } from './../../shared/helpers/ValidadorSenha';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -12,12 +13,22 @@ export class CadastroClienteComponent implements OnInit {
 
   form!: FormGroup;
 
+   cliente = {
+    Nome: "",
+    DataNascimento: "",
+    ddd: "",
+    Telefone: "",
+    TipoTelefone: "",
+    CPF: "",
+    Email: "",
+    Senha: ""
+  }
+
   get f(): any {
     return this.form.controls;
   }
 
-
-  constructor( private router: Router, private fb: FormBuilder) { }
+  constructor( private router: Router, private fb: FormBuilder, private shared: SharedDataService) { }
 
   ngOnInit(): void {
     this.validacao();
@@ -26,6 +37,11 @@ export class CadastroClienteComponent implements OnInit {
   backPage() { this.router.navigate(['']); }
 
   irParaEndereco(){ this.router.navigate(['/cadastrar-endereco'])}
+
+  cadastrarCliente(){
+    this.shared.setClientes(this.cliente)
+    this.irParaEndereco()
+  }
 
   public validacao(): void {
 
@@ -45,7 +61,7 @@ export class CadastroClienteComponent implements OnInit {
       confSenha: ['', Validators.required]
     }, formOptions)
 
-    
+
   }
 
 }
