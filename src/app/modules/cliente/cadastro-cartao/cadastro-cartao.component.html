@@ -10,12 +10,6 @@
         <div *ngIf="f.numeroCartao.errors?.required" class="invalid-feedback">
           Número do Cartão é obrigatorio.
         </div>
-        <div *ngIf="f.numeroCartao.errors?.minlength" class="invalid-feedback">
-          Número do Cartão deve ter no mínimo 5 caracteres.
-        </div>
-        <div *ngIf="f.numeroCartao.errors?.maxlength" class="invalid-feedback">
-          Número do Cartão deve ter no mínimo 50 caracteres.
-        </div>
       </div>
       <div class="col-md-6">
         <label class="form-label">Nome do Titular</label>
@@ -25,17 +19,17 @@
         </div>
       </div>
       <div class="col-6">
-        <label class="form-label">Data de Nascimento</label>
-        <input type="text" class="form-control" id="nascimento" [ngClass]="{'is-invalid': f.DataNascimento.errors && f.DataNascimento.touched}" formControlName="DataNascimento" placeholder="Digite sua Data de Nascimento">
+        <label class="form-label">Bandeira do Cartão</label>
+        <input type="text" class="form-control" id="bandeiraCartao" [ngClass]="{'is-invalid': f.BandeiraCartao.errors && f.BandeiraCartao.touched}" formControlName="BandeiraCartao" placeholder="Digite sua Data de Nascimento">
         <div class="invalid-feedback">
-          Data de Nascimento é obrigatorio
+          Bandeira do Cartão é obrigatorio.
         </div>
       </div>
       <div class="col-6">
-        <label class="form-label">DDD</label>
-        <input type="text" class="form-control" id="ddd" [ngClass]="{'is-invalid': f.ddd.errors && f.ddd.touched}" formControlName="ddd" placeholder="Digite seu DDD">
+        <label class="form-label">CVV</label>
+        <input type="text" class="form-control" id="cvv" [ngClass]="{'is-invalid': f.cvv.errors && f.cvv.touched}" formControlName="cvv" placeholder="Digite seu DDD">
         <div class="invalid-feedback">
-          DDD é obrigatorio
+          CVV é obrigatorio.
         </div>
       </div>
       <div class="col-12 text-center">

@@ -29,15 +29,10 @@ export class CadastroCartaoComponent implements OnInit {
   public validacao(): void {
 
     this.formCartao = this.fb.group({
-      Nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]],
-      DataNascimento: ['', Validators.required],
-      ddd: ['', Validators.required],
-      Telefone: ['', Validators.required],
-      TipoTelefone: ['', Validators.required],
-      CPF: ['', Validators.required],
-      Email: ['', [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(60)]],
-      Senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
-      confSenha: ['', Validators.required]
+      numeroCartao: ['', [Validators.required]],
+      NomeTitular: ['', Validators.required],
+      BandeiraCartao: ['', Validators.required],
+      cvv: ['', Validators.required]
     })
 
 

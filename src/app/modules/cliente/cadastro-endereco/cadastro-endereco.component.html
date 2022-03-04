@@ -1,8 +1,181 @@
-
 <div class="container">
+  <div class="card">
+    <div class="col-12 text-center">
+      <label class="label">Cadastro de Endereço de Entrega</label>
+    </div>
+    <form class="row g-3" [formGroup]="formEndereco">
+      <div class="col-md-3">
+        <label class="form-label">CEP</label>
+        <input type="email" class="form-control" id="cep" [ngClass]="{ 'is-invalid': f.cep.errors && f.cep.touched }" formControlName="cep" placeholder="Digite seu CEP">
+        <div *ngIf="f.cep.errors?.required" class="invalid-feedback">
+          CEP é obrigatorio.
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Tipo de Residência</label>
+        <input type="text" class="form-control" id="TipoResidencia" [ngClass]="{'is-invalid': f.TipoResidencia.errors && f.TipoResidencia.touched}" formControlName="TipoResidencia" placeholder="Digite seu Tipo de Residência">
+        <div *ngIf="f.TipoResidencia.errors?.required" class="invalid-feedback">
+          Tipo de Residência é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Logradouro</label>
+        <input type="text" class="form-control" id="Logradouro" [ngClass]="{'is-invalid': f.Logradouro.errors && f.Logradouro.touched}" formControlName="Logradouro" placeholder="Digite seu Logradouro">
+        <div class="invalid-feedback">
+          Logradouro é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Tipo de Logradouro</label>
+        <input type="text" class="form-control" id="TipoLogradouro" [ngClass]="{'is-invalid': f.TipoLogradouro.errors && f.TipoLogradouro.touched}" formControlName="TipoLogradouro" placeholder="Digite seu Tipo de Logradouro">
+        <div class="invalid-feedback">
+          Tipo de Logradouro é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Bairro</label>
+        <input type="text" class="form-control" id="bairro" [ngClass]="{'is-invalid': f.Bairro.errors && f.Bairro.touched}" formControlName="Bairro" placeholder="Digite seu Bairro">
+        <div class="invalid-feedback">
+          Bairro é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Cidade</label>
+        <input type="text" class="form-control" id="Cidade" [ngClass]="{'is-invalid': f.Cidade.errors && f.Cidade.touched}" formControlName="Cidade" placeholder="Digite sua Cidade">
+        <div class="invalid-feedback">
+          Cidade é obrigatorio.
+        </div>
+      </div>
+
+      <div class="col-3">
+        <label class="form-label">Estado</label>
+        <input type="text" class="form-control " id="Estado" [ngClass]="{'is-invalid': f.Estado.errors && f.Estado.touched}" formControlName="Estado" placeholder="Digite seu Estado">
+        <div class="invalid-feedback">
+          Estado é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">País</label>
+        <input type="text" class="form-control" id="Pais" [ngClass]="{'is-invalid': f.Pais.errors && f.Pais.touched}" formControlName="Pais" placeholder="Digite seu País">
+        <div *ngIf="f.Pais.errors?.required" class="invalid-feedback">
+          País é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Número</label>
+        <input type="text" class="form-control" id="Numero" [ngClass]="{'is-invalid': f.Numero.errors && f.Numero.touched}" formControlName="Numero" placeholder="Digite seu Número">
+        <div *ngIf="f.Numero.errors?.required" class="invalid-feedback">
+          Número é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Apelido</label>
+        <input type="text" class="form-control" id="Apelido" [ngClass]="{'is-invalid': f.Apelido.errors && f.Apelido.touched}" formControlName="Apelido" placeholder="Digite o Apelido do Endereço">
+        <div *ngIf="f.Apelido.errors?.required" class="invalid-feedback">
+          Apelido do Endereço é obrigatorio.
+        </div>
+      </div>
+      <div class="col-6">
+        <label class="form-label">Observação</label>
+        <input type="text" class="form-control" id="Obs" [ngClass]="{'is-invalid': f.Obs.errors && f.Obs.touched}" formControlName="Obs" placeholder="Escreva uma Observação (Opcional...)">
+      </div>
+
+      <div class="col-12 text-center">
+        <label class="label">Cadastro de Endereço de Cobrança</label>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label">CEP</label>
+        <input type="email" class="form-control" id="cep2" [ngClass]="{ 'is-invalid': f.cep2.errors && f.cep2.touched }" formControlName="cep2" placeholder="Digite seu CEP">
+        <div *ngIf="f.cep2.errors?.required" class="invalid-feedback">
+          CEP é obrigatorio.
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Tipo de Residência</label>
+        <input type="text" class="form-control" id="TipoResidencia2" [ngClass]="{'is-invalid': f.TipoResidencia2.errors && f.TipoResidencia2.touched}" formControlName="TipoResidencia2" placeholder="Digite seu Tipo de Residência">
+        <div *ngIf="f.TipoResidencia2.errors?.required" class="invalid-feedback">
+          Tipo de Residência é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Logradouro</label>
+        <input type="text" class="form-control" id="Logradouro2" [ngClass]="{'is-invalid': f.Logradouro2.errors && f.Logradouro2.touched}" formControlName="Logradouro2" placeholder="Digite seu Logradouro">
+        <div class="invalid-feedback">
+          Logradouro é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Tipo de Logradouro</label>
+        <input type="text" class="form-control" id="TipoLogradouro2" [ngClass]="{'is-invalid': f.TipoLogradouro2.errors && f.TipoLogradouro2.touched}" formControlName="TipoLogradouro2" placeholder="Digite seu Tipo de Logradouro">
+        <div class="invalid-feedback">
+          Tipo de Logradouro é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Bairro</label>
+        <input type="text" class="form-control" id="bairro2" [ngClass]="{'is-invalid': f.Bairro2.errors && f.Bairro2.touched}" formControlName="Bairro2" placeholder="Digite seu Bairro">
+        <div class="invalid-feedback">
+          Bairro é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Cidade</label>
+        <input type="text" class="form-control" id="Cidade2" [ngClass]="{'is-invalid': f.Cidade2.errors && f.Cidade2.touched}" formControlName="Cidade2" placeholder="Digite sua Cidade">
+        <div class="invalid-feedback">
+          Cidade é obrigatorio.
+        </div>
+      </div>
+
+      <div class="col-3">
+        <label class="form-label">Estado</label>
+        <input type="text" class="form-control " id="Estado2" [ngClass]="{'is-invalid': f.Estado2.errors && f.Estado2.touched}" formControlName="Estado2" placeholder="Digite seu Estado">
+        <div class="invalid-feedback">
+          Estado é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">País</label>
+        <input type="text" class="form-control" id="Pais2" [ngClass]="{'is-invalid': f.Pais2.errors && f.Pais2.touched}" formControlName="Pais2" placeholder="Digite seu País">
+        <div *ngIf="f.Pais2.errors?.required" class="invalid-feedback">
+          País é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Número</label>
+        <input type="text" class="form-control" id="Numero2" [ngClass]="{'is-invalid': f.Numero2.errors && f.Numero2.touched}" formControlName="Numero2" placeholder="Digite seu Número">
+        <div *ngIf="f.Numero2.errors?.required" class="invalid-feedback">
+          Número é obrigatorio.
+        </div>
+      </div>
+
+      <div class="col-12 text-center">
+        <button type="button" class="btn btn-primary mt-3" [disabled]="!formEndereco.valid" (click)="irParaCartao()">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-12 text-center mt-5">
+    <button type="button" class="btn btn-primary" (click)="backPage()">Retornar</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- div class="container">
   <mat-card class="mat-elevation-z4">
 
-    <mat-card-title fxLayoutAlign="center">Cadastro de Endereço de Entrega</mat-card-title>
+    <mat-card-title fxLayoutAlign="center">Cadastro de EndereÃ§o de Entrega</mat-card-title>
 
     <form class="m-t-25" fxLayout="column">
 
@@ -11,7 +184,7 @@
           <input matInput placeholder="CEP" name="cep">
         </mat-form-field>
         <mat-form-field class="medium-input">
-          <input matInput placeholder="Tipo de Residência (Casa, Apartamento...)" name="tipores">
+          <input matInput placeholder="Tipo de ResidÃªncia (Casa, Apartamento...)" name="tipores">
         </mat-form-field>
       </div>
 
@@ -38,28 +211,28 @@
           <input matInput placeholder="Estado" name="estado">
         </mat-form-field>
         <mat-form-field class="medium-input">
-          <input matInput placeholder="País" name="pais">
+          <input matInput placeholder="PaÃ­s" name="pais">
         </mat-form-field>
       </div>
 
       <div>
         <mat-form-field class="medium-input m-r-2p">
-          <input matInput placeholder="Número" name="numero">
+          <input matInput placeholder="NÃºmero" name="numero">
         </mat-form-field>
       </div>
 
       <mat-form-field class="big-input">
-        <input matInput placeholder="Observação (Opcional...)" name="obs">
+        <input matInput placeholder="ObservaÃ§Ã£o (Opcional...)" name="obs">
       </mat-form-field>
 
-      <mat-card-title fxLayoutAlign="center">Endereço de Cobrança</mat-card-title>
+      <mat-card-title fxLayoutAlign="center">EndereÃ§o de CobranÃ§a</mat-card-title>
 
       <div>
         <mat-form-field class="medium-input m-r-2p">
           <input matInput placeholder="CEP" name="cep">
         </mat-form-field>
         <mat-form-field class="medium-input">
-          <input matInput placeholder="Tipo de Residência (Casa, Apartamento...)" name="tipores">
+          <input matInput placeholder="Tipo de ResidÃªncia (Casa, Apartamento...)" name="tipores">
         </mat-form-field>
       </div>
 
@@ -86,13 +259,13 @@
           <input matInput placeholder="Estado" name="estado">
         </mat-form-field>
         <mat-form-field class="medium-input">
-          <input matInput placeholder="País" name="pais">
+          <input matInput placeholder="PaÃ­s" name="pais">
         </mat-form-field>
       </div>
 
       <div>
         <mat-form-field class="medium-input m-r-2p">
-          <input matInput placeholder="Número" name="numero">
+          <input matInput placeholder="NÃºmero" name="numero">
         </mat-form-field>
       </div>
 
@@ -106,5 +279,5 @@
   <div class="m-t-65">
     <button mat-raised-button type="button" (click)="backPage()">Retornar</button>
   </div>
-</div>
+</!-->
 
