@@ -3,9 +3,6 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
             <button class="custom-btn-back" type="button" (click)="backPage()">Retornar</button>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-12 text-lg-right text-sm-right">
-            <button class="salvarDados">Salvar</button>
-        </div>
     </div>
     <hr>
       
@@ -17,7 +14,7 @@
         </div>
 
         <table class="table table-hover">
-            <thead class="tab">
+            <thead class="table-active">
               <tr>
                 <th scope="col">Nome</th>
                 <th scope="col">Email</th>
@@ -27,22 +24,28 @@
                 <th scope="col">DD</th>
                 <th scope="col">Numero</th>
                 <th scope="col">Aparelho</th>
+                <th scope="col">Editar</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>Francisco de Souza Rangel</td>
+                <td>chcicochicosouzasouzarangel@gmail.com</td>
+                <td>21/10/1999</td>
+                <td>454330987-21</td>
+                <td>testeteste123</td>
+                <td>11</td>
+                <td>97452-1864</td>
+                <td>Telefone</td>
+                <td><button type="button" class="btn btn-primary">Editar</button></td>
               </tr>
             </tbody>
           </table>
 
     </div>
+    
+     
+    <br><br><hr><br><br>
 
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -50,7 +53,7 @@
         </div>
 
         <table class="table table-hover">
-            <thead class="tab">
+            <thead class="table-active">
               <tr>
                 <th scope="col">CEP</th>
                 <th scope="col">Tipo Residencia</th>
@@ -61,22 +64,36 @@
                 <th scope="col">Cidade</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Pais</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Deletar</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>08932-250</td>
+                <td>Condominio</td>
+                <td>Rua Vereador Astra Barral Nuhhabaa</td>
+                <td>Apartamento</td>
+                <td>178</td>
+                <td>Jardim Nova Europa</td>
+                <td>Los Angeles</td>
+                <td>rddrcr</td>
+                <td>Estados Unidos da America</td>
+                <td><button type="button" class="btn btn-primary">Editar</button></td>
+                <td><button type="button" class="btn btn-danger">Excluir</button></td>
               </tr>
             </tbody>
           </table>
 
     </div>
+
+    <br>
+    <div class="col-md-12 text-center">
+      <button type="button" class="btn btn-success">Cadastrar Novo Endereço</button>
+    </div>
+
+    <br><hr><br><br>
+
 
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -84,7 +101,7 @@
         </div>
 
         <table class="table table-hover">
-            <thead class="tab">
+            <thead class="table-active">
               <tr>
                 <th scope="col">CEP</th>
                 <th scope="col">Tipo Residencia</th>
@@ -97,22 +114,55 @@
                 <th scope="col">Pais</th>
                 <th scope="col">Apelido</th>
                 <th scope="col">Observação</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Deletar</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>08932-250</td>
+                <td>Condominio</td>
+                <td>Rua Vereador Astra Barral Nuhhabaa</td>
+                <td>Apartamento</td>
+                <td>178</td>
+                <td>Jardim Nova Europa</td>
+                <td>Los Angeles</td>
+                <td>rddrcr</td>
+                <td>Estados Unidos da America</td>
+                <td>ddgvdvgdvgdvd</td>
+                <td>Casa grande de potão amarelo</td>
+                <td><button type="button" class="btn btn-primary">Editar</button></td>
+                <td><button type="button" class="btn btn-danger">Excluir</button></td>
               </tr>
+
+              <tr>
+                <td>08932-250</td>
+                <td>Condominio</td>
+                <td>Rua Vereador Astra Barral Nuhhabaa</td>
+                <td>Apartamento</td>
+                <td>178</td>
+                <td>Jardim Nova Europa</td>
+                <td>Los Angeles</td>
+                <td>rddrcr</td>
+                <td>Estados Unidos da America</td>
+                <td>ddgvdvgdvgdvd</td>
+                <td>Casa grande de potão amarelo</td>
+                <td><button type="button" class="btn btn-primary">Editar</button></td>
+                <td><button type="button" class="btn btn-danger">Excluir</button></td>
+              </tr>
+
+
             </tbody>
           </table>
 
     </div>
+
+    <br>
+    <div class="col-md-12 text-center">
+      <button type="button" class="btn btn-success">Cadastrar Novo Endereço</button>
+    </div>
+
+    <br><hr><br><br>
     
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -120,26 +170,36 @@
         </div>
 
         <table class="table table-hover">
-            <thead class="tab">
+            <thead class="table-active">
               <tr>
                 <th scope="col">Numero Cartão</th>
                 <th scope="col">Bandeira Cartão</th>
                 <th scope="col">CVV</th>
                 <th scope="col">Nome Titular</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Excluir</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>818818188</td>
+                <td>Masttercarrd</td>
+                <td>4778</td>
+                <td>fararararraararrararar</td>
+                <td><button type="button" class="btn btn-primary">Editar</button></td>
+                <td><button type="button" class="btn btn-danger">Excluir</button></td>
               </tr>
             </tbody>
           </table>
 
     </div>
+
+    <br>
+    <div class="col-md-12 text-center">
+      <button type="button" class="btn btn-success">Cadastrar Novo Cartão</button>
+    </div>
+
+    <br><br>
 
 
 </div>
