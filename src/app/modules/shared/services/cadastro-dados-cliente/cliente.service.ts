@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ClienteService {
 
-  baseUrl = `https://localhost:7114/api/Clientes`;
+  baseUrl = `${environment.API_url}/Clientes`;
   
 
   constructor(private http: HttpClient) { }
