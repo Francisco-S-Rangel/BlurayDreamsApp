@@ -1,4 +1,4 @@
-export interface EnderecoCobranca {
+export interface EnderecoCobrancas {
     id: number;
     clienteId: number;
     cep: string;

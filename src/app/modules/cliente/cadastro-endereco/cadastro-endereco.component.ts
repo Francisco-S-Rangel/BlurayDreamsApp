@@ -16,9 +16,9 @@ export class CadastroEnderecoComponent implements OnInit {
 
   str: any
 
-  enderecoEntrega = {
+  enderecoEntregas = {
     id: 0,
-    clienteId: 0,
+    clienteId: 8,
     cep: "",
     tipoResidencia: "",
     logradouro: "",
@@ -32,9 +32,9 @@ export class CadastroEnderecoComponent implements OnInit {
     observacao: ""
   }
 
-  enderecoCobranca = {
+  enderecoCobrancas = {
     id: 0,
-    clienteId: 0,
+    clienteId: 8,
     cep: "",
     tipoResidencia: "",
     logradouro: "",
@@ -64,8 +64,8 @@ export class CadastroEnderecoComponent implements OnInit {
   irParaCartao(){ this.router.navigate(['/cadastrar-cartao'])}
 
   cadastrarCliEnd() {
-    this.cliente.enderecoCobranca = this.enderecoCobranca
-    this.cliente.enderecoEntrega = this.enderecoEntrega
+    this.cliente.enderecoCobranca = this.enderecoCobrancas
+    this.cliente.enderecoEntrega = this.enderecoEntregas
     this.shared.setClientes(this.cliente)
     this.irParaCartao();
   }

@@ -16,9 +16,9 @@ export class CadastroCartaoComponent implements OnInit {
 
   str: any;
 
-  cartaoCredito = {
+  cartaoCreditos = {
     id: 0,
-    clienteId: 0,
+    clienteId: 8,
     numeroCartao: "",
     bandeiraCartao: "",
     cvv: "",
@@ -45,7 +45,7 @@ export class CadastroCartaoComponent implements OnInit {
   VoltarTelaInicial(){ this.router.navigate(['']);}
 
   cadastrarCartao(){
-    this.cliente.cartoesCreditos = this.cartaoCredito
+    this.cliente.cartoesCreditos = this.cartaoCreditos
 
     this.cadastrarCliente(this.cliente);
 
@@ -82,7 +82,7 @@ export class CadastroCartaoComponent implements OnInit {
 
   cadastrarCliente(cliente: Cliente){
        console.log(cliente);
-       this.clienteService.post(cliente).subscribe(
+       this.clienteService.post(this.cliente).subscribe(
         ()=>{
           console.log();
         },

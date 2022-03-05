@@ -13,8 +13,7 @@ export class CadastroClienteComponent implements OnInit {
 
   form!: FormGroup;
 
-   cliente = {
-    id: 2,
+   Clientes = {
     Nome: "",
     DataNascimento: "",
     ddd: "",
@@ -40,7 +39,7 @@ export class CadastroClienteComponent implements OnInit {
   irParaEndereco(){ this.router.navigate(['/cadastrar-endereco'])}
 
   cadastrarCliente(){
-    this.shared.setClientes(this.cliente)
+    this.shared.setClientes(this.Clientes)
     this.irParaEndereco()
   }
 
