@@ -14,6 +14,7 @@ export class CadastroClienteComponent implements OnInit {
   form!: FormGroup;
 
    cliente = {
+    id: 2,
     Nome: "",
     DataNascimento: "",
     ddd: "",

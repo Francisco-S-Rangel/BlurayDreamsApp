@@ -2,6 +2,8 @@ import { SharedDataService } from './../../shared/services/shared-data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ClienteService } from '../../shared/services/cadastro-dados-cliente/cliente.service';
+import { Cliente } from '../../shared/models/cliente';
 
 @Component({
   selector: 'app-cadastro-cartao',
@@ -15,6 +17,8 @@ export class CadastroCartaoComponent implements OnInit {
   str: any;
 
   cartaoCredito = {
+    id: 0,
+    clienteId: 0,
     numeroCartao: "",
     bandeiraCartao: "",
     cvv: "",
@@ -28,7 +32,7 @@ export class CadastroCartaoComponent implements OnInit {
   }
 
 
-  constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService) {
+  constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService,private clienteService: ClienteService) {
     this.cliente = this.shared.getClientes()
   }
 
@@ -43,6 +47,8 @@ export class CadastroCartaoComponent implements OnInit {
   cadastrarCartao(){
     this.cliente.cartoesCreditos = this.cartaoCredito
 
+    this.cadastrarCliente(this.cliente);
+
     this.str = JSON.stringify(this.cliente, null, 4);
     console.log(this.str)
 
@@ -51,8 +57,10 @@ export class CadastroCartaoComponent implements OnInit {
   }
 
   naoCadastrarCartao(){
-    this.cliente.cartoesCreditos = null
+    this.cliente.cartoesCreditos = null;
 
+    this.cadastrarCliente(this.cliente);
+  
     this.str = JSON.stringify(this.cliente, null, 4);
     console.log(this.str)
 
@@ -70,6 +78,18 @@ export class CadastroCartaoComponent implements OnInit {
     })
 
 
+  }
+
+  cadastrarCliente(cliente: Cliente){
+       console.log(cliente);
+       this.clienteService.post(cliente).subscribe(
+        ()=>{
+          console.log();
+        },
+        (erro: any)=>{
+          console.log(erro)
+        }
+       )
   }
 
 }

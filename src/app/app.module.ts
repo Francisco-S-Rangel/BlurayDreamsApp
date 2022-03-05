@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatInputModule } from '@angular/material/input';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavBar2Component } from './modules/shared/components/nav-bar2/nav-bar2.component';
@@ -51,7 +52,8 @@ import { InformacaoClienteComponent } from './modules/admin/informacao-cliente/i
     MatInputModule,
     MatButtonModule,
     FlexLayoutModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

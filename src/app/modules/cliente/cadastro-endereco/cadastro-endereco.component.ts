@@ -17,6 +17,8 @@ export class CadastroEnderecoComponent implements OnInit {
   str: any
 
   enderecoEntrega = {
+    id: 0,
+    clienteId: 0,
     cep: "",
     tipoResidencia: "",
     logradouro: "",
@@ -31,6 +33,8 @@ export class CadastroEnderecoComponent implements OnInit {
   }
 
   enderecoCobranca = {
+    id: 0,
+    clienteId: 0,
     cep: "",
     tipoResidencia: "",
     logradouro: "",
