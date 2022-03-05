@@ -14,6 +14,18 @@ export class CadastroCartaoComponent implements OnInit {
 
   cliente: any;
 
+  bandeiraCartao: any = [
+    {
+      bandeira: "visa"
+    },
+    {
+      bandeira: "mastercard"
+    },
+    {
+      bandeira: "elo"
+    }
+  ]
+
   str: any;
 
   cartaoCreditos = [
@@ -42,8 +54,6 @@ export class CadastroCartaoComponent implements OnInit {
     this.validacao();
   }
 
-  backPage() { this.router.navigate(['/cadastrar-endereco']); }
-
   VoltarTelaInicial(){ this.router.navigate(['']);}
 
   cadastrarCartao(){
@@ -54,8 +64,7 @@ export class CadastroCartaoComponent implements OnInit {
     this.str = JSON.stringify(this.cliente, null, 4);
     console.log(this.str)
 
-    //post
-    //this.VoltarTelaInicial()
+    this.VoltarTelaInicial()
   }
 
   naoCadastrarCartao(){
@@ -66,8 +75,7 @@ export class CadastroCartaoComponent implements OnInit {
     this.str = JSON.stringify(this.cliente, null, 4);
     console.log(this.str)
 
-    //post
-    //this.VoltarTelaInicial()
+   this.VoltarTelaInicial()
   }
 
   public validacao(): void {

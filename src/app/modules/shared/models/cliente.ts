@@ -5,7 +5,7 @@ import { CartaoCredito } from "./cartaoCredito";
 export interface Cliente {
     id: number;
     nome: string;
-    dataNascimeto: Date;
+    dataNascimeto: string;
     ddd: string;
     telefone: string;
     tipotelefone: string;

@@ -36,14 +36,14 @@
       </div>
       <div class="col-3">
         <label class="form-label">DDD</label>
-        <input type="text" class="form-control" id="ddd" [ngClass]="{'is-invalid': f.ddd.errors && f.ddd.touched}" formControlName="ddd" placeholder="Digite seu DDD" [(ngModel)]="Clientes.ddd">
+        <input type="text" class="form-control" id="ddd" [ngClass]="{'is-invalid': f.ddd.errors && f.ddd.touched}" formControlName="ddd" placeholder="Digite seu DDD" [(ngModel)]="Clientes.ddd" (keypress)="keyPressNumbers($event)">
         <div class="invalid-feedback">
           DDD é obrigatorio
         </div>
       </div>
       <div class="col-3">
         <label class="form-label">Telefone</label>
-        <input type="text" class="form-control" id="numero" [ngClass]="{'is-invalid': f.Telefone.errors && f.Telefone.touched}" formControlName="Telefone" placeholder="Digite seu Numero de Celular/Telefone" [(ngModel)]="Clientes.Telefone">
+        <input type="text" class="form-control" id="numero" [ngClass]="{'is-invalid': f.Telefone.errors && f.Telefone.touched}" formControlName="Telefone" placeholder="Digite seu Numero de Celular/Telefone" [(ngModel)]="Clientes.Telefone" (keypress)="keyPressNumbers($event)">
         <div class="invalid-feedback">
           Telefone é obrigatorio
         </div>
@@ -57,8 +57,8 @@
       </div>
 
       <div class="col-6">
-        <label class="form-label">CPF</label>
-        <input type="text" class="form-control " id="cpf" [ngClass]="{'is-invalid': f.CPF.errors && f.CPF.touched}" formControlName="CPF" placeholder="Digite seu CPF" [(ngModel)]="Clientes.CPF">
+        <label class="form-label">CPF (Apenas Números)</label>
+        <input type="text" class="form-control " id="cpf" [ngClass]="{'is-invalid': f.CPF.errors && f.CPF.touched}" formControlName="CPF" placeholder="Digite seu CPF" [(ngModel)]="Clientes.CPF" (keypress)="keyPressNumbers($event)">
         <div class="invalid-feedback">
           CPF é obrigatorio
         </div>
