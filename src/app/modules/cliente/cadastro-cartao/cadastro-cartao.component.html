@@ -21,8 +21,11 @@
       <div class="col-6">
         <label class="form-label">Bandeira do Cartão</label>
         <input type="text" class="form-control" id="bandeiraCartao" [ngClass]="{'is-invalid': f.BandeiraCartao.errors && f.BandeiraCartao.touched}" formControlName="BandeiraCartao" placeholder="Digite sua Bandeira do Cartão" [(ngModel)]="cartaoCreditos[0].bandeiraCartao">
-        <div class="invalid-feedback">
+        <div *ngIf="f.BandeiraCartao.errors?.required" class="invalid-feedback">
           Bandeira do Cartão é obrigatorio.
+        </div>
+        <div *ngIf="f.BandeiraCartao.errors?.notValid" class="invalid-feedback">
+          Esta bandeira não é permitida.
         </div>
       </div>
       <div class="col-6">

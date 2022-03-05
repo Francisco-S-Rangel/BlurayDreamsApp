@@ -29,7 +29,7 @@ export class CadastroClienteComponent implements OnInit {
     return this.form.controls;
   }
 
-  constructor( private router: Router, private fb: FormBuilder, private shared: SharedDataService) { }
+  constructor( private router: Router, private formBuilder: FormBuilder, private shared: SharedDataService) { }
 
   ngOnInit(): void {
     this.validacao();
@@ -62,7 +62,7 @@ export class CadastroClienteComponent implements OnInit {
       validators: ValidadorSenha.isEqual("Senha", "confSenha")
     }
 
-    this.form = this.fb.group({
+    this.form = this.formBuilder.group({
       Nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]],
       DataNascimento: ['', Validators.required],
       ddd: ['', Validators.required],
@@ -73,6 +73,8 @@ export class CadastroClienteComponent implements OnInit {
       Senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
       confSenha: ['', Validators.required]
     }, formOptions)
+
+    
 
 
   }
