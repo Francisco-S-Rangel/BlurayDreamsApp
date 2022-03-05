@@ -16,35 +16,39 @@ export class CadastroEnderecoComponent implements OnInit {
 
   str: any
 
-  enderecoEntregas = {
-    id: 0,
-    clienteId: 8,
-    cep: "",
-    tipoResidencia: "",
-    logradouro: "",
-    tipoLogradouro: "",
-    bairro: "",
-    cidade: "",
-    estado: "",
-    pais: "",
-    numero: "",
-    apelido: "",
-    observacao: ""
-  }
+  enderecoEntregas = [
+    {
+      id: 0,
+      clienteId: 0,
+      cep: "",
+      tipoResidencia: "",
+      logradouro: "",
+      tipoLogradouro: "",
+      bairro: "",
+      cidade: "",
+      estado: "",
+      pais: "",
+      numero: "",
+      apelido: "",
+      observacao: ""
+    }
+  ]
 
-  enderecoCobrancas = {
-    id: 0,
-    clienteId: 8,
-    cep: "",
-    tipoResidencia: "",
-    logradouro: "",
-    tipoLogradouro: "",
-    bairro: "",
-    cidade: "",
-    estado: "",
-    pais: "",
-    numero: ""
-  }
+  enderecoCobrancas = [
+    {
+      id: 0,
+      clienteId: 0,
+      cep: "",
+      tipoResidencia: "",
+      logradouro: "",
+      tipoLogradouro: "",
+      bairro: "",
+      cidade: "",
+      estado: "",
+      pais: "",
+      numero: ""
+    }
+  ]
 
   get f(): any {
     return this.formEndereco.controls;

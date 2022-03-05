@@ -16,14 +16,16 @@ export class CadastroCartaoComponent implements OnInit {
 
   str: any;
 
-  cartaoCreditos = {
-    id: 0,
-    clienteId: 8,
-    numeroCartao: "",
-    bandeiraCartao: "",
-    cvv: "",
-    nomeTitular: ""
-  }
+  cartaoCreditos = [
+    {
+      id: 0,
+      clienteId: 0,
+      numeroCartao: "",
+      bandeiraCartao: "",
+      cvv: "",
+      nomeTitular: ""
+    }
+  ]
 
   formCartao!: FormGroup;
 
@@ -45,7 +47,7 @@ export class CadastroCartaoComponent implements OnInit {
   VoltarTelaInicial(){ this.router.navigate(['']);}
 
   cadastrarCartao(){
-    this.cliente.cartoesCreditos = this.cartaoCreditos
+    this.cliente.cartaoCreditos = this.cartaoCreditos
 
     this.cadastrarCliente(this.cliente);
 
@@ -57,10 +59,10 @@ export class CadastroCartaoComponent implements OnInit {
   }
 
   naoCadastrarCartao(){
-    this.cliente.cartoesCreditos = null;
+    this.cliente.cartaoCreditos = null;
 
     this.cadastrarCliente(this.cliente);
-  
+
     this.str = JSON.stringify(this.cliente, null, 4);
     console.log(this.str)
 
