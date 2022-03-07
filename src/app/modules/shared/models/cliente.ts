@@ -5,10 +5,10 @@ import { CartaoCredito } from "./cartaoCredito";
 export interface Cliente {
     id: number;
     nome: string;
-    dataNascimeto: string;
+    dataNascimento: string;
     ddd: string;
     telefone: string;
-    tipotelefone: string;
+    tipoTelefone: string;
     cpf: string;
     email: string;
     senha: string;

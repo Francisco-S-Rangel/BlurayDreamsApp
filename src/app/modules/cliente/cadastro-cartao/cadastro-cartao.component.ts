@@ -128,9 +128,6 @@ export class CadastroCartaoComponent implements OnInit {
        this.clienteService.post(this.cliente).subscribe(
         ()=>{
           console.log();
-        },
-        (erro: any)=>{
-          console.log(erro)
         }
        )
   }

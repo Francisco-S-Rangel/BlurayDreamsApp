@@ -1,4 +1,4 @@
-<div class="container-fluid my-4 mx-auto">
+<div class="container-fluid my-4 mx-auto" *ngIf="cliente">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
             <button class="custom-btn-back" type="button" (click)="backPage()">Retornar</button>
@@ -7,7 +7,7 @@
     <hr>
 
     <div class="col-md-12 text-center">
-     <h1><strong>ID Cliente: </strong><span style="color: blue;">001</span></h1>
+     <h1><strong>ID Cliente: </strong><span style="color: blue;">{{cliente.id}}</span></h1>
     </div>
     
     <br><br>
@@ -33,15 +33,15 @@
             </thead>
             <tbody>
               <tr>
-                <td>Francisco de Souza Rangel</td>
-                <td>chcicochicosouzasouzarangel@gmail.com</td>
-                <td>21/10/1999</td>
-                <td>454330987-21</td>
-                <td>testeteste123</td>
-                <td>11</td>
-                <td>97452-1864</td>
-                <td>Telefone</td>
-                <td><button type="button" class="btn btn-primary">Editar</button></td>
+                <td>{{cliente.nome}}</td>
+                <td>{{cliente.email}}</td>
+                <td>{{cliente.dataNascimento}}</td>
+                <td>{{cliente.cpf}}</td>
+                <td>{{cliente.senha}}</td>
+                <td>{{cliente.ddd}}</td>
+                <td>{{cliente.telefone}}</td>
+                <td>{{cliente.tipoTelefone}}</td>
+                <td><button type="button" class="btn btn-primary" (click)="editarCliente(cliente.id)">Editar</button></td>
               </tr>
             </tbody>
           </table>
@@ -73,18 +73,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>08932-250</td>
-                <td>Condominio</td>
-                <td>Rua Vereador Astra Barral Nuhhabaa</td>
-                <td>Apartamento</td>
-                <td>178</td>
-                <td>Jardim Nova Europa</td>
-                <td>Los Angeles</td>
-                <td>rddrcr</td>
-                <td>Estados Unidos da America</td>
+              <tr *ngFor = "let endereco of EnderecoCobrancas">
+                <td>{{endereco.cep}}</td>
+                <td>{{endereco.tipoResidencia}}</td>
+                <td>{{endereco.logradouro}}</td>
+                <td>{{endereco.tipologradouro}}</td>
+                <td>{{endereco.numero}}</td>
+                <td>{{endereco.bairro}}</td>
+                <td>{{endereco.cidade}}</td>
+                <td>{{endereco.estado}}</td>
+                <td>{{endereco.pais}}</td>
                 <td><button type="button" class="btn btn-primary">Editar</button></td>
-                <td><button type="button" class="btn btn-danger">Excluir</button></td>
+                <td><button type="button" class="btn btn-danger" (click)="deletarEnderecoCobrancas(endereco.id)">Excluir</button></td>
               </tr>
             </tbody>
           </table>
@@ -123,20 +123,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>08932-250</td>
-                <td>Condominio</td>
-                <td>Rua Vereador Astra Barral Nuhhabaa</td>
-                <td>Apartamento</td>
-                <td>178</td>
-                <td>Jardim Nova Europa</td>
-                <td>Los Angeles</td>
-                <td>rddrcr</td>
-                <td>Estados Unidos da America</td>
-                <td>ddgvdvgdvgdvd</td>
-                <td>Casa grande de potão amarelo</td>
+              <tr *ngFor="let endereco of EnderecoEntregas">
+                <td>{{endereco.cep}}</td>
+                <td>{{endereco.tipoResidencia}}</td>
+                <td>{{endereco.logradouro}}</td>
+                <td>{{endereco.tipologradouro}}</td>
+                <td>{{endereco.numero}}</td>
+                <td>{{endereco.bairro}}</td>
+                <td>{{endereco.cidade}}</td>
+                <td>{{endereco.estado}}</td>
+                <td>{{endereco.pais}}</td>
+                <td>{{endereco.apelido}}</td>
+                <td>{{endereco.observacao}}</td>
                 <td><button type="button" class="btn btn-primary">Editar</button></td>
-                <td><button type="button" class="btn btn-danger">Excluir</button></td>
+                <td><button type="button" class="btn btn-danger" (click)="deletarEnderecoEntregas(endereco.id)">Excluir</button></td>
               </tr>
 
             </tbody>
@@ -168,13 +168,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>818818188</td>
-                <td>Masttercarrd</td>
-                <td>4778</td>
-                <td>fararararraararrararar</td>
+              <tr *ngFor="let cartao of CartaoCreditos">
+                <td>{{cartao.numeroCartao}}</td>
+                <td>{{cartao.bandeiraCartao}}</td>
+                <td>{{cartao.cvv}}</td>
+                <td>{{cartao.nomeTitular}}</td>
                 <td><button type="button" class="btn btn-primary">Editar</button></td>
-                <td><button type="button" class="btn btn-danger">Excluir</button></td>
+                <td><button type="button" class="btn btn-danger" (click)="deletarCartaoCreditos(cartao.id)">Excluir</button></td>
               </tr>
             </tbody>
           </table>

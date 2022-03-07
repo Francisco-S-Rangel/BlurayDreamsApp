@@ -18,6 +18,9 @@ export class CartaoCreditoService {
   getAll(): Observable<CartaoCredito[]>{
     return this.http.get<CartaoCredito[]>(`${this.baseUrl}`);
   }
+  getByClienteId(id: number): Observable<CartaoCredito[]>{
+    return this.http.get<CartaoCredito[]>(`${this.baseUrl}/${id}/cliente`);
+  }
   getById(id: number): Observable<CartaoCredito>{
     return this.http.get<CartaoCredito>(`${this.baseUrl}/${id}`);
   }

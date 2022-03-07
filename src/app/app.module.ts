@@ -26,6 +26,10 @@ import { CadastroCartaoComponent } from './modules/cliente/cadastro-cartao/cadas
 import { FooterComponent } from './modules/shared/components/footer/footer.component';
 import { ConsultarClientesComponent } from './modules/admin/consultar-clientes/consultar-clientes.component';
 import { InformacaoClienteComponent } from './modules/admin/informacao-cliente/informacao-cliente.component';
+import { ModalEditarClienteComponent } from './modules/admin/modal-alteracoes/modal-editar-cliente/modal-editar-cliente.component';
+import { ModalEditarEnderecoCobrancaComponent } from './modules/admin/modal-alteracoes/modal-editar-endereco-cobranca/modal-editar-endereco-cobranca.component';
+import { ModalEditarEnderecoEntregaComponent } from './modules/admin/modal-alteracoes/modal-editar-endereco-entrega/modal-editar-endereco-entrega.component';
+import { ModalEditarCartaoCreditoComponent } from './modules/admin/modal-alteracoes/modal-editar-cartao-credito/modal-editar-cartao-credito.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,11 @@ import { InformacaoClienteComponent } from './modules/admin/informacao-cliente/i
     CadastroCartaoComponent,
     FooterComponent,
     ConsultarClientesComponent,
-    InformacaoClienteComponent
+    InformacaoClienteComponent,
+    ModalEditarClienteComponent,
+    ModalEditarEnderecoCobrancaComponent,
+    ModalEditarEnderecoEntregaComponent,
+    ModalEditarCartaoCreditoComponent
   ],
   imports: [
     BrowserModule,

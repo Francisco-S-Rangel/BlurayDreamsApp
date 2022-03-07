@@ -26,7 +26,7 @@
             <div class="col-12">
                 <div>
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12" *ngFor="let cliente of clientes">
                             <mat-accordion>
                                 <mat-expansion-panel>
                                     <mat-expansion-panel-header expandedHeight="auto" collapsedHeight="auto">
@@ -40,50 +40,43 @@
                                                                 <div class="col">
                                                                     <strong>Cliente: </strong>
                                                                     <span class="dado-cliente">
-                                                                        Francisco Souza Rangel Nunes
+                                                                        {{cliente.nome}}
                                                                     </span>
                                                                 </div>
                                                             </div>
 
-                                                            <div style="margin-left: -8%;" class="col-3">
+                                                            <div style="margin-left: -7.5%;" class="col-3">
                                                                 <strong>Id: </strong>
                                                                 <span class="dado-cliente">
-                                                                    1234
+                                                                    {{cliente.id}}
                                                                 </span>
                                                             </div>
 
-                                                            <div style="margin-left: -21%;" class="col-3">
+                                                            <div style="margin-left: -20.5%;" class="col-3">
                                                                 <strong>CPF: </strong>
                                                                 <span class="dado-cliente">
-                                                                    48484486-47
+                                                                    {{cliente.cpf}}
                                                                 </span>
                                                             </div>
 
-                                                            <div style="margin-left: -17%;" class="col-3">
+                                                            <div style="margin-left: -15.5%;" class="col-3">
                                                                 <strong>Telefone: </strong>
                                                                 <span class="dado-cliente">
-                                                                    (11) 97300-1841 /Tefefone
+                                                                    ({{cliente.ddd}}) {{cliente.telefone}} /{{cliente.tipoTelefone}}
                                                                 </span>
                                                             </div>
 
-                                                            <div style="margin-left: -9%;" class="col-3">
+                                                            <div style="margin-left: -8.5%;" class="col-3">
                                                                 <strong>Nascimento: </strong>
                                                                 <span class="dado-cliente">
-                                                                    21/09/2001
+                                                                    {{cliente.dataNascimento}}
                                                                 </span>
                                                             </div>
 
-                                                            <div style="margin-left: -14%;" class="col-3">
-                                                                <strong>Senha: </strong>
-                                                                <span class="dado-cliente">
-                                                                    12345678901234567890
-                                                                </span>
-                                                            </div>
-
-                                                            <div style="margin-left: -11%;" class="col-3">
+                                                            <div style="margin-left: -10%;" class="col-3">
                                                                 <strong>Email: </strong>
                                                                 <span class="dado-cliente">
-                                                                    chicorangel1515rangezbzsbsdggdg@gmail.com
+                                                                    {{cliente.email}}
                                                                 </span>
                                                             </div>
 
@@ -110,8 +103,8 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td><button class="btn btn-primary" type="button" (click)="irInformacaoCliente()">Visualizar</button></td>
-                                                            <td><button class="btn btn-danger">Excluir</button></td>
+                                                            <td><button class="btn btn-primary" type="button" (click)="irInformacaoCliente(cliente.id)">Visualizar</button></td>
+                                                            <td><button class="btn btn-danger" type="button" (click)="deletarCliente(cliente.id)">Excluir</button></td>
                                                         </tr>
                                                     </tbody>
 
@@ -122,6 +115,8 @@
 
                                 </mat-expansion-panel>
                             </mat-accordion>
+
+                            <br>
                         </div>
                     </div>
                 </div>
