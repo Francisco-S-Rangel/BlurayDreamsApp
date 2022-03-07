@@ -18,6 +18,9 @@ export class EnderecoEntregaService {
   getAll(): Observable<EnderecoEntregas[]>{
     return this.http.get<EnderecoEntregas[]>(`${this.baseUrl}`);
   }
+  getByClienteId(id: number): Observable<EnderecoEntregas[]>{
+    return this.http.get<EnderecoEntregas[]>(`${this.baseUrl}/${id}/cliente`);
+  }
   getById(id: number): Observable<EnderecoEntregas>{
     return this.http.get<EnderecoEntregas>(`${this.baseUrl}/${id}`);
   }
