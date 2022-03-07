@@ -15,7 +15,7 @@ export class ModalEditarClienteComponent implements OnInit {
   public id?: number;
   form!: FormGroup;
 
-   Clientes = {
+  Clientes = {
     id: 0,
     Nome: "",
     DataNascimento: "",
@@ -31,12 +31,13 @@ export class ModalEditarClienteComponent implements OnInit {
     return this.form.controls;
   }
 
-  constructor( private router: Router, private formBuilder: FormBuilder, private shared: SharedDataService
-    ,private route: ActivatedRoute) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private shared: SharedDataService
+    , private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(x=>{
-    this.id = x[`id`];});
+    this.route.params.subscribe(x => {
+      this.id = x[`id`];
+    });
     this.validacao();
   }
 
@@ -51,8 +52,8 @@ export class ModalEditarClienteComponent implements OnInit {
     }
   }
 
-  atualizarCliente(){
-    
+  atualizarCliente() {
+
   }
 
   public validacao(): void {
@@ -75,11 +76,11 @@ export class ModalEditarClienteComponent implements OnInit {
 
   }
 
-    //voltar para a tela de informação
-    
-    backPage() {this.router.navigate([`informacao-cliente/${this.id}`]);}
-    //salvar edição
-  
-  
+  //voltar para a tela de informação
+
+  backPage() { this.router.navigate([`informacao-cliente/${this.id}`]); }
+  //salvar edição
+
+
 
 }
