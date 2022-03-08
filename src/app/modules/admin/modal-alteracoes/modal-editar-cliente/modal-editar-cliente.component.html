@@ -7,36 +7,36 @@
             <div class="col-md-6">
                 <label class="form-label">Nome</label>
                 <input type="email" class="form-control" id="nome"
-                    [ngClass]="{ 'is-invalid': f.Nome.errors && f.Nome.touched }" formControlName="Nome"
-                    placeholder="Digite seu Nome Completo" [(ngModel)]="Clientes.Nome">
-                <div *ngIf="f.Nome.errors?.required" class="invalid-feedback">
+                    [ngClass]="{ 'is-invalid': f.nome.errors && f.nome.touched }" formControlName="nome"
+                    placeholder="Digite seu Nome Completo" [(ngModel)]="Clientes.nome">
+                <div *ngIf="f.nome.errors?.required" class="invalid-feedback">
                     Nome é obrigatorio.
                 </div>
-                <div *ngIf="f.Nome.errors?.minlength" class="invalid-feedback">
+                <div *ngIf="f.nome.errors?.minlength" class="invalid-feedback">
                     Nome deve ter no mínimo 5 caracteres.
                 </div>
-                <div *ngIf="f.Nome.errors?.maxlength" class="invalid-feedback">
+                <div *ngIf="f.nome.errors?.maxlength" class="invalid-feedback">
                     Nome deve ter no mínimo 50 caracteres.
                 </div>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Email</label>
                 <input type="text" class="form-control" id="email"
-                    [ngClass]="{'is-invalid': f.Email.errors && f.Email.touched}" formControlName="Email"
-                    placeholder="Digite seu Email" [(ngModel)]="Clientes.Email">
-                <div *ngIf="f.Email.errors?.required" class="invalid-feedback">
+                    [ngClass]="{'is-invalid': f.email.errors && f.email.touched}" formControlName="email"
+                    placeholder="Digite seu Email" [(ngModel)]="Clientes.email">
+                <div *ngIf="f.email.errors?.required" class="invalid-feedback">
                     Email é obrigatorio.
                 </div>
-                <div *ngIf="f.Email.errors?.email" class="invalid-feedback">
+                <div *ngIf="f.email.errors?.email" class="invalid-feedback">
                     Email deve ser valido.
                 </div>
             </div>
             <div class="col-3">
                 <label class="form-label">Data de Nascimento</label>
                 <input type="text" class="form-control" id="nascimento"
-                    [ngClass]="{'is-invalid': f.DataNascimento.errors && f.DataNascimento.touched}"
-                    formControlName="DataNascimento" placeholder="Digite sua Data de Nascimento"
-                    [(ngModel)]="Clientes.DataNascimento">
+                    [ngClass]="{'is-invalid': f.dataNascimento.errors && f.dataNascimento.touched}"
+                    formControlName="dataNascimento" placeholder="Digite sua Data de Nascimento"
+                    [(ngModel)]="Clientes.dataNascimento">
                 <div class="invalid-feedback">
                     Data de Nascimento é obrigatorio
                 </div>
@@ -53,8 +53,8 @@
             <div class="col-3">
                 <label class="form-label">Telefone</label>
                 <input type="text" class="form-control" id="numero"
-                    [ngClass]="{'is-invalid': f.Telefone.errors && f.Telefone.touched}" formControlName="Telefone"
-                    placeholder="Digite seu Numero de Celular/Telefone" [(ngModel)]="Clientes.Telefone"
+                    [ngClass]="{'is-invalid': f.telefone.errors && f.telefone.touched}" formControlName="telefone"
+                    placeholder="Digite seu Numero de Celular/Telefone" [(ngModel)]="Clientes.telefone"
                     (keypress)="keyPressNumbers($event)">
                 <div class="invalid-feedback">
                     Telefone é obrigatorio
@@ -63,9 +63,9 @@
             <div class="col-3">
                 <label class="form-label">Tipo de Telefone</label>
                 <input type="text" class="form-control" id="tipotel"
-                    [ngClass]="{'is-invalid': f.TipoTelefone.errors && f.TipoTelefone.touched}"
-                    formControlName="TipoTelefone" placeholder="Celular, Telefone..."
-                    [(ngModel)]="Clientes.TipoTelefone">
+                    [ngClass]="{'is-invalid': f.tipoTelefone.errors && f.tipoTelefone.touched}"
+                    formControlName="tipoTelefone" placeholder="Celular, Telefone..."
+                    [(ngModel)]="Clientes.tipoTelefone">
                 <div class="invalid-feedback">
                     Tipo de Telefone é obrigatorio
                 </div>
@@ -74,8 +74,8 @@
             <div class="col-6">
                 <label class="form-label">CPF (Apenas Números)</label>
                 <input type="text" class="form-control " id="cpf"
-                    [ngClass]="{'is-invalid': f.CPF.errors && f.CPF.touched}" formControlName="CPF"
-                    placeholder="Digite seu CPF" [(ngModel)]="Clientes.CPF" (keypress)="keyPressNumbers($event)">
+                    [ngClass]="{'is-invalid': f.cpf.errors && f.cpf.touched}" formControlName="cpf"
+                    placeholder="Digite seu CPF" [(ngModel)]="Clientes.cpf" (keypress)="keyPressNumbers($event)">
                 <div class="invalid-feedback">
                     CPF é obrigatorio
                 </div>
@@ -83,12 +83,12 @@
             <div class="col-3">
                 <label class="form-label">Senha</label>
                 <input type="password" class="form-control" id="senha"
-                    [ngClass]="{'is-invalid': f.Senha.errors && f.Senha.touched}" formControlName="Senha"
-                    placeholder="Digite sua Senha" [(ngModel)]="Clientes.Senha">
-                <div *ngIf="f.Senha.errors?.minlength" class="invalid-feedback">
+                    [ngClass]="{'is-invalid': f.senha.errors && f.senha.touched}" formControlName="senha"
+                    placeholder="Digite sua Senha" [(ngModel)]="Clientes.senha">
+                <div *ngIf="f.senha.errors?.minlength" class="invalid-feedback">
                     Senha deve conter 8 ou mais caracteres.
                 </div>
-                <div *ngIf="f.Senha.errors?.required" class="invalid-feedback">
+                <div *ngIf="f.senha.errors?.required" class="invalid-feedback">
                     Senha é obrigatorio
                 </div>
             </div>

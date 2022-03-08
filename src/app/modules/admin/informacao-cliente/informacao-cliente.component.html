@@ -83,7 +83,7 @@
                 <td>{{endereco.cidade}}</td>
                 <td>{{endereco.estado}}</td>
                 <td>{{endereco.pais}}</td>
-                <td><button type="button" class="btn btn-primary">Editar</button></td>
+                <td><button type="button" class="btn btn-primary"  (click)="editarEnderecoCobranca(endereco.id)">Editar</button></td>
                 <td><button type="button" class="btn btn-danger" (click)="deletarEnderecoCobrancas(endereco.id)">Excluir</button></td>
               </tr>
             </tbody>
@@ -173,7 +173,7 @@
                 <td>{{cartao.bandeiraCartao}}</td>
                 <td>{{cartao.cvv}}</td>
                 <td>{{cartao.nomeTitular}}</td>
-                <td><button type="button" class="btn btn-primary">Editar</button></td>
+                <td><button type="button" class="btn btn-primary"(click)="editarCartaoCredito(cartao.id)">Editar</button></td>
                 <td><button type="button" class="btn btn-danger" (click)="deletarCartaoCreditos(cartao.id)">Excluir</button></td>
               </tr>
             </tbody>

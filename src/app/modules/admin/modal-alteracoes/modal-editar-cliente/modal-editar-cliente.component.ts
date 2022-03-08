@@ -1,8 +1,12 @@
+import { Cliente } from './../../../shared/models/cliente';
 import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from 'src/app/modules/shared/services/shared-data.service';
 import { ValidadorSenha } from 'src/app/modules/shared/helpers/ValidadorSenha';
 import { AbstractControl, AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ClienteService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cliente.service';
+import { ThisReceiver } from '@angular/compiler';
+
 
 
 @Component({
@@ -13,18 +17,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ModalEditarClienteComponent implements OnInit {
 
   public id?: number;
-  form!: FormGroup;
+  public idAux: number =0;
+  public  form!: FormGroup;
+  public Cliente?: Cliente;
 
   Clientes = {
-    id: 0,
-    Nome: "",
-    DataNascimento: "",
+    id: this.idAux,
+    nome: "",
+    dataNascimento: "",
     ddd: "",
-    Telefone: "",
-    TipoTelefone: "",
-    CPF: "",
-    Email: "",
-    Senha: ""
+    telefone: "",
+    tipoTelefone: "",
+    cpf: "",
+    email: "",
+    senha: ""
   }
 
   get f(): any {
@@ -32,11 +38,12 @@ export class ModalEditarClienteComponent implements OnInit {
   }
 
   constructor(private router: Router, private formBuilder: FormBuilder, private shared: SharedDataService
-    , private route: ActivatedRoute) { }
+    , private route: ActivatedRoute, private clienteService: ClienteService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(x => {
       this.id = x[`id`];
+      this.idAux = x[`id`];
     });
     this.validacao();
   }
@@ -53,24 +60,33 @@ export class ModalEditarClienteComponent implements OnInit {
   }
 
   atualizarCliente() {
+    console.log(this.form.value);
+
+  this.clienteService.put(this.idAux,this.form.value).subscribe(
+    ()=>{
+      console.log();
+      this.backPage();
+    }
+  );
 
   }
 
   public validacao(): void {
 
     const formOptions: AbstractControlOptions = {
-      validators: ValidadorSenha.isEqual("Senha", "confSenha")
+      validators: ValidadorSenha.isEqual("senha", "confSenha")
     }
 
     this.form = this.formBuilder.group({
-      Nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]],
-      DataNascimento: ['', Validators.required],
+      id: this.idAux,
+      nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]],
+      dataNascimento: ['', Validators.required],
       ddd: ['', Validators.required],
-      Telefone: ['', Validators.required],
-      TipoTelefone: ['', Validators.required],
-      CPF: ['', Validators.required],
-      Email: ['', [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(60)]],
-      Senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
+      telefone: ['', Validators.required],
+      tipoTelefone: ['', Validators.required],
+      cpf: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(60)]],
+      senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
       confSenha: ['', Validators.required]
     }, formOptions);
 
