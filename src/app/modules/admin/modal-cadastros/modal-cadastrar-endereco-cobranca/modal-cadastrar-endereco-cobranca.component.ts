@@ -12,8 +12,6 @@ import { Component, OnInit } from '@angular/core';
 export class ModalCadastrarEnderecoCobrancaComponent implements OnInit {
 
   public id?: number;
-  public id2?: number;
-  public idEnderecoCobranca: number =0;
   public idcliente: number = 0;
   public str: any
   formEndereco!: FormGroup;
@@ -23,7 +21,7 @@ export class ModalCadastrarEnderecoCobrancaComponent implements OnInit {
   enderecoCobrancas =
     {
       id: 0,
-      clienteId: this.id2,
+      clienteId: this.id,
       cep: "",
       tipoResidencia: "",
       logradouro: "",
@@ -45,9 +43,7 @@ export class ModalCadastrarEnderecoCobrancaComponent implements OnInit {
     ngOnInit() {
 
       this.route.params.subscribe(x => {
-      this.id = x[`id`];
-      this.idEnderecoCobranca = x[`id`];
-      this.id2= x[`clienteid`];
+      this.id= x[`clienteid`];
       this.idcliente= x[`clienteid`];
     });
 
@@ -70,12 +66,9 @@ export class ModalCadastrarEnderecoCobrancaComponent implements OnInit {
     }
   }
 
-  AlterarEnderecoCobranca() {
-
-    //this.str = JSON.stringify(this.formEndereco.value, null, 4);
-    //console.log(this.str)
-
-    this.EnderecoCobrancaService.put(this.idEnderecoCobranca,this.formEndereco.value).subscribe(
+  cadastrarEndereco(){
+    console.log(this.formEndereco.value);
+    this.EnderecoCobrancaService.post(this.formEndereco.value).subscribe(
       ()=>{
         console.log();
         this.backPage();
@@ -101,6 +94,6 @@ export class ModalCadastrarEnderecoCobrancaComponent implements OnInit {
 
   }
 
-  backPage() { this.router.navigate([`informacao-cliente/${this.id2}`]); }
+  backPage() { this.router.navigate([`informacao-cliente/${this.id}`]); }
 
 }
