@@ -57,7 +57,17 @@ export class ModalEditarEnderecoEntregaComponent implements OnInit {
     this.EnderecoEntregaService.getById(this.idEnderecoEntrega).subscribe(
       (result)=>{
         console.log(result)
-        //this.enderecoEntregas = result
+        this.enderecoEntregas.cep = result.cep
+        this.enderecoEntregas.tipoResidencia = result.tipoResidencia
+        this.enderecoEntregas.logradouro = result.logradouro
+        this.enderecoEntregas.tipoLogradouro = result.tipoLogradouro
+        this.enderecoEntregas.bairro = result.bairro
+        this.enderecoEntregas.cidade = result.cidade
+        this.enderecoEntregas.estado = result.estado
+        this.enderecoEntregas.pais = result.pais
+        this.enderecoEntregas.numero = result.numero
+        this.enderecoEntregas.apelido = result.apelido
+        this.enderecoEntregas.observacao = result.observacao!
         this.cdRef.detectChanges();
       }
     );
@@ -105,7 +115,7 @@ export class ModalEditarEnderecoEntregaComponent implements OnInit {
       Pais: ['', Validators.required],
       Numero: ['', [Validators.required]],
       Apelido: ['', Validators.required],
-      Obs: [''],
+      observacao: [''],
     })
 
 

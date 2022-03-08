@@ -98,13 +98,13 @@
       </div>
       <div class="col-6">
         <label class="form-label">Observação</label>
-        <input type="text" class="form-control" id="Obs" [ngClass]="{'is-invalid': f.Obs.errors && f.Obs.touched}"
-          formControlName="Obs" placeholder="Escreva uma Observação (Opcional...)"
+        <input type="text" class="form-control" id="observacao" [ngClass]="{'is-invalid': f.observacao.errors && f.observacao.touched}"
+          formControlName="observacao" placeholder="Escreva uma Observação (Opcional...)"
           [(ngModel)]="enderecoEntregas.observacao">
       </div>
       <div class="col-12 text-center">
         <button type="button" class="btn btn-primary mt-3" [disabled]="!formEndereco.valid"
-          (click)="AlterarEnderecoEntrega()">Proximo</button>
+          (click)="AlterarEnderecoEntrega()">Atualizar</button>
       </div>
     </form>
   </div>
