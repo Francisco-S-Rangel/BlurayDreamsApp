@@ -54,7 +54,7 @@ export class InformacaoClienteComponent implements OnInit {
       (enderecoCobrancas: EnderecoCobrancas[])=>{
          this.EnderecoCobrancas = enderecoCobrancas;
       }
-    ) 
+    )
   }
 
   carregarEnderecoEntregas(id: number){
@@ -72,7 +72,7 @@ export class InformacaoClienteComponent implements OnInit {
       }
     )
   }
-  
+
   // Excluir caso desejado de cada Entidade
   deletarEnderecoCobrancas(id: number){
     this.enderecoCobrancaService.delete(id).subscribe(
@@ -102,7 +102,7 @@ export class InformacaoClienteComponent implements OnInit {
   }
 
 
-  // Voltar para a pagina passada 
+  // Voltar para a pagina passada
   backPage() { this.router.navigate(['consultar-clientes']); }
 
   editarCliente(id: number){
@@ -110,6 +110,9 @@ export class InformacaoClienteComponent implements OnInit {
   }
   editarEnderecoCobranca(id: number){
     this.router.navigate([`editar-endereco-cobranca/${id}`]);
+  }
+  editarEnderecoEntrega(id: number){
+    this.router.navigate([`editar-enderco-entregas/${id}`]);
   }
   editarCartaoCredito(id: number){
     this.router.navigate([`editar-cartao-credito/${id}`]);

@@ -9,7 +9,7 @@
     <div class="col-md-12 text-center">
      <h1><strong>ID Cliente: </strong><span style="color: blue;">{{cliente.id}}</span></h1>
     </div>
-    
+
     <br><br>
 
     <div class="row">
@@ -47,8 +47,8 @@
           </table>
 
     </div>
-    
-     
+
+
     <br><br><hr><br><br>
 
     <div class="row">
@@ -135,7 +135,7 @@
                 <td>{{endereco.pais}}</td>
                 <td>{{endereco.apelido}}</td>
                 <td>{{endereco.observacao}}</td>
-                <td><button type="button" class="btn btn-primary">Editar</button></td>
+                <td><button type="button" class="btn btn-primary" (click)="editarEnderecoEntrega(endereco.id)">Editar</button></td>
                 <td><button type="button" class="btn btn-danger" (click)="deletarEnderecoEntregas(endereco.id)">Excluir</button></td>
               </tr>
 
@@ -150,7 +150,7 @@
     </div>
 
     <br><hr><br><br>
-    
+
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
             <h2 class="entidades">Cartao de Credito</h2>
