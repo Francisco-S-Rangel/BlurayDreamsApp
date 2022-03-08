@@ -77,7 +77,7 @@
                 <td>{{endereco.cep}}</td>
                 <td>{{endereco.tipoResidencia}}</td>
                 <td>{{endereco.logradouro}}</td>
-                <td>{{endereco.tipoLogradouro}}</td>
+                <td>{{endereco.tipologradouro}}</td>
                 <td>{{endereco.numero}}</td>
                 <td>{{endereco.bairro}}</td>
                 <td>{{endereco.cidade}}</td>
@@ -127,7 +127,7 @@
                 <td>{{endereco.cep}}</td>
                 <td>{{endereco.tipoResidencia}}</td>
                 <td>{{endereco.logradouro}}</td>
-                <td>{{endereco.tipoLogradouro}}</td>
+                <td>{{endereco.tipologradouro}}</td>
                 <td>{{endereco.numero}}</td>
                 <td>{{endereco.bairro}}</td>
                 <td>{{endereco.cidade}}</td>
@@ -173,7 +173,7 @@
                 <td>{{cartao.bandeiraCartao}}</td>
                 <td>{{cartao.cvv}}</td>
                 <td>{{cartao.nomeTitular}}</td>
-                <td><button type="button" class="btn btn-primary"(click)="editarCartaoCredito(cartao.id,cartao.clienteId)">Editar</button></td>
+                <td><button type="button" class="btn btn-primary"(click)="editarCartaoCredito(cartao.id)">Editar</button></td>
                 <td><button type="button" class="btn btn-danger" (click)="deletarCartaoCreditos(cartao.id)">Excluir</button></td>
               </tr>
             </tbody>

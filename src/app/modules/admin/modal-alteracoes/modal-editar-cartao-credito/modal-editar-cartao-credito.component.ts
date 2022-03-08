@@ -14,22 +14,14 @@ import { CartaoCreditoService } from 'src/app/modules/shared/services/cadastro-d
 export class ModalEditarCartaoCreditoComponent implements OnInit {
 
   public id?: number;
-  public id2?: number;
-  public idcartao: number =0;
-  public idcliente: number = 0;
-  public formCartao!: FormGroup;
 
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
-  , private route: ActivatedRoute,private cartaoCreditoService: CartaoCreditoService) { }
+  , private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(x => {
-      this.id = x[`id`];
-      this.idcartao = x[`id`];
-      this.id2= x[`clienteid`];
-      this.idcliente= x[`clienteid`];
+      this.id = x[`id`]
     });
-    this.validacao();
   }
 
   cliente: any;
@@ -50,8 +42,8 @@ export class ModalEditarCartaoCreditoComponent implements OnInit {
 
   cartaoCreditos = [
     {
-      id: this.id,
-      clienteId: this.id2,
+      id: 0,
+      clienteId: 0,
       numeroCartao: "",
       bandeiraCartao: "",
       cvv: "",
@@ -59,7 +51,7 @@ export class ModalEditarCartaoCreditoComponent implements OnInit {
     }
   ]
 
-
+  formCartao!: FormGroup;
 
   get f(): any {
     return this.formCartao.controls;
@@ -67,14 +59,23 @@ export class ModalEditarCartaoCreditoComponent implements OnInit {
 
 
 
-  alterarCartao(){
-    console.log(this.formCartao.value);
-    this.cartaoCreditoService.put(this.idcartao,this.formCartao.value).subscribe(
-      ()=>{
-        console.log();
-        this.backPage();
-      }
-    );
+  cadastrarCartao(){
+    this.cliente.cartaoCreditos = this.cartaoCreditos
+
+   
+
+    this.str = JSON.stringify(this.cliente, null, 4);
+    console.log(this.str)
+
+  }
+
+  naoCadastrarCartao(){
+    this.cliente.cartaoCreditos = null;
+
+
+    this.str = JSON.stringify(this.cliente, null, 4);
+    console.log(this.str)
+
   }
 
   public validacao(): void {
@@ -84,8 +85,6 @@ export class ModalEditarCartaoCreditoComponent implements OnInit {
     }
 
     this.formCartao = this.fb.group({
-      id: this.idcartao,
-      clienteid: this.idcliente,
       numeroCartao: ['', [Validators.required]],
       NomeTitular: ['', Validators.required],
       BandeiraCartao: ['', Validators.required],

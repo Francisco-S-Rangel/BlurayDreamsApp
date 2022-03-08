@@ -114,8 +114,8 @@ export class InformacaoClienteComponent implements OnInit {
   editarEnderecoEntrega(id: number){
     this.router.navigate([`editar-enderco-entregas/${id}`]);
   }
-  editarCartaoCredito(id: number,clienteid: number){
-    this.router.navigate([`editar-cartao-credito/${id}/${clienteid}`]);
+  editarCartaoCredito(id: number){
+    this.router.navigate([`editar-cartao-credito/${id}`]);
   }
 
 }

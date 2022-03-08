@@ -40,8 +40,6 @@ export class ConsultarClientesComponent implements OnInit {
   // Botões
   backPage() { this.router.navigate(['']); }
 
-  cadastrarCliente(){ this.router.navigate(['cadastrar-cliente']); }
-
   irInformacaoCliente(id: number) {this.router.navigate([`informacao-cliente/${id}`]);}
 
 }
