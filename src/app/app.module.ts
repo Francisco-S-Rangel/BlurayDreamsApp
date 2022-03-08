@@ -30,6 +30,9 @@ import { ModalEditarClienteComponent } from './modules/admin/modal-alteracoes/mo
 import { ModalEditarEnderecoCobrancaComponent } from './modules/admin/modal-alteracoes/modal-editar-endereco-cobranca/modal-editar-endereco-cobranca.component';
 import { ModalEditarEnderecoEntregaComponent } from './modules/admin/modal-alteracoes/modal-editar-endereco-entrega/modal-editar-endereco-entrega.component';
 import { ModalEditarCartaoCreditoComponent } from './modules/admin/modal-alteracoes/modal-editar-cartao-credito/modal-editar-cartao-credito.component';
+import { ModalCadastrarEnderecoCobrancaComponent } from './modules/admin/modal-cadastros/modal-cadastrar-endereco-cobranca/modal-cadastrar-endereco-cobranca.component';
+import { ModalCadastrarEnderecoEntregaComponent } from './modules/admin/modal-cadastros/modal-cadastrar-endereco-entrega/modal-cadastrar-endereco-entrega.component';
+import { ModalCadastrarCartaoCreditoComponent } from './modules/admin/modal-cadastros/modal-cadastrar-cartao-credito/modal-cadastrar-cartao-credito.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { ModalEditarCartaoCreditoComponent } from './modules/admin/modal-alterac
     ModalEditarClienteComponent,
     ModalEditarEnderecoCobrancaComponent,
     ModalEditarEnderecoEntregaComponent,
-    ModalEditarCartaoCreditoComponent
+    ModalEditarCartaoCreditoComponent,
+    ModalCadastrarEnderecoCobrancaComponent,
+    ModalCadastrarEnderecoEntregaComponent,
+    ModalCadastrarCartaoCreditoComponent
   ],
   imports: [
     BrowserModule,

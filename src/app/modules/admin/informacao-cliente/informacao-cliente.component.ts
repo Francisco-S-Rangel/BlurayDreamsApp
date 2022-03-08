@@ -105,6 +105,7 @@ export class InformacaoClienteComponent implements OnInit {
   // Voltar para a pagina passada
   backPage() { this.router.navigate(['consultar-clientes']); }
 
+  //Editar
   editarCliente(id: number){
     this.router.navigate([`editar-cliente/${id}`]);
   }
@@ -117,5 +118,11 @@ export class InformacaoClienteComponent implements OnInit {
   editarCartaoCredito(id: number,clienteid: number){
     this.router.navigate([`editar-cartao-credito/${id}/${clienteid}`]);
   }
+  //Cadastrar 
+  cadastrarEnderecoCobranca(clienteid: number) {this.router.navigate([`cadastrar-endereco-cobranca/${clienteid}`]);}
+
+  cadastrarEndercoEntrega(clienteid: number) {this.router.navigate([`cadastrar-endereco-entregas/${clienteid}`]);}
+  
+  cadastrarCartaoCredito(clienteid: number) {this.router.navigate([`cadastrar-cartao-credito/${clienteid}`]);}
 
 }
