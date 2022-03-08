@@ -29,7 +29,7 @@ const routes: Routes = [
   {path: "editar-cartao-credito/:id/:clienteid", component: ModalEditarCartaoCreditoComponent},
   {path: "cadastrar-endereco-cobranca/:clienteid", component: ModalCadastrarEnderecoCobrancaComponent},
   {path: "cadastrar-endereco-entregas/:clienteid", component: ModalCadastrarEnderecoEntregaComponent},
-  {path: "cadastrar-cartao-credito/:clientid", component: ModalCadastrarCartaoCreditoComponent}
+  {path: "cadastrar-cartao-credito/:clienteid", component: ModalCadastrarCartaoCreditoComponent}
 ];
 
 @NgModule({
