@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { SharedDataService } from 'src/app/modules/shared/services/shared-data.service';
 import { ValidadorSenha } from 'src/app/modules/shared/helpers/ValidadorSenha';
 import { AbstractControl, AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -20,7 +20,7 @@ export class ModalEditarCartaoCreditoComponent implements OnInit {
   public formCartao!: FormGroup;
 
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
-  , private route: ActivatedRoute,private cartaoCreditoService: CartaoCreditoService) { }
+  , private route: ActivatedRoute,private cartaoCreditoService: CartaoCreditoService, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(x => {
@@ -30,6 +30,15 @@ export class ModalEditarCartaoCreditoComponent implements OnInit {
       this.idcliente= x[`clienteid`];
     });
     this.validacao();
+
+    this.cartaoCreditoService.getById(this.idcartao).subscribe(
+      (result)=>{
+        //console.log(result)
+        this.cartaoCreditos = result
+        this.cdRef.detectChanges();
+      }
+    );
+
   }
 
   cliente: any;
@@ -48,7 +57,7 @@ export class ModalEditarCartaoCreditoComponent implements OnInit {
 
   str: any;
 
-  cartaoCreditos = [
+  cartaoCreditos =
     {
       id: this.id,
       clienteId: this.id2,
@@ -57,7 +66,7 @@ export class ModalEditarCartaoCreditoComponent implements OnInit {
       cvv: "",
       nomeTitular: ""
     }
-  ]
+  
 
 
 
@@ -125,5 +134,5 @@ export class ModalEditarCartaoCreditoComponent implements OnInit {
   }
 
 
-  backPage() { this.router.navigate([`informacao-cliente/${this.id}`]); }
+  backPage() { this.router.navigate([`informacao-cliente/${this.id2}`]); }
 }

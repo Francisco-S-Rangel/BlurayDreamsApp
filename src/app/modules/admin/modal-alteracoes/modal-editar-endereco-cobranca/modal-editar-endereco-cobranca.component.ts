@@ -1,5 +1,5 @@
 import { EnderecoCobrancaService } from './../../../shared/services/cadastro-dados-cliente/endereco-cobranca.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { SharedDataService } from 'src/app/modules/shared/services/shared-data.service';
 import { ValidadorSenha } from 'src/app/modules/shared/helpers/ValidadorSenha';
 import { AbstractControl, AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -21,28 +21,9 @@ export class ModalEditarEnderecoCobrancaComponent implements OnInit {
   public str: any
   formEndereco!: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
-    , private route: ActivatedRoute,private EnderecoCobrancaService: EnderecoCobrancaService) {
-
-  }
-
-
-  ngOnInit() {
-
-    this.route.params.subscribe(x => {
-      this.id = x[`id`];
-      this.idEnderecoCobranca = x[`id`];
-      this.id2= x[`clienteid`];
-      this.idcliente= x[`clienteid`];
-    });
-
-
-    this.validacao()
-  }
-
   cliente: any
 
-  enderecoCobrancas = [
+  enderecoCobrancas =
     {
       id: this.id,
       clienteId: this.id2,
@@ -56,7 +37,35 @@ export class ModalEditarEnderecoCobrancaComponent implements OnInit {
       pais: "",
       numero: ""
     }
-  ]
+
+
+  constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
+    , private route: ActivatedRoute,private EnderecoCobrancaService: EnderecoCobrancaService, private cdRef: ChangeDetectorRef) {
+
+    }
+
+
+    ngOnInit() {
+
+      this.route.params.subscribe(x => {
+      this.id = x[`id`];
+      this.idEnderecoCobranca = x[`id`];
+      this.id2= x[`clienteid`];
+      this.idcliente= x[`clienteid`];
+    });
+
+    this.EnderecoCobrancaService.getById(this.idEnderecoCobranca).subscribe(
+      (result)=>{
+        //console.log(result)
+        this.enderecoCobrancas = result
+        this.cdRef.detectChanges();
+      }
+    );
+
+
+    this.validacao()
+  }
+
 
   get f(): any {
     return this.formEndereco.controls;
@@ -104,6 +113,6 @@ export class ModalEditarEnderecoCobrancaComponent implements OnInit {
 
   }
 
-  backPage() { this.router.navigate([`informacao-cliente/${this.id}`]); }
+  backPage() { this.router.navigate([`informacao-cliente/${this.id2}`]); }
 
 }
