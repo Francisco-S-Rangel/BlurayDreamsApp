@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: "editar-cliente/:id", component: ModalEditarClienteComponent},
   {path: "editar-endereco-cobranca/:id",component: ModalEditarEnderecoCobrancaComponent},
   {path: "editar-enderco-entregas/:id",component: ModalEditarEnderecoEntregaComponent},
-  {path: "editar-cartao-credito/:id", component: ModalEditarCartaoCreditoComponent}
+  {path: "editar-cartao-credito/:id/:clienteid", component: ModalEditarCartaoCreditoComponent}
 ];
 
 @NgModule({

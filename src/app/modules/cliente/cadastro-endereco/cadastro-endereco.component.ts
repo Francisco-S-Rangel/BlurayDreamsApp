@@ -91,7 +91,7 @@ export class CadastroEnderecoComponent implements OnInit {
       cep: ['', Validators.required],
       TipoResidencia: ['', Validators.required],
       Logradouro: ['', Validators.required],
-      TipoLogradouro: ['', Validators.required],
+      tipoLogradouro: ['', Validators.required],
       Bairro: ['', Validators.required],
       Cidade: ['', Validators.required],
       Estado: ['', Validators.required],
