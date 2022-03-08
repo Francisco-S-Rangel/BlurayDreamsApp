@@ -56,8 +56,8 @@ export class ModalEditarEnderecoEntregaComponent implements OnInit {
 
     this.EnderecoEntregaService.getById(this.idEnderecoEntrega).subscribe(
       (result)=>{
-        //console.log(result)
-        this.aux = result
+        console.log(result)
+        //this.enderecoEntregas = result
         this.cdRef.detectChanges();
       }
     );
