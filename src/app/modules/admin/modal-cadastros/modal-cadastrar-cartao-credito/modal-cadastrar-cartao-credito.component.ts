@@ -13,7 +13,6 @@ export class ModalCadastrarCartaoCreditoComponent implements OnInit {
 
 
   public id?: number;
-
   public idcliente: number = 0;
   public formCartao!: FormGroup;
 
@@ -22,22 +21,13 @@ export class ModalCadastrarCartaoCreditoComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(x => {
-      this.id = x[`id`];
-      this.idcliente = x[`id`];
+      this.id = x[`clienteid`];
+      this.idcliente = x[`clienteid`];
     });
     this.validacao();
-
-    this.cartaoCreditoService.getById(this.idcliente).subscribe(
-      (result)=>{
-        //console.log(result)
-        this.cartaoCreditos = result
-        this.cdRef.detectChanges();
-      }
-    );
-
   }
 
-  cliente: any;
+
 
   bandeiraCartao: any = [
     {
@@ -72,7 +62,7 @@ export class ModalCadastrarCartaoCreditoComponent implements OnInit {
 
 
 
-  alterarCartao(){
+  cadastrarCartao(){
     console.log(this.formCartao.value);
     this.cartaoCreditoService.post(this.formCartao.value).subscribe(
       ()=>{
@@ -130,7 +120,9 @@ export class ModalCadastrarCartaoCreditoComponent implements OnInit {
   }
 
 
-  backPage() { this.router.navigate([`informacao-cliente/${this.id}`]); }
+  backPage() { 
+    console.log(this.id);
+    this.router.navigate([`informacao-cliente/${this.id}`]); }
 }
 
 
