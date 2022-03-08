@@ -66,7 +66,7 @@ export class ModalEditarCartaoCreditoComponent implements OnInit {
       cvv: "",
       nomeTitular: ""
     }
-  
+
 
 
 
@@ -133,6 +133,6 @@ export class ModalEditarCartaoCreditoComponent implements OnInit {
     }
   }
 
-
   backPage() { this.router.navigate([`informacao-cliente/${this.id2}`]); }
+
 }

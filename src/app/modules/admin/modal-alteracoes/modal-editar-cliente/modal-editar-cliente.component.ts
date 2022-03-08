@@ -17,9 +17,8 @@ import { ThisReceiver } from '@angular/compiler';
 export class ModalEditarClienteComponent implements OnInit {
 
   public id?: number;
-  public idAux: number =0;
-  public  form!: FormGroup;
-  public Cliente?: Cliente;
+  public idAux: number = 0;
+  public form!: FormGroup;
 
   Clientes = {
     id: this.idAux,
@@ -32,8 +31,6 @@ export class ModalEditarClienteComponent implements OnInit {
     email: "",
     senha: ""
   }
-
-  aux: any
 
   get f(): any {
     return this.form.controls;
@@ -50,7 +47,7 @@ export class ModalEditarClienteComponent implements OnInit {
     });
 
     this.clienteService.getById(this.idAux).subscribe(
-      (result)=>{
+      (result) => {
         this.Clientes = result
         //console.log(this.Clientes)
         this.cdRef.detectChanges();
@@ -62,7 +59,7 @@ export class ModalEditarClienteComponent implements OnInit {
 
   keyPressNumbers(event: any) {
     var charCode = (event.which) ? event.which : event.keyCode;
-    // Only Numbers 0-9
+
     if ((charCode < 48 || charCode > 57)) {
       event.preventDefault();
       return false;
@@ -72,14 +69,14 @@ export class ModalEditarClienteComponent implements OnInit {
   }
 
   atualizarCliente() {
-    console.log(this.form.value);
+    //console.log(this.form.value);
 
-  this.clienteService.put(this.idAux,this.form.value).subscribe(
-    ()=>{
-      console.log();
-      this.backPage();
-    }
-  );
+    this.clienteService.put(this.idAux, this.form.value).subscribe(
+      () => {
+        console.log();
+        this.backPage();
+      }
+    );
 
   }
 
@@ -107,8 +104,5 @@ export class ModalEditarClienteComponent implements OnInit {
   //voltar para a tela de informação
 
   backPage() { this.router.navigate([`informacao-cliente/${this.id}`]); }
-  //salvar edição
-
-
 
 }

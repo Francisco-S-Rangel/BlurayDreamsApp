@@ -35,16 +35,13 @@ export class ModalCadastrarEnderecoCobrancaComponent implements OnInit {
 
 
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
-    , private route: ActivatedRoute,private EnderecoCobrancaService: EnderecoCobrancaService) {
+    , private route: ActivatedRoute, private EnderecoCobrancaService: EnderecoCobrancaService) { }
 
-    }
+  ngOnInit() {
 
-
-    ngOnInit() {
-
-      this.route.params.subscribe(x => {
-      this.id= x[`clienteid`];
-      this.idcliente= x[`clienteid`];
+    this.route.params.subscribe(x => {
+      this.id = x[`clienteid`];
+      this.idcliente = x[`clienteid`];
     });
 
     this.validacao()
@@ -53,6 +50,17 @@ export class ModalCadastrarEnderecoCobrancaComponent implements OnInit {
 
   get f(): any {
     return this.formEndereco.controls;
+  }
+
+
+  cadastrarEndereco() {
+    console.log(this.formEndereco.value);
+    this.EnderecoCobrancaService.post(this.formEndereco.value).subscribe(
+      () => {
+        console.log();
+        this.backPage();
+      }
+    );
   }
 
   keyPressNumbers(event: any) {
@@ -64,16 +72,6 @@ export class ModalCadastrarEnderecoCobrancaComponent implements OnInit {
     } else {
       return true;
     }
-  }
-
-  cadastrarEndereco(){
-    console.log(this.formEndereco.value);
-    this.EnderecoCobrancaService.post(this.formEndereco.value).subscribe(
-      ()=>{
-        console.log();
-        this.backPage();
-      }
-    );
   }
 
   public validacao(): void {
