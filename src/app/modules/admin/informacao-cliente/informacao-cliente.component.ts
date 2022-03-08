@@ -118,11 +118,11 @@ export class InformacaoClienteComponent implements OnInit {
   editarCartaoCredito(id: number,clienteid: number){
     this.router.navigate([`editar-cartao-credito/${id}/${clienteid}`]);
   }
-  //Cadastrar 
+  //Cadastrar
   cadastrarEnderecoCobranca(clienteid: number) {this.router.navigate([`cadastrar-endereco-cobranca/${clienteid}`]);}
 
-  cadastrarEndercoEntrega(clienteid: number) {this.router.navigate([`cadastrar-endereco-entregas/${clienteid}`]);}
-  
+  cadastrarEnderecoEntrega(clienteid: number) {this.router.navigate([`cadastrar-endereco-entregas/${clienteid}`]);}
+
   cadastrarCartaoCredito(clienteid: number) {this.router.navigate([`cadastrar-cartao-credito/${clienteid}`]);}
 
 }
