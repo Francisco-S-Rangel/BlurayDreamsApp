@@ -4,7 +4,7 @@ export interface EnderecoEntregas {
     cep: string;
     tipoResidencia: string;
     logradouro: string;
-    tipologradouro: string;
+    tipoLogradouro: string;
     bairro: string;
     cidade: string;
     estado: string;
