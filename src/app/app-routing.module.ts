@@ -1,3 +1,6 @@
+import { ModalEditarCartaoCreditoComponent } from './modules/admin/modal-alteracoes/modal-editar-cartao-credito/modal-editar-cartao-credito.component';
+import { ModalEditarEnderecoEntregaComponent } from './modules/admin/modal-alteracoes/modal-editar-endereco-entrega/modal-editar-endereco-entrega.component';
+import { ModalEditarEnderecoCobrancaComponent } from './modules/admin/modal-alteracoes/modal-editar-endereco-cobranca/modal-editar-endereco-cobranca.component';
 import { ModalEditarClienteComponent } from './modules/admin/modal-alteracoes/modal-editar-cliente/modal-editar-cliente.component';
 import { InformacaoClienteComponent } from './modules/admin/informacao-cliente/informacao-cliente.component';
 import { AppComponent } from './app.component';
@@ -17,7 +20,10 @@ const routes: Routes = [
   {path: "cadastrar-cartao", component: CadastroCartaoComponent},
   {path: "consultar-clientes", component: ConsultarClientesComponent},
   {path: "informacao-cliente/:id", component: InformacaoClienteComponent},
-  {path: "editar-cliente/:id", component: ModalEditarClienteComponent}
+  {path: "editar-cliente/:id", component: ModalEditarClienteComponent},
+  {path: "editar-endereco-cobranca/:id",component: ModalEditarEnderecoCobrancaComponent},
+  {path: "editar-enderco-entregas/:id",component: ModalEditarEnderecoEntregaComponent},
+  {path: "editar-cartao-credito/:id", component: ModalEditarCartaoCreditoComponent}
 ];
 
 @NgModule({
