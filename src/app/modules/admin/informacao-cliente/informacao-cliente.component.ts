@@ -108,11 +108,11 @@ export class InformacaoClienteComponent implements OnInit {
   editarCliente(id: number){
     this.router.navigate([`editar-cliente/${id}`]);
   }
-  editarEnderecoCobranca(id: number){
-    this.router.navigate([`editar-endereco-cobranca/${id}`]);
+  editarEnderecoCobranca(id: number,clienteid: number){
+    this.router.navigate([`editar-endereco-cobranca/${id}/${clienteid}`]);
   }
-  editarEnderecoEntrega(id: number){
-    this.router.navigate([`editar-enderco-entregas/${id}`]);
+  editarEnderecoEntrega(id: number,clienteid: number){
+    this.router.navigate([`editar-enderco-entregas/${id}/${clienteid}`]);
   }
   editarCartaoCredito(id: number,clienteid: number){
     this.router.navigate([`editar-cartao-credito/${id}/${clienteid}`]);

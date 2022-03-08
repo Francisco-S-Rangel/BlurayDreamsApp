@@ -1,5 +1,5 @@
 import { Cliente } from './../../../shared/models/cliente';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { SharedDataService } from 'src/app/modules/shared/services/shared-data.service';
 import { ValidadorSenha } from 'src/app/modules/shared/helpers/ValidadorSenha';
 import { AbstractControl, AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -33,18 +33,30 @@ export class ModalEditarClienteComponent implements OnInit {
     senha: ""
   }
 
+  aux: any
+
   get f(): any {
     return this.form.controls;
   }
 
   constructor(private router: Router, private formBuilder: FormBuilder, private shared: SharedDataService
-    , private route: ActivatedRoute, private clienteService: ClienteService) { }
+    , private route: ActivatedRoute, private clienteService: ClienteService, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+
     this.route.params.subscribe(x => {
       this.id = x[`id`];
       this.idAux = x[`id`];
     });
+
+    this.clienteService.getById(this.idAux).subscribe(
+      (result)=>{
+        this.Clientes = result
+        //console.log(this.Clientes)
+        this.cdRef.detectChanges();
+      }
+    );
+
     this.validacao();
   }
 

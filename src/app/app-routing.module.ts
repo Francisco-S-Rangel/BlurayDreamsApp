@@ -21,8 +21,8 @@ const routes: Routes = [
   {path: "consultar-clientes", component: ConsultarClientesComponent},
   {path: "informacao-cliente/:id", component: InformacaoClienteComponent},
   {path: "editar-cliente/:id", component: ModalEditarClienteComponent},
-  {path: "editar-endereco-cobranca/:id",component: ModalEditarEnderecoCobrancaComponent},
-  {path: "editar-enderco-entregas/:id",component: ModalEditarEnderecoEntregaComponent},
+  {path: "editar-endereco-cobranca/:id/:clienteid",component: ModalEditarEnderecoCobrancaComponent},
+  {path: "editar-endereco-entregas/:id/:clienteid",component: ModalEditarEnderecoEntregaComponent},
   {path: "editar-cartao-credito/:id/:clienteid", component: ModalEditarCartaoCreditoComponent}
 ];
 

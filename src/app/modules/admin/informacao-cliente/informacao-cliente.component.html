@@ -83,7 +83,7 @@
                 <td>{{endereco.cidade}}</td>
                 <td>{{endereco.estado}}</td>
                 <td>{{endereco.pais}}</td>
-                <td><button type="button" class="btn btn-primary"  (click)="editarEnderecoCobranca(endereco.id)">Editar</button></td>
+                <td><button type="button" class="btn btn-primary"  (click)="editarEnderecoCobranca(endereco.id, endereco.clienteId)">Editar</button></td>
                 <td><button type="button" class="btn btn-danger" (click)="deletarEnderecoCobrancas(endereco.id)">Excluir</button></td>
               </tr>
             </tbody>
@@ -135,7 +135,7 @@
                 <td>{{endereco.pais}}</td>
                 <td>{{endereco.apelido}}</td>
                 <td>{{endereco.observacao}}</td>
-                <td><button type="button" class="btn btn-primary" (click)="editarEnderecoEntrega(endereco.id)">Editar</button></td>
+                <td><button type="button" class="btn btn-primary" (click)="editarEnderecoEntrega(endereco.id, endereco.clienteId)">Editar</button></td>
                 <td><button type="button" class="btn btn-danger" (click)="deletarEnderecoEntregas(endereco.id)">Excluir</button></td>
               </tr>
 
