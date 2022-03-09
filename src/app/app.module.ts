@@ -33,6 +33,7 @@ import { ModalEditarCartaoCreditoComponent } from './modules/admin/modal-alterac
 import { ModalCadastrarEnderecoCobrancaComponent } from './modules/admin/modal-cadastros/modal-cadastrar-endereco-cobranca/modal-cadastrar-endereco-cobranca.component';
 import { ModalCadastrarEnderecoEntregaComponent } from './modules/admin/modal-cadastros/modal-cadastrar-endereco-entrega/modal-cadastrar-endereco-entrega.component';
 import { ModalCadastrarCartaoCreditoComponent } from './modules/admin/modal-cadastros/modal-cadastrar-cartao-credito/modal-cadastrar-cartao-credito.component';
+import { TelaLoginComponent } from './modules/cliente/telas-publicas/tela-login/tela-login.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ModalCadastrarCartaoCreditoComponent } from './modules/admin/modal-cada
     ModalEditarCartaoCreditoComponent,
     ModalCadastrarEnderecoCobrancaComponent,
     ModalCadastrarEnderecoEntregaComponent,
-    ModalCadastrarCartaoCreditoComponent
+    ModalCadastrarCartaoCreditoComponent,
+    TelaLoginComponent
   ],
   imports: [
     BrowserModule,

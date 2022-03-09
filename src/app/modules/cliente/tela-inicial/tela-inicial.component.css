@@ -33,3 +33,8 @@
 .btn-carrinho:hover {
     background-color: rgb(20,20,102);
 }
+/*Passador de Paginas*/
+.passador{
+    width: 18px;
+    height: 18px;
+}

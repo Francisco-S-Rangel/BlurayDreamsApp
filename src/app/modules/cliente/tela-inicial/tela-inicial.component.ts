@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TelaInicialComponent implements OnInit {
 
+  public paginacao = [1,2,3];
+
   public filmes = [
     {img: 'https://www.curtocinema.com.br/wp-content/uploads/2021/08/taxi.png',titulo: 'Taxi Driver',dvd: '19,90',bluray: '39,90'},
     {img: 'https://pbs.twimg.com/media/FI_ZHvXUYAIWm_B?format=jpg&name=4096x4096',titulo: 'O poderoso Chefão',dvd: '19,90',bluray: '39,90'},
