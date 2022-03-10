@@ -1,0 +1,96 @@
+.container {
+    margin-top: 100px;
+    margin-bottom: 20px;
+  }
+  
+  @media (min-width: 1200px) {
+    .container{
+        max-width: 620px;
+    }
+  }
+  @media only screen and (max-width: 768px){
+    .container{
+      max-width: fit-content;
+    }
+    .inputemail{
+      max-width: fit-content;
+    }
+    .inputsenha {
+      max-width: fit-content;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .container{
+      max-width: fit-content;
+    }
+    .inputemail{
+      max-width: fit-content;
+    }
+    .inputsenha {
+      max-width: fit-content;
+    }
+  }
+  @media only screen and (max-width: 992px) {
+    .container{
+      max-width: fit-content;
+    }
+    .inputemail{
+      max-width: fit-content;
+    }
+    .inputsenha {
+      max-width: fit-content;
+    }
+  }
+  
+  .card {
+    padding: 15px;
+    height: 340px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  
+  .label {
+    font-size: 25px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+  }
+  
+  .label2 {
+    font-size: 20px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+  }
+  
+  .form-label {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .invalid-feedback{
+    padding-left: 4px;
+  }
+  
+  .semConta {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .semConta:hover {
+    color: blue;
+  }
+  .esqueceuConta {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .esqueceuConta:hover {
+    color: blue;
+  }
+  .inputemail {
+    margin-top: 8px;
+      width: 520px;
+      height: 32px;
+  }
+  .inputsenha {
+    margin-top: 8px;
+      width: 480px;
+      height: 32px;
+  }

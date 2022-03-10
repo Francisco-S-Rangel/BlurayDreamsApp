@@ -10,7 +10,7 @@ import { Cliente } from '../../shared/models/cliente';
 })
 export class ConsultarClientesComponent implements OnInit {
 
-
+  public paginacao = [1,2,3];
   public clientes?: Cliente[];
 
   constructor(private router: Router,private clienteService : ClienteService ) { }
