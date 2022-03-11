@@ -1,3 +1,4 @@
+import { CarrinhoComprasComponent } from './modules/cliente/carrinho-compras/carrinho-compras.component';
 import { TelaLoginComponent } from './modules/cliente/telas-publicas/tela-login/tela-login.component';
 import { ModalCadastrarCartaoCreditoComponent } from './modules/admin/modal-cadastros/modal-cadastrar-cartao-credito/modal-cadastrar-cartao-credito.component';
 import { ModalCadastrarEnderecoEntregaComponent } from './modules/admin/modal-cadastros/modal-cadastrar-endereco-entrega/modal-cadastrar-endereco-entrega.component';
@@ -31,7 +32,8 @@ const routes: Routes = [
   {path: "cadastrar-endereco-cobranca/:clienteid", component: ModalCadastrarEnderecoCobrancaComponent},
   {path: "cadastrar-endereco-entregas/:clienteid", component: ModalCadastrarEnderecoEntregaComponent},
   {path: "cadastrar-cartao-credito/:clienteid", component: ModalCadastrarCartaoCreditoComponent},
-  {path: "tela-login", component: TelaLoginComponent}
+  {path: "tela-login", component: TelaLoginComponent},
+  {path: "carrinho-compras", component: CarrinhoComprasComponent}
 ];
 
 @NgModule({

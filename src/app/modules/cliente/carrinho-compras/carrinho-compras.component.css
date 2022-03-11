@@ -1,0 +1,55 @@
+.container {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    
+}
+.card {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: rgb(245, 245, 245);
+}
+.carrinhoImg {
+    height: 60px;
+    width: 60px;
+}
+.produtoImg {
+    height: 140px;
+    width: 140px;
+}
+table {
+    background-color: rgb(255, 255, 255);
+}
+omCupom {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.comCupom:hover {
+    color: blue;
+}
+.form-label {
+    font-weight: 600;
+}
+.btn-calcular {
+    margin-left: 4px;
+    width: 124px;
+    height: 36px;
+    background-color: #0074d9;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.btn-calcular:hover {
+    background-color: #1183e7;
+}
+.azulfraco {
+    color: rgb(36, 189, 216);
+}
+.azulforte {
+    font-weight: 600;
+    color: blue;
+}
+thead th {
+    padding: 20px;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+  }
