@@ -39,11 +39,9 @@ const routes: Routes = [
   {path: "tela-login", component: TelaLoginComponent},
   {path: "carrinho-compras", component: CarrinhoComprasComponent},
   {path: "perfil-usuario-main", component: PerfilUsuarioMainComponent},
-  {path: "perfil-usuario-main", component: PerfilUsuarioMainComponent},
   {path: "perfil-usuario-enderecos", component: PerfilUsuarioEnderecosComponent},
   {path: "perfil-usuario-cartoes", component: PerfilUsuarioCartoesComponent},
   {path: "tela-funcionario", component: TelaFuncionarioComponent},
-  {path: "perfil-usuario-main", component: PerfilUsuarioMainComponent}
 ];
 
 @NgModule({

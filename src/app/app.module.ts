@@ -62,11 +62,9 @@ import { PerfilUsuarioCartoesComponent } from './modules/cliente/perfil-usuario/
     TelaLoginComponent,
     CarrinhoComprasComponent,
     PerfilUsuarioMainComponent,
-    PerfilUsuarioMainComponent,
     PerfilUsuarioEnderecosComponent,
     PerfilUsuarioCartoesComponent,
     TelaFuncionarioComponent,
-    PerfilUsuarioMainComponent
   ],
   imports: [
     BrowserModule,
