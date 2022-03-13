@@ -38,7 +38,7 @@ export class ConsultarClientesComponent implements OnInit {
     );
   }
   // Botões
-  backPage() { this.router.navigate(['']); }
+  backPage() { this.router.navigate(['tela-funcionario']); }
 
   cadastrarCliente(){ this.router.navigate(['cadastrar-cliente']); }
 

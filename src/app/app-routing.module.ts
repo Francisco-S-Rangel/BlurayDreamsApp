@@ -1,3 +1,5 @@
+import { InformacaoProdutoComponent } from './modules/admin/consultas/informacao-produto/informacao-produto.component';
+import { ConsultarProdutosComponent } from './modules/admin/consultas/consultar-produtos/consultar-produtos.component';
 import { TelaFuncionarioComponent } from './modules/admin/funcionario/tela-funcionario/tela-funcionario.component';
 import { PerfilUsuarioMainComponent } from './modules/cliente/perfil-usuario/perfil-usuario-main/perfil-usuario-main.component';
 import { CarrinhoComprasComponent } from './modules/cliente/carrinho-compras/carrinho-compras.component';
@@ -37,7 +39,9 @@ const routes: Routes = [
   {path: "tela-login", component: TelaLoginComponent},
   {path: "carrinho-compras", component: CarrinhoComprasComponent},
   {path: "tela-funcionario", component: TelaFuncionarioComponent},
-  {path: "perfil-usuario-main", component: PerfilUsuarioMainComponent}
+  {path: "perfil-usuario-main", component: PerfilUsuarioMainComponent},
+  {path: "consultar-produtos", component: ConsultarProdutosComponent},
+  {path: "informacao-produto", component: InformacaoProdutoComponent}
 ];
 
 @NgModule({

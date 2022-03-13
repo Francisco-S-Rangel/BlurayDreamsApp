@@ -1,0 +1,166 @@
+<div class="container-fluid my-4 mx-auto">
+    <div class="row">
+        <div class="col-12">
+            <button class="custom-btn-back" type="button" (click)="backPage()">Retornar</button>
+        </div>
+
+        <div class="col-12">
+            <h1 class="titulo">Consultar Produtos</h1>
+        </div>
+
+        <hr>
+    </div>
+
+    <div class="col-12">
+        <div class="row">
+            <div style="margin-left: 0" class="col-12">
+                <label class="custom-label">
+                    <input class="custom-input" type="text" placeholder="Pesquise o Produto" />
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade show">
+        <div class="row">
+            <div class="col-12">
+                <div>
+                    <div class="row">
+
+                        <div class="col-12">
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header expandedHeight="auto" collapsedHeight="auto">
+                                        <mat-panel-title>
+                                            <div class="col-12">
+                                                <div class="row" style="margin-top: 1%;margin-bottom: 1%;">
+                                                    <div class="col">
+                                                        <div class="row">
+
+
+                                                            <div class="col">
+                                                                <strong>Titulo: </strong>
+                                                                <span class="dado-produto">
+                                                                    A viagem de Chihiro
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="col">
+                                                                <strong>Id: </strong>
+                                                                <span class="dado-produto">
+                                                                    001
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="col">
+                                                                <strong>Tipo: </strong>
+                                                                <span class="dado-produto">
+                                                                    Blu-ray
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="col">
+                                                                <strong>Categoria: </strong>
+                                                                <span class="dado-produto">
+                                                                    ANIME SHOUNEN
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="col">
+                                                                <strong>Direção: </strong>
+                                                                <span class="dado-produto">
+                                                                    Martin Scorsese
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="col">
+                                                                <strong>Ano de Lançamento: </strong>
+                                                                <span class="dado-produto">
+                                                                    2001
+                                                                </span>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+
+
+                                    <div class="col-12 mt-2 mb-2 custom-table-form-box">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
+                                            <table style="margin-top: 2%;" cellspacing="0" cellpadding="0"
+                                                class="table custom-table mt-3">
+
+                                                <thead>
+                                                    <tr style="border-bottom: 1px solid #E6E6E6;">
+
+                                                        <th scope="col">Dados do Produto</th>
+                                                        <th scope="col">Excluir o Produto</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><button class="btn btn-primary" type="button"
+                                                                (click)="informacaoProduto()">Visualizar</button></td>
+                                                        <td><button class="btn btn-danger"
+                                                                type="button">Excluir</button></td>
+                                                    </tr>
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+
+                            <br>
+                        </div>
+
+                    </div>
+
+                    <br>
+                    <button class="btn btn-success" type="button" style="margin-left: 40rem;">Cadastrar Novo
+                        Produto</button>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <hr><br>
+    <div class="row">
+        <div class="col-12 mt-3">
+            <nav>
+                <ul class="pagination pagination-sm justify-content-center">
+
+                    <li class="page-item">
+                        <a class="page-link" tabindex="-1">
+                            <img class="passador" src=".\assets\icons8-chevron-esquerda-50.png" alt="Anterior">
+                        </a>
+                    </li>
+                    <li class="page-item" *ngFor="let pag of paginacao;let i = index">
+                        <a class="page-link">{{i+1}}</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link">
+                            <img class="passador" src=".\assets\icons8-chevron-right-50.png" alt="Próximo">
+                        </a>
+                    </li>
+                </ul>
+                <ul class="pagination pagination-sm justify-content-center">
+                    <li>
+                        <span>1 de 12</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</div>

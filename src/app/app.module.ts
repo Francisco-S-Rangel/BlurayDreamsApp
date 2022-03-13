@@ -37,6 +37,8 @@ import { TelaLoginComponent } from './modules/cliente/telas-publicas/tela-login/
 import { CarrinhoComprasComponent } from './modules/cliente/carrinho-compras/carrinho-compras.component';
 import { TelaFuncionarioComponent } from './modules/admin/funcionario/tela-funcionario/tela-funcionario.component';
 import { PerfilUsuarioMainComponent } from './modules/cliente/perfil-usuario/perfil-usuario-main/perfil-usuario-main.component';
+import { ConsultarProdutosComponent } from './modules/admin/consultas/consultar-produtos/consultar-produtos.component';
+import { InformacaoProdutoComponent } from './modules/admin/consultas/informacao-produto/informacao-produto.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { PerfilUsuarioMainComponent } from './modules/cliente/perfil-usuario/per
     TelaLoginComponent,
     CarrinhoComprasComponent,
     TelaFuncionarioComponent,
-    PerfilUsuarioMainComponent
+    PerfilUsuarioMainComponent,
+    ConsultarProdutosComponent,
+    InformacaoProdutoComponent
   ],
   imports: [
     BrowserModule,
