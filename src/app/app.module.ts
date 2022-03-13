@@ -36,6 +36,8 @@ import { ModalCadastrarCartaoCreditoComponent } from './modules/admin/modal-cada
 import { TelaLoginComponent } from './modules/cliente/telas-publicas/tela-login/tela-login.component';
 import { CarrinhoComprasComponent } from './modules/cliente/carrinho-compras/carrinho-compras.component';
 import { PerfilUsuarioMainComponent } from './modules/cliente/perfil-usuario/perfil-usuario-main/perfil-usuario-main.component';
+import { PerfilUsuarioEnderecosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-enderecos/perfil-usuario-enderecos.component';
+import { PerfilUsuarioCartoesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cartoes/perfil-usuario-cartoes.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,11 @@ import { PerfilUsuarioMainComponent } from './modules/cliente/perfil-usuario/per
     ModalCadastrarCartaoCreditoComponent,
     TelaLoginComponent,
     CarrinhoComprasComponent,
-    PerfilUsuarioMainComponent
+    PerfilUsuarioMainComponent,
+    //TelaFuncionarioComponent,
+    PerfilUsuarioMainComponent,
+    PerfilUsuarioEnderecosComponent,
+    PerfilUsuarioCartoesComponent
   ],
   imports: [
     BrowserModule,
