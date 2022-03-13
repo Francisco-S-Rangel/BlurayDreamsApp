@@ -1,6 +1,6 @@
 import { PerfilUsuarioCartoesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cartoes/perfil-usuario-cartoes.component';
 import { PerfilUsuarioEnderecosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-enderecos/perfil-usuario-enderecos.component';
-//import { TelaFuncionarioComponent } from './modules/admin/funcionario/tela-funcionario/tela-funcionario.component';
+import { TelaFuncionarioComponent } from './modules/admin/funcionario/tela-funcionario/tela-funcionario.component';
 import { PerfilUsuarioMainComponent } from './modules/cliente/perfil-usuario/perfil-usuario-main/perfil-usuario-main.component';
 import { CarrinhoComprasComponent } from './modules/cliente/carrinho-compras/carrinho-compras.component';
 import { TelaLoginComponent } from './modules/cliente/telas-publicas/tela-login/tela-login.component';
@@ -39,11 +39,11 @@ const routes: Routes = [
   {path: "tela-login", component: TelaLoginComponent},
   {path: "carrinho-compras", component: CarrinhoComprasComponent},
   {path: "perfil-usuario-main", component: PerfilUsuarioMainComponent},
-  //{path: "tela-funcionario", component: TelaFuncionarioComponent},
   {path: "perfil-usuario-main", component: PerfilUsuarioMainComponent},
   {path: "perfil-usuario-enderecos", component: PerfilUsuarioEnderecosComponent},
-  {path: "perfil-usuario-cartoes", component: PerfilUsuarioCartoesComponent}
-
+  {path: "perfil-usuario-cartoes", component: PerfilUsuarioCartoesComponent},
+  {path: "tela-funcionario", component: TelaFuncionarioComponent},
+  {path: "perfil-usuario-main", component: PerfilUsuarioMainComponent}
 ];
 
 @NgModule({

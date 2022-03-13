@@ -1,0 +1,21 @@
+.container {
+    margin-top: 100px;
+    margin-bottom: 120px;
+}
+.card {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 20px
+}
+.card2 {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: rgb(245, 245, 245);
+    margin-top: 20px
+}
+.opcoes {
+    background-color: white;
+}
+.emLinha {
+    display: flex;
+    
+}
