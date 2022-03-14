@@ -1,0 +1,41 @@
+.custom-btn-back {
+    background-position: 15% 55%;
+    background-color: rgb(218, 218, 218);
+    background-size: 5px;
+    border-radius: 5px;
+    width: 100px;
+    height: 42px;
+    border: 1px solid rgb(142, 142, 142);
+    outline: none;
+    margin: 2px;
+    cursor: pointer;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+.custom-btn-back:hover {
+    background-color: rgb(142, 142, 142);
+}
+/*tabela*/
+.cabeca {
+    height: 42px;
+    background-color: rgb(63, 63, 63);
+    color: rgb(243, 243, 243);
+    font-weight: normal;
+}
+.corpo {
+    background-color: rgb(199, 199, 199);
+    color: rgb(37, 37, 189);
+    font-weight: 600;
+    border-bottom: 2px solid rgb(37, 37, 189);
+}
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+    background-color: rgb(37, 37, 189) !important;
+}
+.btn-primary:hover {
+    background-color: rgb(22, 22, 136) !important;
+}
+img {
+    width: 260px;
+    height: 370px;
+}

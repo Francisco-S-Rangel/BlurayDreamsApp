@@ -39,6 +39,8 @@ import { TelaFuncionarioComponent } from './modules/admin/funcionario/tela-funci
 import { PerfilUsuarioMainComponent } from './modules/cliente/perfil-usuario/perfil-usuario-main/perfil-usuario-main.component';
 import { PerfilUsuarioEnderecosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-enderecos/perfil-usuario-enderecos.component';
 import { PerfilUsuarioCartoesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cartoes/perfil-usuario-cartoes.component';
+import { ConsultarProdutosComponent } from './modules/admin/consultas/consultar-produtos/consultar-produtos.component';
+import { InformacaoProdutoComponent } from './modules/admin/consultas/informacao-produto/informacao-produto.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,9 @@ import { PerfilUsuarioCartoesComponent } from './modules/cliente/perfil-usuario/
     PerfilUsuarioEnderecosComponent,
     PerfilUsuarioCartoesComponent,
     TelaFuncionarioComponent,
+    PerfilUsuarioMainComponent,
+    ConsultarProdutosComponent,
+    InformacaoProdutoComponent
   ],
   imports: [
     BrowserModule,
