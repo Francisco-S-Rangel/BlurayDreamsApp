@@ -31,7 +31,7 @@ omCupom {
 .btn-calcular {
     margin-left: 4px;
     width: 124px;
-    height: 36px;
+    height: 46px;
     background-color: #0074d9;
     color: white;
     border: none;
@@ -40,6 +40,19 @@ omCupom {
 }
 .btn-calcular:hover {
     background-color: #1183e7;
+}
+.btn-cupom {
+    margin-left: 4px;
+    width: 124px;
+    height: 46px;
+    background-color: #d33dbf;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.btn-cupom:hover {
+    background-color: #a51f88;
 }
 .azulfraco {
     color: rgb(36, 189, 216);
