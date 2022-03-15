@@ -44,6 +44,8 @@ import { InformacaoProdutoComponent } from './modules/admin/consultas/informacao
 import { ConsultarTrocasComponent } from './modules/admin/consultas/consultar-trocas/consultar-trocas.component';
 import { InformacaoTrocaComponent } from './modules/admin/consultas/informacao-troca/informacao-troca.component';
 import { PerfilUsuarioPedidosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-pedidos/perfil-usuario-pedidos.component';
+import { PerfilUsuarioTrocasComponent } from './modules/cliente/perfil-usuario/perfil-usuario-trocas/perfil-usuario-trocas.component';
+
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import { PerfilUsuarioPedidosComponent } from './modules/cliente/perfil-usuario/
     InformacaoProdutoComponent,
     ConsultarTrocasComponent,
     InformacaoTrocaComponent,
-    PerfilUsuarioPedidosComponent
+    PerfilUsuarioPedidosComponent,
+    PerfilUsuarioTrocasComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { PerfilUsuarioTrocasComponent } from './modules/cliente/perfil-usuario/perfil-usuario-trocas/perfil-usuario-trocas.component';
 import { PerfilUsuarioPedidosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-pedidos/perfil-usuario-pedidos.component';
 import { InformacaoTrocaComponent } from './modules/admin/consultas/informacao-troca/informacao-troca.component';
 import { ConsultarTrocasComponent } from './modules/admin/consultas/consultar-trocas/consultar-trocas.component';
@@ -52,7 +53,8 @@ const routes: Routes = [
   {path: "consultar-produtos", component: ConsultarProdutosComponent},
   {path: "informacao-produto", component: InformacaoProdutoComponent},
   {path: "consultar-trocas", component: ConsultarTrocasComponent},
-  {path: "informacao-trocas", component: InformacaoTrocaComponent}
+  {path: "informacao-trocas", component: InformacaoTrocaComponent},
+  {path: "perfil-usuario-trocas", component: PerfilUsuarioTrocasComponent}
 ];
 
 @NgModule({

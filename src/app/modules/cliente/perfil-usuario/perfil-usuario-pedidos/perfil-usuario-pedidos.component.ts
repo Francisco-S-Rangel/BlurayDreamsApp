@@ -19,4 +19,6 @@ export class PerfilUsuarioPedidosComponent implements OnInit {
 
   irParaMetPagamentos(){this.router.navigate(['/perfil-usuario-cartoes'])}
 
+  irParaTrocas(){this.router.navigate(['/perfil-usuario-trocas'])}
+
 }
