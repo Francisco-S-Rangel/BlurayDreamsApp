@@ -1,13 +1,15 @@
-import { PerfilUsuarioTrocasComponent } from './modules/cliente/perfil-usuario/perfil-usuario-trocas/perfil-usuario-trocas.component';
-import { PerfilUsuarioPedidosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-pedidos/perfil-usuario-pedidos.component';
+import { PerfilUsuarioAlteraCobrancaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-cobranca/perfil-usuario-altera-cobranca.component';
+import { PerfilUsuarioAlteraEntregaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-entrega/perfil-usuario-altera-entrega.component';
+import { PerfilUsuarioTrocasComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-trocas/perfil-usuario-trocas.component';
+import { PerfilUsuarioPedidosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-pedidos/perfil-usuario-pedidos.component';
 import { InformacaoTrocaComponent } from './modules/admin/consultas/informacao-troca/informacao-troca.component';
 import { ConsultarTrocasComponent } from './modules/admin/consultas/consultar-trocas/consultar-trocas.component';
-import { PerfilUsuarioCartoesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cartoes/perfil-usuario-cartoes.component';
-import { PerfilUsuarioEnderecosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-enderecos/perfil-usuario-enderecos.component';
+import { PerfilUsuarioCartoesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-cartoes/perfil-usuario-cartoes.component';
+import { PerfilUsuarioEnderecosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-enderecos/perfil-usuario-enderecos.component';
 import { InformacaoProdutoComponent } from './modules/admin/consultas/informacao-produto/informacao-produto.component';
 import { ConsultarProdutosComponent } from './modules/admin/consultas/consultar-produtos/consultar-produtos.component';
 import { TelaFuncionarioComponent } from './modules/admin/funcionario/tela-funcionario/tela-funcionario.component';
-import { PerfilUsuarioMainComponent } from './modules/cliente/perfil-usuario/perfil-usuario-main/perfil-usuario-main.component';
+import { PerfilUsuarioMainComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-main/perfil-usuario-main.component';
 import { CarrinhoComprasComponent } from './modules/cliente/carrinho-compras/carrinho-compras.component';
 import { TelaLoginComponent } from './modules/cliente/telas-publicas/tela-login/tela-login.component';
 import { ModalCadastrarCartaoCreditoComponent } from './modules/admin/modal-cadastros/modal-cadastrar-cartao-credito/modal-cadastrar-cartao-credito.component';
@@ -54,7 +56,9 @@ const routes: Routes = [
   {path: "informacao-produto", component: InformacaoProdutoComponent},
   {path: "consultar-trocas", component: ConsultarTrocasComponent},
   {path: "informacao-trocas", component: InformacaoTrocaComponent},
-  {path: "perfil-usuario-trocas", component: PerfilUsuarioTrocasComponent}
+  {path: "perfil-usuario-trocas", component: PerfilUsuarioTrocasComponent},
+  {path: "perfil-usuario-altera-entrega", component: PerfilUsuarioAlteraEntregaComponent},
+  {path: "perfil-usuario-altera-cobranca", component: PerfilUsuarioAlteraCobrancaComponent}
 ];
 
 @NgModule({

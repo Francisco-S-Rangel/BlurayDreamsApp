@@ -19,4 +19,8 @@ export class PerfilUsuarioEnderecosComponent implements OnInit {
 
   irParaPedidos(){this.router.navigate(['/perfil-usuario-pedidos'])}
 
+  irParaAlterarEntrega(){this.router.navigate(['/perfil-usuario-altera-entrega'])}
+
+  irParaAlterarCobranca(){this.router.navigate(['/perfil-usuario-altera-cobranca'])}
+
 }
