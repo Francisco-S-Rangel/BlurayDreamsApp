@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilUsuarioMainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
+
+  irParaMetPagamentos(){this.router.navigate(['/perfil-usuario-cartoes'])}
+
+  irParaPedidos(){this.router.navigate(['/perfil-usuario-pedidos'])}
+
+  irParaEnderecos(){this.router.navigate(['/perfil-usuario-enderecos'])}
 
 }

@@ -1,3 +1,4 @@
+import { PerfilUsuarioPedidosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-pedidos/perfil-usuario-pedidos.component';
 import { InformacaoTrocaComponent } from './modules/admin/consultas/informacao-troca/informacao-troca.component';
 import { ConsultarTrocasComponent } from './modules/admin/consultas/consultar-trocas/consultar-trocas.component';
 import { PerfilUsuarioCartoesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cartoes/perfil-usuario-cartoes.component';
@@ -45,6 +46,7 @@ const routes: Routes = [
   {path: "perfil-usuario-main", component: PerfilUsuarioMainComponent},
   {path: "perfil-usuario-enderecos", component: PerfilUsuarioEnderecosComponent},
   {path: "perfil-usuario-cartoes", component: PerfilUsuarioCartoesComponent},
+  {path: "perfil-usuario-pedidos", component: PerfilUsuarioPedidosComponent},
   {path: "tela-funcionario", component: TelaFuncionarioComponent},
   {path: "perfil-usuario-main", component: PerfilUsuarioMainComponent},
   {path: "consultar-produtos", component: ConsultarProdutosComponent},

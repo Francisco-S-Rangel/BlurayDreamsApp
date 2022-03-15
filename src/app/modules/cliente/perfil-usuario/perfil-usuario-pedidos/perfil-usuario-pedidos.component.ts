@@ -2,11 +2,11 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-perfil-usuario-cartoes',
-  templateUrl: './perfil-usuario-cartoes.component.html',
-  styleUrls: ['./perfil-usuario-cartoes.component.css']
+  selector: 'app-perfil-usuario-pedidos',
+  templateUrl: './perfil-usuario-pedidos.component.html',
+  styleUrls: ['./perfil-usuario-pedidos.component.css']
 })
-export class PerfilUsuarioCartoesComponent implements OnInit {
+export class PerfilUsuarioPedidosComponent implements OnInit {
 
   constructor(private router: Router) { }
 
@@ -15,8 +15,8 @@ export class PerfilUsuarioCartoesComponent implements OnInit {
 
   irParaPerfil(){ this.router.navigate(['/perfil-usuario-main'])}
 
-  irParaPedidos(){this.router.navigate(['/perfil-usuario-pedidos'])}
-
   irParaEnderecos(){this.router.navigate(['/perfil-usuario-enderecos'])}
+
+  irParaMetPagamentos(){this.router.navigate(['/perfil-usuario-cartoes'])}
 
 }
