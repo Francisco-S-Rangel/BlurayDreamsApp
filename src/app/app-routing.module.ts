@@ -1,3 +1,4 @@
+import { PerfilUsuarioAlteraCartaoComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-cartao/perfil-usuario-altera-cartao.component';
 import { PerfilUsuarioAlteraCobrancaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-cobranca/perfil-usuario-altera-cobranca.component';
 import { PerfilUsuarioAlteraEntregaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-entrega/perfil-usuario-altera-entrega.component';
 import { PerfilUsuarioTrocasComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-trocas/perfil-usuario-trocas.component';
@@ -58,7 +59,8 @@ const routes: Routes = [
   {path: "informacao-trocas", component: InformacaoTrocaComponent},
   {path: "perfil-usuario-trocas", component: PerfilUsuarioTrocasComponent},
   {path: "perfil-usuario-altera-entrega", component: PerfilUsuarioAlteraEntregaComponent},
-  {path: "perfil-usuario-altera-cobranca", component: PerfilUsuarioAlteraCobrancaComponent}
+  {path: "perfil-usuario-altera-cobranca", component: PerfilUsuarioAlteraCobrancaComponent},
+  {path: "perfil-usuario-altera-cartao", component: PerfilUsuarioAlteraCartaoComponent}
 ];
 
 @NgModule({

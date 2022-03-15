@@ -47,6 +47,9 @@ import { PerfilUsuarioPedidosComponent } from './modules/cliente/perfil-usuario/
 import { PerfilUsuarioTrocasComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-trocas/perfil-usuario-trocas.component';
 import { PerfilUsuarioAlteraEntregaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-entrega/perfil-usuario-altera-entrega.component';
 import { PerfilUsuarioAlteraCobrancaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-cobranca/perfil-usuario-altera-cobranca.component';
+import { PerfilUsuarioAlteraCartaoComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-cartao/perfil-usuario-altera-cartao.component';
+
+
 
 @NgModule({
   declarations: [
@@ -81,7 +84,8 @@ import { PerfilUsuarioAlteraCobrancaComponent } from './modules/cliente/perfil-u
     PerfilUsuarioPedidosComponent,
     PerfilUsuarioAlteraEntregaComponent,
     PerfilUsuarioAlteraCobrancaComponent,
-    PerfilUsuarioTrocasComponent
+    PerfilUsuarioTrocasComponent,
+    PerfilUsuarioAlteraCartaoComponent
   ],
   imports: [
     BrowserModule,

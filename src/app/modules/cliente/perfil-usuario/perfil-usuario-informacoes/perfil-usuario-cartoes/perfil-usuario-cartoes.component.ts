@@ -19,4 +19,6 @@ export class PerfilUsuarioCartoesComponent implements OnInit {
 
   irParaEnderecos(){this.router.navigate(['/perfil-usuario-enderecos'])}
 
+  irParaAlteraCartao(){this.router.navigate(['/perfil-usuario-altera-cartao'])}
+
 }
