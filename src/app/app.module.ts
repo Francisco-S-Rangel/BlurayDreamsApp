@@ -41,6 +41,8 @@ import { PerfilUsuarioEnderecosComponent } from './modules/cliente/perfil-usuari
 import { PerfilUsuarioCartoesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cartoes/perfil-usuario-cartoes.component';
 import { ConsultarProdutosComponent } from './modules/admin/consultas/consultar-produtos/consultar-produtos.component';
 import { InformacaoProdutoComponent } from './modules/admin/consultas/informacao-produto/informacao-produto.component';
+import { ConsultarTrocasComponent } from './modules/admin/consultas/consultar-trocas/consultar-trocas.component';
+import { InformacaoTrocaComponent } from './modules/admin/consultas/informacao-troca/informacao-troca.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { InformacaoProdutoComponent } from './modules/admin/consultas/informacao
     TelaFuncionarioComponent,
     PerfilUsuarioMainComponent,
     ConsultarProdutosComponent,
-    InformacaoProdutoComponent
+    InformacaoProdutoComponent,
+    ConsultarTrocasComponent,
+    InformacaoTrocaComponent
   ],
   imports: [
     BrowserModule,

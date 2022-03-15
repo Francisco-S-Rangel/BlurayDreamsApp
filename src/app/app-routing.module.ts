@@ -1,3 +1,5 @@
+import { InformacaoTrocaComponent } from './modules/admin/consultas/informacao-troca/informacao-troca.component';
+import { ConsultarTrocasComponent } from './modules/admin/consultas/consultar-trocas/consultar-trocas.component';
 import { PerfilUsuarioCartoesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cartoes/perfil-usuario-cartoes.component';
 import { PerfilUsuarioEnderecosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-enderecos/perfil-usuario-enderecos.component';
 import { InformacaoProdutoComponent } from './modules/admin/consultas/informacao-produto/informacao-produto.component';
@@ -46,7 +48,9 @@ const routes: Routes = [
   {path: "tela-funcionario", component: TelaFuncionarioComponent},
   {path: "perfil-usuario-main", component: PerfilUsuarioMainComponent},
   {path: "consultar-produtos", component: ConsultarProdutosComponent},
-  {path: "informacao-produto", component: InformacaoProdutoComponent}
+  {path: "informacao-produto", component: InformacaoProdutoComponent},
+  {path: "consultar-trocas", component: ConsultarTrocasComponent},
+  {path: "informacao-trocas", component: InformacaoTrocaComponent}
 ];
 
 @NgModule({
