@@ -53,6 +53,7 @@ import { PerfilUsuarioCadastrarCobrancaComponent } from './modules/cliente/perfi
 import { PerfilUsuarioCadastrarEntregaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cadastro/perfil-usuario-cadastrar-entrega/perfil-usuario-cadastrar-entrega.component';
 import { PerfilUsuarioAlteraUsuarioComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-usuario/perfil-usuario-altera-usuario.component';
 import { FinalizarCupomTrocaComponent } from './modules/cliente/finalizar-compra/finalizar-cupom-troca/finalizar-cupom-troca.component';
+import { FinalizarCartaoComponent } from './modules/cliente/finalizar-compra/finalizar-cartao/finalizar-cartao.component';
 
 
 @NgModule({
@@ -94,7 +95,8 @@ import { FinalizarCupomTrocaComponent } from './modules/cliente/finalizar-compra
     PerfilUsuarioCadastrarCobrancaComponent,
     PerfilUsuarioCadastrarEntregaComponent,
     PerfilUsuarioAlteraUsuarioComponent,
-    FinalizarCupomTrocaComponent
+    FinalizarCupomTrocaComponent,
+    FinalizarCartaoComponent
   ],
   imports: [
     BrowserModule,
