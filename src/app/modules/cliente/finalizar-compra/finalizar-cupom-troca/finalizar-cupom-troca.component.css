@@ -1,0 +1,37 @@
+.container {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+@media (min-width: 1200px) {
+  .container{
+      max-width: 770px;
+  }
+}
+
+.card {
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.label {
+  font-size: 25px;
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+
+.texto-troca{
+  padding-top: 10px;
+  padding-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.imagem {
+  width: 100px;
+  height: 150px;
+}
+
+.label-carrinho {
+  font-size: 20px;
+}

@@ -1,3 +1,4 @@
+import { FinalizarCupomTrocaComponent } from './modules/cliente/finalizar-compra/finalizar-cupom-troca/finalizar-cupom-troca.component';
 import { PerfilUsuarioAlteraUsuarioComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-usuario/perfil-usuario-altera-usuario.component';
 import { PerfilUsuarioCadastrarEntregaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cadastro/perfil-usuario-cadastrar-entrega/perfil-usuario-cadastrar-entrega.component';
 import { PerfilUsuarioCadastrarCobrancaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cadastro/perfil-usuario-cadastrar-cobranca/perfil-usuario-cadastrar-cobranca.component';
@@ -68,7 +69,8 @@ const routes: Routes = [
   {path: "perfil-usuario-cadastrar-cobranca", component: PerfilUsuarioCadastrarCobrancaComponent},
   {path: "perfil-usuario-cadastrar-entrega", component: PerfilUsuarioCadastrarEntregaComponent},
   {path: "perfil-usuario-cadastrar-cartao", component: PerfilUsuarioCadastrarCartaoComponent},
-  {path: "perfil-usuario-altera-usuario", component: PerfilUsuarioAlteraUsuarioComponent}
+  {path: "perfil-usuario-altera-usuario", component: PerfilUsuarioAlteraUsuarioComponent},
+  {path: "finalizar-cupom-troca", component: FinalizarCupomTrocaComponent}
 ];
 
 @NgModule({

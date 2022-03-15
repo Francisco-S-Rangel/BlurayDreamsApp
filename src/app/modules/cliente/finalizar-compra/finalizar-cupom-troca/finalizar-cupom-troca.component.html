@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="card">
+    <div class="col-12 text-center">
+      <label class="label">Cupom de Troca</label>
+    </div>
+    <form class="row g-3" [formGroup]="formTroca">
+      <div class="col-12 text-center">
+        <label class="texto-troca">Voce possui 1 cupom de troca!</label>
+      </div>
+      <div class="label-carrinho">Seu carrinho</div>
+      <table class="table table-striped">
+        <thead class="">
+          <tr class="text-center">
+            <th>Imagem</th>
+            <th>Titulo</th>
+            <th>Preço</th>
+            <th>Tipo</th>
+            <th>Abater Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center align-middle">
+            <td><img class="imagem" src="https://br.web.img3.acsta.net/medias/nmedia/18/90/93/20/20120876.jpg"></td>
+            <td>O Poderoso Chefão</td>
+            <td>29.99 R$</td>
+            <td>Blu-ray</td>
+            <td><input class="form-check-input" type="checkbox" value="" id="checkbox"></td>
+          </tr>
+          <tr class="text-center align-middle">
+            <td><img class="imagem" src="https://br.web.img3.acsta.net/medias/nmedia/18/90/95/96/20122166.jpg"></td>
+            <td>Clube da Luta</td>
+            <td>19.99 R$</td>
+            <td>Normal</td>
+            <td><input class="form-check-input" type="checkbox" value="" id="checkbox"></td>
+          </tr>
+          <tr class="text-center align-middle">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Abater o preço de todos os produtos -></td>
+            <td><input class="form-check-input" type="checkbox" value="" id="checkbox"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col-12 text-center">
+        <button type="button" class="btn btn-success disabled">Prosseguir</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-12 text-center mt-4">
+    <button type="button" class="btn btn-primary" (click)="backPage()">Retornar</button>
+  </div>
+</div>
+
