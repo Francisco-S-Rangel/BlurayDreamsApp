@@ -1,35 +1,47 @@
-<div class="container card mt-5 mb-5">
-  <div class="row">
+<div class="container mt-5 mb-5">
+  <div class="card row">
     <div class="col-md-12">
       <div class="p-3 py-5">
         <div class="d-flex mb-3">
-          <h1 class="text-right">Pedidos</h1>
+          <h1 class="text-right">Pedido Núm. 6</h1>
         </div>
         <table class="table table-striped">
           <thead class="">
             <tr class="text-center">
-              <th>Núm. Pedido</th>
-              <th>Valor Total</th>
-              <th>Status</th>
-              <th>Solicitar Troca?</th>
+              <th>Imagem</th>
+              <th>Titulo</th>
+              <th>Preço</th>
+              <th>Tipo</th>
+              <th>Solicitar Troca</th>
             </tr>
           </thead>
           <tbody>
             <tr class="text-center align-middle">
-              <td>1</td>
-              <td>99.99 R$</td>
-              <td>Em Transporte</td>
-              <td><button type="button" class="btn btn-success" disabled>Trocar</button></td>
+              <td><img class="imagem" src="https://br.web.img3.acsta.net/medias/nmedia/18/90/93/20/20120876.jpg"></td>
+              <td>O Poderoso Chefão</td>
+              <td>29.99 R$</td>
+              <td>Blu-ray</td>
+              <td><button type="button" class="btn btn-success">Trocar</button></td>
             </tr>
             <tr class="text-center align-middle">
-              <td>6</td>
-              <td>123.99 R$</td>
-              <td>Finalizado</td>
+              <td><img class="imagem" src="https://br.web.img3.acsta.net/medias/nmedia/18/90/95/96/20122166.jpg"></td>
+              <td>Clube da Luta</td>
+              <td>19.99 R$</td>
+              <td>Normal</td>
               <td><button type="button" class="btn btn-success">Trocar</button></td>
+            </tr>
+            <tr class="text-center align-middle">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><button type="button" class="btn btn-success">Trocar Todos</button></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
+  <div class="text-center mt-4">
+  <button type="button" class="btn btn-success" (click)="irParaPedidos()">Voltar</button>
 </div>
