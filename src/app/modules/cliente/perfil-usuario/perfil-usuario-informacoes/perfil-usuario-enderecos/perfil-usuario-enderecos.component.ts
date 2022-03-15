@@ -23,4 +23,8 @@ export class PerfilUsuarioEnderecosComponent implements OnInit {
 
   irParaAlterarCobranca(){this.router.navigate(['/perfil-usuario-altera-cobranca'])}
 
+  irParaCadastroCobranca(){this.router.navigate(['/perfil-usuario-cadastrar-cobranca'])}
+
+  irParaCadastroEntrega(){this.router.navigate(['/perfil-usuario-cadastrar-entrega'])}
+
 }

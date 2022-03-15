@@ -48,8 +48,10 @@ import { PerfilUsuarioTrocasComponent } from './modules/cliente/perfil-usuario/p
 import { PerfilUsuarioAlteraEntregaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-entrega/perfil-usuario-altera-entrega.component';
 import { PerfilUsuarioAlteraCobrancaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-cobranca/perfil-usuario-altera-cobranca.component';
 import { PerfilUsuarioAlteraCartaoComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-cartao/perfil-usuario-altera-cartao.component';
-
-
+import { PerfilUsuarioCadastrarCartaoComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cadastro/perfil-usuario-cadastrar-cartao/perfil-usuario-cadastrar-cartao.component';
+import { PerfilUsuarioCadastrarCobrancaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cadastro/perfil-usuario-cadastrar-cobranca/perfil-usuario-cadastrar-cobranca.component';
+import { PerfilUsuarioCadastrarEntregaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cadastro/perfil-usuario-cadastrar-entrega/perfil-usuario-cadastrar-entrega.component';
+import { PerfilUsuarioAlteraUsuarioComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-usuario/perfil-usuario-altera-usuario.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +87,11 @@ import { PerfilUsuarioAlteraCartaoComponent } from './modules/cliente/perfil-usu
     PerfilUsuarioAlteraEntregaComponent,
     PerfilUsuarioAlteraCobrancaComponent,
     PerfilUsuarioTrocasComponent,
-    PerfilUsuarioAlteraCartaoComponent
+    PerfilUsuarioAlteraCartaoComponent,
+    PerfilUsuarioCadastrarCartaoComponent,
+    PerfilUsuarioCadastrarCobrancaComponent,
+    PerfilUsuarioCadastrarEntregaComponent,
+    PerfilUsuarioAlteraUsuarioComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,7 @@
+import { PerfilUsuarioAlteraUsuarioComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-usuario/perfil-usuario-altera-usuario.component';
+import { PerfilUsuarioCadastrarEntregaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cadastro/perfil-usuario-cadastrar-entrega/perfil-usuario-cadastrar-entrega.component';
+import { PerfilUsuarioCadastrarCobrancaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cadastro/perfil-usuario-cadastrar-cobranca/perfil-usuario-cadastrar-cobranca.component';
+import { PerfilUsuarioCadastrarCartaoComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cadastro/perfil-usuario-cadastrar-cartao/perfil-usuario-cadastrar-cartao.component';
 import { PerfilUsuarioAlteraCartaoComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-cartao/perfil-usuario-altera-cartao.component';
 import { PerfilUsuarioAlteraCobrancaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-cobranca/perfil-usuario-altera-cobranca.component';
 import { PerfilUsuarioAlteraEntregaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-entrega/perfil-usuario-altera-entrega.component';
@@ -60,7 +64,11 @@ const routes: Routes = [
   {path: "perfil-usuario-trocas", component: PerfilUsuarioTrocasComponent},
   {path: "perfil-usuario-altera-entrega", component: PerfilUsuarioAlteraEntregaComponent},
   {path: "perfil-usuario-altera-cobranca", component: PerfilUsuarioAlteraCobrancaComponent},
-  {path: "perfil-usuario-altera-cartao", component: PerfilUsuarioAlteraCartaoComponent}
+  {path: "perfil-usuario-altera-cartao", component: PerfilUsuarioAlteraCartaoComponent},
+  {path: "perfil-usuario-cadastrar-cobranca", component: PerfilUsuarioCadastrarCobrancaComponent},
+  {path: "perfil-usuario-cadastrar-entrega", component: PerfilUsuarioCadastrarEntregaComponent},
+  {path: "perfil-usuario-cadastrar-cartao", component: PerfilUsuarioCadastrarCartaoComponent},
+  {path: "perfil-usuario-altera-usuario", component: PerfilUsuarioAlteraUsuarioComponent}
 ];
 
 @NgModule({

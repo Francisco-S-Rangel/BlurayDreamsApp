@@ -19,4 +19,6 @@ export class PerfilUsuarioMainComponent implements OnInit {
 
   irParaEnderecos(){this.router.navigate(['/perfil-usuario-enderecos'])}
 
+  irParaAlterarDados(){this.router.navigate(['/perfil-usuario-altera-usuario'])}
+
 }
