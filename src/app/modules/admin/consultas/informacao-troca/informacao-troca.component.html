@@ -9,32 +9,161 @@
     <div class="col-md-12">
         <div style="display: flex;">
         <h1><strong>ID Troca: </strong><span style="color: rgb(37, 37, 189);">001</span></h1>
-        <button style="margin-left: 74rem;"class="btn btn-primary">Editar Troca</button>
+        <!--<button style="margin-left: 74rem;"class="btn btn-primary">Editar Troca</button>-->
         </div>
     </div>
 
     <br><br>
 
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-            <h2 class="entidades">Troca</h2>
+        <div class="col-12">
+            <h2 class="entidades">Pedido de Troca</h2>
         </div>
 
         <table class="table table-hover">
             <thead class="table-active">
               <tr>
-                <th scope="col">Nome</th>
+                <th scope="col">Numero(id) da troca:</th>
+                <th scope="col">Status</th>
+                <th scope="col">Recebimento Produto</th>
+                <td scope="col">Aceitar Troca</td>
+                <td scope="col">Recursar Troca</td>
               </tr>
             </thead>
             <tbody>
 
               <tr>
-                <td></td>
+                <td>001</td>
+                <td>EM TROCA</td>
+                <td>01/11/2023</td>
+                <td><button class="btn btn-success">Aceitar</button></td>
+                <td><button class="btn btn-danger">Recusar</button></td>
               </tr>
 
             </tbody>
           </table>
 
+          <br>
+          <div style="background-color:rgb(37, 159, 189);">
+          <hr>
+          </div>
+          <hr>
+          <br>
+
+          <div class="col-12 text-center">
+            <h2 class="entidades">Dados do Pedido</h2>
+        </div>
+
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+          <h2 class="entidades">Cliente</h2>
+        </div>
+
+
+          <table class="table table-hover">
+            <thead class="table-active">
+              <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">id</th>
+                <th scope="col">CPF</th>
+                <td scope="col">Telefone</td>
+                <td scope="col">Email</td>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>Francisco de Souza Rangel</td>
+                <td>001</td>
+                <td>478312965-02</td>
+                <td>477415-5959</td>
+                <td>franciscorangel2552@gmail.com</td>
+              </tr>
+
+            </tbody>
+          </table>
+          
+          <br><br>
+
+          <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+            <h2 class="entidades">Pedido</h2>
+          </div>
+
+          <div class="card">
+            <div class="col-12 text-center">
+              <br>
+                <h2 class="col">
+                    <strong>Pedido numero(id): </strong>
+                    001
+                </h2>
+                <hr>
+            </div>
+            <h3 style="margin-left: 12px;"><strong>Produtos:</strong></h3>
+    
+            
+                <div class="col-12">
+                    <table class="table table-hover">
+                        <thead class="table-secondary">
+                            <tr>
+                                <th scope="col">Imagem</th>
+                                <th scope="col">Titulo</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col">Id Produto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img class="produtoImg"
+                                        src="https://www.cafecomfilme.com.br/media/k2/items/cache/8ffd18e59bf9d59135c7eafc3068ae79_L.jpg?t=20200206_184920" />
+                                </td>
+                                <td>Rambo - Programado para matar</td>
+                                <td>Dvd</td>
+                                <td>1</td>
+                                <td><strong>R$ 19,90</strong></td>
+                                <td>004</td>
+                            </tr>
+    
+                            <tr>
+                                <td><img class="produtoImg"
+                                        src="https://br.web.img3.acsta.net/medias/nmedia/18/90/95/96/20122166.jpg" />
+                                </td>
+                                <td>Rambo - Programado para matar</td>
+                                <td>Bluray</td>
+                                <td>1</td>
+                                <td><strong>R$ 39,90</strong></td>
+                                <td>012</td>
+                            </tr>
+    
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <div class="col-12">
+    
+                    <br>
+                    <table class="table table-hover">
+                        <thead class="table-secondary">
+                            <tr>
+                            <th scope="col">Frete: <strong class="azulfraco">R$ 4,00</strong></th>
+                            <th scope="col">Sub-total: <strong class="azulfraco">R$ 24,00</strong></th>
+                            <th scope="col">Desconto: <strong class="azulfraco">R$ 4,00</strong></th>
+                            <th scope="col">Total: <strong class="azulforte">R$ 20,00</strong></th>
+                            </tr>
+                        </thead>
+    
+                    </table>
+                    <br>
+    
+        </div>
+
+
+
     </div>
+   
+     <br>
+     <hr>
+     <br>
 
 </div>
