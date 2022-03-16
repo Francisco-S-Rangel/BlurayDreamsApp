@@ -3,17 +3,17 @@
     <div class="col-md-2">
       <div class="d-flex justify-content-center">
         <div class="padding">
-          <div class="row mb-5">
+          <div class="mb-5">
             <div class="col-md-12"><label class="links">Perfil</label></div>
           </div>
-          <div class="row mb-5">
-            <div class="col-md-12"><label class="links">Endereços</label></div>
+          <div class="mb-5">
+            <div class="col-md-12"><label class="links" (click)="irParaEnderecos()">Endereços</label></div>
           </div>
-          <div class="row mb-5">
-            <div class="col-md-12"><label class="links">Metodos de Pagamento</label></div>
+          <div class="mb-5">
+            <div class="col-md-12"><label class="links" (click)="irParaMetPagamentos()">Metodos de Pagamento</label></div>
           </div>
-          <div class="row mb-5">
-            <div class="col-md-12"><label class="links">Meus Pedidos</label></div>
+          <div class="mb-5">
+            <div class="col-md-12"><label class="links" (click)="irParaPedidos()">Meus Pedidos</label></div>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
         <div class="d-flex mb-3">
           <h1 class="text-right">Dados de Usuário</h1>
         </div>
-        <div class="row mt-2 mb-2">
+        <div class="mt-2 mb-2">
           <div class="col-md-12"><label class="labels">Nome Completo</label><input type="text" class="form-control"
               disabled></div>
         </div>
@@ -50,7 +50,7 @@
           <div class="col-md-6 mb-2"><label class="labels">Senha</label><input type="text" class="form-control"
               disabled></div>
         </div>
-        <div class="mt-4 text-center"><button class="btn btn-primary profile-button" type="button">Alterar Dados</button>
+          <div class="mt-4 text-center"><button class="btn btn-primary profile-button" type="button" (click)="irParaAlterarDados()">Alterar Dados</button>
         </div>
       </div>
     </div>

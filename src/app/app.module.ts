@@ -36,13 +36,25 @@ import { ModalCadastrarCartaoCreditoComponent } from './modules/admin/modal-cada
 import { TelaLoginComponent } from './modules/cliente/telas-publicas/tela-login/tela-login.component';
 import { CarrinhoComprasComponent } from './modules/cliente/carrinho-compras/carrinho-compras.component';
 import { TelaFuncionarioComponent } from './modules/admin/funcionario/tela-funcionario/tela-funcionario.component';
-import { PerfilUsuarioMainComponent } from './modules/cliente/perfil-usuario/perfil-usuario-main/perfil-usuario-main.component';
-import { PerfilUsuarioEnderecosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-enderecos/perfil-usuario-enderecos.component';
-import { PerfilUsuarioCartoesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cartoes/perfil-usuario-cartoes.component';
+import { PerfilUsuarioMainComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-main/perfil-usuario-main.component';
+import { PerfilUsuarioEnderecosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-enderecos/perfil-usuario-enderecos.component';
+import { PerfilUsuarioCartoesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-cartoes/perfil-usuario-cartoes.component';
 import { ConsultarProdutosComponent } from './modules/admin/consultas/consultar-produtos/consultar-produtos.component';
 import { InformacaoProdutoComponent } from './modules/admin/consultas/informacao-produto/informacao-produto.component';
 import { ConsultarTrocasComponent } from './modules/admin/consultas/consultar-trocas/consultar-trocas.component';
 import { InformacaoTrocaComponent } from './modules/admin/consultas/informacao-troca/informacao-troca.component';
+import { PerfilUsuarioPedidosComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-pedidos/perfil-usuario-pedidos.component';
+import { PerfilUsuarioTrocasComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-trocas/perfil-usuario-trocas.component';
+import { PerfilUsuarioAlteraEntregaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-entrega/perfil-usuario-altera-entrega.component';
+import { PerfilUsuarioAlteraCobrancaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-cobranca/perfil-usuario-altera-cobranca.component';
+import { PerfilUsuarioAlteraCartaoComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-cartao/perfil-usuario-altera-cartao.component';
+import { PerfilUsuarioCadastrarCartaoComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cadastro/perfil-usuario-cadastrar-cartao/perfil-usuario-cadastrar-cartao.component';
+import { PerfilUsuarioCadastrarCobrancaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cadastro/perfil-usuario-cadastrar-cobranca/perfil-usuario-cadastrar-cobranca.component';
+import { PerfilUsuarioCadastrarEntregaComponent } from './modules/cliente/perfil-usuario/perfil-usuario-cadastro/perfil-usuario-cadastrar-entrega/perfil-usuario-cadastrar-entrega.component';
+import { PerfilUsuarioAlteraUsuarioComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-usuario/perfil-usuario-altera-usuario.component';
+import { FinalizarCupomTrocaComponent } from './modules/cliente/finalizar-compra/finalizar-cupom-troca/finalizar-cupom-troca.component';
+import { FinalizarCartaoComponent } from './modules/cliente/finalizar-compra/finalizar-cartao/finalizar-cartao.component';
+
 
 @NgModule({
   declarations: [
@@ -73,7 +85,18 @@ import { InformacaoTrocaComponent } from './modules/admin/consultas/informacao-t
     ConsultarProdutosComponent,
     InformacaoProdutoComponent,
     ConsultarTrocasComponent,
-    InformacaoTrocaComponent
+    InformacaoTrocaComponent,
+    PerfilUsuarioPedidosComponent,
+    PerfilUsuarioAlteraEntregaComponent,
+    PerfilUsuarioAlteraCobrancaComponent,
+    PerfilUsuarioTrocasComponent,
+    PerfilUsuarioAlteraCartaoComponent,
+    PerfilUsuarioCadastrarCartaoComponent,
+    PerfilUsuarioCadastrarCobrancaComponent,
+    PerfilUsuarioCadastrarEntregaComponent,
+    PerfilUsuarioAlteraUsuarioComponent,
+    FinalizarCupomTrocaComponent,
+    FinalizarCartaoComponent
   ],
   imports: [
     BrowserModule,

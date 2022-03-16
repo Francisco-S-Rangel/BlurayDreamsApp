@@ -4,13 +4,14 @@
       <div class="d-flex justify-content-center">
         <div class="padding">
           <div class="row mb-5">
-            <div class="col-md-12"><label class="links">Perfil</label></div>
+            <div class="col-md-12"><label class="links" (click)="irParaPerfil()">Perfil</label></div>
           </div>
           <div class="row mb-5">
-            <div class="col-md-12"><label class="links">Endereços</label></div>
+            <div class="col-md-12"><label class="links" (click)="irParaEnderecos()">Endereços</label></div>
           </div>
           <div class="row mb-5">
-            <div class="col-md-12"><label class="links">Metodos de Pagamento</label></div>
+            <div class="col-md-12"><label class="links" (click)="irParaMetPagamentos()">Metodos de Pagamento</label>
+            </div>
           </div>
           <div class="row mb-5">
             <div class="col-md-12"><label class="links">Meus Pedidos</label></div>
@@ -28,38 +29,29 @@
     <div class="col-md-7">
       <div class="p-3 py-5">
         <div class="d-flex mb-3">
-          <h1 class="text-right">Cartões de Crédito</h1>
+          <h1 class="text-right">Pedidos</h1>
         </div>
         <table class="table table-striped">
           <thead class="">
             <tr class="text-center">
-              <th>Cartão Padrão</th>
-              <th>Núm. Cartão</th>
-              <th>Nome Titular</th>
-              <th>Bandeira</th>
-              <th>CVV</th>
-              <th>Alterar</th>
-              <th>Excluir</th>
+              <th>Núm. Pedido</th>
+              <th>Valor Total</th>
+              <th>Status</th>
+              <th>Ver Detalhes</th>
             </tr>
           </thead>
           <tbody>
             <tr class="text-center align-middle">
-              <td><input type="radio" checked></td>
-              <td>**** 9234</td>
-              <td>Matheus Ramires</td>
-              <td>VISA</td>
-              <td>453</td>
-              <td><button type="button" class="btn btn-primary">Alterar</button></td>
-              <td><button type="button" class="btn btn-danger">Excluir</button></td>
+              <td>1</td>
+              <td>99.99 R$</td>
+              <td>Em Transporte</td>
+              <td><button type="button" class="btn btn-success">Detalhes</button></td>
             </tr>
             <tr class="text-center align-middle">
-              <td><input type="radio"></td>
-              <td>**** 2341</td>
-              <td>Luis Ramires</td>
-              <td>Mastercard</td>
-              <td>800</td>
-              <td><button type="button" class="btn btn-primary">Alterar</button></td>
-              <td><button type="button" class="btn btn-danger">Excluir</button></td>
+              <td>6</td>
+              <td>123.99 R$</td>
+              <td>Finalizado</td>
+              <td><button type="button" class="btn btn-success" (click)="irParaTrocas()">Detalhes</button></td>
             </tr>
           </tbody>
         </table>

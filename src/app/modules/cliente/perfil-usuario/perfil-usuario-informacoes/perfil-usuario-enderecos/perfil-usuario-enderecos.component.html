@@ -4,16 +4,16 @@
       <div class="d-flex justify-content-center">
         <div class="padding">
           <div class="row mb-5">
-            <div class="col-md-12"><label class="links">Perfil</label></div>
+            <div class="col-md-12"><label class="links" (click)="irParaPerfil()">Perfil</label></div>
           </div>
           <div class="row mb-5">
             <div class="col-md-12"><label class="links">Endereços</label></div>
           </div>
           <div class="row mb-5">
-            <div class="col-md-12"><label class="links">Metodos de Pagamento</label></div>
+            <div class="col-md-12"><label class="links" (click)="irParaMetPagamentos()">Metodos de Pagamento</label></div>
           </div>
           <div class="row mb-5">
-            <div class="col-md-12"><label class="links">Meus Pedidos</label></div>
+            <div class="col-md-12"><label class="links" (click)="irParaPedidos()">Meus Pedidos</label></div>
           </div>
         </div>
       </div>
@@ -45,27 +45,28 @@
           </thead>
           <tbody>
             <tr class="text-center align-middle">
-              <td><input type="radio" checked></td>
+              <td><input type="radio" id="radio" name="radio" checked></td>
               <td>Casa da Vo</td>
               <td>08900001</td>
               <td>Rodeio</td>
               <td>Mogi das Cruzes</td>
               <td>SP</td>
-              <td><button type="button" class="btn btn-primary">Alterar</button></td>
+              <td><button type="button" class="btn btn-primary" (click)="irParaAlterarEntrega()">Alterar</button></td>
               <td><button type="button" class="btn btn-danger">Excluir</button></td>
             </tr>
             <tr class="text-center align-middle">
-              <td><input type="radio"></td>
+              <td><input type="radio" id="radio" name="radio"></td>
               <td>Casa da Vo</td>
               <td>08900001</td>
               <td>Rodeio</td>
               <td>Mogi das Cruzes</td>
               <td>SP</td>
-              <td><button type="button" class="btn btn-primary">Alterar</button></td>
+              <td><button type="button" class="btn btn-primary" (click)="irParaAlterarEntrega()">Alterar</button></td>
               <td><button type="button" class="btn btn-danger">Excluir</button></td>
             </tr>
           </tbody>
         </table>
+        <button type="button" class="btn btn-primary mt-2" (click)="irParaCadastroEntrega()">Adicionar Novo Endereço</button>
 
         <div class="d-flex mb-2 mt-4">
           <h1 class="text-right">Endereços de Cobrança</h1>
@@ -85,27 +86,31 @@
           </thead>
           <tbody>
             <tr class="text-center align-middle">
-              <td><input type="radio" checked></td>
+              <td><input type="radio" id="radio2" name="radio2" checked></td>
               <td>08900001</td>
               <td>Rodeio</td>
               <td>Mogi das Cruzes</td>
               <td>SP</td>
               <td>818</td>
-              <td><button type="button" class="btn btn-primary">Alterar</button></td>
+              <td><button type="button" class="btn btn-primary" (click)="irParaAlterarCobranca()">Alterar</button></td>
               <td><button type="button" class="btn btn-danger">Excluir</button></td>
             </tr>
             <tr class="text-center align-middle">
-              <td><input type="radio"></td>
+              <td><input type="radio" id="radio2" name="radio2"></td>
               <td>08900001</td>
               <td>Rodeio</td>
               <td>Mogi das Cruzes</td>
               <td>SP</td>
               <td>818</td>
-              <td><button type="button" class="btn btn-primary">Alterar</button></td>
+              <td><button type="button" class="btn btn-primary" (click)="irParaAlterarCobranca()">Alterar</button></td>
               <td><button type="button" class="btn btn-danger">Excluir</button></td>
             </tr>
           </tbody>
         </table>
+        <button type="button" class="btn btn-primary mt-2" (click)="irParaCadastroCobranca()">Adicionar Novo Endereço</button>
+        <div class="text-center mt-5">
+          <button type="button" class="btn btn-success">Confirmar Alterações</button>
+        </div>
       </div>
     </div>
   </div>
