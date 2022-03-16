@@ -15,5 +15,6 @@ export class TelaLoginComponent implements OnInit {
   }
 
   backPage() { this.router.navigate(['']); }
+  cadastrarCliente() { this.router.navigate(['cadastrar-cliente']);}
 
 }
