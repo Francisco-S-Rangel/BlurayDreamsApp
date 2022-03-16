@@ -54,6 +54,7 @@ import { PerfilUsuarioCadastrarEntregaComponent } from './modules/cliente/perfil
 import { PerfilUsuarioAlteraUsuarioComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-usuario/perfil-usuario-altera-usuario.component';
 import { FinalizarCupomTrocaComponent } from './modules/cliente/finalizar-compra/finalizar-cupom-troca/finalizar-cupom-troca.component';
 import { FinalizarCartaoComponent } from './modules/cliente/finalizar-compra/finalizar-cartao/finalizar-cartao.component';
+import { TelaPesquisaComponent } from './modules/cliente/telas-publicas/tela-pesquisa/tela-pesquisa.component';
 
 
 @NgModule({
@@ -96,7 +97,8 @@ import { FinalizarCartaoComponent } from './modules/cliente/finalizar-compra/fin
     PerfilUsuarioCadastrarEntregaComponent,
     PerfilUsuarioAlteraUsuarioComponent,
     FinalizarCupomTrocaComponent,
-    FinalizarCartaoComponent
+    FinalizarCartaoComponent,
+    TelaPesquisaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { TelaPesquisaComponent } from './modules/cliente/telas-publicas/tela-pesquisa/tela-pesquisa.component';
 import { FinalizarCartaoComponent } from './modules/cliente/finalizar-compra/finalizar-cartao/finalizar-cartao.component';
 import { FinalizarCupomTrocaComponent } from './modules/cliente/finalizar-compra/finalizar-cupom-troca/finalizar-cupom-troca.component';
 import { PerfilUsuarioAlteraUsuarioComponent } from './modules/cliente/perfil-usuario/perfil-usuario-alteracoes/perfil-usuario-altera-usuario/perfil-usuario-altera-usuario.component';
@@ -72,7 +73,8 @@ const routes: Routes = [
   {path: "perfil-usuario-cadastrar-cartao", component: PerfilUsuarioCadastrarCartaoComponent},
   {path: "perfil-usuario-altera-usuario", component: PerfilUsuarioAlteraUsuarioComponent},
   {path: "finalizar-cupom-troca", component: FinalizarCupomTrocaComponent},
-  {path: "finalizar-cartao", component: FinalizarCartaoComponent}
+  {path: "finalizar-cartao", component: FinalizarCartaoComponent},
+  {path: "tela-pesquisa", component: TelaPesquisaComponent}
 ];
 
 @NgModule({
