@@ -1,3 +1,4 @@
+import { ModalCadastroProdutoComponent } from './modules/admin/modal-cadastros/modal-cadastro-produto/modal-cadastro-produto.component';
 import { TelaPesquisaComponent } from './modules/cliente/telas-publicas/tela-pesquisa/tela-pesquisa.component';
 import { FinalizarCartaoComponent } from './modules/cliente/finalizar-compra/finalizar-cartao/finalizar-cartao.component';
 import { FinalizarCupomTrocaComponent } from './modules/cliente/finalizar-compra/finalizar-cupom-troca/finalizar-cupom-troca.component';
@@ -74,7 +75,8 @@ const routes: Routes = [
   {path: "perfil-usuario-altera-usuario", component: PerfilUsuarioAlteraUsuarioComponent},
   {path: "finalizar-cupom-troca", component: FinalizarCupomTrocaComponent},
   {path: "finalizar-cartao", component: FinalizarCartaoComponent},
-  {path: "tela-pesquisa", component: TelaPesquisaComponent}
+  {path: "tela-pesquisa", component: TelaPesquisaComponent},
+  {path: "cadastrar-produto", component: ModalCadastroProdutoComponent}
 ];
 
 @NgModule({

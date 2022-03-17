@@ -16,5 +16,6 @@ export class ConsultarProdutosComponent implements OnInit {
 
   backPage() { this.router.navigate(['tela-funcionario']); }
   informacaoProduto() { this.router.navigate(['informacao-produto']); }
+  cadastrarNovoProduto() { this.router.navigate(['cadastrar-produto']); }
 
 }

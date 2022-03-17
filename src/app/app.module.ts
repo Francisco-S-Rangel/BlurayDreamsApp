@@ -55,6 +55,7 @@ import { PerfilUsuarioAlteraUsuarioComponent } from './modules/cliente/perfil-us
 import { FinalizarCupomTrocaComponent } from './modules/cliente/finalizar-compra/finalizar-cupom-troca/finalizar-cupom-troca.component';
 import { FinalizarCartaoComponent } from './modules/cliente/finalizar-compra/finalizar-cartao/finalizar-cartao.component';
 import { TelaPesquisaComponent } from './modules/cliente/telas-publicas/tela-pesquisa/tela-pesquisa.component';
+import { ModalCadastroProdutoComponent } from './modules/admin/modal-cadastros/modal-cadastro-produto/modal-cadastro-produto.component';
 
 
 @NgModule({
@@ -98,7 +99,8 @@ import { TelaPesquisaComponent } from './modules/cliente/telas-publicas/tela-pes
     PerfilUsuarioAlteraUsuarioComponent,
     FinalizarCupomTrocaComponent,
     FinalizarCartaoComponent,
-    TelaPesquisaComponent
+    TelaPesquisaComponent,
+    ModalCadastroProdutoComponent
   ],
   imports: [
     BrowserModule,
