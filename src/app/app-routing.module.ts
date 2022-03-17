@@ -1,3 +1,4 @@
+import { ProdutoSelecionadoComponent } from './modules/cliente/telas-publicas/produto-selecionado/produto-selecionado.component';
 import { ModalCadastroProdutoComponent } from './modules/admin/modal-cadastros/modal-cadastro-produto/modal-cadastro-produto.component';
 import { FinalizarEnderecoEntregaComponent } from './modules/cliente/finalizar-compra/finalizar-endereco-entrega/finalizar-endereco-entrega.component';
 import { FinalizarEnderecoCobrancaComponent } from './modules/cliente/finalizar-compra/finalizar-endereco-cobranca/finalizar-endereco-cobranca.component';
@@ -78,9 +79,10 @@ const routes: Routes = [
   {path: "finalizar-cupom-troca", component: FinalizarCupomTrocaComponent},
   {path: "finalizar-cartao", component: FinalizarCartaoComponent},
   {path: "tela-pesquisa", component: TelaPesquisaComponent},
-  {path: "cadastrar-produto", component: ModalCadastroProdutoComponent}
+  {path: "cadastrar-produto", component: ModalCadastroProdutoComponent},
   {path: "finalizar-endereco-cobranca", component: FinalizarEnderecoCobrancaComponent},
-  {path: "finalizar-endereco-entrega", component: FinalizarEnderecoEntregaComponent}
+  {path: "finalizar-endereco-entrega", component: FinalizarEnderecoEntregaComponent},
+  {path: "produto-selecionado", component: ProdutoSelecionadoComponent}
 ];
 
 @NgModule({

@@ -2,9 +2,11 @@
     <div class="row">
         <ng-container *ngFor="let filme of filmes">
             <div class="card col-md-6">
+            <a (click)="produtoSelecionado()">
                 <img src="{{filme.img}}" alt="">
                 <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{filme.titulo}}</h5>
                 <div class="precos"><small class="dvd"><strong>Dvd:</strong> R${{filme.dvd}}</small> <small class="bluray"><strong>Bluray:</strong> R${{filme.bluray}}</small></div>
+            </a> 
                 <button class="btn-carrinho">Adicionar ao carrinho</button>
             </div>
         </ng-container>

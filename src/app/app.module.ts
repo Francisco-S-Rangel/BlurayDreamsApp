@@ -59,6 +59,7 @@ import { ModalCadastroProdutoComponent } from './modules/admin/modal-cadastros/m
 
 import { FinalizarEnderecoCobrancaComponent } from './modules/cliente/finalizar-compra/finalizar-endereco-cobranca/finalizar-endereco-cobranca.component';
 import { FinalizarEnderecoEntregaComponent } from './modules/cliente/finalizar-compra/finalizar-endereco-entrega/finalizar-endereco-entrega.component';
+import { ProdutoSelecionadoComponent } from './modules/cliente/telas-publicas/produto-selecionado/produto-selecionado.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { FinalizarEnderecoEntregaComponent } from './modules/cliente/finalizar-c
     TelaPesquisaComponent,
     ModalCadastroProdutoComponent,
     FinalizarEnderecoCobrancaComponent,
-    FinalizarEnderecoEntregaComponent
+    FinalizarEnderecoEntregaComponent,
+    ProdutoSelecionadoComponent
   ],
   imports: [
     BrowserModule,
