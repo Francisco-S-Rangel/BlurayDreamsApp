@@ -56,9 +56,10 @@ import { FinalizarCupomTrocaComponent } from './modules/cliente/finalizar-compra
 import { FinalizarCartaoComponent } from './modules/cliente/finalizar-compra/finalizar-cartao/finalizar-cartao.component';
 import { TelaPesquisaComponent } from './modules/cliente/telas-publicas/tela-pesquisa/tela-pesquisa.component';
 import { ModalCadastroProdutoComponent } from './modules/admin/modal-cadastros/modal-cadastro-produto/modal-cadastro-produto.component';
-
 import { FinalizarEnderecoCobrancaComponent } from './modules/cliente/finalizar-compra/finalizar-endereco-cobranca/finalizar-endereco-cobranca.component';
 import { FinalizarEnderecoEntregaComponent } from './modules/cliente/finalizar-compra/finalizar-endereco-entrega/finalizar-endereco-entrega.component';
+import { ModalEditarProdutosComponent } from './modules/admin/modal-alteracoes/modal-editar-produtos/modal-editar-produtos.component';
+import { ModalCadastrarEstoqueComponent } from './modules/admin/modal-cadastros/modal-cadastrar-estoque/modal-cadastrar-estoque.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,9 @@ import { FinalizarEnderecoEntregaComponent } from './modules/cliente/finalizar-c
     TelaPesquisaComponent,
     ModalCadastroProdutoComponent,
     FinalizarEnderecoCobrancaComponent,
-    FinalizarEnderecoEntregaComponent
+    FinalizarEnderecoEntregaComponent,
+    ModalEditarProdutosComponent,
+    ModalCadastrarEstoqueComponent
   ],
   imports: [
     BrowserModule,
