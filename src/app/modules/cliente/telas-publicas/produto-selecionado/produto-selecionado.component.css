@@ -35,8 +35,7 @@
     height: 42px;
     background-color: rgb(63, 63, 63);
     color: rgb(243, 243, 243);
-    border-left: 2px solid black;
-    border-right: 2px solid black;
+    border: 2px solid black;
     font-weight: normal;
 }
 .corpo {
@@ -83,9 +82,10 @@ img {
 }
 .btn-comprar {
     margin-left: 4px;
-    width: 186px;
-    height: 76px;
+    width: 216px;
+    height: 86px;
     background-color: #23be3d;
+    background-color: #d33dbf;
     color: white;
     font-weight: 600;
     border: none;
@@ -94,28 +94,20 @@ img {
 }
 .btn-comprar:hover {
     background-color: #1f6e25;
-}
-.btn-carrinho {
-    margin-left: 4px;
-    width: 186px;
-    height: 76px;
-    background-color: #37b4da;
-    color: white;
-    font-weight: 600;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.btn-carrinho:hover {
-    background-color: #1f39af;
+    background-color: #a51f88;
 }
 .form-label {
     font-weight: 600;
 }
-.roxofraco {
-    color: rgb(217, 23, 235);
+.form-label2 {
+    font-weight: 600;
+    font-size: 22px;
+}
+.form-label3 {
+    font-weight: 600;
+    font-size: 16px;
 }
 .azulforte {
-    font-size: 16px;
-    color: blue;
+    font-size: 24px;
+    color: rgb(25, 139, 214);
 }
