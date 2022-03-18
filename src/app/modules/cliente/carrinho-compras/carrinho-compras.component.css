@@ -55,10 +55,11 @@ comCupom {
     background-color: #a51f88;
 }
 .azulfraco {
-    color: rgb(36, 189, 216);
+    color: #a51f88;
 }
 .azulforte {
     font-weight: 600;
+    font-size: 16px;
     color: blue;
 }
 thead th {

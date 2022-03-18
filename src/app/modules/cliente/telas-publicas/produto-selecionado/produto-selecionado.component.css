@@ -84,7 +84,6 @@ img {
     margin-left: 4px;
     width: 216px;
     height: 86px;
-    background-color: #23be3d;
     background-color: #d33dbf;
     color: white;
     font-weight: 600;
@@ -93,7 +92,6 @@ img {
     cursor: pointer;
 }
 .btn-comprar:hover {
-    background-color: #1f6e25;
     background-color: #a51f88;
 }
 .form-label {
