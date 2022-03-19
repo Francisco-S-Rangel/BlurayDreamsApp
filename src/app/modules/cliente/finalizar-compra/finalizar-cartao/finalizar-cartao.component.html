@@ -1,5 +1,8 @@
 <div class="container">
   <div class="card">
+    <div class="text-center">
+      Value: {{formCartao.value | json}}
+    </div>
     <div class="col-12 text-center">
       <label class="label">Escolher Cartão</label>
     </div>
@@ -66,7 +69,7 @@
         </div>
       </div>
       <div class="col-12 text-center">
-        <button type="button" class="btn btn-primary mt-3" [disabled]="!formCartao.valid"
+        <button type="button" class="btn btn-primary mt-3" [disabled]="formCartao.invalid"
           (click)="cadastrarCartao()">Proximo</button>
       </div>
     </form>
