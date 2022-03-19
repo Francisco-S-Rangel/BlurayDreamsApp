@@ -20,6 +20,10 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: rgb(245, 245, 245);
 }
+.card2 {
+    background-color: rgb(224, 224, 224);
+    border: 3px solid black;
+}
 .carrinhoImg {
     height: 60px;
     width: 60px;
@@ -67,19 +71,23 @@ comCupom {
 .btn-cupom:hover {
     background-color: #a51f88;
 }
-.azulfraco {
-    color: #a51f88;
-}
 .azulforte {
     font-weight: 600;
     font-size: 16px;
     color: blue;
 }
 .color {
-    color: #1183e7;
+    color: #a51f88;
 }
-thead th {
+.titulo th {
     padding: 20px;
     border-bottom: 2px solid black;
     border-top: 2px solid black;
-  }
+}
+.table-danger {
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;  
+}
+.espaco {
+    margin-left: 12px;
+}
