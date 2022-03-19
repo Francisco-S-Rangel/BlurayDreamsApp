@@ -1,3 +1,6 @@
+import { InfoPedidoEscolhidoComponent } from './modules/admin/consultas/info-pedido-escolhido/info-pedido-escolhido.component';
+import { InformacaoPedidosComponent } from './modules/admin/consultas/informacao-pedidos/informacao-pedidos.component';
+import { ProdutoSelecionadoComponent } from './modules/cliente/telas-publicas/produto-selecionado/produto-selecionado.component';
 import { ModalCadastrarEstoqueComponent } from './modules/admin/modal-cadastros/modal-cadastrar-estoque/modal-cadastrar-estoque.component';
 import { ModalEditarProdutosComponent } from './modules/admin/modal-alteracoes/modal-editar-produtos/modal-editar-produtos.component';
 import { ModalCadastroProdutoComponent } from './modules/admin/modal-cadastros/modal-cadastro-produto/modal-cadastro-produto.component';
@@ -83,8 +86,11 @@ const routes: Routes = [
   {path: "cadastrar-produto", component: ModalCadastroProdutoComponent},
   {path: "finalizar-endereco-cobranca", component: FinalizarEnderecoCobrancaComponent},
   {path: "finalizar-endereco-entrega", component: FinalizarEnderecoEntregaComponent},
+  {path: "produto-selecionado", component: ProdutoSelecionadoComponent},
   {path: "editar-produto", component: ModalEditarProdutosComponent},
-  {path: "cadastrar-estoque", component: ModalCadastrarEstoqueComponent}
+  {path: "cadastrar-estoque", component: ModalCadastrarEstoqueComponent},
+  {path: "informacao-pedidos/:id", component: InformacaoPedidosComponent},
+  {path: "info-pedido-escolhido/:id", component: InfoPedidoEscolhidoComponent}
 ];
 
 @NgModule({

@@ -58,8 +58,11 @@ import { TelaPesquisaComponent } from './modules/cliente/telas-publicas/tela-pes
 import { ModalCadastroProdutoComponent } from './modules/admin/modal-cadastros/modal-cadastro-produto/modal-cadastro-produto.component';
 import { FinalizarEnderecoCobrancaComponent } from './modules/cliente/finalizar-compra/finalizar-endereco-cobranca/finalizar-endereco-cobranca.component';
 import { FinalizarEnderecoEntregaComponent } from './modules/cliente/finalizar-compra/finalizar-endereco-entrega/finalizar-endereco-entrega.component';
+import { ProdutoSelecionadoComponent } from './modules/cliente/telas-publicas/produto-selecionado/produto-selecionado.component';
 import { ModalEditarProdutosComponent } from './modules/admin/modal-alteracoes/modal-editar-produtos/modal-editar-produtos.component';
 import { ModalCadastrarEstoqueComponent } from './modules/admin/modal-cadastros/modal-cadastrar-estoque/modal-cadastrar-estoque.component';
+import { InformacaoPedidosComponent } from './modules/admin/consultas/informacao-pedidos/informacao-pedidos.component';
+import { InfoPedidoEscolhidoComponent } from './modules/admin/consultas/info-pedido-escolhido/info-pedido-escolhido.component';
 
 @NgModule({
   declarations: [
@@ -106,8 +109,11 @@ import { ModalCadastrarEstoqueComponent } from './modules/admin/modal-cadastros/
     ModalCadastroProdutoComponent,
     FinalizarEnderecoCobrancaComponent,
     FinalizarEnderecoEntregaComponent,
+    ProdutoSelecionadoComponent,
     ModalEditarProdutosComponent,
-    ModalCadastrarEstoqueComponent
+    ModalCadastrarEstoqueComponent,
+    InformacaoPedidosComponent,
+    InfoPedidoEscolhidoComponent
   ],
   imports: [
     BrowserModule,

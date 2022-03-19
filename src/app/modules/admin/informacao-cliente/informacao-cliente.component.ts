@@ -125,4 +125,7 @@ export class InformacaoClienteComponent implements OnInit {
 
   cadastrarCartaoCredito(clienteid: number) {this.router.navigate([`cadastrar-cartao-credito/${clienteid}`]);}
 
+  //Pedidos
+  verPedidos(id: number){ this.router.navigate([`informacao-pedidos/${id}`]);}
+
 }

@@ -183,10 +183,15 @@
 
     <br>
     <div class="col-md-12 text-center">
-      <button type="button" class="btn btn-success" (click)=" cadastrarCartaoCredito(cliente.id)">Cadastrar Novo Cartão</button>
+      <button type="button" class="btn btn-success" (click)="cadastrarCartaoCredito(cliente.id)">Cadastrar Novo Cartão</button>
     </div>
 
     <br><br>
-
+    <hr>
+    <br>
+    <div class="col-md-12 text-center">
+      <h1><strong>Todos os Pedidos do Cliente: </strong><span style="color: #d33dbf;"><strong>{{cliente.id}}</strong></span></h1>
+      <button type="button" class="btn-pedidos" (click)="verPedidos(cliente.id)">Ver pedidos</button>
+    </div>
 
 </div>

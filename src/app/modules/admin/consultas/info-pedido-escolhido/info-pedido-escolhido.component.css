@@ -1,7 +1,20 @@
-.container {
-    margin-top: 120px;
-    margin-bottom: 120px;
-    
+.custom-btn-back {
+    background-position: 15% 55%;
+    background-color: rgb(218, 218, 218);
+    background-size: 5px;
+    border-radius: 5px;
+    width: 100px;
+    height: 42px;
+    border: 1px solid rgb(142, 142, 142);
+    outline: none;
+    margin: 2px;
+    cursor: pointer;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+.custom-btn-back:hover {
+    background-color: rgb(142, 142, 142);
 }
 .card {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -61,6 +74,9 @@ comCupom {
     font-weight: 600;
     font-size: 16px;
     color: blue;
+}
+.color {
+    color: #1183e7;
 }
 thead th {
     padding: 20px;

@@ -1,0 +1,39 @@
+<div class="container-fluid my-4 mx-auto" *ngIf="cliente">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+            <button class="custom-btn-back" type="button" (click)="backPage(cliente.id)">Retornar</button>
+        </div>
+    </div>
+    <hr>
+    <div class="col-12 text-center">
+        <h1><strong>Todos os Pedidos do Cliente: </strong><span style="color: #d33dbf;"><strong>001</strong></span></h1>
+        <br>
+        <table class="table table-hover">
+            <thead class="table-primary">
+              <tr class="text-center">
+                <th>Número Pedido(id)</th>
+                <th>Valor Total</th>
+                <th>Status</th>
+                <th>Ver Detalhes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center align-middle">
+                <td>001</td>
+                <td>R$ 99.99</td>
+                <td>Em Transporte</td>
+                <td><button type="button" class="btn btn-info" (click)="irPedidoEscolhido(cliente.id)" >Detalhes</button></td>
+              </tr>
+              <tr class="text-center align-middle">
+                <td>002</td>
+                <td>R$ 123.99</td>
+                <td>Finalizado</td>
+                <td><button type="button" class="btn btn-info">Detalhes</button></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <br>
+    <hr>
+    <br>
+</div>
