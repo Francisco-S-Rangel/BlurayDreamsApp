@@ -75,21 +75,27 @@ export class InformacaoClienteComponent implements OnInit {
 
   // Excluir caso desejado de cada Entidade
   deletarEnderecoCobrancas(id: number){
+    if(this.EnderecoCobrancas?.length == 1){
+
+    }else{
     this.enderecoCobrancaService.delete(id).subscribe(
       (model: any)=>{
         console.log(model);
         this.ngOnInit();
       }
-    );
+    );}
   }
 
   deletarEnderecoEntregas(id: number){
+    if(this.EnderecoEntregas?.length == 1){
+
+    }else{
     this.enderecoEntregasService.delete(id).subscribe(
       (model: any)=>{
         console.log(model);
         this.ngOnInit();
       }
-    );
+    );}
   }
 
   deletarCartaoCreditos(id: number){

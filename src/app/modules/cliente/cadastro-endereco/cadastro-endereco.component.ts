@@ -1,3 +1,4 @@
+import { Cliente } from './../../shared/models/cliente';
 import { SharedDataService } from './../../shared/services/shared-data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,7 +13,8 @@ export class CadastroEnderecoComponent implements OnInit {
 
   formEndereco!: FormGroup;
 
-  cliente: any
+  cliente?: any
+  clienteDono: Cliente | undefined;
 
   str: any
 
@@ -46,7 +48,7 @@ export class CadastroEnderecoComponent implements OnInit {
       cidade: "",
       estado: "",
       pais: "",
-      numero: ""
+      numero: "",
     }
   ]
 
