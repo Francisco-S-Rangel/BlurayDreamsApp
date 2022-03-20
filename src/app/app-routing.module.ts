@@ -1,3 +1,7 @@
+import { MotivoInativacaoClienteComponent } from './modules/admin/ativacoes-inativacoes/clientes/motivo-inativacao-cliente/motivo-inativacao-cliente.component';
+import { MotivoAtivacaoClienteComponent } from './modules/admin/ativacoes-inativacoes/clientes/motivo-ativacao-cliente/motivo-ativacao-cliente.component';
+import { MotivoInativacaoComponent } from './modules/admin/ativacoes-inativacoes/produtos/motivo-inativacao-produto/motivo-inativacao.component';
+import { MotivoAtivacaoComponent } from './modules/admin/ativacoes-inativacoes/produtos/motivo-ativacao-produto/motivo-ativacao.component';
 import { InfoPedidoEscolhidoComponent } from './modules/admin/consultas/info-pedido-escolhido/info-pedido-escolhido.component';
 import { InformacaoPedidosComponent } from './modules/admin/consultas/informacao-pedidos/informacao-pedidos.component';
 import { ProdutoSelecionadoComponent } from './modules/cliente/telas-publicas/produto-selecionado/produto-selecionado.component';
@@ -90,7 +94,11 @@ const routes: Routes = [
   {path: "editar-produto", component: ModalEditarProdutosComponent},
   {path: "cadastrar-estoque", component: ModalCadastrarEstoqueComponent},
   {path: "informacao-pedidos/:id", component: InformacaoPedidosComponent},
-  {path: "info-pedido-escolhido/:id", component: InfoPedidoEscolhidoComponent}
+  {path: "info-pedido-escolhido/:id", component: InfoPedidoEscolhidoComponent},
+  {path: "motivo-ativacao-produto", component: MotivoAtivacaoComponent},
+  {path: "motivo-inativacao-produto", component: MotivoInativacaoComponent},
+  {path: "motivo-ativacao-cliente", component: MotivoAtivacaoClienteComponent},
+  {path: "motivo-inativacao-cliente", component: MotivoInativacaoClienteComponent}
 ];
 
 @NgModule({

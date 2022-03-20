@@ -89,29 +89,31 @@
                                         </mat-panel-title>
                                     </mat-expansion-panel-header>
 
-                                    
+
                                         <div class="col-12 mt-2 mb-2 custom-table-form-box">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
                                                 <table style="margin-top: 2%;" cellspacing="0" cellpadding="0" class="table custom-table mt-3">
 
                                                     <thead>
                                                         <tr style="border-bottom: 1px solid #E6E6E6;">
-                        
+
                                                             <th scope="col">Dados do Cliente</th>
                                                             <th scope="col">Excluir o cliente</th>
+                                                            <th scope="col">Inativar Cliente</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td><button class="btn btn-primary" type="button" (click)="irInformacaoCliente(cliente.id)">Visualizar</button></td>
                                                             <td><button class="btn btn-danger" type="button" (click)="deletarCliente(cliente.id)">Excluir</button></td>
+                                                            <td><button class="btn btn-warning" type="button" (click)="inativarCliente()">Inativar</button></td>
                                                         </tr>
                                                     </tbody>
 
                                                 </table>
                                             </div>
                                         </div>
-                                    
+
 
                                 </mat-expansion-panel>
                             </mat-accordion>
@@ -134,7 +136,7 @@
     <div class="col-12 mt-3">
         <nav>
             <ul class="pagination pagination-sm justify-content-center">
-                
+
                 <li class="page-item">
                     <a class="page-link" tabindex="-1">
                         <img class="passador"src=".\assets\icons8-chevron-esquerda-50.png" alt="Anterior">

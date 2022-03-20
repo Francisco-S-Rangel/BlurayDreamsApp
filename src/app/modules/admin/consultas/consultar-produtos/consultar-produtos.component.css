@@ -88,3 +88,7 @@
     width: 18px;
     height: 18px;
 }
+
+.btn-warning:hover {
+  background-color: #d49c02
+}

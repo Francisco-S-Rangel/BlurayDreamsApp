@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="card">
+    <div class="col-12 text-center">
+      <label class="label">Categoria de Inativação</label>
+    </div>
+    <div class="col-12">
+      <div class="row">
+        <label class="form-label">Categoria de Inativação</label>
+      </div>
+      <select class="form-select">
+        <option selected>-- Escolha uma Categoria de Inativação --</option>
+        <option value="1">Falta Estoque</option>
+        <option value="2">Baixas Vendas</option>
+      </select>
+    </div>
+    <div class="col-12 text-center mt-3">
+      <button type="button" class="btn btn-primary mt-3" >Inativar Produto</button>
+    </div>
+  </div>
+  <div class="col-12 text-center mt-4">
+    <button type="button" class="btn btn-primary" (click)="backPage()">Retornar</button>
+  </div>
+</div>

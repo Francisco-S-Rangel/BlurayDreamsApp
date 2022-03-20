@@ -63,6 +63,10 @@ import { ModalEditarProdutosComponent } from './modules/admin/modal-alteracoes/m
 import { ModalCadastrarEstoqueComponent } from './modules/admin/modal-cadastros/modal-cadastrar-estoque/modal-cadastrar-estoque.component';
 import { InformacaoPedidosComponent } from './modules/admin/consultas/informacao-pedidos/informacao-pedidos.component';
 import { InfoPedidoEscolhidoComponent } from './modules/admin/consultas/info-pedido-escolhido/info-pedido-escolhido.component';
+import { MotivoAtivacaoComponent } from './modules/admin/ativacoes-inativacoes/produtos/motivo-ativacao-produto/motivo-ativacao.component';
+import { MotivoInativacaoComponent } from './modules/admin/ativacoes-inativacoes/produtos/motivo-inativacao-produto/motivo-inativacao.component';
+import { MotivoInativacaoClienteComponent } from './modules/admin/ativacoes-inativacoes/clientes/motivo-inativacao-cliente/motivo-inativacao-cliente.component';
+import { MotivoAtivacaoClienteComponent } from './modules/admin/ativacoes-inativacoes/clientes/motivo-ativacao-cliente/motivo-ativacao-cliente.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +117,11 @@ import { InfoPedidoEscolhidoComponent } from './modules/admin/consultas/info-ped
     ModalEditarProdutosComponent,
     ModalCadastrarEstoqueComponent,
     InformacaoPedidosComponent,
-    InfoPedidoEscolhidoComponent
+    InfoPedidoEscolhidoComponent,
+    MotivoAtivacaoComponent,
+    MotivoInativacaoComponent,
+    MotivoInativacaoClienteComponent,
+    MotivoAtivacaoClienteComponent
   ],
   imports: [
     BrowserModule,

@@ -15,4 +15,6 @@ export class InformacaoProdutoComponent implements OnInit {
 
   backPage(){this.router.navigate(['consultar-produtos']);}
 
+  editarProduto(){this.router.navigate(['editar-produto']);}
+
 }
