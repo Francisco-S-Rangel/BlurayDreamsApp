@@ -45,6 +45,7 @@ export class FinalizarCartaoComponent implements OnInit {
     }
 
   cadastrarCartao() {
+    this.router.navigate(['/finalizar-endereco-cobranca']);
   }
 
   public validacao(): void {

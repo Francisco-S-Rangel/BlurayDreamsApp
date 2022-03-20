@@ -15,4 +15,6 @@ export class CarrinhoComprasComponent implements OnInit {
 
   irParaTrocas(){this.router.navigate(['/finalizar-cupom-troca'])}
 
+  finalizarPedido(){this.router.navigate(['/finalizar-cartao'])}
+
 }

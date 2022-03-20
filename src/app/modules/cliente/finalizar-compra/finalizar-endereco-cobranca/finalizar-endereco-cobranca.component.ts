@@ -54,13 +54,7 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
 
 
   cadastrarEndereco() {
-    console.log(this.formEndereco.value);
-    this.EnderecoCobrancaService.post(this.formEndereco.value).subscribe(
-      () => {
-        console.log();
-        this.backPage();
-      }
-    );
+    this.router.navigate(['finalizar-endereco-entrega']);
   }
 
   keyPressNumbers(event: any) {
