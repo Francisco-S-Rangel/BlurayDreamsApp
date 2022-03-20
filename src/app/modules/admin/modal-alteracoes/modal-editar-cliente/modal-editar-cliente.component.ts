@@ -6,6 +6,12 @@ import { AbstractControl, AbstractControlOptions, FormBuilder, FormControl, Form
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cliente.service';
 import { ThisReceiver } from '@angular/compiler';
+import { EnderecoCobrancaService } from 'src/app/modules/shared/services/cadastro-dados-cliente/endereco-cobranca.service';
+import { EnderecoEntregaService } from 'src/app/modules/shared/services/cadastro-dados-cliente/endereco-entrega.service';
+import { CartaoCreditoService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cartao-credito.service';
+import { EnderecoCobrancas } from 'src/app/modules/shared/models/enderecoCobranca';
+import { EnderecoEntregas } from 'src/app/modules/shared/models/enderecoEntrega';
+import { CartaoCredito } from 'src/app/modules/shared/models/cartaoCredito';
 
 
 
@@ -16,9 +22,12 @@ import { ThisReceiver } from '@angular/compiler';
 })
 export class ModalEditarClienteComponent implements OnInit {
 
-  public id?: number;
+  public id: number = 0;
   public idAux: number = 0;
   public form!: FormGroup;
+  public EnderecoCobrancas?: EnderecoCobrancas[];
+   public EnderecoEntregas?: EnderecoEntregas[];
+   public CartaoCreditos?: CartaoCredito[];
 
   Clientes = {
     id: this.idAux,
@@ -29,21 +38,30 @@ export class ModalEditarClienteComponent implements OnInit {
     tipoTelefone: "",
     cpf: "",
     email: "",
-    senha: ""
+    senha: "",
+    enderecoCobrancas: this.EnderecoCobrancas,
+    enderecoEntregas: this.EnderecoEntregas,
+    cartaoCredito?: this.CartaoCreditos
   }
+  
 
   get f(): any {
     return this.form.controls;
   }
 
   constructor(private router: Router, private formBuilder: FormBuilder, private shared: SharedDataService
-    , private route: ActivatedRoute, private clienteService: ClienteService, private cdRef: ChangeDetectorRef) { }
+    , private route: ActivatedRoute, private clienteService: ClienteService, private cdRef: ChangeDetectorRef,
+    private enderecoCobrancaService: EnderecoCobrancaService,private enderecoEntregasService: EnderecoEntregaService,
+    private cartaoCreditoService: CartaoCreditoService) { }
 
   ngOnInit(): void {
 
     this.route.params.subscribe(x => {
       this.id = x[`id`];
       this.idAux = x[`id`];
+      this.carregarEnderecoCobranca(this.id);
+      this.carregarEnderecoEntregas(this.id);
+      this.carregarCartaoCreditos(this.id);
     });
 
     this.clienteService.getById(this.idAux).subscribe(
@@ -104,5 +122,30 @@ export class ModalEditarClienteComponent implements OnInit {
   //voltar para a tela de informação
 
   backPage() { this.router.navigate([`informacao-cliente/${this.id}`]); }
+
+  //carregar para Edição
+  carregarEnderecoCobranca(id: number){
+    this.enderecoCobrancaService.getByClienteId(id).subscribe(
+      (enderecoCobrancas: EnderecoCobrancas[])=>{
+         this.EnderecoCobrancas = enderecoCobrancas;
+      }
+    )
+  }
+
+  carregarEnderecoEntregas(id: number){
+    this.enderecoEntregasService.getByClienteId(id).subscribe(
+      (enderecoEntregas: EnderecoEntregas[])=>{
+        this.EnderecoEntregas = enderecoEntregas;
+      }
+    )
+  }
+
+  carregarCartaoCreditos(id: number){
+    this.cartaoCreditoService.getByClienteId(id).subscribe(
+      (cartaoCreditos: CartaoCredito[])=>{
+        this.CartaoCreditos = cartaoCreditos;
+      }
+    )
+  }
 
 }

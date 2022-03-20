@@ -1,4 +1,4 @@
-export interface EnderecoCobrancas {
+export class EnderecoCobrancas {
     id: number;
     clienteId: number;
     cep: string;

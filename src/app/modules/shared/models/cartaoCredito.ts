@@ -1,4 +1,4 @@
-export interface CartaoCredito {
+export class CartaoCredito {
     id: number;
     clienteId: number;
     numeroCartao: string;
