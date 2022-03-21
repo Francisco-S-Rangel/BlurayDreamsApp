@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="card">
+    <div class="col-12 text-center">
+      <label class="label">Cadastrar Novo Funcionario</label>
+    </div>
+    <form class="row g-3" [formGroup]="form">
+      <div class="col-md-6">
+        <label class="form-label">Nome</label>
+        <input type="email" class="form-control" id="nome" [ngClass]="{ 'is-invalid': f.Nome.errors && f.Nome.touched }" formControlName="Nome" placeholder="Digite seu Nome Completo" [(ngModel)]="Clientes.Nome">
+        <div *ngIf="f.Nome.errors?.required" class="invalid-feedback">
+          Nome é obrigatorio.
+        </div>
+        <div *ngIf="f.Nome.errors?.minlength" class="invalid-feedback">
+          Nome deve ter no mínimo 5 caracteres.
+        </div>
+        <div *ngIf="f.Nome.errors?.maxlength" class="invalid-feedback">
+          Nome deve ter no mínimo 50 caracteres.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" [ngClass]="{'is-invalid': f.Email.errors && f.Email.touched}" formControlName="Email" placeholder="Digite seu Email" [(ngModel)]="Clientes.Email">
+        <div *ngIf="f.Email.errors?.required" class="invalid-feedback">
+          Email é obrigatorio.
+        </div>
+        <div *ngIf="f.Email.errors?.email" class="invalid-feedback">
+          Email deve ser valido.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Data de Nascimento</label>
+        <input type="text" class="form-control" id="nascimento" [ngClass]="{'is-invalid': f.DataNascimento.errors && f.DataNascimento.touched}" formControlName="DataNascimento" placeholder="Digite sua Data de Nascimento" [(ngModel)]="Clientes.DataNascimento">
+        <div class="invalid-feedback">
+          Data de Nascimento é obrigatorio
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">DDD</label>
+        <input type="text" class="form-control" id="ddd" [ngClass]="{'is-invalid': f.ddd.errors && f.ddd.touched}" formControlName="ddd" placeholder="Digite seu DDD" [(ngModel)]="Clientes.ddd" (keypress)="keyPressNumbers($event)">
+        <div class="invalid-feedback">
+          DDD é obrigatorio
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Telefone</label>
+        <input type="text" class="form-control" id="numero" [ngClass]="{'is-invalid': f.Telefone.errors && f.Telefone.touched}" formControlName="Telefone" placeholder="Digite seu Numero de Celular/Telefone" [(ngModel)]="Clientes.Telefone" (keypress)="keyPressNumbers($event)">
+        <div class="invalid-feedback">
+          Telefone é obrigatorio
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Tipo de Telefone</label>
+        <input type="text" class="form-control" id="tipotel" [ngClass]="{'is-invalid': f.TipoTelefone.errors && f.TipoTelefone.touched}" formControlName="TipoTelefone" placeholder="Celular, Telefone..." [(ngModel)]="Clientes.TipoTelefone">
+        <div class="invalid-feedback">
+          Tipo de Telefone é obrigatorio
+        </div>
+      </div>
+
+      <div class="col-6">
+        <label class="form-label">CPF (Apenas Números)</label>
+        <input type="text" class="form-control " id="cpf" [ngClass]="{'is-invalid': f.CPF.errors && f.CPF.touched}" formControlName="CPF" placeholder="Digite seu CPF" [(ngModel)]="Clientes.CPF" (keypress)="keyPressNumbers($event)">
+        <div class="invalid-feedback">
+          CPF é obrigatorio
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Senha</label>
+        <input type="password" class="form-control" id="senha" [ngClass]="{'is-invalid': f.Senha.errors && f.Senha.touched}" formControlName="Senha" placeholder="Digite sua Senha" [(ngModel)]="Clientes.Senha">
+        <div *ngIf="f.Senha.errors?.minlength" class="invalid-feedback">
+          Senha deve conter 8 ou mais caracteres.
+        </div >
+        <div *ngIf="f.Senha.errors?.required" class="invalid-feedback">
+          Senha é obrigatorio
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Confirmar Senha</label>
+        <input type="password" class="form-control" id="confsenha" [ngClass]="{'is-invalid': f.confSenha.errors && f.confSenha.touched}" formControlName="confSenha" placeholder="Confirme sua Senha">
+        <div *ngIf="f.confSenha.errors?.required" class="invalid-feedback">
+          É obrigatorio confirmar senha
+        </div>
+        <div *ngIf="f.confSenha.errors?.notEqual" class="invalid-feedback">
+          A senha não esta igual.
+        </div>
+      </div>
+      <div class="col-12 text-center">
+        <button type="button" class="btn btn-primary mt-3" [disabled]="!form.valid" (click)="cadastrarFuncionario()">Proximo</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-12 text-center mt-5">
+    <button type="button" class="btn btn-primary" (click)="backPage()">Retornar</button>
+  </div>
+</div>

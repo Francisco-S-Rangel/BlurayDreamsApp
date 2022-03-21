@@ -69,6 +69,11 @@ import { MotivoInativacaoClienteComponent } from './modules/admin/ativacoes-inat
 import { MotivoAtivacaoClienteComponent } from './modules/admin/ativacoes-inativacoes/clientes/motivo-ativacao-cliente/motivo-ativacao-cliente.component';
 import { ConsultarFuncionariosComponent } from './modules/admin/consultas/consultar-funcionarios/consultar-funcionarios.component';
 import { InformacaoFuncionarioComponent } from './modules/admin/consultas/informacao-funcionario/informacao-funcionario.component';
+import { MotivoAtivacaoFuncionarioComponent } from './modules/admin/ativacoes-inativacoes/funcionarios/motivo-ativacao-funcionario/motivo-ativacao-funcionario.component';
+import { MotivoInativacaoFuncionarioComponent } from './modules/admin/ativacoes-inativacoes/funcionarios/motivo-inativacao-funcionario/motivo-inativacao-funcionario.component';
+import { ModalCadastrarFuncionarioComponent } from './modules/admin/modal-cadastros/modal-cadastrar-funcionario/modal-cadastrar-funcionario.component';
+import { ModalCadastrarFuncionarioEnderecoComponent } from './modules/admin/modal-cadastros/modal-cadastrar-funcionario-endereco/modal-cadastrar-funcionario-endereco.component';
+
 
 @NgModule({
   declarations: [
@@ -125,7 +130,11 @@ import { InformacaoFuncionarioComponent } from './modules/admin/consultas/inform
     MotivoInativacaoClienteComponent,
     MotivoAtivacaoClienteComponent,
     ConsultarFuncionariosComponent,
-    InformacaoFuncionarioComponent
+    InformacaoFuncionarioComponent,
+    MotivoAtivacaoFuncionarioComponent,
+    MotivoInativacaoFuncionarioComponent,
+    ModalCadastrarFuncionarioComponent,
+    ModalCadastrarFuncionarioEnderecoComponent
   ],
   imports: [
     BrowserModule,

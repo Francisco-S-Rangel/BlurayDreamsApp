@@ -106,7 +106,7 @@
                                                         <tr>
                                                             <td><button class="btn btn-primary" type="button" (click)="irParaFuncionario()">Visualizar</button></td>
                                                             <td><button class="btn btn-danger" type="button" >Excluir</button></td>
-                                                            <td><button class="btn btn-warning" type="button" >Inativar</button></td>
+                                                            <td><button class="btn btn-warning" type="button" (click)="inativarFuncionario()" >Inativar</button></td>
                                                         </tr>
                                                     </tbody>
 
@@ -124,7 +124,7 @@
                     </div>
 
                     <br>
-                        <button class="btn btn-success" type="button"  style="margin-left: 40rem;">Cadastrar Novo Funcionario</button>
+                        <button class="btn btn-success" type="button"  style="margin-left: 40rem;" (click)="irParaCadastrarFuncionario()">Cadastrar Novo Funcionario</button>
                     <br>
                 </div>
             </div>

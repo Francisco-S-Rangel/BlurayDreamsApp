@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="card">
+    <div class="col-12 text-center">
+      <label class="label">Categoria de Inativação</label>
+    </div>
+    <div class="col-12">
+      <div class="row">
+        <label class="form-label">Categoria de Inativação</label>
+      </div>
+      <select class="form-select">
+        <option selected>-- Escolha uma Categoria de Inativação --</option>
+        <option value="1">Funcionario não trabalha mais na empresa</option>
+        <option value="2">Funcionario trocou de conta</option>
+        <option value="3">Outro</option>
+      </select>
+    </div>
+    <div class="col-12 text-center mt-3">
+      <button type="button" class="btn btn-primary mt-3" >Inativar Funcionario</button>
+    </div>
+  </div>
+  <div class="col-12 text-center mt-4">
+    <button type="button" class="btn btn-primary" (click)="backPage()">Retornar</button>
+  </div>
+</div>

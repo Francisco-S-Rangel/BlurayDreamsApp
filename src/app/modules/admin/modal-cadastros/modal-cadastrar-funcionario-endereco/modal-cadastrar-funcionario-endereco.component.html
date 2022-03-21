@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="card">
+    <form class="row g-3" [formGroup]="formEndereco">
+      <div class="col-12 text-center">
+        <label class="label">Cadastrar Endereço</label>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label">CEP</label>
+        <input type="email" class="form-control" id="cep" [ngClass]="{ 'is-invalid': f.cep.errors && f.cep.touched }"
+          formControlName="cep" placeholder="Digite seu CEP" [(ngModel)]="enderecoCobrancas.cep"
+          (keypress)="keyPressNumbers($event)">
+        <div *ngIf="f.cep.errors?.required" class="invalid-feedback">
+          CEP é obrigatorio.
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Tipo de Residência</label>
+        <input type="text" class="form-control" id="tipoResidencia"
+          [ngClass]="{'is-invalid': f.tipoResidencia.errors && f.tipoResidencia.touched}"
+          formControlName="tipoResidencia" placeholder="Digite seu Tipo de Residência"
+          [(ngModel)]="enderecoCobrancas.tipoResidencia">
+        <div *ngIf="f.tipoResidencia.errors?.required" class="invalid-feedback">
+          Tipo de Residência é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Logradouro</label>
+        <input type="text" class="form-control" id="logradouro"
+          [ngClass]="{'is-invalid': f.logradouro.errors && f.logradouro.touched}" formControlName="logradouro"
+          placeholder="Digite seu Logradouro" [(ngModel)]="enderecoCobrancas.logradouro">
+        <div class="invalid-feedback">
+          Logradouro é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Tipo de Logradouro</label>
+        <input type="text" class="form-control" id="tipoLogradouro"
+          [ngClass]="{'is-invalid': f.tipoLogradouro.errors && f.tipoLogradouro.touched}"
+          formControlName="tipoLogradouro" placeholder="Digite seu Tipo de Logradouro"
+          [(ngModel)]="enderecoCobrancas.tipoLogradouro">
+        <div class="invalid-feedback">
+          Tipo de Logradouro é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Bairro</label>
+        <input type="text" class="form-control" id="bairro"
+          [ngClass]="{'is-invalid': f.bairro.errors && f.bairro.touched}" formControlName="bairro"
+          placeholder="Digite seu Bairro" [(ngModel)]="enderecoCobrancas.bairro">
+        <div class="invalid-feedback">
+          Bairro é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Cidade</label>
+        <input type="text" class="form-control" id="cidade"
+          [ngClass]="{'is-invalid': f.cidade.errors && f.cidade.touched}" formControlName="cidade"
+          placeholder="Digite sua Cidade" [(ngModel)]="enderecoCobrancas.cidade">
+        <div class="invalid-feedback">
+          Cidade é obrigatorio.
+        </div>
+      </div>
+
+      <div class="col-3">
+        <label class="form-label">Estado</label>
+        <input type="text" class="form-control " id="estado"
+          [ngClass]="{'is-invalid': f.estado.errors && f.estado.touched}" formControlName="estado"
+          placeholder="Digite seu Estado" [(ngModel)]="enderecoCobrancas.estado">
+        <div class="invalid-feedback">
+          Estado é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">País</label>
+        <input type="text" class="form-control" id="pais" [ngClass]="{'is-invalid': f.pais.errors && f.pais.touched}"
+          formControlName="pais" placeholder="Digite seu País" [(ngModel)]="enderecoCobrancas.pais">
+        <div *ngIf="f.pais.errors?.required" class="invalid-feedback">
+          País é obrigatorio.
+        </div>
+      </div>
+      <div class="col-3">
+        <label class="form-label">Número</label>
+        <input type="text" class="form-control" id="numero"
+          [ngClass]="{'is-invalid': f.numero.errors && f.numero.touched}" formControlName="numero"
+          placeholder="Digite seu Número" [(ngModel)]="enderecoCobrancas.numero" (keypress)="keyPressNumbers($event)">
+        <div *ngIf="f.numero.errors?.required" class="invalid-feedback">
+          Número é obrigatorio.
+        </div>
+      </div>
+
+      <div class="col-12 text-center">
+        <button type="button" class="btn btn-primary mt-3" [disabled]="!formEndereco.valid"
+          (click)="cadastrarEndereco()">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-12 text-center mt-5">
+    <button type="button" class="btn btn-primary" (click)="backPage()">Retornar</button>
+  </div>
+</div>

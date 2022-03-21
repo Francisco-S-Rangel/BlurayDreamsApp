@@ -18,5 +18,7 @@ export class ConsultarFuncionariosComponent implements OnInit {
   // Botões
   backPage() { this.router.navigate(['tela-funcionario']); }
   irParaFuncionario(){this.router.navigate(['informacao-funcionario']);}
+  inativarFuncionario(){this.router.navigate(['motivo-inativacao-funcionario']);}
+  irParaCadastrarFuncionario(){this.router.navigate(['cadastrar-funcionario']);}
 
 }

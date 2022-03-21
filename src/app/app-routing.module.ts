@@ -1,3 +1,7 @@
+import { ModalCadastrarFuncionarioEnderecoComponent } from './modules/admin/modal-cadastros/modal-cadastrar-funcionario-endereco/modal-cadastrar-funcionario-endereco.component';
+import { ModalCadastrarFuncionarioComponent } from './modules/admin/modal-cadastros/modal-cadastrar-funcionario/modal-cadastrar-funcionario.component';
+import { MotivoInativacaoFuncionarioComponent } from './modules/admin/ativacoes-inativacoes/funcionarios/motivo-inativacao-funcionario/motivo-inativacao-funcionario.component';
+import { MotivoAtivacaoFuncionarioComponent } from './modules/admin/ativacoes-inativacoes/funcionarios/motivo-ativacao-funcionario/motivo-ativacao-funcionario.component';
 import { InformacaoFuncionarioComponent } from './modules/admin/consultas/informacao-funcionario/informacao-funcionario.component';
 import { MotivoInativacaoClienteComponent } from './modules/admin/ativacoes-inativacoes/clientes/motivo-inativacao-cliente/motivo-inativacao-cliente.component';
 import { MotivoAtivacaoClienteComponent } from './modules/admin/ativacoes-inativacoes/clientes/motivo-ativacao-cliente/motivo-ativacao-cliente.component';
@@ -102,7 +106,12 @@ const routes: Routes = [
   {path: "motivo-ativacao-cliente", component: MotivoAtivacaoClienteComponent},
   {path: "motivo-inativacao-cliente", component: MotivoInativacaoClienteComponent},
   {path: "consultar-funcionarios", component: ConsultarFuncionariosComponent},
-  {path: "informacao-funcionario", component: InformacaoFuncionarioComponent}
+  {path: "informacao-funcionario", component: InformacaoFuncionarioComponent},
+  {path: "motivo-ativacao-funcionario", component: MotivoAtivacaoFuncionarioComponent},
+  {path: "motivo-inativacao-funcionario", component: MotivoInativacaoFuncionarioComponent},
+  {path: "cadastrar-funcionario", component: ModalCadastrarFuncionarioComponent},
+  {path: "cadastrar-funcionario-endereco", component: ModalCadastrarFuncionarioEnderecoComponent}
+
 ];
 
 @NgModule({
