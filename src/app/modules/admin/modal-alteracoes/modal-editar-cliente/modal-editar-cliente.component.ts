@@ -40,8 +40,7 @@ export class ModalEditarClienteComponent implements OnInit {
     email: "",
     senha: "",
     enderecoCobrancas: this.EnderecoCobrancas,
-    enderecoEntregas: this.EnderecoEntregas,
-    cartaoCredito?: this.CartaoCreditos
+    enderecoEntregas: this.EnderecoEntregas
   }
   
 
@@ -114,7 +113,10 @@ export class ModalEditarClienteComponent implements OnInit {
       cpf: ['', Validators.required],
       email: ['', [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(60)]],
       senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
-      confSenha: ['', Validators.required]
+      confSenha: ['', Validators.required],
+      enderecoCobrancas: this.EnderecoCobrancas,
+      enderecoEntregas: this.EnderecoEntregas
+
     }, formOptions);
 
   }
