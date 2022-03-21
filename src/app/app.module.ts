@@ -67,6 +67,8 @@ import { MotivoAtivacaoComponent } from './modules/admin/ativacoes-inativacoes/p
 import { MotivoInativacaoComponent } from './modules/admin/ativacoes-inativacoes/produtos/motivo-inativacao-produto/motivo-inativacao.component';
 import { MotivoInativacaoClienteComponent } from './modules/admin/ativacoes-inativacoes/clientes/motivo-inativacao-cliente/motivo-inativacao-cliente.component';
 import { MotivoAtivacaoClienteComponent } from './modules/admin/ativacoes-inativacoes/clientes/motivo-ativacao-cliente/motivo-ativacao-cliente.component';
+import { ConsultarFuncionariosComponent } from './modules/admin/consultas/consultar-funcionarios/consultar-funcionarios.component';
+import { InformacaoFuncionarioComponent } from './modules/admin/consultas/informacao-funcionario/informacao-funcionario.component';
 
 @NgModule({
   declarations: [
@@ -121,7 +123,9 @@ import { MotivoAtivacaoClienteComponent } from './modules/admin/ativacoes-inativ
     MotivoAtivacaoComponent,
     MotivoInativacaoComponent,
     MotivoInativacaoClienteComponent,
-    MotivoAtivacaoClienteComponent
+    MotivoAtivacaoClienteComponent,
+    ConsultarFuncionariosComponent,
+    InformacaoFuncionarioComponent
   ],
   imports: [
     BrowserModule,

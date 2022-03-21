@@ -1,3 +1,4 @@
+import { InformacaoFuncionarioComponent } from './modules/admin/consultas/informacao-funcionario/informacao-funcionario.component';
 import { MotivoInativacaoClienteComponent } from './modules/admin/ativacoes-inativacoes/clientes/motivo-inativacao-cliente/motivo-inativacao-cliente.component';
 import { MotivoAtivacaoClienteComponent } from './modules/admin/ativacoes-inativacoes/clientes/motivo-ativacao-cliente/motivo-ativacao-cliente.component';
 import { MotivoInativacaoComponent } from './modules/admin/ativacoes-inativacoes/produtos/motivo-inativacao-produto/motivo-inativacao.component';
@@ -48,6 +49,7 @@ import { CadastroClienteComponent } from './modules/cliente/cadastro-cliente/cad
 import { CadastroEnderecoComponent } from './modules/cliente/cadastro-endereco/cadastro-endereco.component';
 import { CadastroCartaoComponent } from './modules/cliente/cadastro-cartao/cadastro-cartao.component';
 import { ConsultarClientesComponent } from './modules/admin/consultar-clientes/consultar-clientes.component';
+import { ConsultarFuncionariosComponent } from './modules/admin/consultas/consultar-funcionarios/consultar-funcionarios.component';
 
 
 const routes: Routes = [
@@ -98,7 +100,9 @@ const routes: Routes = [
   {path: "motivo-ativacao-produto", component: MotivoAtivacaoComponent},
   {path: "motivo-inativacao-produto", component: MotivoInativacaoComponent},
   {path: "motivo-ativacao-cliente", component: MotivoAtivacaoClienteComponent},
-  {path: "motivo-inativacao-cliente", component: MotivoInativacaoClienteComponent}
+  {path: "motivo-inativacao-cliente", component: MotivoInativacaoClienteComponent},
+  {path: "consultar-funcionarios", component: ConsultarFuncionariosComponent},
+  {path: "informacao-funcionario", component: InformacaoFuncionarioComponent}
 ];
 
 @NgModule({

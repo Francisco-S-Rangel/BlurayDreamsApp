@@ -16,5 +16,6 @@ export class TelaFuncionarioComponent implements OnInit {
   irParaConsultarCliente(){ this.router.navigate(['consultar-clientes'])}
   irParaConsultarProduto(){ this.router.navigate(['consultar-produtos'])}
   irParaConsultarTrocas(){ this.router.navigate(['consultar-trocas'])}
+  irParaConsultarFuncionarios(){ this.router.navigate(['consultar-funcionarios'])}
 
 }
