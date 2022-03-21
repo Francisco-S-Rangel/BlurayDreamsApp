@@ -73,6 +73,8 @@ import { MotivoAtivacaoFuncionarioComponent } from './modules/admin/ativacoes-in
 import { MotivoInativacaoFuncionarioComponent } from './modules/admin/ativacoes-inativacoes/funcionarios/motivo-inativacao-funcionario/motivo-inativacao-funcionario.component';
 import { ModalCadastrarFuncionarioComponent } from './modules/admin/modal-cadastros/modal-cadastrar-funcionario/modal-cadastrar-funcionario.component';
 import { ModalCadastrarFuncionarioEnderecoComponent } from './modules/admin/modal-cadastros/modal-cadastrar-funcionario-endereco/modal-cadastrar-funcionario-endereco.component';
+import { ModalEditarFuncionarioComponent } from './modules/admin/modal-alteracoes/modal-editar-funcionario/modal-editar-funcionario.component';
+import { ModalEditarFuncionarioEnderecoComponent } from './modules/admin/modal-alteracoes/modal-editar-funcionario-endereco/modal-editar-funcionario-endereco.component';
 
 
 @NgModule({
@@ -134,7 +136,9 @@ import { ModalCadastrarFuncionarioEnderecoComponent } from './modules/admin/moda
     MotivoAtivacaoFuncionarioComponent,
     MotivoInativacaoFuncionarioComponent,
     ModalCadastrarFuncionarioComponent,
-    ModalCadastrarFuncionarioEnderecoComponent
+    ModalCadastrarFuncionarioEnderecoComponent,
+    ModalEditarFuncionarioComponent,
+    ModalEditarFuncionarioEnderecoComponent
   ],
   imports: [
     BrowserModule,
