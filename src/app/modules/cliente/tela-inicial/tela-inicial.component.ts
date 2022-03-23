@@ -31,6 +31,6 @@ export class TelaInicialComponent implements OnInit {
     );
   }
 
-  produtoSelecionado() {this.router.navigate(['produto-selecionado'])};
+  produtoSelecionado(id: number) {this.router.navigate([`produto-selecionado/${id}`])};
 
 }

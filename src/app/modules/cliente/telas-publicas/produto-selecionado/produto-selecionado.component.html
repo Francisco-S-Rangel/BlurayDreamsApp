@@ -7,7 +7,7 @@
 
         <br><br>
         <div class="col-md-12 text-center">
-            <h1><span style="color: rgb(25, 139, 214);font-size: 32px;"><strong>Taxi Driver</strong></span></h1>
+            <h1><span style="color: rgb(25, 139, 214);font-size: 32px;"><strong>{{produto?.titulo}}</strong></span></h1>
         </div>
 
         <br>
@@ -17,7 +17,7 @@
             <div style="background-color: rgb(238, 238, 238);display: flex;border: 3px solid black;" class="imagem">
                 <hr class="linha-superior">
                 <div>
-                    <img src="https://www.curtocinema.com.br/wp-content/uploads/2021/08/taxi.png" />
+                    <img src="{{produto?.img}}" />
                 </div>
                 <div style="margin-left: 16px">
                     <table>
@@ -29,17 +29,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi temporibus
-                                    molestias
-                                    odit ipsam laboriosam, adipisci doloribus distinctio quo consequuntur id facilis
-                                    nobis officiis
-                                    aspernatur repellendus.<br>
-                                    Quisquam animi corrupti reiciendis assumenda!
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi impedit ipsum
-                                    ducimus
-                                    labore vero inventore illo reiciendis aperiam repellendus dicta, necessitatibus eum
-                                    ea consequatur harum.
-                                    Voluptas perferendis deserunt iusto delectus!
+                                <td>{{produto?.sinopse}}
                                 </td>
                             </tr>
                         </tbody>
@@ -63,12 +53,12 @@
                 </thead>
                 <tbody class="corpo">
                     <tr>
-                        <td>DRAMA</td>
-                        <td>1976</td>
-                        <td>Martin Scorsese</td>
-                        <td>Blu-ray</td>
-                        <td>Universal</td>
-                        <td>2:30</td>
+                        <td>{{produto?.categoria}}</td>
+                        <td>{{produto?.ano}}</td>
+                        <td>{{produto?.direcao}}</td>
+                        <td>{{produto?.tipo}}</td>
+                        <td>{{produto?.produtora}}</td>
+                        <td>{{produto?.duracao}}</td>
                     </tr>
                 </tbody>
             </table>

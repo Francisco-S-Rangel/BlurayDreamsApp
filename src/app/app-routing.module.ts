@@ -98,7 +98,7 @@ const routes: Routes = [
   {path: "cadastrar-produto", component: ModalCadastroProdutoComponent},
   {path: "finalizar-endereco-cobranca", component: FinalizarEnderecoCobrancaComponent},
   {path: "finalizar-endereco-entrega", component: FinalizarEnderecoEntregaComponent},
-  {path: "produto-selecionado", component: ProdutoSelecionadoComponent},
+  {path: "produto-selecionado/:id", component: ProdutoSelecionadoComponent},
   {path: "editar-produto", component: ModalEditarProdutosComponent},
   {path: "cadastrar-estoque", component: ModalCadastrarEstoqueComponent},
   {path: "informacao-pedidos/:id", component: InformacaoPedidosComponent},
