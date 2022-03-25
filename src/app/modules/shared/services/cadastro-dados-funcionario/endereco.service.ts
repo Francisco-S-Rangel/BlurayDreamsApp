@@ -19,7 +19,7 @@ export class EnderecoService {
     return this.http.get<Endereco[]>(`${this.baseUrl}`);
   }
   getByClienteId(id: number): Observable<Endereco[]>{
-    return this.http.get<Endereco[]>(`${this.baseUrl}/${id}/cliente`);
+    return this.http.get<Endereco[]>(`${this.baseUrl}/${id}/funcionario`);
   }
   getById(id: number): Observable<Endereco>{
     return this.http.get<Endereco>(`${this.baseUrl}/${id}`);
