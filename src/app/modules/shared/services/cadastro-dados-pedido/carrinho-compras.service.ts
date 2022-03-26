@@ -1,3 +1,4 @@
+import { CarrrinhoProdutoRequest } from './../../models/carrinhoProdutoRequest';
 import { Carrinho } from './../../models/carrinho';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -5,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { Produto } from '../../models/produto';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +40,14 @@ export class CarrinhoComprasService {
   delete(id: number){
     return this.http.delete<Carrinho>(`${this.baseUrl}/${id}`);
   }
-
+  addCarrinhoProdutos(clienteid: number,carrinhoProdutoRequest: CarrrinhoProdutoRequest){
+    return this.http.post(`${this.baseUrl}/${clienteid}/carrinho`, carrinhoProdutoRequest);
+  }
+  getCarrinhoProdutos(clienteid: number){
+    return this.http.get<CarrrinhoProdutoRequest>(`${this.baseUrl}/${clienteid}/cliente`);
+  }
+  excluirProdutoCarrinho(clienteid: number,produtoid: number){
+    return this.http.delete<any>(`${this.baseUrl}/${clienteid}/carrinho?produtoId=${produtoid}`);
+  }
 
 }
