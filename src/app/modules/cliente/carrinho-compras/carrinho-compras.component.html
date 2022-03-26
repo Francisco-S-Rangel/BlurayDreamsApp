@@ -1,89 +1,109 @@
 <div class="container">
-    <div class="card">
-        <div class="col-12 text-center">
-            <h2 class="col-3">
-                <img class="carrinhoImg" src=".\assets\icons8-carrinho-de-compras-com-dinheiro-80.png" />
-                <strong>Carrinho de Compras</strong>
-            </h2>
-            <hr>
+  <div class="card">
+    <div class="col-12 text-center">
+      <h2 class="col-3">
+        <img class="carrinhoImg" src=".\assets\icons8-carrinho-de-compras-com-dinheiro-80.png" />
+        <strong>Carrinho de Compras</strong>
+      </h2>
+      <hr>
+    </div>
+    <h3 style="margin-left: 12px;"><strong>Produtos:</strong></h3>
+
+
+    <div class="col-12">
+      <table class="table table-hover">
+        <thead class="table-secondary">
+          <tr>
+            <th scope="col">Imagem</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Excluir</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let producto of carrinho.carrinhoProduto">
+          <tr>
+            <td><img class="produtoImg" src="{{producto.produto.img}}" />
+            </td>
+            <td>{{producto.produto.titulo}}</td>
+            <td>{{producto.produto.tipo}}</td>
+            <td> <input type="number" min="1" max="10" class="form-control" value="{{producto.quantidade}}" /> <button type="button" class="btn btn-success mt-1">Alterar</button></td>
+            <td><strong>{{producto.produto.preco}} R$</strong></td>
+            <td><button class="btn btn-danger" (click)="excluirProduto(1, producto.produtoId)">Excluir</button></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <hr>
+    <div class="col-12">
+
+
+      <div class="row ms-2">
+        <div class="col-3">
+          <label class="form-label">Calcular o Frete:</label>
+          <input type="text" class="form-control" placeholder="Insira o CEP:" [(ngModel)]="cep" maxlength="9"/>
         </div>
-        <h3 style="margin-left: 12px;"><strong>Produtos:</strong></h3>
+        <div class="col-3">
+          <button type="button" class="btn-calcular mt-4" (click)="calcularFrete()">Calcular</button>
+        </div>
+
+        <div class="col-3">
+          <label class="form-label">Inserir o Cupom de Desconto:</label>
+          <input type="text" class="form-control" placeholder="Insira o Cupom:" [(ngModel)]="cupomDesconto" />
+        </div>
+        <div class="col-3">
+          <button type="button" class="btn-cupom mt-4" (click)="calcularCupom()">Calcular</button>
+        </div>
+      </div>
 
 
-            <div class="col-12">
-                <table class="table table-hover">
-                    <thead class="table-secondary">
-                        <tr>
-                            <th scope="col">Imagem</th>
-                            <th scope="col">Titulo</th>
-                            <th scope="col">Tipo</th>
-                            <th scope="col">Quantidade</th>
-                            <th scope="col">Preço</th>
-                            <th scope="col">Excluir</th>
-                        </tr>
-                    </thead>
-                    <tbody *ngFor="let producto of carrinho.carrinhoProduto">
-                        <tr>
-                            <td><img class="produtoImg"
-                                    src="{{producto.produto.img}}" />
-                            </td>
-                            <td>{{producto.produto.titulo}}</td>
-                            <td>{{producto.produto.tipo}}</td>
-                            <td> <input type="number" min="1" max="10" class="form-control" value="{{producto.quantidade}}" /></td>
-                            <td><strong>{{producto.produto.preco}} R$</strong></td>
-                            <td><button class="btn btn-danger" (click)="excluirProduto(1, producto.produtoId)">Excluir</button></td>
-                        </tr>
+      <br>
+      <table class="table table-hover">
+        <thead class="table-secondary">
+          <tr>
+            <th scope="col">Preço Produto(s): <strong class="azulfraco">R$ {{valorProdutos.toFixed(1)}}</strong></th>
+            <th scope="col">Frete: <strong class="azulfraco">R$ {{valorFrete}}</strong></th>
+            <th scope="col">Preço Cheio: <strong class="azulfraco">R$ {{(valorProdutos + valorFrete).toFixed(1)}}</strong></th>
+            <th scope="col">Desconto: <strong class="azulfraco">R$ {{valorDesconto}}</strong></th>
+            <th scope="col">Preço Final: <strong class="azulforte">R$ {{(valorProdutos + valorFrete - valorDesconto).toFixed(1)}}</strong></th>
+          </tr>
+        </thead>
 
-                    </tbody>
-                </table>
-            </div>
-            <hr>
-            <div class="col-12">
+      </table>
+      <br>
 
-                 <div style="display:flex;">
-                <div class="col">
-                    <label style="margin-left: 12px;" class="form-label">Calcular o Frete:
-                        <input type="text" class="form-control" placeholder="Insira o CEP:"/></label>
-                        <button type="button" class="btn-calcular">Calcular</button>
-                </div>
+      <div class="col-12 text-center">
+        <button class="btn btn-success" (click)="finalizarPedido()">Finalizar Pedido</button>
+      </div>
 
-                <div class="col">
-                    <label class="form-label">Inserir o Cupom de Desconto:
-                        <input type="text" class="form-control" placeholder="Insira o Cupom:"/></label>
-                        <button type="button" class="btn-cupom">Calcular</button>
-                </div>
-                 </div>
-
-                <br>
-                <table class="table table-hover">
-                    <thead class="table-secondary">
-                        <tr>
-                        <th scope="col">Preço Produto(s): <strong class="azulfraco">R$ 58,60</strong></th>
-                        <th scope="col">Frete: <strong class="azulfraco">R$ 10,00</strong></th>
-                        <th scope="col">Desconto: <strong class="azulfraco">R$ 5,00</strong></th>
-                        <th scope="col">Preço Cheio: <strong class="azulfraco">R$ 68,60</strong></th>
-                        <th scope="col">Preço Final: <strong class="azulforte">R$ 63,60</strong></th>
-                        </tr>
-                    </thead>
-
-                </table>
-                <br>
-
-                <div class="col-12 text-center">
-                <button class="btn btn-success" (click)="finalizarPedido()">Finalizar Pedido</button>
-                </div>
-
-                <br>
-
-            </div>
-
-              <label style="margin-left: 12px;">Tem um cupom de troca? <span class="comCupom" (click)="irParaTrocas()"> Clique aqui</span></label>
-             <br>
+      <br>
 
     </div>
 
+    <label style="margin-left: 12px;">Tem um cupom de troca? <span class="comCupom" (click)="irParaTrocas()"> Clique
+        aqui</span></label>
+    <br>
+
+  </div>
+
 </div>
 
-<div class="text-center">
-  {{carrinho | json}}
-</div>
+<!--<div class="row">
+  <div class="col-2">
+    <label style="margin-left: 12px;" class="form-label">Calcular o Frete:</label>
+      <input type="text" class="form-control" placeholder="Insira o CEP:" [(ngModel)]="cep" />
+  </div>
+  <div class="col-4">
+    <button type="button" class="btn-calcular mt-3" (click)="calcularFrete()">Calcular</button>
+  </div>
+
+  <div class="col-2">
+    <label class="form-label">Inserir o Cupom de Desconto:
+      <input type="text" class="form-control" placeholder="Insira o Cupom:" [(ngModel)]="cupomDesconto" /></label>
+  </div>
+  <div class="col-4">
+    <button type="button" class="btn-cupom mt-3" (click)="calcularCupom()">Calcular</button>
+  </div>
+</div>-->

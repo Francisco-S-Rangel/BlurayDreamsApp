@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProdutoService } from './../../shared/services/cadastro-dados-pedido/produto.service';
 import { CarrinhoProduto } from './../../shared/models/carrinhoProduto';
 import { Carrinho } from './../../shared/models/carrinho';
@@ -27,25 +28,32 @@ export class CarrinhoComprasComponent implements OnInit {
       carrinho: new Carrinho(),
       produto: new Produto()
     }]
-  }
+  };
 
 
+  valorProdutos: number = 0;
+  valorFrete: number = 0;
+  valorDesconto: number = 0;
 
-  constructor(private router: Router, private CarrinhoComprasService: CarrinhoComprasService, private ProdutoService: ProdutoService, private cdRef: ChangeDetectorRef) { }
+  cep: string = "";
+  cupomDesconto: string = "";
+
+  constructor(private router: Router, private CarrinhoComprasService: CarrinhoComprasService, private ProdutoService: ProdutoService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.carregarCarrinho()
   }
 
   carregarCarrinho() {
+
     this.CarrinhoComprasService.getCarrinhoProdutos(1).subscribe((carrinho) => {
-      console.log(carrinho)
+      //console.log(carrinho)
       this.carrinho = carrinho
 
       for (let i = 0; i < this.carrinho.carrinhoProduto!.length; i++) {
         this.ProdutoService.getById(carrinho.carrinhoProduto![i].produtoId).subscribe((produto)=>{
           this.carrinho.carrinhoProduto![i].produto = produto
-          //console.log(this.carrinho)
+          this.valorProdutos += this.carrinho.carrinhoProduto![i].quantidade * this.carrinho.carrinhoProduto![i].produto.preco
         })
       }
     })
@@ -57,8 +65,24 @@ export class CarrinhoComprasComponent implements OnInit {
     this.CarrinhoComprasService.excluirProdutoCarrinho(idCliente, idProduto).subscribe(()=>{
       this.ngOnInit()
     })
+  }
 
+  calcularFrete(){
+    if(this.cep.length == 9){
+      this.valorFrete = 10
+    } else {
+      alert("CEP Invalido!")
+      this.valorFrete = 0
+    }
+  }
 
+  calcularCupom(){
+    if(this.cupomDesconto == "abc123"){
+      this.valorDesconto = 20
+    } else {
+      alert("Cupom Invalido!")
+      this.valorDesconto = 0
+    }
   }
 
   irParaTrocas() { this.router.navigate(['/finalizar-cupom-troca']) }
