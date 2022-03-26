@@ -1,3 +1,4 @@
+import { CarrinhoProduto } from './carrinhoProduto';
 import { Produto } from './produto';
 import { Cliente } from "./cliente";
 
@@ -16,6 +17,6 @@ export class Carrinho {
     desconto: number;
     frete: number;
     precoFinal: number;
+    carrinhoProduto?: CarrinhoProduto [];
     cliente?: Cliente;
-    Produtos?: Produto [];
 }

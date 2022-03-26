@@ -1,4 +1,6 @@
 export class Produto {
+    [key: string]: any
+
     constructor(){
         this.id=0;
         this.titulo='';

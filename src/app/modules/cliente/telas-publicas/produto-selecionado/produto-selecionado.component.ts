@@ -1,3 +1,4 @@
+import { CarrinhoProdutoRequest } from './../../../shared/models/carrinhoProdutoRequest';
 import { Carrinho } from './../../../shared/models/carrinho';
 import { CarrinhoComprasService } from './../../../shared/services/cadastro-dados-pedido/carrinho-compras.service';
 import { Produto } from './../../../shared/models/produto';
@@ -28,12 +29,9 @@ export class ProdutoSelecionadoComponent implements OnInit {
         preco: 0,
         estoque: 0
   };
-  public carrinho: Carrinho = {
-        id:0,
-        clienteId:0,
-        desconto:0,
-        frete:0,
-        precoFinal:0,
+  public carrinhoProduto: CarrinhoProdutoRequest = {
+        produtoId: 0,
+        quantidade: 1
   }
 
   constructor(private router: Router, private route: ActivatedRoute, private ProdutoService: ProdutoService, private CarrinhoComprasService: CarrinhoComprasService) { }
@@ -43,16 +41,7 @@ export class ProdutoSelecionadoComponent implements OnInit {
       this.id = x[`id`];
       this.carregarProduto(this.id)
     })
-    this.carregarCarrinhoCliente(1)
-  }
-
-  carregarCarrinhoCliente(id: number){
-    this.CarrinhoComprasService.getById(id).subscribe(
-      (carrinho: Carrinho)=>{
-        this.carrinho = carrinho
-        console.log(this.carrinho)
-      }
-    )
+    this.carrinhoProduto.produtoId = this.id
   }
 
 
@@ -66,8 +55,7 @@ export class ProdutoSelecionadoComponent implements OnInit {
   }
 
   adicionarAoCarrinho(){
-    this.carrinho.Produtos = [this.produto]
-    this.CarrinhoComprasService.put(this.carrinho.id,this.carrinho).subscribe(
+    this.CarrinhoComprasService.addCarrinhoProdutos(1, this.carrinhoProduto).subscribe(
       ()=>{
         this.irParaCarrinho()
       })

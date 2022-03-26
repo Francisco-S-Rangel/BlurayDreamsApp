@@ -6,14 +6,14 @@ export class CarrinhoProduto {
     constructor(){
         this.id=0;
         this.carrinhoId =0;
-        this.ProdutoId =0;
+        this.produtoId =0;
         this.quantidade =0;
         this.carrinho = new Carrinho();
         this.produto = new Produto();
     }
     id: number;
     carrinhoId: number;
-    ProdutoId: number;
+    produtoId: number;
     quantidade: number;
     carrinho: Carrinho;
     produto: Produto;

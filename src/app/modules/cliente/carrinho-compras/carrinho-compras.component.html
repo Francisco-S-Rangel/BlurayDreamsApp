@@ -22,26 +22,15 @@
                             <th scope="col">Excluir</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody *ngFor="let producto of carrinho.carrinhoProduto">
                         <tr>
                             <td><img class="produtoImg"
-                                    src="https://www.cafecomfilme.com.br/media/k2/items/cache/8ffd18e59bf9d59135c7eafc3068ae79_L.jpg?t=20200206_184920" />
+                                    src="{{producto.produto.img}}" />
                             </td>
-                            <td>Rambo - Programado para matar</td>
-                            <td>Dvd</td>
-                            <td> <input value="1" type="number" min="1" max="10" class="form-control" /></td>
-                            <td><strong>R$ 19,90</strong></td>
-                            <td><button class="btn btn-danger">Excluir</button></td>
-                        </tr>
-
-                        <tr>
-                            <td><img class="produtoImg"
-                                    src="https://br.web.img3.acsta.net/medias/nmedia/18/90/95/96/20122166.jpg" />
-                            </td>
-                            <td>Rambo - Programado para matar</td>
-                            <td>Bluray</td>
-                            <td><input value="1" type="number" min="1" max="10" class="form-control" /></td>
-                            <td><strong>R$ 39,90</strong></td>
+                            <td>{{producto.produto.titulo}}</td>
+                            <td>{{producto.produto.tipo}}</td>
+                            <td> <input type="number" min="1" max="10" class="form-control" value="{{producto.quantidade}}" /></td>
+                            <td><strong>{{producto.produto.preco}} R$</strong></td>
                             <td><button class="btn btn-danger">Excluir</button></td>
                         </tr>
 
@@ -93,4 +82,8 @@
 
     </div>
 
+</div>
+
+<div class="text-center">
+  {{carrinho | json}}
 </div>

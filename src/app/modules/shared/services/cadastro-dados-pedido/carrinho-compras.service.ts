@@ -1,4 +1,4 @@
-import { CarrrinhoProdutoRequest } from './../../models/carrinhoProdutoRequest';
+import { CarrinhoProdutoRequest } from './../../models/carrinhoProdutoRequest';
 import { Carrinho } from './../../models/carrinho';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -40,11 +40,11 @@ export class CarrinhoComprasService {
   delete(id: number){
     return this.http.delete<Carrinho>(`${this.baseUrl}/${id}`);
   }
-  addCarrinhoProdutos(clienteid: number,carrinhoProdutoRequest: CarrrinhoProdutoRequest){
+  addCarrinhoProdutos(clienteid: number,carrinhoProdutoRequest: CarrinhoProdutoRequest){
     return this.http.post(`${this.baseUrl}/${clienteid}/carrinho`, carrinhoProdutoRequest);
   }
   getCarrinhoProdutos(clienteid: number){
-    return this.http.get<CarrrinhoProdutoRequest>(`${this.baseUrl}/${clienteid}/cliente`);
+    return this.http.get<Carrinho>(`${this.baseUrl}/${clienteid}/cliente`);
   }
   excluirProdutoCarrinho(clienteid: number,produtoid: number){
     return this.http.delete<any>(`${this.baseUrl}/${clienteid}/carrinho?produtoId=${produtoid}`);

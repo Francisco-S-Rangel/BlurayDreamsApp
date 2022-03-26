@@ -1,5 +1,5 @@
 import { Carrinho } from './carrinho';
-export class CarrrinhoProdutoRequest {
+export class CarrinhoProdutoRequest {
     constructor(){
         this.produtoId=0;
         this.quantidade=0;
