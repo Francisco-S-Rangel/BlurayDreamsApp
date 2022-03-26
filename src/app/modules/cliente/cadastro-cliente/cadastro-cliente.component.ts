@@ -74,7 +74,7 @@ export class CadastroClienteComponent implements OnInit {
       confSenha: ['', Validators.required]
     }, formOptions)
 
-    
+
 
 
   }
