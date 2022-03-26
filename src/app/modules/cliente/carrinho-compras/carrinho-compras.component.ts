@@ -3,7 +3,7 @@ import { CarrinhoProduto } from './../../shared/models/carrinhoProduto';
 import { Carrinho } from './../../shared/models/carrinho';
 import { CarrinhoComprasService } from './../../shared/services/cadastro-dados-pedido/carrinho-compras.service';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Produto } from '../../shared/models/produto';
 
 @Component({
@@ -31,7 +31,7 @@ export class CarrinhoComprasComponent implements OnInit {
 
 
 
-  constructor(private router: Router, private CarrinhoComprasService: CarrinhoComprasService, private ProdutoService: ProdutoService) { }
+  constructor(private router: Router, private CarrinhoComprasService: CarrinhoComprasService, private ProdutoService: ProdutoService, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.carregarCarrinho()
@@ -45,10 +45,20 @@ export class CarrinhoComprasComponent implements OnInit {
       for (let i = 0; i < this.carrinho.carrinhoProduto!.length; i++) {
         this.ProdutoService.getById(carrinho.carrinhoProduto![i].produtoId).subscribe((produto)=>{
           this.carrinho.carrinhoProduto![i].produto = produto
-          console.log(this.carrinho)
+          //console.log(this.carrinho)
         })
       }
     })
+    //console.error = () => {};
+  }
+
+  excluirProduto(idCliente: number, idProduto: number){
+    console.log(idProduto)
+    this.CarrinhoComprasService.excluirProdutoCarrinho(idCliente, idProduto).subscribe(()=>{
+      this.ngOnInit()
+    })
+
+
   }
 
   irParaTrocas() { this.router.navigate(['/finalizar-cupom-troca']) }
