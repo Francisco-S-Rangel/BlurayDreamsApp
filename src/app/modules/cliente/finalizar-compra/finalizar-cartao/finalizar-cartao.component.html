@@ -12,28 +12,29 @@
           <label class="form-label">Usar Um Cartão Cadastrado?</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked (change)="radioChange($event)">
           <label class="form-check-label" for="exampleRadios1">
             Sim
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="2" (change)="radioChange($event)">
           <label class="form-check-label" for="exampleRadios2">
             Não
           </label>
         </div>
-        <select class="form-select mt-2">
-          <option selected>-- Escolha um Cartão --</option>
-          <option value="1">**** 4234 (Cartão Padrão)</option>
-          <option value="2">**** 2341</option>
+        <select class="form-select mt-2" (change)="selectChange($event)" [disabled]="radioUsarCartao==false">
+          <option selected value="0">-- Escolha um Cartão --</option>
+          <option *ngFor="let cartoes of cartoesCliente;let index=index;" [value]="cartoes.id">
+            {{cartoes.numeroCartao}}
+          </option>
         </select>
       </div>
       <div class="col-md-6">
         <label class="form-label">Número do Cartão</label>
         <input type="email" class="form-control" id="numeroCartao"
-          [ngClass]="{ 'is-invalid': f.numeroCartao.errors && f.numeroCartao.touched }" formControlName="numeroCartao"
-          placeholder="Digite seu Número do Cartão" [(ngModel)]="cartaoCreditos.numeroCartao">
+          [ngClass]="{ 'is-invalid': f.numeroCartao.errors && f.numeroCartao.touched && radioUsarCartao==false }" formControlName="numeroCartao"
+          placeholder="Digite seu Número do Cartão" [(ngModel)]="cartaoCreditos.numeroCartao" [readonly]="radioUsarCartao==true">
         <div *ngIf="f.numeroCartao.errors?.required" class="invalid-feedback">
           Número do Cartão é obrigatorio.
         </div>
@@ -41,8 +42,8 @@
       <div class="col-md-6">
         <label class="form-label">Nome do Titular</label>
         <input type="text" class="form-control" id="NomeTitular"
-          [ngClass]="{'is-invalid': f.NomeTitular.errors && f.NomeTitular.touched}" formControlName="NomeTitular"
-          placeholder="Digite o Nome do Titular" [(ngModel)]="cartaoCreditos.nomeTitular">
+          [ngClass]="{'is-invalid': f.NomeTitular.errors && f.NomeTitular.touched && radioUsarCartao==false}" formControlName="NomeTitular"
+          placeholder="Digite o Nome do Titular" [(ngModel)]="cartaoCreditos.nomeTitular" [readonly]="radioUsarCartao==true">
         <div *ngIf="f.NomeTitular.errors?.required" class="invalid-feedback">
           Nome do Titular é obrigatorio.
         </div>
@@ -50,9 +51,9 @@
       <div class="col-6">
         <label class="form-label">Bandeira do Cartão</label>
         <input type="text" class="form-control" id="bandeiraCartao"
-          [ngClass]="{'is-invalid': f.BandeiraCartao.errors && f.BandeiraCartao.touched}"
+          [ngClass]="{'is-invalid': f.BandeiraCartao.errors && f.BandeiraCartao.touched && radioUsarCartao==false}"
           formControlName="BandeiraCartao" placeholder="Digite sua Bandeira do Cartão"
-          [(ngModel)]="cartaoCreditos.bandeiraCartao">
+          [(ngModel)]="cartaoCreditos.bandeiraCartao" [readonly]="radioUsarCartao==true">
         <div *ngIf="f.BandeiraCartao.errors?.required" class="invalid-feedback">
           Bandeira do Cartão é obrigatorio.
         </div>
@@ -62,15 +63,15 @@
       </div>
       <div class="col-6">
         <label class="form-label">CVV</label>
-        <input type="text" class="form-control" id="cvv" [ngClass]="{'is-invalid': f.cvv.errors && f.cvv.touched}"
-          formControlName="cvv" placeholder="Digite seu CVV" [(ngModel)]="cartaoCreditos.cvv">
+        <input type="text" class="form-control" id="cvv" [ngClass]="{'is-invalid': f.cvv.errors && f.cvv.touched && radioUsarCartao==false}"
+          formControlName="cvv" placeholder="Digite seu CVV" [(ngModel)]="cartaoCreditos.cvv" [readonly]="radioUsarCartao==true">
         <div class="invalid-feedback">
           CVV é obrigatorio.
         </div>
       </div>
       <div class="col-12 text-center">
         <button type="button" class="btn btn-primary mt-3"
-          (click)="cadastrarCartao()">Proximo</button>
+          (click)="cadastrarCartao()" [disabled]="(radioUsarCartao && cartaoId == 0) || (radioUsarCartao == false && formCartao.invalid)">Proximo</button>
       </div>
     </form>
   </div>
@@ -78,3 +79,7 @@
     <button type="button" class="btn btn-primary" (click)="backPage()">Retornar</button>
   </div>
 </div>
+
+{{radioUsarCartao}}
+{{cartaoId}}
+{{formCartao.value | json}}
