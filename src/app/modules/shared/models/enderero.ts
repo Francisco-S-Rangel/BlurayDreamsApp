@@ -2,7 +2,7 @@ export class Endereco {
 
     constructor(){
         this.id=0;
-        this.clienteId=0;
+        this.funcionarioId=0;
         this.cep='';
         this.tipoResidencia='';
         this.logradouro='';
@@ -14,7 +14,7 @@ export class Endereco {
         this.numero='';
     }
     id: number;
-    clienteId: number;
+    funcionarioId: number;
     cep: string;
     tipoResidencia: string;
     logradouro: string;

@@ -1,7 +1,11 @@
+import { Endereco } from './../../../shared/models/enderero';
+import { FuncionarioService } from './../../../shared/services/cadastro-dados-funcionario/funcionario.service';
 import { SharedDataService } from './../../../shared/services/shared-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { CadastroFuncionarioService } from 'src/app/modules/shared/services/cadastro-dados-funcionario/cadastro-funcionario.service';
+import { Funcionario } from 'src/app/modules/shared/models/funcionario';
 
 @Component({
   selector: 'app-modal-cadastrar-funcionario-endereco',
@@ -10,17 +14,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalCadastrarFuncionarioEnderecoComponent implements OnInit {
 
-  public id?: number;
-  public idcliente: number = 0;
+
   public str: any
   formEndereco!: FormGroup;
 
-  cliente: any
+  funcionario: any
 
-  enderecoCobrancas =
+  endereco =
     {
       id: 0,
-      clienteId: this.id,
+      funcionarioId: 0,
       cep: "",
       tipoResidencia: "",
       logradouro: "",
@@ -33,15 +36,12 @@ export class ModalCadastrarFuncionarioEnderecoComponent implements OnInit {
     }
 
 
-  constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
-    , private route: ActivatedRoute) { }
+  constructor(private router: Router, private fb: FormBuilder, private cadastrofuncionario: CadastroFuncionarioService
+    , private route: ActivatedRoute, private funcionarioService: FuncionarioService) { 
+      this.funcionario = this.cadastrofuncionario.getFuncionario();
+    }
 
   ngOnInit() {
-
-    this.route.params.subscribe(x => {
-      this.id = x[`clienteid`];
-      this.idcliente = x[`clienteid`];
-    });
 
     this.validacao()
   }
@@ -51,9 +51,22 @@ export class ModalCadastrarFuncionarioEnderecoComponent implements OnInit {
     return this.formEndereco.controls;
   }
 
+cadastrarEndereco(){
+  //Tratando Data para que seja combativel com o DateTime do .Net
+  const datacompleta = new Date(`${this.funcionario.dataNascimento}T06:00:00.000Z`);
+  this.funcionario.dataNascimento = datacompleta;
 
-  cadastrarEndereco() {
+  this.funcionario.endereco = this.endereco;
+  console.log(this.funcionario);
+  this.cadastrarFuncionario(this.funcionario);
+}
+cadastrarFuncionario(func: Funcionario) {
     //console.log(this.formEndereco.value);
+    this.funcionarioService.post(func).subscribe(
+      ()=>{
+        console.log();
+      }
+    );
   }
 
   keyPressNumbers(event: any) {
@@ -71,7 +84,7 @@ export class ModalCadastrarFuncionarioEnderecoComponent implements OnInit {
 
     this.formEndereco = this.fb.group({
       id: 0,
-      clienteid: this.idcliente,
+      funcionarioid: 0,
       cep: ['', Validators.required],
       tipoResidencia: ['', Validators.required],
       logradouro: ['', Validators.required],
@@ -86,5 +99,6 @@ export class ModalCadastrarFuncionarioEnderecoComponent implements OnInit {
   }
 
   backPage() { this.router.navigate([`cadastrar-funcionario`]); }
+  voltarparaconsultafuncionario()  { this.router.navigate([`consultar-funcionarios`]); }
 
 }
