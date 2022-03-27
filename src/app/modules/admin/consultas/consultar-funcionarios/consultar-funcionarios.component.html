@@ -26,7 +26,7 @@
             <div class="col-12">
                 <div>
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12" *ngFor="let funcionario of funcionarios">
                             <mat-accordion>
                                 <mat-expansion-panel>
                                     <mat-expansion-panel-header expandedHeight="auto" collapsedHeight="auto">
@@ -40,7 +40,7 @@
                                                                 <div class="col">
                                                                     <strong>Funcionario: </strong>
                                                                     <span class="dado-cliente">
-                                                                        Cassimero
+                                                                        {{funcionario.nome}}
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -48,35 +48,35 @@
                                                             <div style="margin-left: -7.5%;" class="col-3">
                                                                 <strong>Id: </strong>
                                                                 <span class="dado-cliente">
-                                                                    001
+                                                                    {{funcionario.id}}
                                                                 </span>
                                                             </div>
 
                                                             <div style="margin-left: -20.5%;" class="col-3">
                                                                 <strong>CPF: </strong>
                                                                 <span class="dado-cliente">
-                                                                    49494616161
+                                                                    {{funcionario.cpf}}
                                                                 </span>
                                                             </div>
 
                                                             <div style="margin-left: -15.5%;" class="col-3">
                                                                 <strong>Telefone: </strong>
                                                                 <span class="dado-cliente">
-                                                                    (11) 970003945 /Telefone
+                                                                    ({{funcionario.ddd}}) {{funcionario.telefone}} /{{funcionario.tipoTelefone}}
                                                                 </span>
                                                             </div>
 
                                                             <div style="margin-left: -8.5%;" class="col-3">
                                                                 <strong>Nascimento: </strong>
                                                                 <span class="dado-cliente">
-                                                                    10/08/2001
+                                                                    {{funcionario.dataNascimento |  date: 'dd/MM/yyyy'}}
                                                                 </span>
                                                             </div>
 
                                                             <div style="margin-left: -10%;" class="col-3">
                                                                 <strong>Email: </strong>
                                                                 <span class="dado-cliente">
-                                                                    casicasi@hotmail.com
+                                                                    {{funcionario.email}}
                                                                 </span>
                                                             </div>
 
