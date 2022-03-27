@@ -43,7 +43,7 @@ export class FinalizarCartaoComponent implements OnInit {
   cartoesCliente?: CartaoCredito[]
 
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
-    , private route: ActivatedRoute, private cartaoCreditoService: CartaoCreditoService, private cdRef: ChangeDetectorRef) { }
+    , private route: ActivatedRoute, private cartaoCreditoService: CartaoCreditoService) { }
 
   ngOnInit(): void {
     this.validacao();
@@ -80,7 +80,7 @@ export class FinalizarCartaoComponent implements OnInit {
 
   cadastrarCartao() {
     if(this.radioUsarCartao){
-      
+
     } else {
 
       if(this.radioCadastrarCartao){

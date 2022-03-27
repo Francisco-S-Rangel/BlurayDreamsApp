@@ -1,3 +1,4 @@
+import { EnderecoCobrancas } from './../../../shared/models/enderecoCobranca';
 import { EnderecoCobrancaService } from './../../../shared/services/cadastro-dados-cliente/endereco-cobranca.service';
 import { SharedDataService } from 'src/app/modules/shared/services/shared-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,17 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinalizarEnderecoCobrancaComponent implements OnInit {
 
-  public id?: number;
-  public idcliente: number = 0;
-  public str: any
+  public idcliente: number = 1;
+  public radioUsarEndereco: boolean = true;
+  public radioCadastrarEndereco: boolean = true;
+  enderecoId: number = 0;
   formEndereco!: FormGroup;
 
-  cliente: any
+  enderecosCliente?: EnderecoCobrancas[]
 
   enderecoCobrancas =
     {
       id: 0,
-      clienteId: this.id,
+      clienteId: 0,
       cep: "",
       tipoResidencia: "",
       logradouro: "",
@@ -38,22 +40,51 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
     , private route: ActivatedRoute, private EnderecoCobrancaService: EnderecoCobrancaService) { }
 
   ngOnInit() {
-
-    this.route.params.subscribe(x => {
-      this.id = x[`clienteid`];
-      this.idcliente = x[`clienteid`];
-    });
-
     this.validacao()
+    this.carregarEnderecosCliente(1)
   }
 
-
-  get f(): any {
-    return this.formEndereco.controls;
+  carregarEnderecosCliente(id: number) {
+    this.EnderecoCobrancaService.getByClienteId(id).subscribe(
+      (enderecoCobrancas: EnderecoCobrancas[]) => {
+        this.enderecosCliente = enderecoCobrancas;
+      }
+    )
   }
 
+  selectChange(event: any){
+    this.enderecoId = event.target.value
+  }
+
+  radioAddEnderecoChange(event: any){
+    if (event.target.value == 1) {
+      this.radioCadastrarEndereco = true
+    } else {
+      this.radioCadastrarEndereco = false
+    }
+  }
+
+  radioChange(event: any) {
+    if (event.target.value == 1) {
+      this.radioUsarEndereco = true
+    } else {
+      this.radioUsarEndereco = false
+    }
+  }
 
   cadastrarEndereco() {
+    if(this.radioUsarEndereco){
+
+    } else {
+
+      if(this.radioCadastrarEndereco){
+        this.EnderecoCobrancaService.post(this.formEndereco.value).subscribe(()=>{})
+        console.log("cadastrou!")
+      } else {
+        console.log("Nao cadastrar!!!")
+      }
+
+    }
     this.router.navigate(['finalizar-endereco-entrega']);
   }
 
@@ -84,6 +115,10 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
       numero: ['', [Validators.required]],
     })
 
+  }
+
+  get f(): any {
+    return this.formEndereco.controls;
   }
 
   backPage() { this.router.navigate(['finalizar-cartao']); }
