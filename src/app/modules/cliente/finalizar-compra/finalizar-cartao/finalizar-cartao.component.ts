@@ -1,3 +1,4 @@
+import { CartaoCredito } from 'src/app/modules/shared/models/cartaoCredito';
 import { CartaoCreditoService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cartao-credito.service';
 import { SharedDataService } from 'src/app/modules/shared/services/shared-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -12,13 +13,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 export class FinalizarCartaoComponent implements OnInit {
 
   public formCartao!: FormGroup;
-
-  constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
-    , private route: ActivatedRoute, private cartaoCreditoService: CartaoCreditoService, private cdRef: ChangeDetectorRef) { }
-
-  ngOnInit(): void {
-    this.validacao();
-  }
+  public radioUsarCartao: boolean = true
+  cartaoId: number = 0
 
   bandeiraCartao: any = [
     {
@@ -32,8 +28,6 @@ export class FinalizarCartaoComponent implements OnInit {
     }
   ]
 
-  str: any;
-
   cartaoCreditos =
     {
       id: 0,
@@ -43,6 +37,36 @@ export class FinalizarCartaoComponent implements OnInit {
       cvv: "",
       nomeTitular: ""
     }
+
+  cartoesCliente?: CartaoCredito[]
+
+  constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
+    , private route: ActivatedRoute, private cartaoCreditoService: CartaoCreditoService, private cdRef: ChangeDetectorRef) { }
+
+  ngOnInit(): void {
+    this.validacao();
+    this.carregarCartoesCliente(1)
+  }
+
+  carregarCartoesCliente(id: number) {
+    this.cartaoCreditoService.getByClienteId(id).subscribe(
+      (cartaoCreditos: CartaoCredito[]) => {
+        this.cartoesCliente = cartaoCreditos;
+      }
+    )
+  }
+
+  selectChange(event: any){
+    this.cartaoId = event.target.value
+  }
+
+  radioChange(event: any) {
+    if (event.target.value == 1) {
+      this.radioUsarCartao = true
+    } else {
+      this.radioUsarCartao = false
+    }
+  }
 
   cadastrarCartao() {
     this.router.navigate(['/finalizar-endereco-cobranca']);
