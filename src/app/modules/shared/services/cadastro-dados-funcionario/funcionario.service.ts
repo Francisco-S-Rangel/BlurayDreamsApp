@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class FuncionarioService {
 
-  baseUrl = `${environment.API_url}/Funcionarios'`;
+  baseUrl = `${environment.API_url}/Funcionarios`;
   
 
   constructor(private http: HttpClient) { }

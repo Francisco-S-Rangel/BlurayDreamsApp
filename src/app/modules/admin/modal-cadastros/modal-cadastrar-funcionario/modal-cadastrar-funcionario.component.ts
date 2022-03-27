@@ -3,6 +3,7 @@ import { SharedDataService } from './../../../shared/services/shared-data.servic
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CadastroFuncionarioService } from 'src/app/modules/shared/services/cadastro-dados-funcionario/cadastro-funcionario.service';
 
 @Component({
   selector: 'app-modal-cadastrar-funcionario',
@@ -13,23 +14,29 @@ export class ModalCadastrarFuncionarioComponent implements OnInit {
 
   form!: FormGroup;
 
-  Clientes = {
+  funcionario = {
    id: 0,
-   Nome: "",
-   DataNascimento: "",
+   nome: "",
+   dataNascimento: "",
    ddd: "",
-   Telefone: "",
-   TipoTelefone: "",
-   CPF: "",
-   Email: "",
-   Senha: ""
+   telefone: "",
+   tipoTelefone: "",
+   cpf: "",
+   email: "",
+   senha: "",
+   status: true,
  }
+
+/*
+ public atualizarData() {
+  const nascimento = new Date(1982,11,28);
+} */
 
  get f(): any {
    return this.form.controls;
  }
 
- constructor( private router: Router, private formBuilder: FormBuilder, private shared: SharedDataService) { }
+ constructor( private router: Router, private formBuilder: FormBuilder, private cadastrofuncionario: CadastroFuncionarioService) { }
 
  ngOnInit(): void {
    this.validacao();
@@ -52,6 +59,7 @@ export class ModalCadastrarFuncionarioComponent implements OnInit {
  irParaEndereco(){ this.router.navigate(['/cadastrar-funcionario-endereco'])}
 
  cadastrarFuncionario(){
+   this.cadastrofuncionario.setFuncionario(this.funcionario);
    this.irParaEndereco()
  }
 
@@ -62,14 +70,14 @@ export class ModalCadastrarFuncionarioComponent implements OnInit {
    }
 
    this.form = this.formBuilder.group({
-     Nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]],
-     DataNascimento: ['', Validators.required],
+     nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]],
+     dataNascimento: ['', Validators.required],
      ddd: ['', Validators.required],
-     Telefone: ['', Validators.required],
-     TipoTelefone: ['', Validators.required],
-     CPF: ['', Validators.required],
-     Email: ['', [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(60)]],
-     Senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
+     telefone: ['', Validators.required],
+     tipoTelefone: ['', Validators.required],
+     cpf: ['', Validators.required],
+     email: ['', [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(60)]],
+     senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
      confSenha: ['', Validators.required]
    }, formOptions)
 

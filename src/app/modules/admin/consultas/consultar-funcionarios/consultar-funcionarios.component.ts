@@ -1,3 +1,5 @@
+import { Funcionario } from 'src/app/modules/shared/models/funcionario';
+import { FuncionarioService } from './../../../shared/services/cadastro-dados-funcionario/funcionario.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,10 +11,21 @@ import { Component, OnInit } from '@angular/core';
 export class ConsultarFuncionariosComponent implements OnInit {
 
   public paginacao = [1,2,3];
+  public funcionarios?: Funcionario[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private funcionarioService: FuncionarioService) { }
 
   ngOnInit(): void {
+    this.carregarFuncionarios();
+  }
+
+  carregarFuncionarios(){
+    this.funcionarioService.getAll().subscribe(
+      (funcionarios: Funcionario[])=>{
+        this.funcionarios= funcionarios;
+        console.log(this.funcionarios);
+      }
+    );
   }
 
   // Botões

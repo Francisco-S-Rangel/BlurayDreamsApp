@@ -10,5 +10,6 @@ export interface Funcionario {
     cpf: string;
     email: string;
     senha: string;
+    status: boolean;
     endereco: Endereco;
 }
