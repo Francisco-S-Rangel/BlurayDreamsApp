@@ -9,28 +9,29 @@
           <label class="form-label">Usar Um Endereço Cadastrado?</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked (change)="radioChange($event)">
           <label class="form-check-label" for="exampleRadios1">
             Sim
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="2" (change)="radioChange($event)">
           <label class="form-check-label" for="exampleRadios2">
             Não
           </label>
         </div>
-        <select class="form-select mt-2">
-          <option selected>-- Escolha um Endereço --</option>
-          <option value="1">Minha Casa - 08900001 (Endereço Padrão)</option>
-          <option value="2">Casa da Mãe - 09785520</option>
+        <select class="form-select mt-2" (change)="selectChange($event)" [disabled]="radioUsarEndereco==false">
+          <option selected value="0">-- Escolha um Endereço --</option>
+          <option *ngFor="let endereco of enderecosCliente;" [value]="endereco.id">
+            {{endereco.cep}} - {{endereco.apelido}}
+          </option>
         </select>
       </div>
       <div class="col-md-3">
         <label class="form-label">CEP</label>
-        <input type="email" class="form-control" id="cep" [ngClass]="{ 'is-invalid': f.cep.errors && f.cep.touched }"
+        <input type="email" class="form-control" id="cep" [ngClass]="{ 'is-invalid': f.cep.errors && f.cep.touched && radioUsarEndereco==false }"
           formControlName="cep" placeholder="Digite seu CEP" [(ngModel)]="enderecoEntregas.cep"
-          (keypress)="keyPressNumbers($event)">
+          (keypress)="keyPressNumbers($event)" [readonly]="radioUsarEndereco==true">
         <div *ngIf="f.cep.errors?.required" class="invalid-feedback">
           CEP é obrigatorio.
         </div>
@@ -38,9 +39,9 @@
       <div class="col-md-3">
         <label class="form-label">Tipo de Residência</label>
         <input type="text" class="form-control" id="TipoResidencia"
-          [ngClass]="{'is-invalid': f.TipoResidencia.errors && f.TipoResidencia.touched}"
+          [ngClass]="{'is-invalid': f.TipoResidencia.errors && f.TipoResidencia.touched && radioUsarEndereco==false}"
           formControlName="TipoResidencia" placeholder="Digite seu Tipo de Residência"
-          [(ngModel)]="enderecoEntregas.tipoResidencia">
+          [(ngModel)]="enderecoEntregas.tipoResidencia" [readonly]="radioUsarEndereco==true">
         <div *ngIf="f.TipoResidencia.errors?.required" class="invalid-feedback">
           Tipo de Residência é obrigatorio.
         </div>
@@ -48,8 +49,8 @@
       <div class="col-3">
         <label class="form-label">Logradouro</label>
         <input type="text" class="form-control" id="Logradouro"
-          [ngClass]="{'is-invalid': f.Logradouro.errors && f.Logradouro.touched}" formControlName="Logradouro"
-          placeholder="Digite seu Logradouro" [(ngModel)]="enderecoEntregas.logradouro">
+          [ngClass]="{'is-invalid': f.Logradouro.errors && f.Logradouro.touched && radioUsarEndereco==false}" formControlName="Logradouro"
+          placeholder="Digite seu Logradouro" [(ngModel)]="enderecoEntregas.logradouro" [readonly]="radioUsarEndereco==true">
         <div class="invalid-feedback">
           Logradouro é obrigatorio.
         </div>
@@ -57,9 +58,9 @@
       <div class="col-3">
         <label class="form-label">Tipo de Logradouro</label>
         <input type="text" class="form-control" id="TipoLogradouro"
-          [ngClass]="{'is-invalid': f.TipoLogradouro.errors && f.TipoLogradouro.touched}"
+          [ngClass]="{'is-invalid': f.TipoLogradouro.errors && f.TipoLogradouro.touched && radioUsarEndereco==false}"
           formControlName="TipoLogradouro" placeholder="Digite seu Tipo de Logradouro"
-          [(ngModel)]="enderecoEntregas.tipoLogradouro">
+          [(ngModel)]="enderecoEntregas.tipoLogradouro" [readonly]="radioUsarEndereco==true">
         <div class="invalid-feedback">
           Tipo de Logradouro é obrigatorio.
         </div>
@@ -67,8 +68,8 @@
       <div class="col-3">
         <label class="form-label">Bairro</label>
         <input type="text" class="form-control" id="bairro"
-          [ngClass]="{'is-invalid': f.Bairro.errors && f.Bairro.touched}" formControlName="Bairro"
-          placeholder="Digite seu Bairro" [(ngModel)]="enderecoEntregas.bairro">
+          [ngClass]="{'is-invalid': f.Bairro.errors && f.Bairro.touched && radioUsarEndereco==false}" formControlName="Bairro"
+          placeholder="Digite seu Bairro" [(ngModel)]="enderecoEntregas.bairro" [readonly]="radioUsarEndereco==true">
         <div class="invalid-feedback">
           Bairro é obrigatorio.
         </div>
@@ -76,8 +77,8 @@
       <div class="col-3">
         <label class="form-label">Cidade</label>
         <input type="text" class="form-control" id="Cidade"
-          [ngClass]="{'is-invalid': f.Cidade.errors && f.Cidade.touched}" formControlName="Cidade"
-          placeholder="Digite sua Cidade" [(ngModel)]="enderecoEntregas.cidade">
+          [ngClass]="{'is-invalid': f.Cidade.errors && f.Cidade.touched && radioUsarEndereco==false}" formControlName="Cidade"
+          placeholder="Digite sua Cidade" [(ngModel)]="enderecoEntregas.cidade" [readonly]="radioUsarEndereco==true">
         <div class="invalid-feedback">
           Cidade é obrigatorio.
         </div>
@@ -86,16 +87,16 @@
       <div class="col-3">
         <label class="form-label">Estado</label>
         <input type="text" class="form-control " id="Estado"
-          [ngClass]="{'is-invalid': f.Estado.errors && f.Estado.touched}" formControlName="Estado"
-          placeholder="Digite seu Estado" [(ngModel)]="enderecoEntregas.estado">
+          [ngClass]="{'is-invalid': f.Estado.errors && f.Estado.touched && radioUsarEndereco==false}" formControlName="Estado"
+          placeholder="Digite seu Estado" [(ngModel)]="enderecoEntregas.estado" [readonly]="radioUsarEndereco==true">
         <div class="invalid-feedback">
           Estado é obrigatorio.
         </div>
       </div>
       <div class="col-3">
         <label class="form-label">País</label>
-        <input type="text" class="form-control" id="Pais" [ngClass]="{'is-invalid': f.Pais.errors && f.Pais.touched}"
-          formControlName="Pais" placeholder="Digite seu País" [(ngModel)]="enderecoEntregas.pais">
+        <input type="text" class="form-control" id="Pais" [ngClass]="{'is-invalid': f.Pais.errors && f.Pais.touched && radioUsarEndereco==false}"
+          formControlName="Pais" placeholder="Digite seu País" [(ngModel)]="enderecoEntregas.pais" [readonly]="radioUsarEndereco==true">
         <div *ngIf="f.Pais.errors?.required" class="invalid-feedback">
           País é obrigatorio.
         </div>
@@ -103,8 +104,8 @@
       <div class="col-3">
         <label class="form-label">Número</label>
         <input type="text" class="form-control" id="Numero"
-          [ngClass]="{'is-invalid': f.Numero.errors && f.Numero.touched}" formControlName="Numero"
-          placeholder="Digite seu Número" [(ngModel)]="enderecoEntregas.numero" (keypress)="keyPressNumbers($event)">
+          [ngClass]="{'is-invalid': f.Numero.errors && f.Numero.touched && radioUsarEndereco==false}" formControlName="Numero"
+          placeholder="Digite seu Número" [(ngModel)]="enderecoEntregas.numero" (keypress)="keyPressNumbers($event)" [readonly]="radioUsarEndereco==true">
         <div *ngIf="f.Numero.errors?.required" class="invalid-feedback">
           Número é obrigatorio.
         </div>
@@ -112,20 +113,37 @@
       <div class="col-3">
         <label class="form-label">Apelido</label>
         <input type="text" class="form-control" id="Apelido"
-          [ngClass]="{'is-invalid': f.Apelido.errors && f.Apelido.touched}" formControlName="Apelido"
-          placeholder="Digite o Apelido do Endereço" [(ngModel)]="enderecoEntregas.apelido">
+          [ngClass]="{'is-invalid': f.Apelido.errors && f.Apelido.touched && radioUsarEndereco==false}" formControlName="Apelido"
+          placeholder="Digite o Apelido do Endereço" [(ngModel)]="enderecoEntregas.apelido" [readonly]="radioUsarEndereco==true">
         <div *ngIf="f.Apelido.errors?.required" class="invalid-feedback">
           Apelido do Endereço é obrigatorio.
         </div>
       </div>
       <div class="col-6">
         <label class="form-label">Observação</label>
-        <input type="text" class="form-control" id="observacao" [ngClass]="{'is-invalid': f.observacao.errors && f.observacao.touched}"
+        <input type="text" class="form-control" id="observacao" [ngClass]="{'is-invalid': f.observacao.errors && f.observacao.touched && radioUsarEndereco==false}"
           formControlName="observacao" placeholder="Escreva uma Observação (Opcional...)"
-          [(ngModel)]="enderecoEntregas.observacao">
+          [(ngModel)]="enderecoEntregas.observacao" [readonly]="radioUsarEndereco==true">
+      </div>
+      <div class="col-12">
+        <div class="row">
+          <label class="form-label">Adicionar endereço a sua conta?</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radio2" id="radio21" value="1" checked [disabled]="radioUsarEndereco==true" (change)="radioAddEnderecoChange($event)">
+          <label class="form-check-label" for="radio21">
+            Sim
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radio2" id="radio22" value="2" [disabled]="radioUsarEndereco==true" (change)="radioAddEnderecoChange($event)">
+          <label class="form-check-label" for="radio22">
+            Não
+          </label>
+        </div>
       </div>
       <div class="col-12 text-center">
-        <button type="button" class="btn btn-primary mt-3" [disabled]="!formEndereco.valid"
+        <button type="button" class="btn btn-primary mt-3" [disabled]="(radioUsarEndereco && enderecoId == 0) || (radioUsarEndereco == false && formEndereco.invalid)"
           (click)="cadastrarEndereco()">Finalizar</button>
       </div>
     </form>

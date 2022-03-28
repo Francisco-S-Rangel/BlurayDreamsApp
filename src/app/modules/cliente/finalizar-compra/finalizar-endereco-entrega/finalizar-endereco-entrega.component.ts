@@ -1,3 +1,4 @@
+import { EnderecoEntregas } from './../../../shared/models/enderecoEntrega';
 import { EnderecoEntregaService } from './../../../shared/services/cadastro-dados-cliente/endereco-entrega.service';
 import { SharedDataService } from 'src/app/modules/shared/services/shared-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,17 +12,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinalizarEnderecoEntregaComponent implements OnInit {
 
-  public id?: number;
-  public idcliente: number = 0;
-  public aux: any
+
+  public idcliente: number = 1;
+  public radioUsarEndereco: boolean = true;
+  public radioCadastrarEndereco: boolean = true;
+  enderecoId: number = 0;
   formEndereco!: FormGroup;
 
-  cliente: any
+  enderecosCliente?: EnderecoEntregas[]
+
 
   enderecoEntregas =
   {
     id: 0,
-    clienteId: this.id,
+    clienteId: this.idcliente,
     cep: "",
     tipoResidencia: "",
     logradouro: "",
@@ -44,34 +48,52 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
 
 
   ngOnInit() {
-
-    this.route.params.subscribe(x => {
-      this.id= x[`clienteid`];
-      this.idcliente= x[`clienteid`];
-    });
-
     this.validacao()
+    this.carregarEnderecosCliente(1)
   }
 
-  keyPressNumbers(event: any) {
-    var charCode = (event.which) ? event.which : event.keyCode;
-    // Only Numbers 0-9
-    if ((charCode < 48 || charCode > 57)) {
-      event.preventDefault();
-      return false;
+  carregarEnderecosCliente(id: number) {
+    this.EnderecoEntregaService.getByClienteId(id).subscribe(
+      (enderecoEntregas: EnderecoEntregas[]) => {
+        this.enderecosCliente = enderecoEntregas;
+      }
+    )
+  }
+
+  selectChange(event: any){
+    this.enderecoId = event.target.value
+  }
+
+  radioAddEnderecoChange(event: any){
+    if (event.target.value == 1) {
+      this.radioCadastrarEndereco = true
     } else {
-      return true;
+      this.radioCadastrarEndereco = false
     }
   }
 
-  cadastrarEndereco(){
-    console.log(this.formEndereco.value);
-    this.EnderecoEntregaService.post(this.formEndereco.value).subscribe(
-      ()=>{
-        console.log();
-        this.backPage();
+  radioChange(event: any) {
+    if (event.target.value == 1) {
+      this.radioUsarEndereco = true
+    } else {
+      this.radioUsarEndereco = false
+    }
+  }
+
+  cadastrarEndereco() {
+    if(this.radioUsarEndereco){
+
+    } else {
+
+      if(this.radioCadastrarEndereco){
+        this.EnderecoEntregaService.post(this.formEndereco.value).subscribe(()=>{})
+        console.log("cadastrou!")
+      } else {
+        console.log("Nao cadastrar!!!")
       }
-    );
+
+    }
+    this.router.navigate(['finalizar-endereco-entrega']);
   }
 
   public validacao(): void {
@@ -93,6 +115,17 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
     })
 
 
+  }
+
+  keyPressNumbers(event: any) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    // Only Numbers 0-9
+    if ((charCode < 48 || charCode > 57)) {
+      event.preventDefault();
+      return false;
+    } else {
+      return true;
+    }
   }
 
   backPage() { this.router.navigate(['/finalizar-endereco-cobranca']); }
