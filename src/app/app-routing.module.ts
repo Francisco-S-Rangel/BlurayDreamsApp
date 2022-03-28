@@ -108,13 +108,13 @@ const routes: Routes = [
   {path: "motivo-ativacao-cliente", component: MotivoAtivacaoClienteComponent},
   {path: "motivo-inativacao-cliente", component: MotivoInativacaoClienteComponent},
   {path: "consultar-funcionarios", component: ConsultarFuncionariosComponent},
-  {path: "informacao-funcionario", component: InformacaoFuncionarioComponent},
+  {path: "informacao-funcionario/:id", component: InformacaoFuncionarioComponent},
   {path: "motivo-ativacao-funcionario", component: MotivoAtivacaoFuncionarioComponent},
   {path: "motivo-inativacao-funcionario", component: MotivoInativacaoFuncionarioComponent},
   {path: "cadastrar-funcionario", component: ModalCadastrarFuncionarioComponent},
   {path: "cadastrar-funcionario-endereco", component: ModalCadastrarFuncionarioEnderecoComponent},
-  {path: "editar-funcionario", component: ModalEditarFuncionarioComponent},
-  {path: "editar-funcionario-endereco", component: ModalEditarFuncionarioEnderecoComponent}
+  {path: "editar-funcionario/:id", component: ModalEditarFuncionarioComponent},
+  {path: "editar-funcionario-endereco/:id/:funcionarioid", component: ModalEditarFuncionarioEnderecoComponent}
 
 ];
 

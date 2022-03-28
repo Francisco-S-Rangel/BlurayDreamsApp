@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Endereco } from '../../models/enderero';
+import { Endereco } from '../../models/endereco';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +18,8 @@ export class EnderecoService {
   getAll(): Observable<Endereco[]>{
     return this.http.get<Endereco[]>(`${this.baseUrl}`);
   }
-  getByClienteId(id: number): Observable<Endereco[]>{
-    return this.http.get<Endereco[]>(`${this.baseUrl}/${id}/funcionario`);
+  getByFuncionarioId(id: number): Observable<Endereco>{
+    return this.http.get<Endereco>(`${this.baseUrl}/${id}/funcionario`);
   }
   getById(id: number): Observable<Endereco>{
     return this.http.get<Endereco>(`${this.baseUrl}/${id}`);

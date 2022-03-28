@@ -104,8 +104,8 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td><button class="btn btn-primary" type="button" (click)="irParaFuncionario()">Visualizar</button></td>
-                                                            <td><button class="btn btn-danger" type="button" >Excluir</button></td>
+                                                            <td><button class="btn btn-primary" type="button" (click)="irParaFuncionario(funcionario.id)">Visualizar</button></td>
+                                                            <td><button class="btn btn-danger" type="button" (click)="deletarFuncionario(funcionario.id)" >Excluir</button></td>
                                                             <td><button class="btn btn-warning" type="button" (click)="inativarFuncionario()" >Inativar</button></td>
                                                         </tr>
                                                     </tbody>

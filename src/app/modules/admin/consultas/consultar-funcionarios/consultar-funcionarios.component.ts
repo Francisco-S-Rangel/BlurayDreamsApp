@@ -19,6 +19,8 @@ export class ConsultarFuncionariosComponent implements OnInit {
     this.carregarFuncionarios();
   }
 
+
+
   carregarFuncionarios(){
     this.funcionarioService.getAll().subscribe(
       (funcionarios: Funcionario[])=>{
@@ -28,9 +30,18 @@ export class ConsultarFuncionariosComponent implements OnInit {
     );
   }
 
+  deletarFuncionario(id: number){
+    this.funcionarioService.delete(id).subscribe(
+      (model: any)=>{
+        console.log(model);
+        this.carregarFuncionarios();
+      }
+    );
+  }
+
   // Botões
   backPage() { this.router.navigate(['tela-funcionario']); }
-  irParaFuncionario(){this.router.navigate(['informacao-funcionario']);}
+  irParaFuncionario(id: number){this.router.navigate([`informacao-funcionario/${id}`]);}
   inativarFuncionario(){this.router.navigate(['motivo-inativacao-funcionario']);}
   irParaCadastrarFuncionario(){this.router.navigate(['cadastrar-funcionario']);}
 

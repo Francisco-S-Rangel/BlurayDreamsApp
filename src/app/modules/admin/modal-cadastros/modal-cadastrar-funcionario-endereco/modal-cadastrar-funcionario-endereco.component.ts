@@ -1,4 +1,4 @@
-import { Endereco } from './../../../shared/models/enderero';
+import { Endereco } from '../../../shared/models/endereco';
 import { FuncionarioService } from './../../../shared/services/cadastro-dados-funcionario/funcionario.service';
 import { SharedDataService } from './../../../shared/services/shared-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -17,6 +17,7 @@ export class ModalCadastrarFuncionarioEnderecoComponent implements OnInit {
 
   public str: any
   formEndereco!: FormGroup;
+  public funcionarios?: Funcionario[];
 
   funcionario: any
 
@@ -59,12 +60,22 @@ cadastrarEndereco(){
   this.funcionario.endereco = this.endereco;
   console.log(this.funcionario);
   this.cadastrarFuncionario(this.funcionario);
+  this.carregarFuncionarios();
+  this.voltarparaconsultafuncionario();
 }
 cadastrarFuncionario(func: Funcionario) {
     //console.log(this.formEndereco.value);
     this.funcionarioService.post(func).subscribe(
       ()=>{
         console.log();
+      }
+    );
+  }
+  carregarFuncionarios(){
+    this.funcionarioService.getAll().subscribe(
+      (funcionarios: Funcionario[])=>{
+        this.funcionarios= funcionarios;
+        console.log(this.funcionarios);
       }
     );
   }

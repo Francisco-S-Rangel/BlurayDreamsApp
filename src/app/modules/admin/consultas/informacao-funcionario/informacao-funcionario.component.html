@@ -1,4 +1,4 @@
-<div class="container-fluid my-4 mx-auto">
+<div class="container-fluid my-4 mx-auto" *ngIf="funcionario">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
             <button class="custom-btn-back" type="button" (click)="backPage()">Retornar</button>
@@ -7,7 +7,7 @@
     <hr>
 
     <div class="col-md-12 text-center">
-     <h1><strong>ID Funcionario: </strong><span style="color: blue;">001</span></h1>
+     <h1><strong>ID Funcionario: </strong><span style="color: blue;">{{funcionario.id}}</span></h1>
     </div>
 
     <br><br>
@@ -28,21 +28,23 @@
                 <th scope="col">DD</th>
                 <th scope="col">Numero</th>
                 <th scope="col">Aparelho</th>
+                <th scope="col">Status</th>
                 <th scope="col">Editar</th>
               </tr>
             </thead>
             <tbody>
               <tr>
 
-                <td>Cassimiro Fonseca</td>
-                <td>casicasi@hotmail</td>
-                <td>05/02/2012</td>
-                <td>49494944</td>
-                <td>qwertyuio</td>
-                <td>14</td>
-                <td>474841515</td>
-                <td>Celular</td>
-                <td><button type="button" class="btn btn-primary" (click)="alterarDados()">Editar</button></td>
+                <td>{{funcionario.nome}}</td>
+                <td>{{funcionario.email}}</td>
+                <td>{{funcionario.dataNascimento | date: 'dd/MM/yyyy'}}</td>
+                <td>{{funcionario.cpf}}</td>
+                <td>{{funcionario.senha}}</td>
+                <td>{{funcionario.ddd}}</td>
+                <td>{{funcionario.telefone}}</td>
+                <td>{{funcionario.tipoTelefone}}</td>
+                <td>{{funcionario.status}}</td>
+                <td><button type="button" class="btn btn-primary" (click)="alterarDados(funcionario.id)">Editar</button></td>
 
             </tr>
             </tbody>
@@ -71,23 +73,21 @@
                 <th scope="col">Estado</th>
                 <th scope="col">Pais</th>
                 <th scope="col">Editar</th>
-                <th scope="col">Deletar</th>
               </tr>
             </thead>
             <tbody>
 
-              <tr>
-                <td>1849494494</td>
-                <td>Casa</td>
-                <td>Rua Teste</td>
-                <td>Condominio</td>
-                <td>7458</td>
-                <td>Teste</td>
-                <td>Teste</td>
-                <td>SP</td>
-                <td>Brasil</td>
-                <td><button type="button" class="btn btn-primary" (click)="alterarEndereco()">Editar</button></td>
-                <td><button type="button" class="btn btn-danger">Excluir</button></td>
+              <tr *ngIf="endereco">
+                <td>{{endereco.cep}}</td>
+                <td>{{endereco.tipoResidencia}}</td>
+                <td>{{endereco.logradouro}}</td>
+                <td>{{endereco.tipoLogradouro}}</td>
+                <td>{{endereco.numero}}</td>
+                <td>{{endereco.bairro}}</td>
+                <td>{{endereco.cidade}}</td>
+                <td>{{endereco.estado}}</td>
+                <td>{{endereco.pais}}</td>
+                <td><button type="button" class="btn btn-primary" (click)="alterarEndereco(funcionario.id,endereco.id)">Editar</button></td>
               </tr>
 
             </tbody>

@@ -1,4 +1,4 @@
-import { Endereco } from "./enderero";
+import { Endereco } from "./endereco";
 
 export interface Funcionario {
     id: number;
