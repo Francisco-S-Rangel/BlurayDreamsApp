@@ -13,8 +13,10 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 export class FinalizarCartaoComponent implements OnInit {
 
   public formCartao!: FormGroup;
-  public radioUsarCartao: boolean = true
-  cartaoId: number = 0
+  public radioUsarCartao: boolean = true;
+  public radioCadastrarCartao: boolean = true;
+  cartaoId: number = 0;
+  idCliente: number = 1;
 
   bandeiraCartao: any = [
     {
@@ -41,7 +43,7 @@ export class FinalizarCartaoComponent implements OnInit {
   cartoesCliente?: CartaoCredito[]
 
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
-    , private route: ActivatedRoute, private cartaoCreditoService: CartaoCreditoService, private cdRef: ChangeDetectorRef) { }
+    , private route: ActivatedRoute, private cartaoCreditoService: CartaoCreditoService) { }
 
   ngOnInit(): void {
     this.validacao();
@@ -60,6 +62,14 @@ export class FinalizarCartaoComponent implements OnInit {
     this.cartaoId = event.target.value
   }
 
+  radioAddCartaoChange(event: any){
+    if (event.target.value == 1) {
+      this.radioCadastrarCartao = true
+    } else {
+      this.radioCadastrarCartao = false
+    }
+  }
+
   radioChange(event: any) {
     if (event.target.value == 1) {
       this.radioUsarCartao = true
@@ -69,6 +79,18 @@ export class FinalizarCartaoComponent implements OnInit {
   }
 
   cadastrarCartao() {
+    if(this.radioUsarCartao){
+
+    } else {
+
+      if(this.radioCadastrarCartao){
+        this.cartaoCreditoService.post(this.formCartao.value).subscribe(()=>{})
+        console.log("cadastrou!")
+      } else {
+        console.log("Nao cadastrar!!!")
+      }
+
+    }
     this.router.navigate(['/finalizar-endereco-cobranca']);
   }
 
@@ -79,6 +101,8 @@ export class FinalizarCartaoComponent implements OnInit {
     }
 
     this.formCartao = this.fb.group({
+      id: 0,
+      clienteid: this.idCliente,
       numeroCartao: ['', [Validators.required]],
       NomeTitular: ['', Validators.required],
       BandeiraCartao: ['', Validators.required],

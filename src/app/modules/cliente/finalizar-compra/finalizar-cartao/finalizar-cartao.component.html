@@ -69,6 +69,23 @@
           CVV é obrigatorio.
         </div>
       </div>
+      <div class="col-12">
+        <div class="row">
+          <label class="form-label">Adicionar cartão a sua conta?</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radio2" id="radio21" value="1" checked [disabled]="radioUsarCartao==true" (change)="radioAddCartaoChange($event)">
+          <label class="form-check-label" for="radio21">
+            Sim
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radio2" id="radio22" value="2" [disabled]="radioUsarCartao==true" (change)="radioAddCartaoChange($event)">
+          <label class="form-check-label" for="radio22">
+            Não
+          </label>
+        </div>
+      </div>
       <div class="col-12 text-center">
         <button type="button" class="btn btn-primary mt-3"
           (click)="cadastrarCartao()" [disabled]="(radioUsarCartao && cartaoId == 0) || (radioUsarCartao == false && formCartao.invalid)">Proximo</button>
@@ -83,3 +100,4 @@
 {{radioUsarCartao}}
 {{cartaoId}}
 {{formCartao.value | json}}
+{{radioCadastrarCartao}}
