@@ -36,3 +36,4 @@ export class FuncionarioService {
     return this.http.delete<Funcionario>(`${this.baseUrl}/${id}`);
   }
 }
+

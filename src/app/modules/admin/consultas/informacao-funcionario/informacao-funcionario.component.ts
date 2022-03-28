@@ -47,7 +47,7 @@ export class InformacaoFuncionarioComponent implements OnInit {
 
   backPage() { this.router.navigate(['consultar-funcionarios']); }
 
-  alterarDados(id: number) { this.router.navigate([`editar-cliente/${id}`]); }
+  alterarDados(id: number) { this.router.navigate([`editar-funcionario/${id}`]); }
 
   alterarEndereco(id: number, Funcionarioid: number) { this.router.navigate([`editar-funcionario-endereco/${id}/${Funcionarioid}`]); }
 }

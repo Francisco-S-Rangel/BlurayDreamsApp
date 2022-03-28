@@ -1,8 +1,12 @@
+import { EnderecoService } from './../../../shared/services/cadastro-dados-funcionario/endereco.service';
+import { FuncionarioService } from './../../../shared/services/cadastro-dados-funcionario/funcionario.service';
+import { Endereco } from './../../../shared/models/endereco';
 import { ValidadorSenha } from './../../../shared/helpers/ValidadorSenha';
 import { SharedDataService } from './../../../shared/services/shared-data.service';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AbstractControl, AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Funcionario } from 'src/app/modules/shared/models/funcionario';
 
 @Component({
   selector: 'app-modal-editar-funcionario',
@@ -11,27 +15,47 @@ import { Router } from '@angular/router';
 })
 export class ModalEditarFuncionarioComponent implements OnInit {
 
+  public id: number =0;
+  public idAux: number =0;
   form!: FormGroup;
+  public endereco?: Endereco;
 
-  Clientes = {
-   id: 0,
-   Nome: "",
-   DataNascimento: "",
-   ddd: "",
-   Telefone: "",
-   TipoTelefone: "",
-   CPF: "",
-   Email: "",
-   Senha: ""
- }
+  funcionario = {
+    id: this.idAux,
+    nome: "",
+    dataNascimento: "",
+    ddd: "",
+    telefone: "",
+    tipoTelefone: "",
+    cpf: "",
+    email: "",
+    senha: "",
+    status: true,
+    endereco: this.endereco,
+  }
 
  get f(): any {
    return this.form.controls;
  }
 
- constructor( private router: Router, private formBuilder: FormBuilder, private shared: SharedDataService) { }
+ constructor( private router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute,
+  private funcionarioService: FuncionarioService,private enderecoService: EnderecoService,private cdRef: ChangeDetectorRef) { }
 
  ngOnInit(): void {
+  this.route.params.subscribe(x => {
+    this.id = x[`id`];
+    this.idAux = x[`id`];
+    this.carregarEndereco(this.id);
+  
+  });
+
+  this.funcionarioService.getById(this.idAux).subscribe(
+    (result) => {
+      this.funcionario = result
+      //console.log(this.Clientes)
+      this.cdRef.detectChanges();
+    }
+  );
    this.validacao();
  }
 
@@ -46,10 +70,15 @@ export class ModalEditarFuncionarioComponent implements OnInit {
    }
  }
 
+ atualizarFuncionario(){
+   console.log(this.form.value);
+   this.funcionarioService.put(this.idAux,this.form.value).subscribe(
+     ()=>{
+       console.log();
+       this.backPage();
+     }
+   );
 
- backPage() { this.router.navigate(['/informacao-funcionario']); }
-
- cadastrarFuncionario(){
  }
 
  public validacao(): void {
@@ -59,18 +88,39 @@ export class ModalEditarFuncionarioComponent implements OnInit {
    }
 
    this.form = this.formBuilder.group({
-     Nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]],
-     DataNascimento: ['', Validators.required],
+     id: this.idAux,
+     nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]],
+     dataNascimento: ['', Validators.required],
      ddd: ['', Validators.required],
-     Telefone: ['', Validators.required],
-     TipoTelefone: ['', Validators.required],
-     CPF: ['', Validators.required],
-     Email: ['', [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(60)]],
-     Senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
-     confSenha: ['', Validators.required]
+     telefone: ['', Validators.required],
+     tipoTelefone: ['', Validators.required],
+     cpf: ['', Validators.required],
+     email: ['', [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(60)]],
+     senha: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
+     endereco: this.endereco,
+     confSenha: ['', Validators.required],
    }, formOptions)
 
  }
 
+ //carregar para Edição
+ carregarFuncionario(id: number){
+  this.funcionarioService.getById(id).subscribe(
+    (funcionario: Funcionario)=>{
+      this.funcionario = funcionario;
+    }
+  );
+}
+carregarEndereco(id: number){
+  this.enderecoService.getByFuncionarioId(id).subscribe(
+    (endereco: Endereco)=>{
+      this.endereco = endereco;
+      console.log(this.endereco);
+    }
+
+  );
+  }
+
+  backPage() { this.router.navigate([`informacao-funcionario/${this.id}`]); }
 
 }
