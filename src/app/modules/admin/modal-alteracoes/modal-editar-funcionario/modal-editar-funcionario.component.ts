@@ -71,6 +71,9 @@ export class ModalEditarFuncionarioComponent implements OnInit {
  }
 
  atualizarFuncionario(){
+  const datacompleta = new Date(`${this.funcionario.dataNascimento}T06:00:00.000Z`);
+  this.form.value.dataNascimento = datacompleta;
+
    console.log(this.form.value);
    this.funcionarioService.put(this.idAux,this.form.value).subscribe(
      ()=>{
