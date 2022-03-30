@@ -12,6 +12,7 @@ export interface Cliente {
     cpf: string;
     email: string;
     senha: string;
+    status: boolean;
     enderecoCobrancas: EnderecoCobrancas[];
     enderecoEntregas: EnderecoEntregas[];
     cartaoCredito?: CartaoCredito[];

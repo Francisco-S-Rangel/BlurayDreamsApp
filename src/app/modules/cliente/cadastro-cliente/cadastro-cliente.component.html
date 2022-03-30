@@ -29,7 +29,7 @@
       </div>
       <div class="col-3">
         <label class="form-label">Data de Nascimento</label>
-        <input type="text" class="form-control" id="nascimento" [ngClass]="{'is-invalid': f.DataNascimento.errors && f.DataNascimento.touched}" formControlName="DataNascimento" placeholder="Digite sua Data de Nascimento" [(ngModel)]="Clientes.DataNascimento">
+        <input type="date" class="form-control" id="nascimento" [ngClass]="{'is-invalid': f.DataNascimento.errors && f.DataNascimento.touched}" formControlName="DataNascimento" placeholder="Digite sua Data de Nascimento" [(ngModel)]="Clientes.DataNascimento">
         <div class="invalid-feedback">
           Data de Nascimento é obrigatorio
         </div>

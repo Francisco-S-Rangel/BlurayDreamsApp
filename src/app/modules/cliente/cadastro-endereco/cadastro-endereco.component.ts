@@ -80,10 +80,15 @@ export class CadastroEnderecoComponent implements OnInit {
 
   irParaCartao(){ this.router.navigate(['/cadastrar-cartao'])}
 
+
   cadastrarCliEnd() {
-    this.cliente.enderecoCobrancas = this.enderecoCobrancas
-    this.cliente.enderecoEntregas = this.enderecoEntregas
-    this.shared.setClientes(this.cliente)
+
+    const datacompleta = new Date(`${this.cliente.DataNascimento}T06:00:00.000Z`);
+    this.cliente.DataNascimento = datacompleta;
+
+    this.cliente.enderecoCobrancas = this.enderecoCobrancas;
+    this.cliente.enderecoEntregas = this.enderecoEntregas;
+    this.shared.setClientes(this.cliente);
     this.irParaCartao();
   }
 

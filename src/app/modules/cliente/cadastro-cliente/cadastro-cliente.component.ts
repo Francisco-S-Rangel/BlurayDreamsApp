@@ -22,7 +22,8 @@ export class CadastroClienteComponent implements OnInit {
     TipoTelefone: "",
     CPF: "",
     Email: "",
-    Senha: ""
+    Senha: "",
+    status: true,
   }
 
   get f(): any {

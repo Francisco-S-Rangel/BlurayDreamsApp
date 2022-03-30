@@ -28,6 +28,7 @@
                 <th scope="col">DD</th>
                 <th scope="col">Numero</th>
                 <th scope="col">Aparelho</th>
+                <th scope="col">Status</th>
                 <th scope="col">Editar</th>
               </tr>
             </thead>
@@ -35,12 +36,13 @@
               <tr>
                 <td>{{cliente.nome}}</td>
                 <td>{{cliente.email}}</td>
-                <td>{{cliente.dataNascimento}}</td>
+                <td>{{cliente.dataNascimento | date: 'dd/MM/yyyy'}}</td>
                 <td>{{cliente.cpf}}</td>
                 <td>{{cliente.senha}}</td>
                 <td>{{cliente.ddd}}</td>
                 <td>{{cliente.telefone}}</td>
                 <td>{{cliente.tipoTelefone}}</td>
+                <td>{{cliente.status}}</td>
                 <td><button type="button" class="btn btn-primary" (click)="editarCliente(cliente.id)">Editar</button></td>
               </tr>
             </tbody>

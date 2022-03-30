@@ -87,6 +87,8 @@ export class ModalEditarClienteComponent implements OnInit {
 
   atualizarCliente() {
     //console.log(this.form.value);
+    const datacompleta = new Date(`${this.Clientes.dataNascimento}T06:00:00.000Z`);
+    this.form.value.dataNascimento = datacompleta;
 
     this.clienteService.put(this.idAux, this.form.value).subscribe(
       () => {
