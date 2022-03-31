@@ -45,28 +45,28 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div style="margin-left: -7.5%;" class="col-3">
+                                                            <div style="margin-left: -6.5%;" class="col-3">
                                                                 <strong>Id: </strong>
                                                                 <span class="dado-cliente">
                                                                     {{funcionario.id}}
                                                                 </span>
                                                             </div>
 
-                                                            <div style="margin-left: -20.5%;" class="col-3">
+                                                            <div style="margin-left: -18.5%;" class="col-3">
                                                                 <strong>CPF: </strong>
                                                                 <span class="dado-cliente">
                                                                     {{funcionario.cpf}}
                                                                 </span>
                                                             </div>
 
-                                                            <div style="margin-left: -15.5%;" class="col-3">
-                                                                <strong>Telefone: </strong>
+                                                            <div style="margin-left: -13.5%;" class="col-3">
+                                                                <strong>Status: </strong>
                                                                 <span class="dado-cliente">
-                                                                    ({{funcionario.ddd}}) {{funcionario.telefone}} /{{funcionario.tipoTelefone}}
+                                                                    {{funcionario.status}}
                                                                 </span>
                                                             </div>
 
-                                                            <div style="margin-left: -8.5%;" class="col-3">
+                                                            <div style="margin-left: -13.5%;" class="col-3">
                                                                 <strong>Nascimento: </strong>
                                                                 <span class="dado-cliente">
                                                                     {{funcionario.dataNascimento |  date: 'dd/MM/yyyy'}}
@@ -99,6 +99,7 @@
 
                                                             <th scope="col">Dados do Funcionario</th>
                                                             <th scope="col">Excluir o Funcionario</th>
+                                                            <th scope="col">Ativar Funcionario</th>
                                                             <th scope="col">Inativar Funcionario</th>
                                                         </tr>
                                                     </thead>
@@ -106,6 +107,7 @@
                                                         <tr>
                                                             <td><button class="btn btn-primary" type="button" (click)="irParaFuncionario(funcionario.id)">Visualizar</button></td>
                                                             <td><button class="btn btn-danger" type="button" (click)="deletarFuncionario(funcionario.id)" >Excluir</button></td>
+                                                            <td><button class="btn btn-success" type="button" (click)="ativarFuncionario()" >Ativar</button></td>
                                                             <td><button class="btn btn-warning" type="button" (click)="inativarFuncionario()" >Inativar</button></td>
                                                         </tr>
                                                     </tbody>

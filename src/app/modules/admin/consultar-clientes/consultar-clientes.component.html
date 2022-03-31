@@ -59,14 +59,14 @@
                                                                 </span>
                                                             </div>
 
-                                                            <div style="margin-left: -15.5%;" class="col-3">
-                                                                <strong>Telefone: </strong>
+                                                            <div style="margin-left: -12%;" class="col-3">
+                                                                <strong>Status: </strong>
                                                                 <span class="dado-cliente">
-                                                                    ({{cliente.ddd}}) {{cliente.telefone}} /{{cliente.tipoTelefone}}
+                                                                    {{cliente.status}} 
                                                                 </span>
                                                             </div>
 
-                                                            <div style="margin-left: -8.5%;" class="col-3">
+                                                            <div style="margin-left: -14.5%;" class="col-3">
                                                                 <strong>Nascimento: </strong>
                                                                 <span class="dado-cliente">
                                                                     {{cliente.dataNascimento |  date: 'dd/MM/yyyy'}}
@@ -99,6 +99,7 @@
 
                                                             <th scope="col">Dados do Cliente</th>
                                                             <th scope="col">Excluir o cliente</th>
+                                                            <th scope="col">Ativar Cliente</th>
                                                             <th scope="col">Inativar Cliente</th>
                                                         </tr>
                                                     </thead>
@@ -106,6 +107,7 @@
                                                         <tr>
                                                             <td><button class="btn btn-primary" type="button" (click)="irInformacaoCliente(cliente.id)">Visualizar</button></td>
                                                             <td><button class="btn btn-danger" type="button" (click)="deletarCliente(cliente.id)">Excluir</button></td>
+                                                            <td><button class="btn btn-success" type="button" (click)="ativarCliente()">Ativar</button></td>
                                                             <td><button class="btn btn-warning" type="button" (click)="inativarCliente()">Inativar</button></td>
                                                         </tr>
                                                     </tbody>

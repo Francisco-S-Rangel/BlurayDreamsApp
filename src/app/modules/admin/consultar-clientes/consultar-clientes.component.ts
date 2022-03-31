@@ -47,5 +47,7 @@ export class ConsultarClientesComponent implements OnInit {
   inativarCliente(){
     this.router.navigate(['/motivo-inativacao-cliente']);
   }
+  ativarCliente(){this.router.navigate(['/motivo-ativacao-cliente']);
+}
 
 }
