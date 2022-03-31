@@ -63,10 +63,6 @@ export class FinalizarCupomTrocaComponent implements OnInit {
     this.calcularQtdDeTrocas()
   }
 
-  calcularQtdDeTrocas(){
-    this.qtdProdutosTrocas = this.arrayTrocas.reduce((acumulador, valor) => acumulador + valor)
-  }
-
 
   irParaProximaPagina(){
     let qtdTotalProdutos = this.calcularQtdTotal()
@@ -83,6 +79,10 @@ export class FinalizarCupomTrocaComponent implements OnInit {
       qtd += this.carrinho.carrinhoProduto![i].quantidade
     }
     return qtd;
+  }
+
+  calcularQtdDeTrocas(){
+    this.qtdProdutosTrocas = this.arrayTrocas.reduce((acumulador, valor) => acumulador + valor)
   }
 
   backPage() {

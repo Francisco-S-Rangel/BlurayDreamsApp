@@ -97,7 +97,6 @@ export class CarrinhoComprasComponent implements OnInit {
     this.carrinhoPut.desconto = this.valorDesconto
     this.carrinhoPut.frete = this.valorFrete
     this.carrinhoPut.precoFinal = (this.valorProdutos + this.valorFrete) - this.valorDesconto
-    console.log(this.carrinhoPut)
     this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(()=>{})
   }
 
