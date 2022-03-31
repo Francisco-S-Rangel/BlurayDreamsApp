@@ -38,6 +38,14 @@ export class CarrinhoComprasComponent implements OnInit {
   cep: string = "";
   cupomDesconto: string = "";
 
+  carrinhoPut: Carrinho = {
+    id: 1,
+    clienteId: 1,
+    desconto: 0,
+    frete: 0,
+    precoFinal: 0
+  };
+
   constructor(private router: Router, private CarrinhoComprasService: CarrinhoComprasService, private ProdutoService: ProdutoService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -85,8 +93,22 @@ export class CarrinhoComprasComponent implements OnInit {
     }
   }
 
-  irParaTrocas() { this.router.navigate(['/finalizar-cupom-troca']) }
+  finalizarPedido(){
+    this.carrinhoPut.desconto = this.valorDesconto
+    this.carrinhoPut.frete = this.valorFrete
+    this.carrinhoPut.precoFinal = (this.valorProdutos + this.valorFrete) - this.valorDesconto
+    console.log(this.carrinhoPut)
+    this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(()=>{})
+  }
 
-  finalizarPedido() { this.router.navigate(['/finalizar-cartao']) }
+  irParaTrocas() {
+    this.finalizarPedido()
+    this.router.navigate(['/finalizar-cupom-troca'])
+  }
+
+  irParaCartao() {
+    this.finalizarPedido()
+    this.router.navigate(['/finalizar-cartao'])
+  }
 
 }
