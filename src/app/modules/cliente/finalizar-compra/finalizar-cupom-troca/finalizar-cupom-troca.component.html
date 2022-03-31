@@ -3,7 +3,7 @@
     <div class="col-12 text-center">
       <label class="label">Cupom de Troca</label>
     </div>
-    <form class="row g-3" [formGroup]="formTroca">
+    <form class="row g-3">
       <div class="col-12 text-center">
         <label class="texto-troca">Voce possui 1 cupom de troca!</label>
       </div>
@@ -15,35 +15,29 @@
             <th>Titulo</th>
             <th>Preço</th>
             <th>Tipo</th>
+            <th>Qtd.</th>
             <th>Abater Preço</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="text-center align-middle">
-            <td><img class="imagem" src="https://br.web.img3.acsta.net/medias/nmedia/18/90/93/20/20120876.jpg"></td>
-            <td>O Poderoso Chefão</td>
-            <td>29.99 R$</td>
-            <td>Blu-ray</td>
-            <td><input class="form-check-input" type="checkbox" value="" id="checkbox"></td>
-          </tr>
-          <tr class="text-center align-middle">
-            <td><img class="imagem" src="https://br.web.img3.acsta.net/medias/nmedia/18/90/95/96/20122166.jpg"></td>
-            <td>Clube da Luta</td>
-            <td>19.99 R$</td>
-            <td>Normal</td>
-            <td><input class="form-check-input" type="checkbox" value="" id="checkbox"></td>
-          </tr>
-          <tr class="text-center align-middle">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Abater o preço de todos os produtos -></td>
-            <td><input class="form-check-input" type="checkbox" value="" id="checkbox"></td>
+          <tr *ngFor="let producto of carrinho.carrinhoProduto; let index=index" class="text-center align-middle">
+            <td><img class="imagem" src="{{producto.produto.img}}"></td>
+            <td>{{producto.produto.titulo}}</td>
+            <td>{{producto.produto.preco}}</td>
+            <td>{{producto.produto.tipo}}</td>
+            <td>{{producto.quantidade}}</td>
+            <td><select (change)="selectChange($event, index)">
+                <option value="0" selected>0</option>
+                <option *ngFor="let i of [].constructor(producto.quantidade); let index=index" [value]="index+1">
+                  {{index+1}}
+                </option>
+              </select></td>
           </tr>
         </tbody>
       </table>
+      <div [hidden]="cuponsTroca >= qtdProdutosTrocas" class="text-center red">Voce possui {{cuponsTroca}} cupom de troca e escolheu {{qtdProdutosTrocas}} produtos para trocar!</div>
       <div class="col-12 text-center">
-        <button type="button" class="btn btn-success disabled">Prosseguir</button>
+        <button type="button" class="btn btn-success" [disabled]="cuponsTroca < qtdProdutosTrocas" (click)="irParaProximaPagina()">Prosseguir</button>
       </div>
     </form>
   </div>
@@ -51,4 +45,3 @@
     <button type="button" class="btn btn-primary" (click)="backPage()">Retornar</button>
   </div>
 </div>
-
