@@ -106,7 +106,7 @@ const routes: Routes = [
   {path: "motivo-ativacao-produto", component: MotivoAtivacaoComponent},
   {path: "motivo-inativacao-produto", component: MotivoInativacaoComponent},
   {path: "motivo-ativacao-cliente", component: MotivoAtivacaoClienteComponent},
-  {path: "motivo-inativacao-cliente", component: MotivoInativacaoClienteComponent},
+  {path: "motivo-inativacao-cliente/:id", component: MotivoInativacaoClienteComponent},
   {path: "consultar-funcionarios", component: ConsultarFuncionariosComponent},
   {path: "informacao-funcionario/:id", component: InformacaoFuncionarioComponent},
   {path: "motivo-ativacao-funcionario", component: MotivoAtivacaoFuncionarioComponent},
