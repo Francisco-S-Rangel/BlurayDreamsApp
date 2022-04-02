@@ -1,3 +1,5 @@
+import { EfetivarCompraRequest } from './../../../shared/models/efetivarCompraRequest';
+import { CarrinhoComprasService } from './../../../shared/services/cadastro-dados-pedido/carrinho-compras.service';
 import { EnderecoEntregas } from './../../../shared/models/enderecoEntrega';
 import { EnderecoEntregaService } from './../../../shared/services/cadastro-dados-cliente/endereco-entrega.service';
 import { SharedDataService } from 'src/app/modules/shared/services/shared-data.service';
@@ -21,30 +23,36 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
 
   enderecosCliente?: EnderecoEntregas[]
 
+  EfetivarCompraRequest: EfetivarCompraRequest
+
 
   enderecoEntregas =
-  {
-    id: 0,
-    clienteId: this.idcliente,
-    cep: "",
-    tipoResidencia: "",
-    logradouro: "",
-    tipoLogradouro: "",
-    bairro: "",
-    cidade: "",
-    estado: "",
-    pais: "",
-    numero: "",
-    apelido: "",
-    observacao: ""
-  }
+    {
+      id: 0,
+      clienteId: this.idcliente,
+      cep: "",
+      tipoResidencia: "",
+      logradouro: "",
+      tipoLogradouro: "",
+      bairro: "",
+      cidade: "",
+      estado: "",
+      pais: "",
+      numero: "",
+      apelido: "",
+      observacao: ""
+    }
 
   get f(): any {
     return this.formEndereco.controls;
   }
 
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
-    , private route: ActivatedRoute,private EnderecoEntregaService: EnderecoEntregaService){}
+    , private route: ActivatedRoute, private EnderecoEntregaService: EnderecoEntregaService, private CarrinhoComprasService: CarrinhoComprasService) {
+
+    this.EfetivarCompraRequest = this.shared.getRequest()
+    console.log(this.EfetivarCompraRequest.enderecoCobrancaId)
+  }
 
 
   ngOnInit() {
@@ -60,11 +68,12 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
     )
   }
 
-  selectChange(event: any){
-    this.enderecoId = event.target.value
+  selectChange(event: any) {
+    let evt: number = parseInt(event.target.value)
+    this.enderecoId = evt
   }
 
-  radioAddEnderecoChange(event: any){
+  radioAddEnderecoChange(event: any) {
     if (event.target.value == 1) {
       this.radioCadastrarEndereco = true
     } else {
@@ -81,12 +90,24 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
   }
 
   cadastrarEndereco() {
-    if(this.radioUsarEndereco){
-
+    if (this.radioUsarEndereco) {
+      this.EfetivarCompraRequest.enderecoEntregaId = this.enderecoId
+      console.log(this.EfetivarCompraRequest)
+      this.CarrinhoComprasService.efetivarCompra(1, this.EfetivarCompraRequest).subscribe(() => {
+        console.log("Sucess!")
+      })
     } else {
 
-      if(this.radioCadastrarEndereco){
-        this.EnderecoEntregaService.post(this.formEndereco.value).subscribe(()=>{})
+      if (this.radioCadastrarEndereco) {
+        this.EnderecoEntregaService.post(this.formEndereco.value).subscribe(() => {
+          this.EnderecoEntregaService.getByClienteId(1).subscribe((enderecosEntregas) => {
+            this.EfetivarCompraRequest.enderecoEntregaId = enderecosEntregas[enderecosEntregas.length - 1].id
+            console.log(this.EfetivarCompraRequest)
+            this.CarrinhoComprasService.efetivarCompra(1, this.EfetivarCompraRequest).subscribe(() => {
+              console.log("Sucess!")
+            })
+          })
+        })
         console.log("cadastrou!")
       } else {
         console.log("Nao cadastrar!!!")

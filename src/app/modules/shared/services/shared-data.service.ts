@@ -6,16 +6,16 @@ import { Injectable } from '@angular/core';
 export class SharedDataService {
 
   clientes: any;
-  pedido: any;
+  request: any;
 
   constructor() { }
 
-  setPedidos(obj: any){
-    this.pedido = obj
+  setRequest(obj: any){
+    this.request = obj
   }
 
-  getPedido(){
-    return this.pedido
+  getRequest(){
+    return this.request
   }
 
   setClientes(obj: any){

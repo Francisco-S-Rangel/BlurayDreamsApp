@@ -55,8 +55,9 @@ export class CarrinhoComprasComponent implements OnInit {
   carregarCarrinho() {
 
     this.CarrinhoComprasService.getCarrinhoProdutos(1).subscribe((carrinho) => {
-      //console.log(carrinho)
       this.carrinho = carrinho
+
+      this.valorProdutos = 0;
 
       for (let i = 0; i < this.carrinho.carrinhoProduto!.length; i++) {
         this.ProdutoService.getById(carrinho.carrinhoProduto![i].produtoId).subscribe((produto)=>{
@@ -97,6 +98,7 @@ export class CarrinhoComprasComponent implements OnInit {
     this.carrinhoPut.desconto = this.valorDesconto
     this.carrinhoPut.frete = this.valorFrete
     this.carrinhoPut.precoFinal = (this.valorProdutos + this.valorFrete) - this.valorDesconto
+    this.carrinhoPut.precoFinal = parseInt(this.carrinhoPut.precoFinal.toFixed(1))
     this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(()=>{})
   }
 

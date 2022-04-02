@@ -1,3 +1,4 @@
+import { EfetivarCompraRequest } from './../../../shared/models/efetivarCompraRequest';
 import { EnderecoCobrancas } from './../../../shared/models/enderecoCobranca';
 import { EnderecoCobrancaService } from './../../../shared/services/cadastro-dados-cliente/endereco-cobranca.service';
 import { SharedDataService } from 'src/app/modules/shared/services/shared-data.service';
@@ -15,12 +16,13 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
   public idcliente: number = 1;
   public radioUsarEndereco: boolean = true;
   public radioCadastrarEndereco: boolean = true;
-  enderecoId: number = 0;
-  formEndereco!: FormGroup;
+  public enderecoId: number = 0;
+  public formEndereco!: FormGroup;
+  public EfetivarCompraRequest: EfetivarCompraRequest
 
-  enderecosCliente?: EnderecoCobrancas[]
+  public enderecosCliente?: EnderecoCobrancas[]
 
-  enderecoCobrancas =
+  public enderecoCobrancas =
     {
       id: 0,
       clienteId: 0,
@@ -37,7 +39,10 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
 
 
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
-    , private route: ActivatedRoute, private EnderecoCobrancaService: EnderecoCobrancaService) { }
+    , private route: ActivatedRoute, private EnderecoCobrancaService: EnderecoCobrancaService) {
+      this.EfetivarCompraRequest = this.shared.getRequest()
+      //alert(this.EfetivarCompraRequest)
+    }
 
   ngOnInit() {
     this.validacao()
@@ -53,7 +58,8 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
   }
 
   selectChange(event: any){
-    this.enderecoId = event.target.value
+    let evt: number = parseInt(event.target.value)
+    this.enderecoId = evt
   }
 
   radioAddEnderecoChange(event: any){
@@ -74,18 +80,30 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
 
   cadastrarEndereco() {
     if(this.radioUsarEndereco){
-
+      this.EfetivarCompraRequest.enderecoCobrancaId = this.enderecoId
+      this.EfetivarCompraRequest.enderecoEntregaId = 0
+      console.log(this.EfetivarCompraRequest)
+      this.shared.setRequest(this.EfetivarCompraRequest)
+      this.router.navigate(['finalizar-endereco-entrega']);
     } else {
 
       if(this.radioCadastrarEndereco){
-        this.EnderecoCobrancaService.post(this.formEndereco.value).subscribe(()=>{})
+        this.EnderecoCobrancaService.post(this.formEndereco.value).subscribe(()=>{
+          this.EnderecoCobrancaService.getByClienteId(1).subscribe((enderecosCobrancas)=>{
+            //alert(enderecosCobrancas[enderecosCobrancas.length-1].id)
+            this.EfetivarCompraRequest.enderecoCobrancaId = enderecosCobrancas[enderecosCobrancas.length-1].id
+            this.EfetivarCompraRequest.enderecoEntregaId = 0
+            console.log(this.EfetivarCompraRequest)
+            this.shared.setRequest(this.EfetivarCompraRequest)
+            this.router.navigate(['finalizar-endereco-entrega']);
+          })
+        })
         console.log("cadastrou!")
       } else {
         console.log("Nao cadastrar!!!")
       }
 
     }
-    this.router.navigate(['finalizar-endereco-entrega']);
   }
 
   keyPressNumbers(event: any) {

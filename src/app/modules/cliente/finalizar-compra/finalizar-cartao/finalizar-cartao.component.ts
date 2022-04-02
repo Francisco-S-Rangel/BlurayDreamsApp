@@ -1,3 +1,4 @@
+import { EfetivarCompraRequest } from './../../../shared/models/efetivarCompraRequest';
 import { CartaoCredito } from 'src/app/modules/shared/models/cartaoCredito';
 import { CartaoCreditoService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cartao-credito.service';
 import { SharedDataService } from 'src/app/modules/shared/services/shared-data.service';
@@ -17,6 +18,12 @@ export class FinalizarCartaoComponent implements OnInit {
   public radioCadastrarCartao: boolean = true;
   cartaoId: number = 0;
   idCliente: number = 1;
+
+  public EfetivarCompraRequest: EfetivarCompraRequest = {
+    enderecoCobrancaId: 0,
+    enderecoEntregaId: 0,
+    cartaoId: 0
+  }
 
   bandeiraCartao: any = [
     {
@@ -43,7 +50,7 @@ export class FinalizarCartaoComponent implements OnInit {
   cartoesCliente?: CartaoCredito[]
 
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
-    , private route: ActivatedRoute, private cartaoCreditoService: CartaoCreditoService) { }
+    ,private cartaoCreditoService: CartaoCreditoService) { }
 
   ngOnInit(): void {
     this.validacao();
@@ -59,7 +66,8 @@ export class FinalizarCartaoComponent implements OnInit {
   }
 
   selectChange(event: any){
-    this.cartaoId = event.target.value
+    let evt: number = parseInt(event.target.value)
+    this.cartaoId = evt
   }
 
   radioAddCartaoChange(event: any){
@@ -80,18 +88,31 @@ export class FinalizarCartaoComponent implements OnInit {
 
   cadastrarCartao() {
     if(this.radioUsarCartao){
-
+      this.EfetivarCompraRequest.cartaoId = this.cartaoId
+      this.EfetivarCompraRequest.enderecoCobrancaId = 0
+      this.EfetivarCompraRequest.enderecoEntregaId = 0
+      console.log(this.EfetivarCompraRequest)
+      this.shared.setRequest(this.EfetivarCompraRequest)
+      this.router.navigate(['/finalizar-endereco-cobranca']);
     } else {
 
       if(this.radioCadastrarCartao){
-        this.cartaoCreditoService.post(this.formCartao.value).subscribe(()=>{})
+        this.cartaoCreditoService.post(this.formCartao.value).subscribe(()=>{
+          this.cartaoCreditoService.getByClienteId(1).subscribe((cartoesCreditos)=>{
+            this.EfetivarCompraRequest.cartaoId = cartoesCreditos[cartoesCreditos.length-1].id
+            this.EfetivarCompraRequest.enderecoCobrancaId = 0
+            this.EfetivarCompraRequest.enderecoEntregaId = 0
+            console.log(this.EfetivarCompraRequest)
+            this.shared.setRequest(this.EfetivarCompraRequest)
+            this.router.navigate(['/finalizar-endereco-cobranca']);
+          })
+        })
         console.log("cadastrou!")
       } else {
         console.log("Nao cadastrar!!!")
       }
 
     }
-    this.router.navigate(['/finalizar-endereco-cobranca']);
   }
 
   public validacao(): void {
