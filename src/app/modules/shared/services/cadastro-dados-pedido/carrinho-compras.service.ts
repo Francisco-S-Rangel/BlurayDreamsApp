@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Produto } from '../../models/produto';
+import { EfetivarCompraRequest } from '../../models/efetivarCompraRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,9 @@ export class CarrinhoComprasService {
   }
   excluirProdutoCarrinho(clienteid: number,produtoid: number){
     return this.http.delete<any>(`${this.baseUrl}/${clienteid}/carrinho?produtoId=${produtoid}`);
+  }
+  efetivarCompra(carrinhoid: number,efetivarcomprarequest: EfetivarCompraRequest ){
+    return this.http.post(`${this.baseUrl}/${carrinhoid}/efetivarcompra`,efetivarcomprarequest);
   }
 
 }

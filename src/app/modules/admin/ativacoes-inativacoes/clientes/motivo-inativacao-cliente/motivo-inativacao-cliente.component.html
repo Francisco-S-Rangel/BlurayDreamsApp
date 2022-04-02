@@ -9,12 +9,12 @@
       </div>
       <select class="form-select">
         <option selected>-- Escolha uma Categoria de Inativação --</option>
-        <option value="1">Conta Inativa</option>
-        <option value="2">Ações Contra o Termo de Uso do Site</option>
+        <option value="1" (click)="contaInativada()">Conta Inativa</option>
+        <option value="2" (click)="contraTermo()">Ações Contra o Termo de Uso do Site</option>
       </select>
     </div>
     <div class="col-12 text-center mt-3">
-      <button type="button" class="btn btn-primary mt-3" >Inativar Cliente</button>
+      <button type="button" class="btn btn-primary mt-3" (click)="cadastrarMotivoInativacao()">Inativar Cliente</button>
     </div>
   </div>
   <div class="col-12 text-center mt-4">

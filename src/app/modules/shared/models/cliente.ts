@@ -13,6 +13,7 @@ export interface Cliente {
     email: string;
     senha: string;
     status: boolean;
+    cupomtroca: number;
     enderecoCobrancas: EnderecoCobrancas[];
     enderecoEntregas: EnderecoEntregas[];
     cartaoCredito?: CartaoCredito[];

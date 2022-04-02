@@ -43,6 +43,7 @@ export class ConsultarFuncionariosComponent implements OnInit {
   backPage() { this.router.navigate(['tela-funcionario']); }
   irParaFuncionario(id: number){this.router.navigate([`informacao-funcionario/${id}`]);}
   inativarFuncionario(){this.router.navigate(['motivo-inativacao-funcionario']);}
+  ativarFuncionario(){this.router.navigate(['motivo-ativacao-funcionario']);}
   irParaCadastrarFuncionario(){this.router.navigate(['cadastrar-funcionario']);}
 
 }

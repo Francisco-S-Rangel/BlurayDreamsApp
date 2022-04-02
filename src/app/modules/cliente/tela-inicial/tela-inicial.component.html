@@ -1,44 +1,46 @@
 <div class="container">
     <div class="row">
-      <ng-container *ngFor="let produto of produtos">
-          <div class="card col-md-6">
-          <a (click)="produtoSelecionado(produto.id)">
-              <img src="{{produto.img}}" alt="">
-              <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{produto.titulo}} - <strong>{{produto.tipo}}</strong></h5>
-              <div class="precos"><small class="dvd">R$ {{produto.preco}}</small></div>
-          </a>
-              <button class="btn-carrinho">Adicionar ao carrinho</button>
-          </div>
-      </ng-container>
-  </div>
-
-    <br><hr><br>
-    <div class="row">
-    <div class="col-12 mt-3">
-        <nav>
-            <ul class="pagination pagination-sm justify-content-center">
-
-                <li class="page-item">
-                    <a class="page-link" tabindex="-1">
-                        <img class="passador"src=".\assets\icons8-chevron-esquerda-50.png" alt="Anterior">
-                    </a>
-                </li>
-                <li class="page-item" *ngFor="let pag of paginacao;let i = index">
-                    <a class="page-link">{{i+1}}</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link">
-                        <img class="passador" src=".\assets\icons8-chevron-right-50.png" alt="Próximo">
-                    </a>
-                </li>
-            </ul>
-            <ul class="pagination pagination-sm justify-content-center">
-                <li>
-                    <span>1 de 12</span>
-                </li>
-            </ul>
-        </nav>
+        <ng-container *ngFor="let produto of produtos">
+            <div class="card col-md-6">
+                <a (click)="produtoSelecionado(produto.id)">
+                    <img src="{{produto.img}}" alt="">
+                    <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
+                        {{produto.titulo}} - <strong>{{produto.tipo}}</strong></h5>
+                    <div class="precos"><small class="dvd">R$ {{produto.preco}}</small></div>
+                </a>
+                <button class="btn-carrinho">Adicionar ao carrinho</button>
+            </div>
+        </ng-container>
     </div>
+
+    <br>
+    <hr><br>
+    <div class="row">
+        <div class="col-12 mt-3">
+            <nav>
+                <ul class="pagination pagination-sm justify-content-center">
+
+                    <li class="page-item">
+                        <a class="page-link" tabindex="-1">
+                            <img class="passador" src=".\assets\icons8-chevron-esquerda-50.png" alt="Anterior">
+                        </a>
+                    </li>
+                    <li class="page-item" *ngFor="let pag of paginacao;let i = index">
+                        <a class="page-link">{{i+1}}</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link">
+                            <img class="passador" src=".\assets\icons8-chevron-right-50.png" alt="Próximo">
+                        </a>
+                    </li>
+                </ul>
+                <ul class="pagination pagination-sm justify-content-center">
+                    <li>
+                        <span>1 de 12</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
 
 </div>
