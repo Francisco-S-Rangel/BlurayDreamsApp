@@ -13,86 +13,104 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class MotivoInativacaoClienteComponent implements OnInit {
 
-  public id:number =0;
+  public id: number = 0;
   public cliente?: Cliente;
   form!: FormGroup;
+  formMotivo!: FormGroup;
 
   inativacaocliente = {
     id: 0,
-    clienteId: this.id,
-    motivoDesativacao: ""
+    clienteId: 0,
+    motivoDesativacao: "",
+    cliente: null
   }
 
-  constructor(private router: Router,private route: ActivatedRoute,private clienteService: ClienteService, private inativacaoService: DesativacaoClienteService,
-    private formBuilder: FormBuilder) { }
+  Motivos = [
+    { msg: "Conta Inativa" },
+    { msg: "Ações Contra o Termo de Uso do Site" }
+  ];
+
+  constructor(private router: Router, private route: ActivatedRoute, private clienteService: ClienteService, private inativacaoService: DesativacaoClienteService,
+    private formBuilder: FormBuilder, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.route.params.subscribe(x=>{
-      this.id =  x[`id`];
+    this.route.params.subscribe(x => {
+      this.id = x[`id`];
       this.carregarCliente(this.id);
-    });  
+    });
+    this.formMotivo = this.fb.group({
+      motivo: [null]
+    });
   }
 
-  
 
-  contaInativada(){
-    this.inativacaocliente.motivoDesativacao = "Conta Inativa";
+  cadastrarMotivoInativacao() {
+
+
+    if (this.formMotivo.value == null) {
+
+    } else if(this.formMotivo.value != null) {
+      const mensagem = this.formMotivo.value;
+      this.inativacaocliente.motivoDesativacao = mensagem.motivo;
+
+      if(mensagem.motivo !=null){
+      this.atualizarCliente();
+      this.cadastrarMotivo();
+      this.backPage();
+      }
+    }
+
   }
-  contraTermo(){
-    this.inativacaocliente.motivoDesativacao = "Ações Contra o Termo de Uso do Site";
+
+  public inserirMotivodeInativacao() {
+    this.inativacaocliente.clienteId = this.id;
+    this.inativacaocliente.motivoDesativacao = "";
+
   }
-
-  cadastrarMotivoInativacao(){
-
-    this.atualizarCliente();
-    this.cadastrarMotivo();
-
-    
-  }
-
   public validacao(): void {
 
+    const cupom = this.cliente?.cupomtroca == null ? 0 : this.cliente.cupomtroca;
+
     this.form = this.formBuilder.group({
-    id: this.cliente?.id,
-    nome: this.cliente?.nome,
-    dataNascimento: this.cliente?.dataNascimento,
-    ddd: this.cliente?.ddd,
-    telefone: this.cliente?.telefone,
-    tipoTelefone: this.cliente?.tipoTelefone,
-    cpf: this.cliente?.cpf,
-    email: this.cliente?.email,
-    cupomTroca: this.cliente?.cupomtroca,
-    senha: this.cliente?.senha,
-    status: false,
+      id: this.cliente?.id,
+      nome: this.cliente?.nome,
+      dataNascimento: this.cliente?.dataNascimento,
+      ddd: this.cliente?.ddd,
+      telefone: this.cliente?.telefone,
+      tipoTelefone: this.cliente?.tipoTelefone,
+      cpf: this.cliente?.cpf,
+      email: this.cliente?.email,
+      cupomTroca: cupom,
+      senha: this.cliente?.senha,
+      status: false,
 
     });
 
   }
 
-  carregarCliente(id: number){
+  carregarCliente(id: number) {
     this.clienteService.getById(id).subscribe(
-      (cliente: Cliente)=>{
+      (cliente: Cliente) => {
         this.cliente = cliente;
         this.validacao();
+        this.inserirMotivodeInativacao();
       }
     );
   }
-  atualizarCliente(){
-    this.clienteService.put(this.id,this.form.value).subscribe(
+  atualizarCliente() {
+    this.clienteService.put(this.id, this.form.value).subscribe(
       () => {
         console.log();
       }
     );
   }
-  cadastrarMotivo(){
+  cadastrarMotivo() {
     this.inativacaoService.post(this.inativacaocliente).subscribe(
-      ()=>{
+      () => {
         console.log();
       }
     );
   }
-
- 
 
   backPage() {
     this.router.navigate(['/consultar-clientes']);
