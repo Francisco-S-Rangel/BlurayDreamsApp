@@ -33,6 +33,10 @@ export class InformacaoPedidosComponent implements OnInit {
       );
   }
 
+  carregarPedidos(id: number){
+    
+  }
+
   backPage(id: number){this.router.navigate([`informacao-cliente/${id}`]);}
   irPedidoEscolhido(id: number){this.router.navigate([`info-pedido-escolhido/${id}`]);}
 }
