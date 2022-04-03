@@ -82,7 +82,6 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
     if(this.radioUsarEndereco){
       this.EfetivarCompraRequest.enderecoCobrancaId = this.enderecoId
       this.EfetivarCompraRequest.enderecoEntregaId = 0
-      console.log(this.EfetivarCompraRequest)
       this.shared.setRequest(this.EfetivarCompraRequest)
       this.router.navigate(['finalizar-endereco-entrega']);
     } else {
@@ -93,12 +92,10 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
             //alert(enderecosCobrancas[enderecosCobrancas.length-1].id)
             this.EfetivarCompraRequest.enderecoCobrancaId = enderecosCobrancas[enderecosCobrancas.length-1].id
             this.EfetivarCompraRequest.enderecoEntregaId = 0
-            console.log(this.EfetivarCompraRequest)
             this.shared.setRequest(this.EfetivarCompraRequest)
             this.router.navigate(['finalizar-endereco-entrega']);
           })
         })
-        console.log("cadastrou!")
       } else {
         console.log("Nao cadastrar!!!")
       }

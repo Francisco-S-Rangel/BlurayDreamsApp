@@ -96,8 +96,8 @@ export class CarrinhoComprasComponent implements OnInit {
 
   finalizarPedido(){
     this.carrinhoPut.desconto = this.valorDesconto
-    this.carrinhoPut.frete = this.valorFrete
-    this.carrinhoPut.precoFinal = (this.valorProdutos + this.valorFrete) - this.valorDesconto
+    this.carrinhoPut.frete = 10
+    this.carrinhoPut.precoFinal = (this.valorProdutos + 10) - this.valorDesconto
     this.carrinhoPut.precoFinal = parseInt(this.carrinhoPut.precoFinal.toFixed(1))
     this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(()=>{})
   }

@@ -91,7 +91,6 @@ export class FinalizarCartaoComponent implements OnInit {
       this.EfetivarCompraRequest.cartaoId = this.cartaoId
       this.EfetivarCompraRequest.enderecoCobrancaId = 0
       this.EfetivarCompraRequest.enderecoEntregaId = 0
-      console.log(this.EfetivarCompraRequest)
       this.shared.setRequest(this.EfetivarCompraRequest)
       this.router.navigate(['/finalizar-endereco-cobranca']);
     } else {
@@ -102,12 +101,10 @@ export class FinalizarCartaoComponent implements OnInit {
             this.EfetivarCompraRequest.cartaoId = cartoesCreditos[cartoesCreditos.length-1].id
             this.EfetivarCompraRequest.enderecoCobrancaId = 0
             this.EfetivarCompraRequest.enderecoEntregaId = 0
-            console.log(this.EfetivarCompraRequest)
             this.shared.setRequest(this.EfetivarCompraRequest)
             this.router.navigate(['/finalizar-endereco-cobranca']);
           })
         })
-        console.log("cadastrou!")
       } else {
         console.log("Nao cadastrar!!!")
       }

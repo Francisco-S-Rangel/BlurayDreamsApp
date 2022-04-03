@@ -1,3 +1,4 @@
+import { Carrinho } from './../../../shared/models/carrinho';
 import { EfetivarCompraRequest } from './../../../shared/models/efetivarCompraRequest';
 import { CarrinhoComprasService } from './../../../shared/services/cadastro-dados-pedido/carrinho-compras.service';
 import { EnderecoEntregas } from './../../../shared/models/enderecoEntrega';
@@ -6,6 +7,7 @@ import { SharedDataService } from 'src/app/modules/shared/services/shared-data.s
 import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Produto } from 'src/app/modules/shared/models/produto';
 
 @Component({
   selector: 'app-finalizar-endereco-entrega',
@@ -24,6 +26,30 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
   enderecosCliente?: EnderecoEntregas[]
 
   EfetivarCompraRequest: EfetivarCompraRequest
+
+  carrinho: Carrinho = {
+    id: 0,
+    clienteId: 0,
+    desconto: 0,
+    frete: 0,
+    precoFinal: 0,
+    carrinhoProduto: [{
+      id: 0,
+      carrinhoId: 0,
+      produtoId: 0,
+      quantidade: 0,
+      carrinho: new Carrinho(),
+      produto: new Produto()
+    }]
+  };
+
+  carrinhoPut: Carrinho = {
+    id: 1,
+    clienteId: 1,
+    desconto: 0,
+    frete: 0,
+    precoFinal: 0
+  };
 
 
   enderecoEntregas =
@@ -51,13 +77,13 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
     , private route: ActivatedRoute, private EnderecoEntregaService: EnderecoEntregaService, private CarrinhoComprasService: CarrinhoComprasService) {
 
     this.EfetivarCompraRequest = this.shared.getRequest()
-    console.log(this.EfetivarCompraRequest.enderecoCobrancaId)
   }
 
 
   ngOnInit() {
     this.validacao()
     this.carregarEnderecosCliente(1)
+    this.carregarCarrinho()
   }
 
   carregarEnderecosCliente(id: number) {
@@ -66,6 +92,13 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
         this.enderecosCliente = enderecoEntregas;
       }
     )
+  }
+
+  carregarCarrinho(){
+    this.CarrinhoComprasService.getCarrinhoProdutos(1).subscribe((carrinho) => {
+      this.carrinho = carrinho
+      console.log(this.carrinho)
+    })
   }
 
   selectChange(event: any) {
@@ -91,30 +124,42 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
 
   cadastrarEndereco() {
     if (this.radioUsarEndereco) {
+      let id: number = 0
       this.EfetivarCompraRequest.enderecoEntregaId = this.enderecoId
-      console.log(this.EfetivarCompraRequest)
       this.CarrinhoComprasService.efetivarCompra(1, this.EfetivarCompraRequest).subscribe(() => {
         console.log("Sucess!")
+        for (let i = 0; i < this.carrinho.carrinhoProduto!.length; i++) {
+          id = this.carrinho.carrinhoProduto![i].produtoId;
+          this.CarrinhoComprasService.excluirProdutoCarrinho(1, id).subscribe(()=>{})
+        }
+        this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(()=>{
+          this.router.navigate(['']);
+        })
       })
     } else {
 
       if (this.radioCadastrarEndereco) {
+        let id: number = 0
         this.EnderecoEntregaService.post(this.formEndereco.value).subscribe(() => {
           this.EnderecoEntregaService.getByClienteId(1).subscribe((enderecosEntregas) => {
             this.EfetivarCompraRequest.enderecoEntregaId = enderecosEntregas[enderecosEntregas.length - 1].id
-            console.log(this.EfetivarCompraRequest)
             this.CarrinhoComprasService.efetivarCompra(1, this.EfetivarCompraRequest).subscribe(() => {
               console.log("Sucess!")
+              for (let i = 0; i < this.carrinho.carrinhoProduto!.length; i++) {
+                id = this.carrinho.carrinhoProduto![i].produtoId;
+                this.CarrinhoComprasService.excluirProdutoCarrinho(1, id).subscribe(()=>{})
+              }
+              this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(()=>{
+                this.router.navigate(['']);
+              })
             })
           })
         })
-        console.log("cadastrou!")
       } else {
         console.log("Nao cadastrar!!!")
       }
 
     }
-    this.router.navigate(['finalizar-endereco-entrega']);
   }
 
   public validacao(): void {
