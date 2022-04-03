@@ -110,7 +110,7 @@ const routes: Routes = [
   {path: "consultar-funcionarios", component: ConsultarFuncionariosComponent},
   {path: "informacao-funcionario/:id", component: InformacaoFuncionarioComponent},
   {path: "motivo-ativacao-funcionario", component: MotivoAtivacaoFuncionarioComponent},
-  {path: "motivo-inativacao-funcionario", component: MotivoInativacaoFuncionarioComponent},
+  {path: "motivo-inativacao-funcionario/:id", component: MotivoInativacaoFuncionarioComponent},
   {path: "cadastrar-funcionario", component: ModalCadastrarFuncionarioComponent},
   {path: "cadastrar-funcionario-endereco", component: ModalCadastrarFuncionarioEnderecoComponent},
   {path: "editar-funcionario/:id", component: ModalEditarFuncionarioComponent},

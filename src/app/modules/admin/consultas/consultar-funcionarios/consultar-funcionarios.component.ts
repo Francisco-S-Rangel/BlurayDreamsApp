@@ -42,7 +42,7 @@ export class ConsultarFuncionariosComponent implements OnInit {
   // Botões
   backPage() { this.router.navigate(['tela-funcionario']); }
   irParaFuncionario(id: number){this.router.navigate([`informacao-funcionario/${id}`]);}
-  inativarFuncionario(){this.router.navigate(['motivo-inativacao-funcionario']);}
+  inativarFuncionario(id: number){this.router.navigate([`motivo-inativacao-funcionario/${id}`]);}
   ativarFuncionario(){this.router.navigate(['motivo-ativacao-funcionario']);}
   irParaCadastrarFuncionario(){this.router.navigate(['cadastrar-funcionario']);}
 
