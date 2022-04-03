@@ -18,17 +18,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="text-center align-middle">
-                <td>001</td>
-                <td>R$ 99.99</td>
-                <td>Em Transporte</td>
-                <td><button type="button" class="btn btn-info" (click)="irPedidoEscolhido(cliente.id)" >Detalhes</button></td>
-              </tr>
-              <tr class="text-center align-middle">
-                <td>002</td>
-                <td>R$ 123.99</td>
-                <td>Finalizado</td>
-                <td><button type="button" class="btn btn-info">Detalhes</button></td>
+              <tr *ngFor="let pedido of pedidos" class="text-center align-middle">
+                <td>{{pedido.id}}</td>
+                <td>R$ {{pedido.precoFinal}}</td>
+                <td>{{pedido.status}}</td>
+                <td><button type="button" class="btn btn-info" (click)="irPedidoEscolhido(cliente.id, pedido.id)" >Detalhes</button></td>
               </tr>
             </tbody>
           </table>
@@ -37,3 +31,5 @@
     <hr>
     <br>
 </div>
+
+

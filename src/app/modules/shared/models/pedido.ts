@@ -8,7 +8,7 @@ export class Pedido {
         this.id=0,
         this.clienteId=0,
         this.enderecoCobrancaId=0,
-        this.endercoEntregaId=0,
+        this.enderecoEntregaId=0,
         this.cartaoCreditoId=0,
         this.desconto=0,
         this.frete=0,
@@ -18,7 +18,7 @@ export class Pedido {
     id: number;
     clienteId: number;
     enderecoCobrancaId: number;
-    endercoEntregaId: number;
+    enderecoEntregaId: number;
     cartaoCreditoId: number;
     desconto: number;
     frete: number;
@@ -27,7 +27,7 @@ export class Pedido {
     enderecoCobrancas?: EnderecoCobrancas;
     enderecoEntregas?: EnderecoEntregas;
     cartaoCredito?: CartaoCredito;
-    pedidoproduto?: PedidoProduto[];
+    pedidoProdutos?: PedidoProduto[];
 
 
 }

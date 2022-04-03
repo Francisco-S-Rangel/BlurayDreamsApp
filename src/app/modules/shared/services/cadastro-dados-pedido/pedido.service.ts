@@ -34,7 +34,7 @@ export class PedidoService {
     return this.http.delete<Pedido>(`${this.baseUrl}/${id}`);
   }
   getPedidoporCliente(clienteId: number){
-    return this.http.get<Pedido>(`${this.baseUrl}/${clienteId}/cliente`);
+    return this.http.get<Pedido[]>(`${this.baseUrl}/${clienteId}/cliente`);
   }
-  
+
 }

@@ -17,7 +17,7 @@
         <br>
         <div class="col-12 text-center">
             <h1>Pedido Id:
-                <strong class="color">001</strong>
+                <strong class="color">{{idPedido}}</strong>
             </h1>
             <hr>
         </div>
@@ -37,28 +37,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let producto of pedido.pedidoProdutos">
                         <td><img class="produtoImg"
-                                src="https://www.cafecomfilme.com.br/media/k2/items/cache/8ffd18e59bf9d59135c7eafc3068ae79_L.jpg?t=20200206_184920" />
+                                src="{{producto.produto!.img}}" />
                         </td>
-                        <td>1</td>
-                        <td>Rambo - Programado para matar</td>
-                        <td>Dvd</td>
-                        <td>2</td>
-                        <td><strong>R$ 19,90</strong></td>
+                        <td>{{producto.produto!.id}}</td>
+                        <td>{{producto.produto!.titulo}}</td>
+                        <td>{{producto.produto!.tipo}}</td>
+                        <td>{{producto.quantidade}}</td>
+                        <td><strong>{{producto.produto!.preco}}</strong></td>
                     </tr>
-
-                    <tr>
-                        <td><img class="produtoImg"
-                                src="https://br.web.img3.acsta.net/medias/nmedia/18/90/95/96/20122166.jpg" />
-                        </td>
-                        <td>2</td>
-                        <td>Rambo - Programado para matar</td>
-                        <td>Bluray</td>
-                        <td>1</td>
-                        <td><strong>R$ 39,90</strong></td>
-                    </tr>
-
                 </tbody>
             </table>
         </div>
@@ -69,11 +57,9 @@
             <table class="table table-hover">
                 <thead class="table-secondary titulo">
                     <tr>
-                        <th scope="col">Preço Produto(s): <strong class="color">R$ 58,60</strong></th>
-                        <th scope="col">Frete: <strong class="color">R$ 10,00</strong></th>
-                        <th scope="col">Desconto: <strong class="color">R$ 5,00</strong></th>
-                        <th scope="col">Preço Cheio: <strong class="color">R$ 68,60</strong></th>
-                        <th scope="col">Preço Final: <strong class="azulforte">R$ 63,60</strong></th>
+                        <th scope="col">Frete: <strong class="color">R$ {{pedido.frete}}</strong></th>
+                        <th scope="col">Desconto: <strong class="color">R$ {{pedido.desconto}}</strong></th>
+                        <th scope="col">Preço Final: <strong class="azulforte">R$ {{pedido.precoFinal}}</strong></th>
                     </tr>
                 </thead>
 
@@ -94,7 +80,7 @@
         <h3 style="margin-left: 12px;"><strong>Os dados abaixos correspondem com os dados rescetivos que o cliente tinha quando fez o pedido.</strong></h3>
         <hr style="border: 2px solid black;">
         <div class="col-12">
-            <h1 class="espaco">Cliente Id: <span class="color">003</span></h1>
+            <h1 class="espaco">Cliente Id: <span class="color">{{cliente!.id}}</span></h1>
             <table class="table table-hover">
                 <thead class="table-danger">
                   <tr>
@@ -108,12 +94,12 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Roberto Gustavo Justos</td>
-                    <td>robrobguttojust@icloud.com</td>
-                    <td>01/01/1989</td>
-                    <td>181511563-78</td>
-                    <td>19</td>
-                    <td>448484848825</td>
+                    <td>{{cliente.nome}}</td>
+                    <td>{{cliente.email}}</td>
+                    <td>{{cliente.dataNascimento}}</td>
+                    <td>{{cliente.cpf}}</td>
+                    <td>{{cliente.ddd}}</td>
+                    <td>{{cliente.telefone}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -121,7 +107,7 @@
         </div>
 
         <div class="col-12">
-            <h1 class="espaco">Endereço Cobrança: <span class="color">008</span></h1>
+            <h1 class="espaco">Endereço Cobrança: <span class="color">{{enderecoCobranca.id}}</span></h1>
             <table class="table table-hover">
                 <thead class="table-danger">
                     <tr>
@@ -138,15 +124,15 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>48451115196</td>
-                        <td>Condominio</td>
-                        <td>Rua Nova Esperança da Graça</td>
-                        <td>Casa</td>
-                        <td>485</td>
-                        <td>Villa Madalena</td>
-                        <td>Londres</td>
-                        <td>Rio Grande do Sul</td>
-                        <td>Russia</td>
+                        <td>{{enderecoCobranca.cep}}</td>
+                        <td>{{enderecoCobranca.tipoResidencia}}</td>
+                        <td>{{enderecoCobranca.logradouro}}</td>
+                        <td>{{enderecoCobranca.tipoLogradouro}}</td>
+                        <td>{{enderecoCobranca.numero}}</td>
+                        <td>{{enderecoCobranca.bairro}}</td>
+                        <td>{{enderecoCobranca.cidade}}</td>
+                        <td>{{enderecoCobranca.estado}}</td>
+                        <td>{{enderecoCobranca.pais}}</td>
                     </tr>
 
                 </tbody>
@@ -154,7 +140,7 @@
         </div>
 
         <div class="col-12">
-            <h1 class="espaco">Endereço Entrega: <span class="color">007</span></h1>
+            <h1 class="espaco">Endereço Entrega: <span class="color">{{enderecoEntrega.id}}</span></h1>
             <table class="table table-hover">
                 <thead class="table-danger">
                     <tr>
@@ -173,17 +159,17 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>48451115196</td>
-                        <td>Condominio</td>
-                        <td>Rua Nova Esperança da Graça</td>
-                        <td>Casa</td>
-                        <td>485</td>
-                        <td>Villa Madalena</td>
-                        <td>Londres</td>
-                        <td>Rio Grande do Sul</td>
-                        <td>Russia</td>
-                        <td>Johnnyy</td>
-                        <td>Sobrado amarelo com o portão branco</td>
+                        <td>{{enderecoEntrega.cep}}</td>
+                        <td>{{enderecoEntrega.tipoResidencia}}</td>
+                        <td>{{enderecoEntrega.logradouro}}</td>
+                        <td>{{enderecoEntrega.tipoLogradouro}}</td>
+                        <td>{{enderecoEntrega.numero}}</td>
+                        <td>{{enderecoEntrega.bairro}}</td>
+                        <td>{{enderecoEntrega.cidade}}</td>
+                        <td>{{enderecoEntrega.estado}}</td>
+                        <td>{{enderecoEntrega.pais}}</td>
+                        <td>{{enderecoEntrega.apelido}}</td>
+                        <td>{{enderecoEntrega.observacao}}</td>
                     </tr>
 
                 </tbody>
@@ -191,7 +177,7 @@
         </div>
 
         <div class="col-12">
-            <h1 class="espaco">Cartao de Credito: <span class="color">008</span></h1>
+            <h1 class="espaco">Cartao de Credito: <span class="color">{{cartaoCredito.id}}</span></h1>
             <table class="table table-hover">
                 <thead class="table-danger">
                   <tr>
@@ -203,10 +189,10 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>1818181818</td>
-                    <td>Visa</td>
-                    <td>712</td>
-                    <td>Franco Da Rocha</td>
+                    <td>{{cartaoCredito.numeroCartao}}</td>
+                    <td>{{cartaoCredito.bandeiraCartao}}</td>
+                    <td>{{cartaoCredito.cvv}}</td>
+                    <td>{{cartaoCredito.nomeTitular}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -219,3 +205,4 @@
      </div>
     <br><hr><br>
 </div>
+

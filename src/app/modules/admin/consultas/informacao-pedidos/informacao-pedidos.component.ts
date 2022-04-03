@@ -1,3 +1,5 @@
+import { Pedido } from './../../../shared/models/pedido';
+import { PedidoService } from './../../../shared/services/cadastro-dados-pedido/pedido.service';
 import { Component, OnInit } from '@angular/core';
 import { Route, Router, ActivatedRoute } from '@angular/router';
 import { Cliente } from 'src/app/modules/shared/models/cliente';
@@ -13,13 +15,15 @@ export class InformacaoPedidosComponent implements OnInit {
   public id: number =0;
 
   public cliente?: Cliente;
+  public pedidos?: Pedido[]
 
-  constructor(private router: Router, private route: ActivatedRoute,private clienteService: ClienteService) { }
+  constructor(private router: Router, private route: ActivatedRoute,private clienteService: ClienteService, private PedidoService: PedidoService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(x=>{
       this.id = x[`id`];
       this.carregarCliente(this.id);
+      this.carregarPedidos(this.id)
     });
   }
 
@@ -34,9 +38,13 @@ export class InformacaoPedidosComponent implements OnInit {
   }
 
   carregarPedidos(id: number){
-    
+    this.PedidoService.getPedidoporCliente(id).subscribe((pedidos)=>{
+      this.pedidos = pedidos
+      console.log(pedidos)
+    })
+
   }
 
   backPage(id: number){this.router.navigate([`informacao-cliente/${id}`]);}
-  irPedidoEscolhido(id: number){this.router.navigate([`info-pedido-escolhido/${id}`]);}
+  irPedidoEscolhido(id: number, idpedido: number){this.router.navigate([`info-pedido-escolhido/${id}/${idpedido}`]);}
 }

@@ -102,7 +102,7 @@ const routes: Routes = [
   {path: "editar-produto", component: ModalEditarProdutosComponent},
   {path: "cadastrar-estoque", component: ModalCadastrarEstoqueComponent},
   {path: "informacao-pedidos/:id", component: InformacaoPedidosComponent},
-  {path: "info-pedido-escolhido/:id", component: InfoPedidoEscolhidoComponent},
+  {path: "info-pedido-escolhido/:id/:idpedido", component: InfoPedidoEscolhidoComponent},
   {path: "motivo-ativacao-produto", component: MotivoAtivacaoComponent},
   {path: "motivo-inativacao-produto", component: MotivoInativacaoComponent},
   {path: "motivo-ativacao-cliente", component: MotivoAtivacaoClienteComponent},
