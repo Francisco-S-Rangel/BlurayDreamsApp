@@ -1,4 +1,7 @@
-import { Router } from '@angular/router';
+import { Pedido } from './../../../../shared/models/pedido';
+import { ClienteService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cliente.service';
+import { PedidoService } from './../../../../shared/services/cadastro-dados-pedido/pedido.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilUsuarioPedidosComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  public pedidos?: Pedido[]
+
+  constructor(private router: Router, private route: ActivatedRoute,private clienteService: ClienteService, private PedidoService: PedidoService) { }
 
   ngOnInit() {
+    this.carregarPedidos(1)
+  }
+
+  carregarPedidos(id: number){
+    this.PedidoService.getPedidoporCliente(id).subscribe((pedidos)=>{
+      this.pedidos = pedidos
+      console.log(pedidos)
+    })
+
   }
 
   irParaPerfil(){ this.router.navigate(['/perfil-usuario-main'])}
@@ -19,6 +33,6 @@ export class PerfilUsuarioPedidosComponent implements OnInit {
 
   irParaMetPagamentos(){this.router.navigate(['/perfil-usuario-cartoes'])}
 
-  irParaTrocas(){this.router.navigate(['/perfil-usuario-trocas'])}
+  irParaTrocas(id: number){this.router.navigate([`/perfil-usuario-trocas/${id}`])}
 
 }

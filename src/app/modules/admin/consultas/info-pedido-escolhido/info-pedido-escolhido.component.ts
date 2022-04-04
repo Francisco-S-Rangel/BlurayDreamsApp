@@ -28,6 +28,8 @@ export class InfoPedidoEscolhidoComponent implements OnInit {
   public enderecoEntrega!: EnderecoEntregas
   public enderecoCobranca!: EnderecoCobrancas
 
+  public pedidoPut!: Pedido
+
   constructor(private router: Router, private route: ActivatedRoute, private clienteService: ClienteService,
     private PedidoService: PedidoService, private ProdutoService: ProdutoService, private EnderecoCobrancaService: EnderecoCobrancaService,
     private EnderecoEntregaService: EnderecoEntregaService, private CartaoCreditoService: CartaoCreditoService) { }
@@ -46,7 +48,7 @@ export class InfoPedidoEscolhidoComponent implements OnInit {
     this.clienteService.getById(id).subscribe(
       (cliente: Cliente) => {
         this.cliente = cliente;
-        console.log(this.cliente);
+        //console.log(this.cliente);
       }
     );
   }
@@ -56,14 +58,17 @@ export class InfoPedidoEscolhidoComponent implements OnInit {
       for (let i = 0; i < pedidos.length; i++) {
         if (pedidos[i].id == this.idPedido) {
           this.pedido = pedidos[i];
+          this.pedidoPut = pedidos[i];
         }
       }
+
+      //console.log(this.pedidoPut)
 
       for (let i = 0; i < this.pedido.pedidoProdutos!.length; i++) {
         this.ProdutoService.getById(this.pedido.pedidoProdutos![i].produtoId).subscribe((produto) => {
           this.pedido.pedidoProdutos![i].produto = produto
           //this.valorProdutos += this.carrinho.carrinhoProduto![i].quantidade * this.carrinho.carrinhoProduto![i].produto.preco
-          console.log(this.pedido)
+          //console.log(this.pedido)
         })
       }
 
@@ -78,22 +83,41 @@ export class InfoPedidoEscolhidoComponent implements OnInit {
   carregarCartao(idcartao: number) {
     this.CartaoCreditoService.getById(idcartao).subscribe((cartao) => {
       this.cartaoCredito = cartao
-      console.log(this.cartaoCredito)
+      //console.log(this.cartaoCredito)
     })
   }
 
   carregarEndEntrega(idendereco: number) {
     this.EnderecoEntregaService.getById(idendereco).subscribe((endereco) => {
       this.enderecoEntrega = endereco
-      console.log(this.enderecoEntrega)
+      //console.log(this.enderecoEntrega)
     })
   }
 
   carregarEndCobranca(idendereco: number) {
     this.EnderecoCobrancaService.getById(idendereco).subscribe((endereco) => {
       this.enderecoCobranca = endereco
-      console.log(this.enderecoCobranca)
+      //console.log(this.enderecoCobranca)
     })
+  }
+
+  aprovarCompra(idPedido: number){
+    this.pedidoPut.status = "Aprovado"
+    this.PedidoService.put(idPedido, this.pedidoPut).subscribe(()=>{})
+  }
+  recusarCompra(idPedido: number){
+    this.pedidoPut.status = "Reprovado"
+    this.PedidoService.put(idPedido, this.pedidoPut).subscribe(()=>{})
+  }
+
+  enviarParaEntrega(idPedido: number){
+    this.pedidoPut.status = "Em transporte"
+    this.PedidoService.put(idPedido, this.pedidoPut).subscribe(()=>{})
+  }
+
+  pedidoEntregue(idPedido: number){
+    this.pedidoPut.status = "Entregue"
+    this.PedidoService.put(idPedido, this.pedidoPut).subscribe(()=>{})
   }
 
   backPage() { this.router.navigate([`informacao-pedidos/${this.id}`]); }

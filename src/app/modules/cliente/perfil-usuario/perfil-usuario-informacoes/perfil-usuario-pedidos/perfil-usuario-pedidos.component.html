@@ -41,17 +41,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="text-center align-middle">
-              <td>1</td>
-              <td>99.99 R$</td>
-              <td>Em Transporte</td>
-              <td><button type="button" class="btn btn-success">Detalhes</button></td>
-            </tr>
-            <tr class="text-center align-middle">
-              <td>6</td>
-              <td>123.99 R$</td>
-              <td>Finalizado</td>
-              <td><button type="button" class="btn btn-success" (click)="irParaTrocas()">Detalhes</button></td>
+            <tr *ngFor="let pedido of pedidos" class="text-center align-middle">
+              <td>{{pedido.id}}</td>
+              <td>{{pedido.precoFinal}} R$</td>
+              <td>{{pedido.status}}</td>
+              <td><button type="button" class="btn btn-success" (click)="irParaTrocas(pedido.id)">Detalhes</button></td>
             </tr>
           </tbody>
         </table>
