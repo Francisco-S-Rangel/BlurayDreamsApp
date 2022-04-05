@@ -107,7 +107,7 @@
                                                         <tr>
                                                             <td><button class="btn btn-primary" type="button" (click)="irInformacaoCliente(cliente.id)">Visualizar</button></td>
                                                             <td><button class="btn btn-danger" type="button" (click)="deletarCliente(cliente.id)">Excluir</button></td>
-                                                            <td><button class="btn btn-success" type="button" (click)="ativarCliente()">Ativar</button></td>
+                                                            <td><button class="btn btn-success" type="button" [disabled]="cliente.status == true" (click)="ativarCliente(cliente.id)">Ativar</button></td>
                                                             <td><button class="btn btn-warning" type="button" [disabled]="cliente.status == false" (click)="inativarCliente(cliente.id)">Inativar</button></td>
                                                         </tr>
                                                     </tbody>

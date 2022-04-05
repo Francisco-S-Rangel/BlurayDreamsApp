@@ -107,7 +107,7 @@
                                                         <tr>
                                                             <td><button class="btn btn-primary" type="button" (click)="irParaFuncionario(funcionario.id)">Visualizar</button></td>
                                                             <td><button class="btn btn-danger" type="button" (click)="deletarFuncionario(funcionario.id)" >Excluir</button></td>
-                                                            <td><button class="btn btn-success" type="button" (click)="ativarFuncionario()" >Ativar</button></td>
+                                                            <td><button class="btn btn-success" type="button" [disabled]="funcionario.status == true" (click)="ativarFuncionario(funcionario.id)" >Ativar</button></td>
                                                             <td><button class="btn btn-warning" type="button" [disabled]="funcionario.status == false" (click)="inativarFuncionario(funcionario.id)" >Inativar</button></td>
                                                         </tr>
                                                     </tbody>
