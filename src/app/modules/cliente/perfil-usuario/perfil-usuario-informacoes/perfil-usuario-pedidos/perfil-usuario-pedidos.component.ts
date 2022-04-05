@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilUsuarioPedidosComponent implements OnInit {
 
+  idCliente: number = 1
+
   public pedidos?: Pedido[]
 
   constructor(private router: Router, private route: ActivatedRoute,private clienteService: ClienteService, private PedidoService: PedidoService) { }
@@ -33,6 +35,6 @@ export class PerfilUsuarioPedidosComponent implements OnInit {
 
   irParaMetPagamentos(){this.router.navigate(['/perfil-usuario-cartoes'])}
 
-  irParaTrocas(id: number){this.router.navigate([`/perfil-usuario-trocas/${id}`])}
+  irParaTrocas(idpedido: number){this.router.navigate([`/perfil-usuario-trocas/${idpedido}/${this.idCliente}`])}
 
 }
