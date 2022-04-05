@@ -7,14 +7,19 @@
       <div class="row">
         <label class="form-label">Motivo da Ativação</label>
       </div>
-      <select class="form-select">
-        <option selected>-- Escolha um Motivo de Ativação --</option>
-        <option value="1">Fim do Periodo de Banimento</option>
-        <option value="2">Usúario Re-Logado</option>
+
+      <form [formGroup]="formMotivo">
+
+      <select class="form-select" formControlName="motivo">
+        <option [ngValue]="null">-- Escolha um Motivo de Ativação --</option>
+        <option *ngFor="let motivo of Motivos" [ngValue]="motivo.msg">{{motivo.msg}}</option>
       </select>
+
+      </form>
+
     </div>
     <div class="col-12 text-center mt-3">
-      <button type="button" class="btn btn-primary mt-3" >Ativar Cliente</button>
+      <button type="button" class="btn btn-primary mt-3" (click)="cadastrarMotivoAtivacao()">Ativar Cliente</button>
     </div>
   </div>
   <div class="col-12 text-center mt-4">
