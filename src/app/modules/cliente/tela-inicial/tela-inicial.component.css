@@ -1,3 +1,6 @@
+body{
+    margin: 0;
+}
 .card {
     margin: 50px;
     height: 360px;
@@ -37,4 +40,18 @@
 .passador{
     width: 18px;
     height: 18px;
+}
+/*Carrosel*/
+.carousel-inner img{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1400px) { 
+    .carousel-inner {
+        margin-left: 9.2rem;
+        max-width: 1000px;
+        max-height: 500px;
+    }
 }
