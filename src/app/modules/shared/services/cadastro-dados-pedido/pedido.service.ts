@@ -37,7 +37,7 @@ export class PedidoService {
   getPedidoporCliente(clienteId: number){
     return this.http.get<Pedido[]>(`${this.baseUrl}/${clienteId}/cliente`);
   }
-  postTrocaporPedido(clienteId: number,request: TrocaRequest){
+  postTrocaporPedido(clienteId: number,request: TrocaRequest[]){
     return this.http.post(`${this.baseUrl}/${clienteId}/troca`,request);
   }
 }

@@ -62,3 +62,7 @@ thead th {
   border-bottom: 2px solid black;
   border-top: 2px solid black;
 }
+
+.color {
+  color: #a51f88;
+}

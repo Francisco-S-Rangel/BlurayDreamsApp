@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="p-3 py-5">
         <div class="d-flex mb-3">
-          <h1 class="text-right">Pedido Núm: {{pedido.id}}</h1>
+          <h1 class="text-right">Pedido Núm: <span class="color">{{pedido.id}}</span> - Status: <span class="color">{{pedido.status}}</span></h1>
         </div>
         <table class="table table-striped">
           <thead class="table-active">
@@ -17,13 +17,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let producto of pedido.pedidoProdutos" class="text-center align-middle">
+            <tr *ngFor="let producto of pedido.pedidoProdutos; let index=index" class="text-center align-middle">
               <td><img class="imagem" src="{{producto.produto!.img}}"></td>
               <td>{{producto.produto!.titulo}}</td>
               <td>{{producto.produto!.preco}}</td>
               <td>{{producto.produto!.tipo}}</td>
               <td>{{producto.quantidade}}</td>
-              <td><input class="form-check-input" type="checkbox" value="" id="checkbox"></td>
+              <td><select (change)="selectChange($event, producto.produto!.id, index)" [disabled]="pedido.status!='Entregue'">
+                <option value="0" selected>0</option>
+                <option *ngFor="let i of [].constructor(producto.quantidade); let index=index" [value]="index+1">
+                  {{index+1}}
+                </option>
+              </select></td>
             </tr>
           </tbody>
         </table>
@@ -46,7 +51,7 @@
         </div>
         <div class="row justify-content-md-center mb-5" [hidden]="pedido.status!='Entregue'">
           <div class="col-md-auto">
-            <button type="button" class="btn btn-primary mt-4">Solicitar Troca</button>
+            <button type="button" class="btn btn-primary mt-4" (click)="solicitarTroca()">Solicitar Troca</button>
           </div>
           <div class="col-md-auto">
             <button type="button" class="btn btn-danger mt-4">Solicitar Cancelamento</button>

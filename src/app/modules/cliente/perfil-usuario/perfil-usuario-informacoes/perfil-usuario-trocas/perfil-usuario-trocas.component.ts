@@ -1,3 +1,4 @@
+import { TrocaRequest } from './../../../../shared/models/TrocaRequest';
 import { Pedido } from './../../../../shared/models/pedido';
 import { ClienteService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cliente.service';
 import { ProdutoService } from './../../../../shared/services/cadastro-dados-pedido/produto.service';
@@ -14,14 +15,18 @@ export class PerfilUsuarioTrocasComponent implements OnInit {
 
   public idPedido: number = 0
   public idCliente: number = 0
+  public qtdProdutosTrocas: number = 0
+
+  public TrocaRequest: TrocaRequest[] = []
 
   public pedido!: Pedido
 
+  public pedidoPut!: Pedido
+
   constructor(private router: Router, private route: ActivatedRoute, private clienteService: ClienteService,
-    private PedidoService: PedidoService, private ProdutoService: ProdutoService ) { }
+    private PedidoService: PedidoService, private ProdutoService: ProdutoService) { }
 
   ngOnInit() {
-
     this.route.params.subscribe(x => {
       this.idPedido = x[`idpedido`];
       this.idCliente = x[`idcliente`];
@@ -29,11 +34,59 @@ export class PerfilUsuarioTrocasComponent implements OnInit {
     this.carregarPedidos(this.idCliente)
   }
 
+  criarTrocaRequest(){
+    let obj
+    for(let i = 0; i < this.pedido.pedidoProdutos!.length; i++){
+      obj = {pedidoProdutoId: 0, quantidadde: 0}
+      this.TrocaRequest[i] = obj
+    }
+    console.log(this.TrocaRequest)
+  }
+
+  selectChange(event: any, produtoId: number, index: number) {
+    let obj = { pedidoProdutoId: 0, quantidadde: 0 }
+    let evt = parseInt(event.target.value)
+    obj.pedidoProdutoId = produtoId
+    obj.quantidadde = evt
+    this.TrocaRequest[index] = obj
+    console.log(this.TrocaRequest)
+  }
+
+  solicitarTroca() {
+    let trocaRequest2: TrocaRequest[] = []
+
+    let j = 0
+
+    for(let i = 0; i < this.TrocaRequest.length; i++){
+      if(this.TrocaRequest[i].quantidadde != 0){
+        trocaRequest2[j] = this.TrocaRequest[i]
+        j++
+      }
+    }
+    //console.log(this.TrocaRequest)
+    //console.log(trocaRequest2)
+
+    if(trocaRequest2.length > 0){
+      this.pedidoPut.status = "Em troca"
+      this.PedidoService.postTrocaporPedido(1, trocaRequest2).subscribe(()=>{
+        this.PedidoService.put(this.pedido.id, this.pedidoPut).subscribe(()=>{
+          this.router.navigate(['/perfil-usuario-pedidos'])
+        })
+      })
+    } else {
+      alert("Escolha ao menos um pedido para troca!")
+    }
+
+  }
+
+  irParaPedidos() { this.router.navigate(['/perfil-usuario-pedidos']) }
+
   carregarPedidos(id: number) {
     this.PedidoService.getPedidoporCliente(id).subscribe((pedidos) => {
       for (let i = 0; i < pedidos.length; i++) {
         if (pedidos[i].id == this.idPedido) {
           this.pedido = pedidos[i];
+          this.pedidoPut = pedidos[i];
         }
       }
 
@@ -44,13 +97,12 @@ export class PerfilUsuarioTrocasComponent implements OnInit {
           this.pedido.pedidoProdutos![i].produto = produto
           //this.valorProdutos += this.carrinho.carrinhoProduto![i].quantidade * this.carrinho.carrinhoProduto![i].produto.preco
           console.log(this.pedido)
+          this.criarTrocaRequest()
         })
       }
 
     })
 
   }
-
-  irParaPedidos(){this.router.navigate(['/perfil-usuario-pedidos'])}
 
 }
