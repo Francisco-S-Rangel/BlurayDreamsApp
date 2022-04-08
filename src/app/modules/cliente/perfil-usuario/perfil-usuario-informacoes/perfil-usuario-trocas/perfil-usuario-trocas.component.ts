@@ -37,14 +37,13 @@ export class PerfilUsuarioTrocasComponent implements OnInit {
   criarTrocaRequest(){
     let obj
     for(let i = 0; i < this.pedido.pedidoProdutos!.length; i++){
-      obj = {pedidoProdutoId: 0, quantidadde: 0}
+      obj = {pedidoId: this.pedido.id, pedidoProdutoId: 0, quantidadde: 0}
       this.TrocaRequest[i] = obj
     }
-    console.log(this.TrocaRequest)
   }
 
   selectChange(event: any, produtoId: number, index: number) {
-    let obj = { pedidoProdutoId: 0, quantidadde: 0 }
+    let obj = {pedidoId: this.pedido.id, pedidoProdutoId: 0, quantidadde: 0 }
     let evt = parseInt(event.target.value)
     obj.pedidoProdutoId = produtoId
     obj.quantidadde = evt
@@ -67,7 +66,7 @@ export class PerfilUsuarioTrocasComponent implements OnInit {
     //console.log(trocaRequest2)
 
     if(trocaRequest2.length > 0){
-      this.pedidoPut.status = "Em troca"
+      this.pedidoPut.status = "Finalizado"
       this.PedidoService.postTrocaporPedido(1, trocaRequest2).subscribe(()=>{
         this.PedidoService.put(this.pedido.id, this.pedidoPut).subscribe(()=>{
           this.router.navigate(['/perfil-usuario-pedidos'])
@@ -89,8 +88,6 @@ export class PerfilUsuarioTrocasComponent implements OnInit {
           this.pedidoPut = pedidos[i];
         }
       }
-
-      //console.log(this.pedidoPut)
 
       for (let i = 0; i < this.pedido.pedidoProdutos!.length; i++) {
         this.ProdutoService.getById(this.pedido.pedidoProdutos![i].produtoId).subscribe((produto) => {

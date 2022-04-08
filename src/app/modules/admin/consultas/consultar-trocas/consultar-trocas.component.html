@@ -27,7 +27,7 @@
                 <div>
                     <div class="row">
 
-                        <div class="col-12">
+                        <div class="col-12" *ngFor="let troca of trocas">
                             <mat-accordion>
                                 <mat-expansion-panel>
                                     <mat-expansion-panel-header expandedHeight="auto" collapsedHeight="auto">
@@ -36,39 +36,39 @@
                                                 <div class="row" style="margin-top: 1%;margin-bottom: 1%;">
                                                     <div class="col">
                                                         <div class="row">
-                                                        
+
                                                             <div class="col">
                                                                 <strong>Numero de Requisição: </strong>
                                                                 <span class="dado-produto">
-                                                                    001
+                                                                    {{troca.id}}
                                                                 </span>
                                                             </div>
 
                                                             <div class="col">
                                                                 <strong>Cliente id: </strong>
                                                                 <span class="dado-produto">
-                                                                    001
+                                                                  {{troca.clienteId}}
                                                                 </span>
                                                             </div>
 
                                                             <div class="col">
                                                                 <strong>Cliente Nome: </strong>
                                                                 <span class="dado-produto">
-                                                                    Francisco de Souza Rangel
+                                                                    {{troca.cliente!.nome}}
                                                                 </span>
                                                             </div>
 
                                                             <div class="col">
                                                                 <strong>Pedido id: </strong>
                                                                 <span class="dado-produto">
-                                                                    001
+                                                                    {{troca.pedidoId}}
                                                                 </span>
                                                             </div>
 
                                                             <div class="col">
                                                                 <strong>Status: </strong>
                                                                 <span class="dado-status">
-                                                                    <strong>EM TROCA</strong>
+                                                                    <strong>{{troca.status}}</strong>
                                                                 </span>
                                                             </div>
 
@@ -95,7 +95,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td><button class="btn btn-primary" type="button" (click)="irParaInformacaoTroca()">Visualizar</button></td>
+                                                        <td><button class="btn btn-primary" type="button" (click)="irParaInformacaoTroca(troca.id)">Visualizar</button></td>
                                                         <td><button class="btn btn-danger"
                                                                 type="button">Excluir</button></td>
                                                     </tr>
@@ -114,7 +114,7 @@
 
                     </div>
 
-                    
+
                 </div>
             </div>
         </div>

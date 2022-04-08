@@ -83,7 +83,7 @@ const routes: Routes = [
   {path: "consultar-produtos", component: ConsultarProdutosComponent},
   {path: "informacao-produto", component: InformacaoProdutoComponent},
   {path: "consultar-trocas", component: ConsultarTrocasComponent},
-  {path: "informacao-trocas", component: InformacaoTrocaComponent},
+  {path: "informacao-trocas/:idTroca", component: InformacaoTrocaComponent},
   {path: "perfil-usuario-trocas/:idpedido/:idcliente", component: PerfilUsuarioTrocasComponent},
   {path: "perfil-usuario-altera-entrega", component: PerfilUsuarioAlteraEntregaComponent},
   {path: "perfil-usuario-altera-cobranca", component: PerfilUsuarioAlteraCobrancaComponent},

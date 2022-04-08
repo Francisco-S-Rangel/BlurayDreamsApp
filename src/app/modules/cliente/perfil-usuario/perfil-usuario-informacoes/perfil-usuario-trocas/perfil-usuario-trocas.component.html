@@ -23,7 +23,7 @@
               <td>{{producto.produto!.preco}}</td>
               <td>{{producto.produto!.tipo}}</td>
               <td>{{producto.quantidade}}</td>
-              <td><select (change)="selectChange($event, producto.produto!.id, index)" [disabled]="pedido.status!='Entregue'">
+              <td><select (change)="selectChange($event, producto.id, index)" [disabled]="pedido.status!='Entregue'">
                 <option value="0" selected>0</option>
                 <option *ngFor="let i of [].constructor(producto.quantidade); let index=index" [value]="index+1">
                   {{index+1}}

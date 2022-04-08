@@ -4,14 +4,16 @@ export class Troca {
     constructor(){
         this.id=0;
         this.clienteId=0;
-        this.pedidoprodutoId=0;
+        this.pedidoProdutoId=0;
+        this.pedidoId=0;
         this.status="";
         this.recebimentoProduto=false;
         this.quantidade=0;
     }
     id: number;
     clienteId: number;
-    pedidoprodutoId: number;
+    pedidoId: number;
+    pedidoProdutoId: number;
     status: string;
     recebimentoProduto: boolean;
     quantidade: number;
