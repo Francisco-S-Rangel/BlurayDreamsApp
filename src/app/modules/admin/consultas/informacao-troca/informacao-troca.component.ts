@@ -32,8 +32,8 @@ export class InformacaoTrocaComponent implements OnInit {
     this.carregarTroca()
   }
 
-  carregarTroca(){
-    this.TrocaService.getById(this.idTroca).subscribe((troca)=>{
+  carregarTroca() {
+    this.TrocaService.getById(this.idTroca).subscribe((troca) => {
       this.troca = troca
       console.log(this.troca)
 
@@ -43,14 +43,14 @@ export class InformacaoTrocaComponent implements OnInit {
     })
   }
 
-  carregarCliente(){
-    this.ClienteService.getById(this.troca.clienteId).subscribe((cliente)=>{
+  carregarCliente() {
+    this.ClienteService.getById(this.troca.clienteId).subscribe((cliente) => {
       this.cliente = cliente
       console.log(this.cliente)
     })
   }
 
-  carregarPedido(){
+  carregarPedido() {
     this.PedidoService.getPedidoporCliente(this.troca.clienteId).subscribe((pedidos) => {
       for (let i = 0; i < pedidos.length; i++) {
         if (pedidos[i].id == this.troca.pedidoId) {
@@ -62,17 +62,40 @@ export class InformacaoTrocaComponent implements OnInit {
     })
   }
 
-  carregarProduto(){
+  carregarProduto() {
     for (let i = 0; i < this.pedido.pedidoProdutos!.length; i++) {
       this.ProdutoService.getById(this.pedido.pedidoProdutos![i].produtoId).subscribe((produto) => {
         this.pedido.pedidoProdutos![i].produto = produto
-        if(this.pedido.pedidoProdutos![i].id == this.troca.pedidoProdutoId){
+        if (this.pedido.pedidoProdutos![i].id == this.troca.pedidoProdutoId) {
           this.produtoTrocado = this.pedido.pedidoProdutos![i].produto!
           console.log(this.produtoTrocado)
         }
       })
     }
     console.log(this.pedido)
+  }
+
+  aceitarTroca() {
+    console.log(this.troca)
+    console.log(this.pedido)
+    this.troca.status = "Troca aceita"
+    this.pedido.status = "Troca aceita"
+
+    this.PedidoService.put(this.pedido.id, this.pedido).subscribe(() => {
+
+    })
+  }
+
+  recusarTroca() {
+    console.log(this.troca)
+    console.log(this.pedido)
+    this.troca.status = "Troca recusada"
+    this.pedido.status = "Troca recusada"
+
+    this.PedidoService.put(this.pedido.id, this.pedido).subscribe(() => {
+
+    })
+
   }
 
   backPage() { this.router.navigate(['consultar-trocas']); }

@@ -66,7 +66,7 @@ export class PerfilUsuarioTrocasComponent implements OnInit {
     //console.log(trocaRequest2)
 
     if(trocaRequest2.length > 0){
-      this.pedidoPut.status = "Finalizado"
+      this.pedidoPut.status = "Em Troca"
       this.PedidoService.postTrocaporPedido(1, trocaRequest2).subscribe(()=>{
         this.PedidoService.put(this.pedido.id, this.pedidoPut).subscribe(()=>{
           this.router.navigate(['/perfil-usuario-pedidos'])

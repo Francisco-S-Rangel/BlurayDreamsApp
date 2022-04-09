@@ -24,12 +24,12 @@
         </thead>
         <tbody *ngFor="let producto of carrinho.carrinhoProduto">
           <tr>
-            <td><img class="produtoImg" src="{{producto.produto.img}}" />
+            <td><img class="produtoImg" src="{{producto.produto?.img}}" />
             </td>
-            <td>{{producto.produto.titulo}}</td>
-            <td>{{producto.produto.tipo}}</td>
-            <td> <input type="number" min="1" max="10" class="form-control" value="{{producto.quantidade}}" /> <button type="button" class="btn btn-success mt-1">Alterar</button></td>
-            <td><strong>{{producto.produto.preco}} R$</strong></td>
+            <td>{{producto.produto?.titulo}}</td>
+            <td>{{producto.produto?.tipo}}</td>
+            <td> <input type="number" min="1" max="10" class="form-control" [(ngModel)]="producto.quantidade"/> <button type="button" class="btn btn-success mt-1" (click)="alterarQuantidade(producto)">Alterar</button></td>
+            <td><strong>{{producto.produto?.preco}} R$</strong></td>
             <td><button class="btn btn-danger" (click)="excluirProduto(1, producto.produtoId)">Excluir</button></td>
           </tr>
 

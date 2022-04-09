@@ -107,6 +107,14 @@ export class CarrinhoComprasComponent implements OnInit {
     this.router.navigate(['/finalizar-cupom-troca'])
   }
 
+  alterarQuantidade(carrinhoProduto: CarrinhoProduto){
+    console.log(carrinhoProduto)
+    this.CarrinhoComprasService.addCarrinhoProdutos(1, carrinhoProduto).subscribe(
+      ()=>{
+        this.ngOnInit()
+      })
+  }
+
   irParaCartao() {
     this.finalizarPedido()
     this.router.navigate(['/finalizar-cartao'])

@@ -156,7 +156,18 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
           })
         })
       } else {
-        console.log("Nao cadastrar!!!")
+        let id: number = 0
+        this.EfetivarCompraRequest.enderecoEntregaId = 2
+        this.CarrinhoComprasService.efetivarCompra(1, this.EfetivarCompraRequest).subscribe(() => {
+          console.log("Sucess!")
+          for (let i = 0; i < this.carrinho.carrinhoProduto!.length; i++) {
+            id = this.carrinho.carrinhoProduto![i].produtoId;
+            this.CarrinhoComprasService.excluirProdutoCarrinho(1, id).subscribe(()=>{})
+          }
+          this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(()=>{
+            this.router.navigate(['']);
+          })
+        })
       }
 
     }

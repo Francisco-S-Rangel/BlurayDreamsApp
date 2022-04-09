@@ -106,7 +106,11 @@ export class FinalizarCartaoComponent implements OnInit {
           })
         })
       } else {
-        console.log("Nao cadastrar!!!")
+        this.EfetivarCompraRequest.cartaoId = 2
+        this.EfetivarCompraRequest.enderecoCobrancaId = 0
+        this.EfetivarCompraRequest.enderecoEntregaId = 0
+        this.shared.setRequest(this.EfetivarCompraRequest)
+        this.router.navigate(['/finalizar-endereco-cobranca']);
       }
 
     }

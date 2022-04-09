@@ -40,9 +40,9 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
 
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
     , private route: ActivatedRoute, private EnderecoCobrancaService: EnderecoCobrancaService) {
-      this.EfetivarCompraRequest = this.shared.getRequest()
-      //alert(this.EfetivarCompraRequest)
-    }
+    this.EfetivarCompraRequest = this.shared.getRequest()
+    //alert(this.EfetivarCompraRequest)
+  }
 
   ngOnInit() {
     this.validacao()
@@ -57,12 +57,12 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
     )
   }
 
-  selectChange(event: any){
+  selectChange(event: any) {
     let evt: number = parseInt(event.target.value)
     this.enderecoId = evt
   }
 
-  radioAddEnderecoChange(event: any){
+  radioAddEnderecoChange(event: any) {
     if (event.target.value == 1) {
       this.radioCadastrarEndereco = true
     } else {
@@ -79,25 +79,28 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
   }
 
   cadastrarEndereco() {
-    if(this.radioUsarEndereco){
+    if (this.radioUsarEndereco) {
       this.EfetivarCompraRequest.enderecoCobrancaId = this.enderecoId
       this.EfetivarCompraRequest.enderecoEntregaId = 0
       this.shared.setRequest(this.EfetivarCompraRequest)
       this.router.navigate(['finalizar-endereco-entrega']);
     } else {
 
-      if(this.radioCadastrarEndereco){
-        this.EnderecoCobrancaService.post(this.formEndereco.value).subscribe(()=>{
-          this.EnderecoCobrancaService.getByClienteId(1).subscribe((enderecosCobrancas)=>{
+      if (this.radioCadastrarEndereco) {
+        this.EnderecoCobrancaService.post(this.formEndereco.value).subscribe(() => {
+          this.EnderecoCobrancaService.getByClienteId(1).subscribe((enderecosCobrancas) => {
             //alert(enderecosCobrancas[enderecosCobrancas.length-1].id)
-            this.EfetivarCompraRequest.enderecoCobrancaId = enderecosCobrancas[enderecosCobrancas.length-1].id
+            this.EfetivarCompraRequest.enderecoCobrancaId = enderecosCobrancas[enderecosCobrancas.length - 1].id
             this.EfetivarCompraRequest.enderecoEntregaId = 0
             this.shared.setRequest(this.EfetivarCompraRequest)
             this.router.navigate(['finalizar-endereco-entrega']);
           })
         })
       } else {
-        console.log("Nao cadastrar!!!")
+        this.EfetivarCompraRequest.enderecoCobrancaId = 2
+        this.EfetivarCompraRequest.enderecoEntregaId = 0
+        this.shared.setRequest(this.EfetivarCompraRequest)
+        this.router.navigate(['finalizar-endereco-entrega']);
       }
 
     }
