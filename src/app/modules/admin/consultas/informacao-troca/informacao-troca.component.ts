@@ -81,8 +81,10 @@ export class InformacaoTrocaComponent implements OnInit {
     this.troca.status = "Troca aceita"
     this.pedido.status = "Troca aceita"
 
-    this.PedidoService.put(this.pedido.id, this.pedido).subscribe(() => {
+    this.TrocaService.put(this.troca.id, this.troca).subscribe(() => {
+      this.PedidoService.put(this.pedido.id, this.pedido).subscribe(() => {
 
+      })
     })
   }
 
@@ -92,8 +94,10 @@ export class InformacaoTrocaComponent implements OnInit {
     this.troca.status = "Troca recusada"
     this.pedido.status = "Troca recusada"
 
-    this.PedidoService.put(this.pedido.id, this.pedido).subscribe(() => {
+    this.TrocaService.put(this.troca.id, this.troca).subscribe(() => {
+      this.PedidoService.put(this.pedido.id, this.pedido).subscribe(() => {
 
+      })
     })
 
   }
