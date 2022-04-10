@@ -52,10 +52,10 @@ export class CarrinhoComprasComponent implements OnInit {
   valorProdutos: number = 0;
   valorFrete: number = 0;
   valorDesconto: number = 0;
+
   valorCredito: number = 0;
   valorCreditoAtualizado: number = 0;
   creditoCliente: number = 0;
-  //cliente?: Cliente;
 
   cep: string = "";
   cupomDesconto: string = "";
@@ -68,12 +68,12 @@ export class CarrinhoComprasComponent implements OnInit {
     precoFinal: 0
   };
 
-  constructor(private router: Router, private CarrinhoComprasService: CarrinhoComprasService,private shared: SharedDataService,
-    private ProdutoService: ProdutoService, private formBuilder: FormBuilder,private clienteService: ClienteService) { }
+  constructor(private router: Router, private CarrinhoComprasService: CarrinhoComprasService, private shared: SharedDataService,
+    private ProdutoService: ProdutoService, private formBuilder: FormBuilder, private clienteService: ClienteService) { }
 
   ngOnInit(): void {
     this.carregarCarrinho();
-    this.carregarCliente();  
+    this.carregarCliente();
   }
 
   carregarCarrinho() {
@@ -84,7 +84,7 @@ export class CarrinhoComprasComponent implements OnInit {
       this.valorProdutos = 0;
 
       for (let i = 0; i < this.carrinho.carrinhoProduto!.length; i++) {
-        this.ProdutoService.getById(carrinho.carrinhoProduto![i].produtoId).subscribe((produto)=>{
+        this.ProdutoService.getById(carrinho.carrinhoProduto![i].produtoId).subscribe((produto) => {
           this.carrinho.carrinhoProduto![i].produto = produto
           this.valorProdutos += this.carrinho.carrinhoProduto![i].quantidade * this.carrinho.carrinhoProduto![i].produto.preco
         })
@@ -93,23 +93,23 @@ export class CarrinhoComprasComponent implements OnInit {
     //console.error = () => {};
   }
   carregarCliente() {
-      this.clienteService.getById(1).subscribe(
-        (cliente: Cliente) =>{
-          this.cliente = cliente;
-          this.creditoCliente = cliente.credito;
-        }
-      );
+    this.clienteService.getById(1).subscribe(
+      (cliente: Cliente) => {
+        this.cliente = cliente;
+        this.creditoCliente = cliente.credito;
+      }
+    );
   }
 
-  excluirProduto(idCliente: number, idProduto: number){
+  excluirProduto(idCliente: number, idProduto: number) {
     console.log(idProduto)
-    this.CarrinhoComprasService.excluirProdutoCarrinho(idCliente, idProduto).subscribe(()=>{
+    this.CarrinhoComprasService.excluirProdutoCarrinho(idCliente, idProduto).subscribe(() => {
       this.ngOnInit()
     })
   }
 
-  calcularFrete(){
-    if(this.cep.length == 9){
+  calcularFrete() {
+    if (this.cep.length == 9) {
       this.valorFrete = 10
     } else {
       alert("CEP Invalido!")
@@ -117,55 +117,61 @@ export class CarrinhoComprasComponent implements OnInit {
     }
   }
 
-  calcularCupom(){
-    if(this.cupomDesconto == "abc123"){
+  calcularCupom() {
+    if (this.cupomDesconto == "abc123") {
       this.valorDesconto = 20
     } else {
       alert("Cupom Invalido!")
       this.valorDesconto = 0
     }
   }
-  calcularCredito(){
 
-    if(this.valorCredito > this.creditoCliente){
+  calcularCredito() {
+
+    if (this.valorCredito > this.creditoCliente) {
       alert("O valor de credito inserido foi supeior ao valor disponivel");
-    }else{
+    } else {
       this.valorCreditoAtualizado = this.creditoCliente - this.valorCredito;
       console.log(this.valorCreditoAtualizado);
-      
-  }
-}
 
-  finalizarPedido(){
-    if(this.valorCredito === 0){
-      this.valorCreditoAtualizado = this.creditoCliente;
     }
-    this.cliente.credito = this.valorCreditoAtualizado;
-    console.log(this.cliente);
-    this.shared.setClientes(this.cliente);
-    this.carrinhoPut.desconto = this.valorDesconto
-    this.carrinhoPut.frete = 10
-    this.carrinhoPut.precoFinal = ((this.valorProdutos + 10) - this.valorDesconto) - this.valorCredito
-    this.carrinhoPut.precoFinal = parseInt(this.carrinhoPut.precoFinal.toFixed(1))
-    this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(()=>{})
   }
 
-  irParaTrocas() {
-    this.finalizarPedido()
-    this.router.navigate(['/finalizar-cupom-troca'])
+  finalizarPedido() {
+
+    if (this.valorCredito > this.creditoCliente) {
+      alert("O valor de credito inserido foi supeior ao valor disponivel");
+    } else {
+
+      this.valorCreditoAtualizado = this.creditoCliente - this.valorCredito;
+      console.log(this.valorCreditoAtualizado);
+
+      this.cliente.credito = this.valorCreditoAtualizado;
+      console.log(this.cliente);
+      this.shared.setClientes(this.cliente);
+      this.carrinhoPut.desconto = this.valorDesconto
+      this.carrinhoPut.frete = 10
+      this.carrinhoPut.precoFinal = ((this.valorProdutos + 10) - this.valorDesconto) - this.valorCredito
+      this.carrinhoPut.precoFinal = parseFloat(this.carrinhoPut.precoFinal.toFixed(2))
+      console.log(this.carrinhoPut)
+      this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(() => {
+        this.router.navigate(['/finalizar-cartao'])
+      })
+    }
+
   }
 
-  alterarQuantidade(carrinhoProduto: CarrinhoProduto){
+
+  alterarQuantidade(carrinhoProduto: CarrinhoProduto) {
     console.log(carrinhoProduto)
     this.CarrinhoComprasService.addCarrinhoProdutos(1, carrinhoProduto).subscribe(
-      ()=>{
+      () => {
         this.ngOnInit()
       })
   }
 
   irParaCartao() {
     this.finalizarPedido()
-    this.router.navigate(['/finalizar-cartao'])
   }
 
 }

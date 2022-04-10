@@ -81,7 +81,7 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
     , private route: ActivatedRoute, private EnderecoEntregaService: EnderecoEntregaService, private CarrinhoComprasService: CarrinhoComprasService,
     private clienteService: ClienteService, private formBuilder: FormBuilder) {
-    
+
     this.cliente = this.shared.getClientes();
     console.log(this.cliente)
     this.EfetivarCompraRequest = this.shared.getRequest();
@@ -179,6 +179,12 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
         })
       } else {
         let id: number = 0
+        this.clienteService.put(this.idcliente,this.formCliente.value).subscribe(
+          () => {
+            console.log();
+          }
+        )
+        console.log(this.formCliente.value);
         this.EfetivarCompraRequest.enderecoEntregaId = 2
         this.CarrinhoComprasService.efetivarCompra(1, this.EfetivarCompraRequest).subscribe(() => {
           console.log("Sucess!")
@@ -219,7 +225,7 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
   public validacao2(): void {
 
     const cupom = this.cliente.cupomtroca == null ? 0 : this.cliente.cupomtroca;
-    
+
     this.formCliente = this.formBuilder.group({
       id: this.cliente.id,
       nome: this.cliente.nome,
