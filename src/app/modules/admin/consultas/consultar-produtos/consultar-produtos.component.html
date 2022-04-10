@@ -27,7 +27,7 @@
         <div>
           <div class="row">
 
-            <div class="col-12">
+            <div class="col-12" *ngFor="let produto of produtos">
               <mat-accordion>
                 <mat-expansion-panel>
                   <mat-expansion-panel-header expandedHeight="auto" collapsedHeight="auto">
@@ -41,49 +41,49 @@
                               <div class="col">
                                 <strong>Titulo: </strong>
                                 <span class="dado-produto">
-                                  A viagem de Chihiro
+                                  {{produto.titulo}}
                                 </span>
                               </div>
 
                               <div class="col">
                                 <strong>Id: </strong>
                                 <span class="dado-produto">
-                                  001
+                                  {{produto.id}}
                                 </span>
                               </div>
 
                               <div class="col">
                                 <strong>Tipo: </strong>
                                 <span class="dado-produto">
-                                  Blu-ray
+                                  {{produto.tipo}}
                                 </span>
                               </div>
 
                               <div class="col">
                                 <strong>Categoria: </strong>
                                 <span class="dado-produto">
-                                  ANIME SHOUNEN
+                                  {{produto.categoria}}
                                 </span>
                               </div>
 
                               <div class="col">
                                 <strong>Direção: </strong>
                                 <span class="dado-produto">
-                                  Martin Scorsese
+                                  {{produto.direcao}}
                                 </span>
                               </div>
 
                               <div class="col">
-                                <strong>Ano de Lançamento: </strong>
+                                <strong>Status: </strong>
                                 <span class="dado-produto">
-                                  2001
+                                  {{produto.status}}
                                 </span>
                               </div>
 
                               <div class="col">
                                 <strong>Estoque: </strong>
                                 <span class="dado-produto">
-                                  5
+                                  {{produto.estoque}}
                                 </span>
                               </div>
 
@@ -106,17 +106,17 @@
 
                             <th scope="col">Dados do Produto</th>
                             <th scope="col">Excluir o Produto</th>
-                            <th scope="col">Inativar o Produto</th>
                             <th scope="col">Adicionar Estoque</th>
+                            <th scope="col">Inativar o Produto</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td><button class="btn btn-primary" type="button"
-                                (click)="informacaoProduto()">Visualizar</button></td>
+                                (click)="informacaoProduto(produto.id)">Visualizar</button></td>
                             <td><button class="btn btn-danger" type="button">Excluir</button></td>
-                            <td><button class="btn btn-warning" type="button" (click)="inativarProduto()">Inativar</button></td>
                             <td><button class="btn btn-success" type="button" (click)="adicionarEstoque()">Adicionar</button></td>
+                            <td><button class="btn btn-warning" type="button" (click)="inativarProduto()">Inativar</button></td>
                           </tr>
                         </tbody>
 
