@@ -1,3 +1,5 @@
+import { Troca } from './../../../../shared/models/troca';
+import { TrocaService } from './../../../../shared/services/cadastro-dados-pedido/troca.service';
 import { Pedido } from './../../../../shared/models/pedido';
 import { ClienteService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cliente.service';
 import { PedidoService } from './../../../../shared/services/cadastro-dados-pedido/pedido.service';
@@ -14,11 +16,13 @@ export class PerfilUsuarioPedidosComponent implements OnInit {
   idCliente: number = 1
 
   public pedidos?: Pedido[]
+  public trocas?: Troca[]
 
-  constructor(private router: Router, private route: ActivatedRoute,private clienteService: ClienteService, private PedidoService: PedidoService) { }
+  constructor(private router: Router, private route: ActivatedRoute,private clienteService: ClienteService, private PedidoService: PedidoService, private TrocaService:TrocaService) { }
 
   ngOnInit() {
     this.carregarPedidos(1)
+    this.carregarTroca()
   }
 
   carregarPedidos(id: number){
@@ -29,6 +33,13 @@ export class PerfilUsuarioPedidosComponent implements OnInit {
 
   }
 
+  carregarTroca(){
+    this.TrocaService.getAll().subscribe((trocas)=>{
+      this.trocas = trocas
+      console.log(this.trocas)
+    })
+  }
+
   irParaPerfil(){ this.router.navigate(['/perfil-usuario-main'])}
 
   irParaEnderecos(){this.router.navigate(['/perfil-usuario-enderecos'])}
@@ -36,5 +47,7 @@ export class PerfilUsuarioPedidosComponent implements OnInit {
   irParaMetPagamentos(){this.router.navigate(['/perfil-usuario-cartoes'])}
 
   irParaTrocas(idpedido: number){this.router.navigate([`/perfil-usuario-trocas/${idpedido}/${this.idCliente}`])}
+
+  irParaDetalhesTrocas(idTroca: number){this.router.navigate([`/perfil-usuario-trocas-detalhes/${idTroca}`])}
 
 }

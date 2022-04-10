@@ -75,7 +75,7 @@ import { ModalCadastrarFuncionarioComponent } from './modules/admin/modal-cadast
 import { ModalCadastrarFuncionarioEnderecoComponent } from './modules/admin/modal-cadastros/modal-cadastrar-funcionario-endereco/modal-cadastrar-funcionario-endereco.component';
 import { ModalEditarFuncionarioComponent } from './modules/admin/modal-alteracoes/modal-editar-funcionario/modal-editar-funcionario.component';
 import { ModalEditarFuncionarioEnderecoComponent } from './modules/admin/modal-alteracoes/modal-editar-funcionario-endereco/modal-editar-funcionario-endereco.component';
-
+import { PerfilUsuarioTrocasDetalhesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-trocas-detalhes/perfil-usuario-trocas-detalhes.component';
 
 @NgModule({
   declarations: [
@@ -138,7 +138,8 @@ import { ModalEditarFuncionarioEnderecoComponent } from './modules/admin/modal-a
     ModalCadastrarFuncionarioComponent,
     ModalCadastrarFuncionarioEnderecoComponent,
     ModalEditarFuncionarioComponent,
-    ModalEditarFuncionarioEnderecoComponent
+    ModalEditarFuncionarioEnderecoComponent,
+    PerfilUsuarioTrocasDetalhesComponent
   ],
   imports: [
     BrowserModule,

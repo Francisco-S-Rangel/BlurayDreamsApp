@@ -1,0 +1,65 @@
+<div class="container mt-5 mb-5">
+  <div class="card row">
+    <div class="col-md-12">
+      <div class="p-3 py-5">
+        <div class="d-flex mb-3">
+          <h1 class="text-right">Pedido Núm: <span class="color">{{pedido.id}}</span> - Status: <span class="color">{{pedido.status}}</span></h1>
+        </div>
+        <table class="table table-striped">
+          <thead class="table-active">
+            <tr class="text-center">
+              <th>Imagem</th>
+              <th>Titulo</th>
+              <th>Preço</th>
+              <th>Tipo</th>
+              <th>Qtd</th>
+              <th>Selecionar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of pedido.pedidoProdutos; let index=index" class="text-center align-middle">
+              <td><img class="imagem" src="{{producto.produto!.img}}"></td>
+              <td>{{producto.produto!.titulo}}</td>
+              <td>{{producto.produto!.preco}}</td>
+              <td>{{producto.produto!.tipo}}</td>
+              <td>{{producto.quantidade}}</td>
+              <td><select (change)="selectChange($event, producto.id, index)" [disabled]="pedido.status!='Entregue'">
+                <option value="0" selected>0</option>
+                <option *ngFor="let i of [].constructor(producto.quantidade); let index=index" [value]="index+1">
+                  {{index+1}}
+                </option>
+              </select></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="col-12">
+
+          <br>
+          <table class="table table-hover">
+            <thead class="table-secondary titulo">
+              <tr>
+                <th scope="col">Frete: <strong class="color">R$ {{pedido.frete}}</strong></th>
+                <th scope="col">Desconto: <strong class="color">R$ {{pedido.desconto}}</strong></th>
+                <th scope="col">Preço Final: <strong class="azulforte">R$ {{pedido.precoFinal}}</strong></th>
+              </tr>
+            </thead>
+
+          </table>
+          <br>
+
+
+        </div>
+        <div class="row justify-content-md-center mb-5" [hidden]="pedido.status!='Entregue'">
+          <div class="col-md-auto">
+            <button type="button" class="btn btn-primary mt-4" (click)="solicitarTroca()">Solicitar Troca</button>
+          </div>
+          <div class="col-md-auto">
+            <button type="button" class="btn btn-danger mt-4">Solicitar Cancelamento</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-4">
+    <button type="button" class="custom-btn-back" (click)="irParaPedidos()">Retornar</button>
+  </div>

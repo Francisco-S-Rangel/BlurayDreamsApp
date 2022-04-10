@@ -7,11 +7,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-perfil-usuario-trocas',
-  templateUrl: './perfil-usuario-trocas.component.html',
-  styleUrls: ['./perfil-usuario-trocas.component.css']
+  selector: 'app-perfil-usuario-trocas-detalhes',
+  templateUrl: './perfil-usuario-trocas-detalhes.component.html',
+  styleUrls: ['./perfil-usuario-trocas-detalhes.component.css']
 })
-export class PerfilUsuarioTrocasComponent implements OnInit {
+export class PerfilUsuarioTrocasDetalhesComponent implements OnInit {
 
   public idPedido: number = 0
   public idCliente: number = 0
@@ -101,5 +101,6 @@ export class PerfilUsuarioTrocasComponent implements OnInit {
     })
 
   }
+
 
 }

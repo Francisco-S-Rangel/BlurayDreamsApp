@@ -49,6 +49,27 @@
             </tr>
           </tbody>
         </table>
+        <div class="d-flex mb-3">
+          <h1 class="text-right">Trocas</h1>
+        </div>
+        <table class="table table-striped">
+          <thead class="">
+            <tr class="text-center">
+              <th>Núm. Troca</th>
+              <th>Pedido</th>
+              <th>Status</th>
+              <th>Ver Detalhes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let troca of trocas" class="text-center align-middle">
+              <td>{{troca.id}}</td>
+              <td>{{troca.pedidoId}}</td>
+              <td>{{troca.status}}</td>
+              <td><button type="button" class="btn btn-success" (click)="irParaDetalhesTrocas(troca.id)">Detalhes</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
