@@ -159,7 +159,17 @@
     <hr>
     <br><br><br>
 
-    <div class="row justify-content-md-center mb-5">
+    <div class="row justify-content-md-center mb-5" [hidden]="troca?.status != 'Troca aceita'">
+      <h2 class="label text-center">O produto trocado deve ser re-estocado?</h2>
+      <div class="col-md-auto">
+        <button type="button" class="btn btn-primary mt-4" (click)="adicionarEstoque()">Sim</button>
+      </div>
+      <div class="col-md-auto">
+        <button type="button" class="btn btn-danger mt-4" (click)="naoAdicionarEstoque()">Não</button>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center mb-5" [hidden]="troca?.status != 'Em troca'">
       <div class="col-md-auto">
         <button type="button" class="btn btn-primary mt-4" (click)="aceitarTroca()">Aceitar Troca</button>
       </div>

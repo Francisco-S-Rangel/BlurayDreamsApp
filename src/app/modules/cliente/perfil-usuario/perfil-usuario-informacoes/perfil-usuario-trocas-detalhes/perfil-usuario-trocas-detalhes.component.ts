@@ -1,3 +1,6 @@
+import { Produto } from 'src/app/modules/shared/models/produto';
+import { Troca } from './../../../../shared/models/troca';
+import { TrocaService } from './../../../../shared/services/cadastro-dados-pedido/troca.service';
 import { TrocaRequest } from './../../../../shared/models/TrocaRequest';
 import { Pedido } from './../../../../shared/models/pedido';
 import { ClienteService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cliente.service';
@@ -13,94 +16,58 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilUsuarioTrocasDetalhesComponent implements OnInit {
 
-  public idPedido: number = 0
-  public idCliente: number = 0
-  public qtdProdutosTrocas: number = 0
+  public idTroca: number = 0
 
-  public TrocaRequest: TrocaRequest[] = []
-
+  public troca!: Troca
   public pedido!: Pedido
-
-  public pedidoPut!: Pedido
+  public produtoTrocado!: Produto
 
   constructor(private router: Router, private route: ActivatedRoute, private clienteService: ClienteService,
-    private PedidoService: PedidoService, private ProdutoService: ProdutoService) { }
+    private PedidoService: PedidoService, private ProdutoService: ProdutoService, private TrocaService: TrocaService) { }
 
   ngOnInit() {
     this.route.params.subscribe(x => {
-      this.idPedido = x[`idpedido`];
-      this.idCliente = x[`idcliente`];
+      this.idTroca = x[`idTroca`];
     });
-    this.carregarPedidos(this.idCliente)
+    this.carregarTroca()
   }
 
-  criarTrocaRequest(){
-    let obj
-    for(let i = 0; i < this.pedido.pedidoProdutos!.length; i++){
-      obj = {pedidoId: this.pedido.id, pedidoProdutoId: 0, quantidadde: 0}
-      this.TrocaRequest[i] = obj
-    }
+  carregarTroca() {
+    this.TrocaService.getById(this.idTroca).subscribe((troca) => {
+      this.troca = troca
+      console.log(this.troca)
+      this.carregarPedido()
+
+    })
   }
 
-  selectChange(event: any, produtoId: number, index: number) {
-    let obj = {pedidoId: this.pedido.id, pedidoProdutoId: 0, quantidadde: 0 }
-    let evt = parseInt(event.target.value)
-    obj.pedidoProdutoId = produtoId
-    obj.quantidadde = evt
-    this.TrocaRequest[index] = obj
-    console.log(this.TrocaRequest)
-  }
-
-  solicitarTroca() {
-    let trocaRequest2: TrocaRequest[] = []
-
-    let j = 0
-
-    for(let i = 0; i < this.TrocaRequest.length; i++){
-      if(this.TrocaRequest[i].quantidadde != 0){
-        trocaRequest2[j] = this.TrocaRequest[i]
-        j++
+  carregarPedido() {
+    this.PedidoService.getPedidoporCliente(this.troca.clienteId).subscribe((pedidos) => {
+      for (let i = 0; i < pedidos.length; i++) {
+        if (pedidos[i].id == this.troca.pedidoId) {
+          this.pedido = pedidos[i];
+        }
       }
-    }
-    //console.log(this.TrocaRequest)
-    //console.log(trocaRequest2)
+      this.carregarProduto()
 
-    if(trocaRequest2.length > 0){
-      this.pedidoPut.status = "Finalizado"
-      this.PedidoService.postTrocaporPedido(1, trocaRequest2).subscribe(()=>{
-        this.PedidoService.put(this.pedido.id, this.pedidoPut).subscribe(()=>{
-          this.router.navigate(['/perfil-usuario-pedidos'])
-        })
+    })
+  }
+
+  carregarProduto() {
+    for (let i = 0; i < this.pedido.pedidoProdutos!.length; i++) {
+      this.ProdutoService.getById(this.pedido.pedidoProdutos![i].produtoId).subscribe((produto) => {
+        this.pedido.pedidoProdutos![i].produto = produto
+        if (this.pedido.pedidoProdutos![i].id == this.troca.pedidoProdutoId) {
+          this.produtoTrocado = this.pedido.pedidoProdutos![i].produto!
+          console.log(this.produtoTrocado)
+        }
       })
-    } else {
-      alert("Escolha ao menos um pedido para troca!")
     }
-
+    console.log(this.pedido)
   }
 
   irParaPedidos() { this.router.navigate(['/perfil-usuario-pedidos']) }
 
-  carregarPedidos(id: number) {
-    this.PedidoService.getPedidoporCliente(id).subscribe((pedidos) => {
-      for (let i = 0; i < pedidos.length; i++) {
-        if (pedidos[i].id == this.idPedido) {
-          this.pedido = pedidos[i];
-          this.pedidoPut = pedidos[i];
-        }
-      }
-
-      for (let i = 0; i < this.pedido.pedidoProdutos!.length; i++) {
-        this.ProdutoService.getById(this.pedido.pedidoProdutos![i].produtoId).subscribe((produto) => {
-          this.pedido.pedidoProdutos![i].produto = produto
-          //this.valorProdutos += this.carrinho.carrinhoProduto![i].quantidade * this.carrinho.carrinhoProduto![i].produto.preco
-          console.log(this.pedido)
-          this.criarTrocaRequest()
-        })
-      }
-
-    })
-
-  }
 
 
 }

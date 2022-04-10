@@ -96,6 +96,32 @@ export class InformacaoTrocaComponent implements OnInit {
 
   }
 
+  adicionarEstoque(){
+    var creditoTroca = this.produtoTrocado.preco * this.troca.quantidade
+    this.cliente.credito += creditoTroca
+    this.ClienteService.put(1, this.cliente).subscribe(()=>{
+
+    })
+
+    this.troca.status = "Troca concluida"
+    this.TrocaService.put(this.troca.id, this.troca).subscribe(()=>{
+
+    })
+  }
+
+  naoAdicionarEstoque(){
+    var creditoTroca = this.produtoTrocado.preco * this.troca.quantidade
+    this.cliente.credito += creditoTroca
+    this.ClienteService.put(1, this.cliente).subscribe(()=>{
+
+    })
+
+    this.troca.status = "Troca concluida"
+    this.TrocaService.put(this.troca.id, this.troca).subscribe(()=>{
+
+    })
+  }
+
   backPage() { this.router.navigate(['consultar-trocas']); }
 
 }
