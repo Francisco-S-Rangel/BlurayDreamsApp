@@ -6,6 +6,9 @@ import { CarrinhoComprasService } from './../../shared/services/cadastro-dados-p
 import { Router } from '@angular/router';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Produto } from '../../shared/models/produto';
+import { ClienteService } from '../../shared/services/cadastro-dados-cliente/cliente.service';
+import { Cliente } from '../../shared/models/cliente';
+import { SharedDataService } from '../../shared/services/shared-data.service';
 
 @Component({
   selector: 'app-carrinho-compras',
@@ -30,10 +33,29 @@ export class CarrinhoComprasComponent implements OnInit {
     }]
   };
 
+  cliente = {
+    id: 0,
+    nome: "",
+    dataNascimento: "",
+    ddd: "",
+    telefone: "",
+    tipoTelefone: "",
+    cpf: "",
+    email: "",
+    senha: "",
+    credito: 0,
+    status: true,
+    cupomtroca: 0,
+  }
+
 
   valorProdutos: number = 0;
   valorFrete: number = 0;
   valorDesconto: number = 0;
+  valorCredito: number = 0;
+  valorCreditoAtualizado: number = 0;
+  creditoCliente: number = 0;
+  //cliente?: Cliente;
 
   cep: string = "";
   cupomDesconto: string = "";
@@ -46,10 +68,12 @@ export class CarrinhoComprasComponent implements OnInit {
     precoFinal: 0
   };
 
-  constructor(private router: Router, private CarrinhoComprasService: CarrinhoComprasService, private ProdutoService: ProdutoService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private CarrinhoComprasService: CarrinhoComprasService,private shared: SharedDataService,
+    private ProdutoService: ProdutoService, private formBuilder: FormBuilder,private clienteService: ClienteService) { }
 
   ngOnInit(): void {
-    this.carregarCarrinho()
+    this.carregarCarrinho();
+    this.carregarCliente();  
   }
 
   carregarCarrinho() {
@@ -67,6 +91,14 @@ export class CarrinhoComprasComponent implements OnInit {
       }
     })
     //console.error = () => {};
+  }
+  carregarCliente() {
+      this.clienteService.getById(1).subscribe(
+        (cliente: Cliente) =>{
+          this.cliente = cliente;
+          this.creditoCliente = cliente.credito;
+        }
+      );
   }
 
   excluirProduto(idCliente: number, idProduto: number){
@@ -93,11 +125,27 @@ export class CarrinhoComprasComponent implements OnInit {
       this.valorDesconto = 0
     }
   }
+  calcularCredito(){
+
+    if(this.valorCredito > this.creditoCliente){
+      alert("O valor de credito inserido foi supeior ao valor disponivel");
+    }else{
+      this.valorCreditoAtualizado = this.creditoCliente - this.valorCredito;
+      console.log(this.valorCreditoAtualizado);
+      
+  }
+}
 
   finalizarPedido(){
+    if(this.valorCredito === 0){
+      this.valorCreditoAtualizado = this.creditoCliente;
+    }
+    this.cliente.credito = this.valorCreditoAtualizado;
+    console.log(this.cliente);
+    this.shared.setClientes(this.cliente);
     this.carrinhoPut.desconto = this.valorDesconto
     this.carrinhoPut.frete = 10
-    this.carrinhoPut.precoFinal = (this.valorProdutos + 10) - this.valorDesconto
+    this.carrinhoPut.precoFinal = ((this.valorProdutos + 10) - this.valorDesconto) - this.valorCredito
     this.carrinhoPut.precoFinal = parseInt(this.carrinhoPut.precoFinal.toFixed(1))
     this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(()=>{})
   }
@@ -113,3 +161,5 @@ export class CarrinhoComprasComponent implements OnInit {
   }
 
 }
+
+

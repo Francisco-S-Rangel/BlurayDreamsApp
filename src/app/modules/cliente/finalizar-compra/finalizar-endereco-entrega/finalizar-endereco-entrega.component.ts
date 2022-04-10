@@ -8,6 +8,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/modules/shared/models/produto';
+import { Cliente } from 'src/app/modules/shared/models/cliente';
+import { ClienteService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cliente.service';
+
 
 @Component({
   selector: 'app-finalizar-endereco-entrega',
@@ -21,8 +24,10 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
   public radioUsarEndereco: boolean = true;
   public radioCadastrarEndereco: boolean = true;
   enderecoId: number = 0;
+  formCliente!: FormGroup;
   formEndereco!: FormGroup;
 
+  public cliente: Cliente;
   enderecosCliente?: EnderecoEntregas[]
 
   EfetivarCompraRequest: EfetivarCompraRequest
@@ -74,16 +79,20 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
   }
 
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
-    , private route: ActivatedRoute, private EnderecoEntregaService: EnderecoEntregaService, private CarrinhoComprasService: CarrinhoComprasService) {
-
-    this.EfetivarCompraRequest = this.shared.getRequest()
+    , private route: ActivatedRoute, private EnderecoEntregaService: EnderecoEntregaService, private CarrinhoComprasService: CarrinhoComprasService,
+    private clienteService: ClienteService, private formBuilder: FormBuilder) {
+    
+    this.cliente = this.shared.getClientes();
+    console.log(this.cliente)
+    this.EfetivarCompraRequest = this.shared.getRequest();
   }
 
 
   ngOnInit() {
-    this.validacao()
-    this.carregarEnderecosCliente(1)
-    this.carregarCarrinho()
+    this.validacao();
+    this.carregarEnderecosCliente(1);
+    this.carregarCarrinho();
+    this.validacao2();
   }
 
   carregarEnderecosCliente(id: number) {
@@ -93,6 +102,7 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
       }
     )
   }
+
 
   carregarCarrinho(){
     this.CarrinhoComprasService.getCarrinhoProdutos(1).subscribe((carrinho) => {
@@ -124,7 +134,13 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
 
   cadastrarEndereco() {
     if (this.radioUsarEndereco) {
-      let id: number = 0
+      let id: number = 0;
+      console.log(this.formCliente.value);
+      this.clienteService.put(this.idcliente,this.formCliente.value).subscribe(
+        () => {
+          console.log();
+        }
+      )
       this.EfetivarCompraRequest.enderecoEntregaId = this.enderecoId
       this.CarrinhoComprasService.efetivarCompra(1, this.EfetivarCompraRequest).subscribe(() => {
         console.log("Sucess!")
@@ -139,7 +155,13 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
     } else {
 
       if (this.radioCadastrarEndereco) {
-        let id: number = 0
+        let id: number = 0;
+        this.clienteService.put(this.idcliente,this.formCliente.value).subscribe(
+          () => {
+            console.log();
+          }
+        )
+        console.log(this.formCliente.value);
         this.EnderecoEntregaService.post(this.formEndereco.value).subscribe(() => {
           this.EnderecoEntregaService.getByClienteId(1).subscribe((enderecosEntregas) => {
             this.EfetivarCompraRequest.enderecoEntregaId = enderecosEntregas[enderecosEntregas.length - 1].id
@@ -180,6 +202,28 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
       observacao: [''],
     })
 
+
+  }
+
+  public validacao2(): void {
+
+    const cupom = this.cliente.cupomtroca == null ? 0 : this.cliente.cupomtroca;
+    
+    this.formCliente = this.formBuilder.group({
+      id: this.cliente.id,
+      nome: this.cliente.nome,
+      dataNascimento: this.cliente.dataNascimento,
+      ddd: this.cliente.ddd,
+      telefone: this.cliente.telefone,
+      tipoTelefone: this.cliente.tipoTelefone,
+      cpf: this.cliente.cpf,
+      email: this.cliente.email,
+      cupomTroca: cupom,
+      senha: this.cliente.senha,
+      status: this.cliente.status,
+      credito: this.cliente.credito,
+
+    });
 
   }
 
