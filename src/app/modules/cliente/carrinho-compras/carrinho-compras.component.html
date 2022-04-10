@@ -26,24 +26,43 @@
           <tr>
             <td><img class="produtoImg" src="{{producto.produto?.img}}" />
             </td>
-            <td>{{producto.produto?.titulo}}</td>
-            <td>{{producto.produto?.tipo}}</td>
-            <td> <input type="number" min="1" max="10" class="form-control" [(ngModel)]="producto.quantidade"/> <button type="button" class="btn btn-success mt-1" (click)="alterarQuantidade(producto)">Alterar</button></td>
-            <td><strong>{{producto.produto?.preco}} R$</strong></td>
+            <td>{{producto.produto.titulo}}</td>
+            <td>{{producto.produto.tipo}}</td>
+            <td> <input type="number" min="1" max="10" class="form-control" value="{{producto.quantidade}}" /> <button
+                type="button" class="btn btn-success mt-1">Alterar</button></td>
+            <td><strong>{{producto.produto.preco}} R$</strong></td>
             <td><button class="btn btn-danger" (click)="excluirProduto(1, producto.produtoId)">Excluir</button></td>
           </tr>
 
         </tbody>
       </table>
     </div>
-    <hr>
+    <hr style="border: 2px solid black;">
+    <div class="col-12" *ngIf="cliente">
+      <div class="text-center">
+        <div class="row ms-2">
+          <div class="col-6">
+            <h3 style="color:rgb(22, 155, 22);font-weight:600;">Valor em credito acumulados:</h3>
+            <div class="col-6 offset-2">
+              <h2><strong>R$</strong><strong style="color: red;margin-left: 7.5px;">{{cliente.credito}}</strong></h2>
+            </div>
+          </div>
+          <div class="col-3">
+            <label class="form-label">Valor de credito que sera usado:</label>
+            <input class="form-control" placeholder="Insira o Credito:" [(ngModel)]="valorCredito">
+          </div>
+          <button type="button" class="btn-credito mt-4" [disabled]="cliente.credito === 0" (click)="calcularCredito()">Calcular</button>
+
+        </div>
+      </div>
+      <hr style="border: 2px solid black;" >
+    </div>
+
     <div class="col-12">
-
-
       <div class="row ms-2">
         <div class="col-3">
           <label class="form-label">Calcular o Frete:</label>
-          <input type="text" class="form-control" placeholder="Insira o CEP:" [(ngModel)]="cep" maxlength="9"/>
+          <input type="text" class="form-control" placeholder="Insira o CEP:" [(ngModel)]="cep" maxlength="9" />
         </div>
         <div class="col-3">
           <button type="button" class="btn-calcular mt-4" (click)="calcularFrete()">Calcular</button>
@@ -65,9 +84,10 @@
           <tr>
             <th scope="col">Preço Produto(s): <strong class="azulfraco">R$ {{valorProdutos.toFixed(1)}}</strong></th>
             <th scope="col">Frete: <strong class="azulfraco">R$ {{valorFrete}}</strong></th>
-            <th scope="col">Preço Cheio: <strong class="azulfraco">R$ {{(valorProdutos + valorFrete).toFixed(1)}}</strong></th>
+            <th scope="col">Preço Cheio: <strong class="azulfraco">R$ {{(valorProdutos +
+                valorFrete).toFixed(1)}}</strong></th>
             <th scope="col">Desconto: <strong class="azulfraco">R$ {{valorDesconto}}</strong></th>
-            <th scope="col">Preço Final: <strong class="azulforte">R$ {{(valorProdutos + valorFrete - valorDesconto).toFixed(1)}}</strong></th>
+            <th scope="col">Preço Final: <strong class="azulforte">R$ {{(((valorProdutos + valorFrete) - valorDesconto) - valorCredito).toFixed(1)}}</strong></th>
           </tr>
         </thead>
 

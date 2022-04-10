@@ -82,7 +82,7 @@ const routes: Routes = [
   {path: "tela-funcionario", component: TelaFuncionarioComponent},
   {path: "perfil-usuario-main", component: PerfilUsuarioMainComponent},
   {path: "consultar-produtos", component: ConsultarProdutosComponent},
-  {path: "informacao-produto", component: InformacaoProdutoComponent},
+  {path: "informacao-produto/:id", component: InformacaoProdutoComponent},
   {path: "consultar-trocas", component: ConsultarTrocasComponent},
   {path: "informacao-trocas/:idTroca", component: InformacaoTrocaComponent},
   {path: "perfil-usuario-trocas/:idpedido/:idcliente", component: PerfilUsuarioTrocasComponent},
