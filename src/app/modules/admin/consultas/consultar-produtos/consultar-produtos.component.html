@@ -107,6 +107,7 @@
                             <th scope="col">Dados do Produto</th>
                             <th scope="col">Excluir o Produto</th>
                             <th scope="col">Adicionar Estoque</th>
+                            <th scope="col">Ativar Produto</th>
                             <th scope="col">Inativar o Produto</th>
                           </tr>
                         </thead>
@@ -115,7 +116,8 @@
                             <td><button class="btn btn-primary" type="button"
                                 (click)="informacaoProduto(produto.id)">Visualizar</button></td>
                             <td><button class="btn btn-danger" type="button">Excluir</button></td>
-                            <td><button class="btn btn-success" type="button" (click)="adicionarEstoque()">Adicionar</button></td>
+                            <td><button class="btn btn-secondary" type="button" (click)="adicionarEstoque()">Adicionar</button></td>
+                            <td><button class="btn btn-success" type="button" (click)="ativarProduto()">Ativar</button></td>
                             <td><button class="btn btn-warning" type="button" (click)="inativarProduto()">Inativar</button></td>
                           </tr>
                         </tbody>
