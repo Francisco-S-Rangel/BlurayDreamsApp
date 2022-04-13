@@ -49,7 +49,7 @@
           </div>
           <div class="col-3">
             <label class="form-label">Valor de credito que sera usado:</label>
-            <input class="form-control" placeholder="Insira o Credito:" [(ngModel)]="valorCredito">
+            <input class="form-control" placeholder="Insira o Credito:" (keypress)="keyPressNumbers($event)" (blur)="verificaValorExcesso()" [(ngModel)]="valorCredito">
           </div>
 
         </div>
@@ -86,7 +86,7 @@
             <th scope="col">Preço Cheio: <strong class="azulfraco">R$ {{(valorProdutos +
                 valorFrete).toFixed(2)}}</strong></th>
             <th scope="col">Desconto: <strong class="azulfraco">R$ {{valorDesconto}}</strong></th>
-            <th scope="col">Preço Final: <strong class="azulforte">R$ {{(((valorProdutos + valorFrete) - valorDesconto) - valorCredito).toFixed(2)}}</strong></th>
+            <th scope="col">Preço Final: <strong class="azulforte">R$ {{valorFinal.toFixed(2)}}</strong></th>
           </tr>
         </thead>
 

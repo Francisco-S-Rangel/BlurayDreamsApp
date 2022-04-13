@@ -52,6 +52,7 @@ export class CarrinhoComprasComponent implements OnInit {
   valorProdutos: number = 0;
   valorFrete: number = 0;
   valorDesconto: number = 0;
+  valorFinal: number = 0
 
   valorCredito: number = 0;
   valorCreditoAtualizado: number = 0;
@@ -83,15 +84,25 @@ export class CarrinhoComprasComponent implements OnInit {
 
       this.valorProdutos = 0;
 
-      for (let i = 0; i < this.carrinho.carrinhoProduto!.length; i++) {
-        this.ProdutoService.getById(carrinho.carrinhoProduto![i].produtoId).subscribe((produto) => {
-          this.carrinho.carrinhoProduto![i].produto = produto
-          this.valorProdutos += this.carrinho.carrinhoProduto![i].quantidade * this.carrinho.carrinhoProduto![i].produto.preco
-        })
+      if (this.carrinho.carrinhoProduto!.length > 0) {
+        for (let i = 0; i < this.carrinho.carrinhoProduto!.length; i++) {
+          this.ProdutoService.getById(carrinho.carrinhoProduto![i].produtoId).subscribe((produto) => {
+            this.carrinho.carrinhoProduto![i].produto = produto
+            var aux = this.carrinho.carrinhoProduto![i].quantidade * this.carrinho.carrinhoProduto![i].produto.preco
+            this.valorProdutos += aux
+            //this.valorFinal = this.valorProdutos
+            this.calcularValorFinal()
+          })
+        }
+      } else {
+        this.valorCredito = 0
+        this.valorFrete = 0
+        this.valorDesconto = 0
+        this.calcularValorFinal()
       }
     })
-    //console.error = () => {};
   }
+
   carregarCliente() {
     this.clienteService.getById(1).subscribe(
       (cliente: Cliente) => {
@@ -115,55 +126,92 @@ export class CarrinhoComprasComponent implements OnInit {
       alert("CEP Invalido!")
       this.valorFrete = 0
     }
+    this.calcularValorFinal()
   }
 
   calcularCupom() {
     if (this.cupomDesconto == "abc123") {
-      this.valorDesconto = 20
+      if (this.valorProdutos + this.valorFrete >= 20) {
+        this.valorDesconto = 20
+      } else {
+        this.valorDesconto = this.valorProdutos + this.valorFrete
+      }
     } else {
       alert("Cupom Invalido!")
       this.valorDesconto = 0
     }
+    this.calcularValorFinal()
   }
 
-  calcularCredito() {
+  verificaValorExcesso() {
 
     if (this.valorCredito > this.creditoCliente) {
-      alert("O valor de credito inserido foi supeior ao valor disponivel");
+      alert("O valor de credito inserido foi superior ao valor disponivel");
+      this.valorCredito = 0;
     } else {
-      this.valorCreditoAtualizado = this.creditoCliente - this.valorCredito;
-      console.log(this.valorCreditoAtualizado);
+      if (this.valorCredito > this.valorProdutos + this.valorFrete - this.valorDesconto) {
+        alert("Voce esta colocando um valor superior ao valor do carrinho!")
+        let aux = this.valorProdutos + this.valorFrete - this.valorDesconto
+        this.valorCredito = parseFloat(aux.toFixed(2))
+      }
+      this.valorFinal = this.valorProdutos + this.valorFrete - this.valorDesconto - this.valorCredito
+      let aux = this.valorFinal
+      this.valorFinal = Math.round(aux * 100) / 100
+    }
+  }
 
+  calcularValorFinal() {
+    this.valorFinal = this.valorProdutos
+    this.valorFinal += this.valorFrete
+    this.valorFinal -= this.valorDesconto
+    let aux = this.valorFinal
+    this.valorFinal = Math.round(aux * 100) / 100
+
+    this.verificaValorExcesso()
+  }
+
+  keyPressNumbers(event: any) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    // Only Numbers 0-9
+    if ((charCode < 46 || charCode > 57)) {
+      event.preventDefault();
+      return false;
+    } else {
+      if (charCode == 47) {
+        return false
+      } else {
+        return true;
+      }
     }
   }
 
   finalizarPedido() {
 
-    if (this.valorCredito > this.creditoCliente) {
-      alert("O valor de credito inserido foi supeior ao valor disponivel");
-    } else {
 
-      this.valorCreditoAtualizado = this.creditoCliente - this.valorCredito;
-      console.log(this.valorCreditoAtualizado);
+    this.valorCreditoAtualizado = this.creditoCliente - this.valorCredito;
+    //console.log(this.valorCreditoAtualizado);
+    this.cliente.credito = this.valorCreditoAtualizado;
+    //console.log(this.cliente);
+    this.shared.setClientes(this.cliente);
 
-      this.cliente.credito = this.valorCreditoAtualizado;
-      console.log(this.cliente);
-      this.shared.setClientes(this.cliente);
-      this.carrinhoPut.desconto = this.valorDesconto
-      this.carrinhoPut.frete = 10
-      this.carrinhoPut.precoFinal = ((this.valorProdutos + 10) - this.valorDesconto) - this.valorCredito
-      this.carrinhoPut.precoFinal = parseFloat(this.carrinhoPut.precoFinal.toFixed(2))
-      console.log(this.carrinhoPut)
-      this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(() => {
-        this.router.navigate(['/finalizar-cartao'])
-      })
+    this.carrinhoPut.desconto = this.valorDesconto
+    this.carrinhoPut.frete = 10
+    if(this.valorFinal == -0) {
+      this.valorFinal = 0
     }
+    this.carrinhoPut.precoFinal = this.valorFinal
+    console.log(this.carrinhoPut.precoFinal)
+    console.log(this.carrinhoPut)
+    this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(() => {
+      this.router.navigate(['/finalizar-cartao'])
+    })
+
 
   }
 
 
   alterarQuantidade(carrinhoProduto: CarrinhoProduto, produto: Produto) {
-    if(carrinhoProduto.quantidade > produto.estoque){
+    if (carrinhoProduto.quantidade > produto.estoque) {
       alert(`Você não pode adicionar mais produtos que o estoque atual: ${produto.estoque}.`)
       this.ngOnInit()
     } else {

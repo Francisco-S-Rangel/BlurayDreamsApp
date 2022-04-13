@@ -127,7 +127,7 @@ export class InformacaoTrocaComponent implements OnInit {
   adicionarProdutosEstoque() {
 
 
-    let produtoPut = this.produtoTrocado
+    let produtoPut = this.produtoTrocado 
     produtoPut.estoque += this.troca.quantidade
 
     this.ProdutoService.put(produtoPut.id, produtoPut).subscribe(()=>{
