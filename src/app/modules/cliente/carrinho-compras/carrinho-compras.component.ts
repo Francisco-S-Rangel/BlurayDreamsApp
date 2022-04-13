@@ -162,12 +162,16 @@ export class CarrinhoComprasComponent implements OnInit {
   }
 
 
-  alterarQuantidade(carrinhoProduto: CarrinhoProduto) {
-    console.log(carrinhoProduto)
-    this.CarrinhoComprasService.addCarrinhoProdutos(1, carrinhoProduto).subscribe(
-      () => {
-        this.ngOnInit()
-      })
+  alterarQuantidade(carrinhoProduto: CarrinhoProduto, produto: Produto) {
+    if(carrinhoProduto.quantidade > produto.estoque){
+      alert(`Você não pode adicionar mais produtos que o estoque atual: ${produto.estoque}.`)
+      this.ngOnInit()
+    } else {
+      this.CarrinhoComprasService.addCarrinhoProdutos(1, carrinhoProduto).subscribe(
+        () => {
+          this.ngOnInit()
+        })
+    }
   }
 
   irParaCartao() {

@@ -139,6 +139,6 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
     return this.formEndereco.controls;
   }
 
-  backPage() { this.router.navigate(['finalizar-cartao']); }
+  backPage() { this.router.navigate(['carrinho-compras']); }
 
 }

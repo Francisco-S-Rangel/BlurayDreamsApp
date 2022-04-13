@@ -15,29 +15,29 @@ export class ProdutoSelecionadoComponent implements OnInit {
 
   public id: number = 0;
   public produto: Produto = {
-        id:0,
-        titulo:'',
-        img:'',
-        tipo:'',
-        categoria:'',
-        ano: new Date(),
-        direcao: '',
-        duracao: '',
-        produtora: '',
-        sinopse: '',
-        status: false,
-        preco: 0,
-        estoque: 0
+    id: 0,
+    titulo: '',
+    img: '',
+    tipo: '',
+    categoria: '',
+    ano: new Date(),
+    direcao: '',
+    duracao: '',
+    produtora: '',
+    sinopse: '',
+    status: false,
+    preco: 0,
+    estoque: 0
   };
   public carrinhoProduto: CarrinhoProdutoRequest = {
-        produtoId: 0,
-        quantidade: 1
+    produtoId: 0,
+    quantidade: 1
   }
 
   constructor(private router: Router, private route: ActivatedRoute, private ProdutoService: ProdutoService, private CarrinhoComprasService: CarrinhoComprasService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(x=>{
+    this.route.params.subscribe(x => {
       this.id = x[`id`];
       this.carregarProduto(this.id)
     })
@@ -45,24 +45,28 @@ export class ProdutoSelecionadoComponent implements OnInit {
   }
 
 
-  carregarProduto(id: number){
+  carregarProduto(id: number) {
     this.ProdutoService.getById(id).subscribe(
-      (produto: Produto)=>{
+      (produto: Produto) => {
         this.produto = produto;
         console.log(this.produto);
       }
     );
   }
 
-  adicionarAoCarrinho(){
-    this.CarrinhoComprasService.addCarrinhoProdutos(1, this.carrinhoProduto).subscribe(
-      ()=>{
-        this.irParaCarrinho()
-      })
+  adicionarAoCarrinho() {
+    if (this.produto.estoque >= this.carrinhoProduto.quantidade) {
+      this.CarrinhoComprasService.addCarrinhoProdutos(1, this.carrinhoProduto).subscribe(
+        () => {
+          this.irParaCarrinho()
+        })
+    } else {
+      alert(`Estoque do produto insuficiente! Quantidade atual: ${this.produto.estoque} `)
+    }
   }
 
-  backPage(){ this.router.navigate([''])};
+  backPage() { this.router.navigate(['']) };
 
-  irParaCarrinho(){ this.router.navigate(['carrinho-compras'])}
+  irParaCarrinho() { this.router.navigate(['carrinho-compras']) }
 
 }

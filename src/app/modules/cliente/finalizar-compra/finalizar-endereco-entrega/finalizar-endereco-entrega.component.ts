@@ -1,3 +1,4 @@
+import { ProdutoService } from './../../../shared/services/cadastro-dados-pedido/produto.service';
 import { Carrinho } from './../../../shared/models/carrinho';
 import { EfetivarCompraRequest } from './../../../shared/models/efetivarCompraRequest';
 import { CarrinhoComprasService } from './../../../shared/services/cadastro-dados-pedido/carrinho-compras.service';
@@ -80,7 +81,7 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
 
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
     , private route: ActivatedRoute, private EnderecoEntregaService: EnderecoEntregaService, private CarrinhoComprasService: CarrinhoComprasService,
-    private clienteService: ClienteService, private formBuilder: FormBuilder) {
+    private clienteService: ClienteService, private formBuilder: FormBuilder, private ProdutoService: ProdutoService) {
 
     this.cliente = this.shared.getClientes();
     console.log(this.cliente)
@@ -108,6 +109,13 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
     this.CarrinhoComprasService.getCarrinhoProdutos(1).subscribe((carrinho) => {
       this.carrinho = carrinho
       console.log(this.carrinho)
+
+
+      for (let i = 0; i < this.carrinho.carrinhoProduto!.length; i++) {
+        this.ProdutoService.getById(carrinho.carrinhoProduto![i].produtoId).subscribe((produto) => {
+          this.carrinho.carrinhoProduto![i].produto = produto
+        })
+      }
     })
   }
 
@@ -133,6 +141,7 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
   }
 
   cadastrarEndereco() {
+
     if (this.radioUsarEndereco) {
       let id: number = 0;
       console.log(this.formCliente.value);
@@ -199,6 +208,22 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
       }
 
     }
+    this.removerProdutosEstoque()
+  }
+
+  removerProdutosEstoque(){
+    for(let i = 0; i < this.carrinho.carrinhoProduto!.length; i++){
+      /*console.log(this.carrinho.carrinhoProduto![i])
+      console.log(this.carrinho.carrinhoProduto![i].id)
+      console.log(this.carrinho.carrinhoProduto![i].produto)*/
+
+      let produtoPut = this.carrinho.carrinhoProduto![i].produto
+      produtoPut.estoque -= this.carrinho.carrinhoProduto![i].quantidade
+
+      this.ProdutoService.put(this.carrinho.carrinhoProduto![i].produtoId, produtoPut).subscribe(()=>{
+
+      })
+    }
   }
 
   public validacao(): void {
@@ -255,6 +280,6 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
     }
   }
 
-  backPage() { this.router.navigate(['/finalizar-endereco-cobranca']); }
+  backPage() { this.router.navigate(['/carrinho-compras']); }
 
 }
