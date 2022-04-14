@@ -31,11 +31,23 @@ export class ModalCadastroProdutoComponent implements OnInit {
       estoque: 0,
     }
 
+    categorias: any = [
+      {cat: "Terror"},
+      {cat: "Acão"},
+      {cat: "Sci-fi"},
+      {cat: "Comedia"},
+
+    ]
+
   constructor(private router: Router, private formBuilder: FormBuilder,
     private produtoService: ProdutoService) { }
 
   ngOnInit(): void {
     this.validacao();
+  }
+
+  cadastrarProduto(){
+    console.log(this.formProduto.value);
   }
 
 
