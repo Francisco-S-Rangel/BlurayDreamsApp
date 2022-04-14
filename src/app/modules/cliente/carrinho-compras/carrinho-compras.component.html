@@ -51,7 +51,6 @@
             <label class="form-label">Valor de credito que sera usado:</label>
             <input class="form-control" placeholder="Insira o Credito:" (keypress)="keyPressNumbers($event)" (blur)="verificaValorExcesso()" [(ngModel)]="valorCredito">
           </div>
-
         </div>
       </div>
       <hr style="border: 2px solid black;" >
@@ -94,7 +93,7 @@
       <br>
 
       <div class="col-12 text-center">
-        <button class="btn btn-success" (click)="irParaCartao()">Finalizar Pedido</button>
+        <button class="btn btn-success" (click)="irParaCartao()" [disabled]="carrinho.carrinhoProduto?.length == 0">Finalizar Pedido</button>
       </div>
 
       <br>

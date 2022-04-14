@@ -1,3 +1,4 @@
+import { EfetivarCompraRequest } from './../../shared/models/efetivarCompraRequest';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProdutoService } from './../../shared/services/cadastro-dados-pedido/produto.service';
 import { CarrinhoProduto } from './../../shared/models/carrinhoProduto';
@@ -60,6 +61,7 @@ export class CarrinhoComprasComponent implements OnInit {
 
   cep: string = "";
   cupomDesconto: string = "";
+  ultimoCep: string = ""
 
   carrinhoPut: Carrinho = {
     id: 1,
@@ -119,13 +121,35 @@ export class CarrinhoComprasComponent implements OnInit {
     })
   }
 
+  alterarQuantidade(carrinhoProduto: CarrinhoProduto, produto: Produto) {
+    if (carrinhoProduto.quantidade > produto.estoque) {
+      alert(`Você não pode adicionar mais produtos que o estoque atual: ${produto.estoque}.`)
+      this.ngOnInit()
+    } else {
+      this.CarrinhoComprasService.addCarrinhoProdutos(1, carrinhoProduto).subscribe(
+        () => {
+          this.ngOnInit()
+        })
+    }
+  }
+
+  valorFreteAleatorio() {
+    return Math.floor(
+      Math.random() * (15 - 5) + 5
+    )
+  }
+
   calcularFrete() {
     if (this.cep.length == 9) {
-      this.valorFrete = 10
+      if (this.cep == this.ultimoCep) {
+      } else {
+        this.valorFrete = this.valorFreteAleatorio()
+      }
     } else {
       alert("CEP Invalido!")
       this.valorFrete = 0
     }
+    this.ultimoCep = this.cep
     this.calcularValorFinal()
   }
 
@@ -149,7 +173,9 @@ export class CarrinhoComprasComponent implements OnInit {
       alert("O valor de credito inserido foi superior ao valor disponivel");
       this.valorCredito = 0;
     } else {
-      if (this.valorCredito > this.valorProdutos + this.valorFrete - this.valorDesconto) {
+      var total = this.valorProdutos + this.valorFrete - this.valorDesconto
+      total = parseFloat(total.toFixed(2))
+      if (this.valorCredito > total) {
         alert("Voce esta colocando um valor superior ao valor do carrinho!")
         let aux = this.valorProdutos + this.valorFrete - this.valorDesconto
         this.valorCredito = parseFloat(aux.toFixed(2))
@@ -187,7 +213,6 @@ export class CarrinhoComprasComponent implements OnInit {
 
   finalizarPedido() {
 
-
     this.valorCreditoAtualizado = this.creditoCliente - this.valorCredito;
     //console.log(this.valorCreditoAtualizado);
     this.cliente.credito = this.valorCreditoAtualizado;
@@ -195,31 +220,31 @@ export class CarrinhoComprasComponent implements OnInit {
     this.shared.setClientes(this.cliente);
 
     this.carrinhoPut.desconto = this.valorDesconto
-    this.carrinhoPut.frete = 10
-    if(this.valorFinal == -0) {
+
+    if (this.valorFrete == 0) {
+      this.carrinhoPut.frete = this.valorFreteAleatorio()
+      this.valorFinal += this.carrinhoPut.frete
+    } else {
+      this.carrinhoPut.frete = this.valorFrete
+    }
+
+    if (this.valorFinal == -0) {
       this.valorFinal = 0
     }
-    this.carrinhoPut.precoFinal = this.valorFinal
-    console.log(this.carrinhoPut.precoFinal)
+    this.carrinhoPut.precoFinal = parseFloat(this.valorFinal.toFixed(2))
     console.log(this.carrinhoPut)
-    this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(() => {
-      this.router.navigate(['/finalizar-cartao'])
-    })
-
-
-  }
-
-
-  alterarQuantidade(carrinhoProduto: CarrinhoProduto, produto: Produto) {
-    if (carrinhoProduto.quantidade > produto.estoque) {
-      alert(`Você não pode adicionar mais produtos que o estoque atual: ${produto.estoque}.`)
-      this.ngOnInit()
+    if (this.valorFinal != 0) {
+      this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(() => {
+        this.router.navigate(['/finalizar-cartao'])
+      })
     } else {
-      this.CarrinhoComprasService.addCarrinhoProdutos(1, carrinhoProduto).subscribe(
-        () => {
-          this.ngOnInit()
-        })
+      let EfetivarCompraRequest: EfetivarCompraRequest = { enderecoCobrancaId: 2, enderecoEntregaId: 0, cartaoId: 2 }
+      this.shared.setRequest(EfetivarCompraRequest)
+      this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(() => {
+        this.router.navigate(['/finalizar-endereco-entrega']);
+      })
     }
+
   }
 
   irParaCartao() {
