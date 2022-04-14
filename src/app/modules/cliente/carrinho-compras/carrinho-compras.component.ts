@@ -173,11 +173,11 @@ export class CarrinhoComprasComponent implements OnInit {
       alert("O valor de credito inserido foi superior ao valor disponivel");
       this.valorCredito = 0;
     } else {
-      var total = this.valorProdutos + this.valorFrete - this.valorDesconto
+      var total = this.valorProdutos - this.valorDesconto
       total = parseFloat(total.toFixed(2))
       if (this.valorCredito > total) {
         alert("Voce esta colocando um valor superior ao valor do carrinho!")
-        let aux = this.valorProdutos + this.valorFrete - this.valorDesconto
+        let aux = this.valorProdutos - this.valorDesconto
         this.valorCredito = parseFloat(aux.toFixed(2))
       }
       this.valorFinal = this.valorProdutos + this.valorFrete - this.valorDesconto - this.valorCredito
@@ -233,17 +233,10 @@ export class CarrinhoComprasComponent implements OnInit {
     }
     this.carrinhoPut.precoFinal = parseFloat(this.valorFinal.toFixed(2))
     console.log(this.carrinhoPut)
-    if (this.valorFinal != 0) {
-      this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(() => {
-        this.router.navigate(['/finalizar-cartao'])
-      })
-    } else {
-      let EfetivarCompraRequest: EfetivarCompraRequest = { enderecoCobrancaId: 2, enderecoEntregaId: 0, cartaoId: 2 }
-      this.shared.setRequest(EfetivarCompraRequest)
-      this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(() => {
-        this.router.navigate(['/finalizar-endereco-entrega']);
-      })
-    }
+    this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(() => {
+      this.router.navigate(['/finalizar-cartao'])
+    })
+
 
   }
 
