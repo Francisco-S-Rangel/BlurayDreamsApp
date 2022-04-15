@@ -44,8 +44,8 @@ export class ConsultarProdutosComponent implements OnInit {
     this.router.navigate(['/motivo-ativacao-produto']);
   }
 
-  inativarProduto(){
-    this.router.navigate(['/motivo-inativacao-produto']);
+  inativarProduto(id: number){
+    this.router.navigate([`/motivo-inativacao-produto/${id}`]);
   }
 
   adicionarEstoque(){

@@ -7,11 +7,15 @@
       <div class="row">
         <label class="form-label">Categoria de Inativação</label>
       </div>
-      <select class="form-select">
-        <option selected>-- Escolha uma Categoria de Inativação --</option>
-        <option value="1">Falta Estoque</option>
-        <option value="2">Baixas Vendas</option>
+
+      <form [formGroup]="formMotivo">
+
+      <select class="form-select" formControlName="motivo">
+        <option [ngValue]="null">-- Escolha uma Categoria de Inativação --</option>
+        <option *ngFor="let motivo of Motivos" [ngValue]="motivo.msg">{{motivo.msg}}</option>
       </select>
+
+      </form>
     </div>
     <div class="col-12 text-center mt-3">
       <button type="button" class="btn btn-primary mt-3" >Inativar Produto</button>
