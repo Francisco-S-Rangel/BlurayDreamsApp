@@ -51,7 +51,7 @@ export class MotivoInativacaoComponent implements OnInit {
       }
     );
   }
-  atualizarFuncionario() {
+  atualizarProduto() {
 
     this.produtoService.put(this.id, this.form.value).subscribe(
       () => {
@@ -68,11 +68,49 @@ export class MotivoInativacaoComponent implements OnInit {
   }
   cadastrarMotivoInativacao(){
 
+    if(this.formMotivo.value == null){
+
+    }else if(this.formMotivo.value != null){
+      const mensagem = this.formMotivo.value;
+      this.inativacaoProduto.motivoDesativacao = mensagem.motivo;
+
+      console.log(this.inativacaoProduto);
+      console.log(this.produto);
+
+      if(mensagem.motivo != null){
+        console.log(mensagem.motivo);
+        if(mensagem.motivo == "Falta Estoque"){
+          this.form.value.estoque = 0;
+        }
+        this.atualizarProduto();
+        this.cadastrarMotivo();
+        this.backPage(); 
+      }
+    }
+
   }
 public inserirMotivoInativacao(){
+  this.inativacaoProduto.produtoId = this.id;
+  this.inativacaoProduto.motivoDesativacao = "";
 
 }
   public validacao(): void {
+
+    this.form = this.formBuilder.group({
+      id: this.produto?.id,
+      titulo: this.produto?.titulo,
+      img: this.produto?.img,
+      tipo: this.produto?.tipo,
+      categoria: this.produto?.categoria,
+      ano: this.produto?.ano,
+      direcao: this.produto?.direcao,
+      duracao: this.produto?.duracao,
+      produtora: this.produto?.produtora,
+      sinopse: this.produto?.sinopse,
+      status: false,
+      preco: this.produto?.preco,
+      estoque: this.produto?.estoque,
+    });
 
   }
 
