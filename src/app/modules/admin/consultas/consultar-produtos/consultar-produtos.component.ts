@@ -36,20 +36,24 @@ export class ConsultarProdutosComponent implements OnInit {
     );
   }
 
-  backPage() { this.router.navigate(['tela-funcionario']); }
-  informacaoProduto(id: number) { this.router.navigate([`informacao-produto/${id}`]); }
-  cadastrarNovoProduto() { this.router.navigate(['cadastrar-produto']); }
-
+  
+  informacaoProduto(id: number){
+     this.router.navigate([`informacao-produto/${id}`]); 
+    }
+  cadastrarNovoProduto(){ 
+    this.router.navigate([`cadastrar-produto`]); 
+  }
   ativarProduto(id: number){
     this.router.navigate([`/motivo-ativacao-produto/${id}`]);
   }
-
   inativarProduto(id: number){
     this.router.navigate([`/motivo-inativacao-produto/${id}`]);
   }
-
-  adicionarEstoque(){
-    this.router.navigate(['/cadastrar-estoque']);
+  adicionarEstoque(id: number){
+    this.router.navigate([`/cadastrar-estoque/${id}`]);
   }
+
+  backPage() { this.router.navigate(['tela-funcionario']); }
+
 
 }

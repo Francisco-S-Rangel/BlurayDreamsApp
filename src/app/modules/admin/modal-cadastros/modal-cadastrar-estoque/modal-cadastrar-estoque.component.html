@@ -1,27 +1,36 @@
-<div class="container">
+<div class="container" *ngIf="produto">
   <div class="card">
     <div class="row">
       <div class="col-md-12'">
         <div class="p-3 py-5">
           <div class="mb-4 text-center">
             <h1>Adicionar Estoque</h1>
+            <h5 style="color:red">Essa tela não é uma tela de edição e sim de adição, logo ela ira somar o valor de estoque que você já tem com o que você quer adicionar.</h5>
           </div>
           <div class="col-12 mb-2">
-          <div class="row mb-2">
-            <div class="col-md-6 mb-2"><label class="labels">ID Produto</label><input type="text" class="form-control" disabled value="001"></div>
-            <div class="col-md-6 mb-2"><label class="labels">Titulo Produto</label><input type="text" class="form-control" disabled value="A Viagem de Chihiro"></div>
-          </div>
-          <div class="mt-2 mb-2 row">
-            <div class="col-md-6"><label class="labels">Adicionar Estoque (Quantidade)</label><input type="text" class="form-control"
-                placeholder="Insira a Quantidade de Estoque a ser Adicionada"></div>
-          </div>
-          <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Confirmar</button>
+            <div class="row mb-2">
+              <div class="col-md-3 mb-2"><label class="labels">ID Produto</label><input type="text" class="form-control"
+                  disabled value="{{produto.id}}"></div>
+              <div class="col-md-6 mb-2"><label class="labels">Titulo Produto</label><input type="text"
+                  class="form-control" disabled value="{{produto.titulo}}"></div>
+              <div class="col-md-3 mb-2"><label class="labels">Estoque Atual</label><input type="text" class="form-control"
+                disabled value="{{produto.estoque}}"></div>
+            </div>
+            <form [formGroup]="formEstoque">
+              <div class="mt-2 mb-2 row">
+                <div class="col-md-6"><label class="labels">Adicionar Estoque (Quantidade)</label><input type="number"
+                    class="form-control" placeholder="Insira a Quantidade de Estoque a ser Adicionada" min="0"
+                    max="100" formControlName="estoqueNovo"></div>
+              </div>
+            </form>
+              <div class="mt-5 text-center"><button class="btn btn-primary profile-button"
+                  type="button" (click)="NovoEstoque()">Confirmar</button>
+              </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="text-center mt-5">
-  <button type="button" class="custom-btn-back" (click)="backPage()">Retornar</button>
-</div>
+  <div class="text-center mt-5">
+    <button type="button" class="custom-btn-back" (click)="backPage()">Retornar</button>
+  </div>
