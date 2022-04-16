@@ -117,8 +117,8 @@
                                 (click)="informacaoProduto(produto.id)">Visualizar</button></td>
                             <td><button class="btn btn-danger" type="button">Excluir</button></td>
                             <td><button class="btn btn-secondary" type="button" (click)="adicionarEstoque()">Adicionar</button></td>
-                            <td><button class="btn btn-success" type="button" (click)="ativarProduto()">Ativar</button></td>
-                            <td><button class="btn btn-warning" type="button" (click)="inativarProduto()">Inativar</button></td>
+                            <td><button class="btn btn-success" type="button" [disabled]="produto.status == true" (click)="ativarProduto(produto.id)">Ativar</button></td>
+                            <td><button class="btn btn-warning" type="button" [disabled]="produto.status == false" (click)="inativarProduto(produto.id)">Inativar</button></td>
                           </tr>
                         </tbody>
 

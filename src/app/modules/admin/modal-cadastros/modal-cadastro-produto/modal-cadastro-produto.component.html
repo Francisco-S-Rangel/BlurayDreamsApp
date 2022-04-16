@@ -6,53 +6,71 @@
           <div class="mb-4 text-center">
             <h1>Cadastrar Produto</h1>
           </div>
-          <div class="col-12 mb-2">
-            <div class="row">
-              <label class="labels">Tipo</label>
+          <form [formGroup]="formProduto">
+            <div class="col-12 mb-2">
+              <div class="row">
+                <label class="labels">Tipo</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked
+                  (change)="radioChange($event)">
+                <label class="form-check-label" for="exampleRadios1">
+                  Dvd
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="2" 
+                  (change)="radioChange($event)">
+                <label class="form-check-label" for="exampleRadios2">
+                  Blu-ray
+                </label>
+              </div>
             </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
-                checked>
-              <label class="form-check-label" for="exampleRadios1">
-                Normal
-              </label>
+            <div class="row mb-2">
+              <div class="col-md-3 mb-2"><label class="labels">Titulo</label><input type="text" class="form-control"
+                  placeholder="Insira o Titulo do Produto" formControlName="titulo"></div>
+              <div class="col-md-3 mb-2"><label class="labels">Ano</label><input type="date" class="form-control"
+                  placeholder="Digite o Ano do Produto" formControlName="ano"></div>
+              <div class="col-md-3 mb-2"><label class="labels">Direção</label><input type="text" class="form-control"
+                  placeholder="Digite a Direção do Produto" formControlName="direcao">
+              </div>
+              <div class="col-md-3 mb-2"><label class="labels">Duração (Em minutos)</label><input type="text"
+                  class="form-control" placeholder="Digite a Duração do Produto" formControlName="duracao"></div>
             </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-              <label class="form-check-label" for="exampleRadios2">
-                Blu-ray
-              </label>
+            <div class="mt-2 mb-2 row">
+              <div class="col-md-12">
+                <label class="labels">Produtora</label><input type="text" class="form-control"
+                  placeholder="Produtora do filme" formControlName="produtora">
+              </div>
             </div>
-          </div>
-          <div class="row mb-2">
-            <div class="col-md-3 mb-2"><label class="labels">Titulo</label><input type="text" class="form-control"
-                placeholder="Insira o Titulo do Produto"></div>
-            <div class="col-md-3 mb-2"><label class="labels">Ano</label><input type="text" class="form-control"
-                placeholder="Digite o Ano do Produto"></div>
-            <div class="col-md-3 mb-2"><label class="labels">Direção</label><input type="text" class="form-control"
-                placeholder="Digite a Direção do Produto">
+            <div class="mt-2 mb-2 row">
+              <div class="col-md-12"><label class="labels">Imagem (URL)</label><input type="text" class="form-control"
+                  placeholder="Insira a URL da imagem" formControlName="img"></div>
             </div>
-            <div class="col-md-3 mb-2"><label class="labels">Duração (Em minutos)</label><input type="text"
-                class="form-control" placeholder="Digite a Duração do Produto"></div>
-            <div class="col-md-12 mb-2"><label class="labels">Sinopse</label><input type="text" class="form-control"
-                placeholder="Digite a Sinopse do Produto">
+            <div class="met-2 mb-2 row">
+              <div class="col-md-12"><label class="labels">Sinopse</label><input type="text" class="form-control"
+                  placeholder="Digite a Sinopse do Produto" formControlName="sinopse">
+              </div>
             </div>
-          </div>
-          <div class="mt-2 mb-2 row">
-            <div class="col-md-12"><label class="labels">Imagem (URL)</label><input type="text" class="form-control"
-                placeholder="Insira a URL da imagem"></div>
-          </div>
-          <div class="col-6 mt-3">
-            <label class="labels">Categoria</label>
-            <select class="form-select">
-              <option selected>-- Escolha uma Categoria --</option>
-              <option value="1">Terror</option>
-              <option value="2">Acão</option>
-              <option value="3">Sci-fi</option>
-              <option value="4">Comedia</option>
-            </select>
-          </div>
-          <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Cadastrar</button>
+            <div class="col-12">
+              <div class="row">
+                <div class="col-6 mt-3">
+                  <label class="labels">Categoria</label>
+                  <select class="form-select" formControlName="categoria">
+                    <option [ngValue]="null">-- Escolha uma Categoria --</option>
+                    <option *ngFor="let categoria of categorias" [ngValue]="categoria.cat">{{categoria.cat}}</option>
+
+                  </select>
+                </div>
+                <div class="col-2 offset-1 mt-3">
+                  <label class="labels">Quantidade</label><input type="number" class="form-control" min="1" max="10"
+                    formControlName="estoque">
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"
+            [disabled]="!formProduto.valid" (click)="cadastrarProduto()">Cadastrar</button>
           </div>
         </div>
       </div>

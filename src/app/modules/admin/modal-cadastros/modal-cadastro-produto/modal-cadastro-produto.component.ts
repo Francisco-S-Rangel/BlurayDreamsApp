@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class ModalCadastroProdutoComponent implements OnInit {
 
   formProduto!: FormGroup;
+  tipo: string = "Dvd";
+  preco: number = 19.90;
 
 
   produto =
@@ -31,11 +33,49 @@ export class ModalCadastroProdutoComponent implements OnInit {
       estoque: 0,
     }
 
+    categorias: any = [
+      {cat: "Terror"},
+      {cat: "Acão"},
+      {cat: "Sci-fi"},
+      {cat: "Comedia"},
+
+    ]
+
   constructor(private router: Router, private formBuilder: FormBuilder,
     private produtoService: ProdutoService) { }
 
   ngOnInit(): void {
     this.validacao();
+  }
+
+  cadastrarProduto(){
+    let produto = this.formProduto.value;
+    produto.preco = this.preco;
+    produto.tipo = this.tipo;
+
+    let data = new Date(`${produto.ano}T06:00:00.000Z`);
+    produto.ano = data;
+
+
+    console.log(produto);
+
+    this.produtoService.post(produto).subscribe(
+      ()=>{
+        console.log();
+      }
+    );
+
+    this.backPage();
+  }
+
+  radioChange(event: any) {
+    if (event.target.value == 1) {
+      this.tipo = "Dvd";
+      this.preco = 19.90;
+    } else {
+      this.tipo = "Bluray";
+      this.preco = 39.90;
+    }
   }
 
 
@@ -44,7 +84,7 @@ export class ModalCadastroProdutoComponent implements OnInit {
     this.formProduto = this.formBuilder.group({
       titulo: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]],
       img: ['', Validators.required],
-      tipo: ['', Validators.required],
+      tipo: this.tipo,
       categoria: ['', Validators.required],
       ano: ['', Validators.required],
       direcao: ['', Validators.required],
@@ -52,7 +92,7 @@ export class ModalCadastroProdutoComponent implements OnInit {
       produtora: ['', Validators.required],
       sinopse: ['', Validators.required],
       status: true,
-      preco: ['', Validators.required],
+      preco: this.preco,
       estoque: ['', Validators.required],
     });
 
