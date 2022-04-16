@@ -104,7 +104,7 @@ const routes: Routes = [
   {path: "cadastrar-estoque", component: ModalCadastrarEstoqueComponent},
   {path: "informacao-pedidos/:id", component: InformacaoPedidosComponent},
   {path: "info-pedido-escolhido/:id/:idpedido", component: InfoPedidoEscolhidoComponent},
-  {path: "motivo-ativacao-produto", component: MotivoAtivacaoComponent},
+  {path: "motivo-ativacao-produto/:id", component: MotivoAtivacaoComponent},
   {path: "motivo-inativacao-produto/:id", component: MotivoInativacaoComponent},
   {path: "motivo-ativacao-cliente/:id", component: MotivoAtivacaoClienteComponent},
   {path: "motivo-inativacao-cliente/:id", component: MotivoInativacaoClienteComponent},
