@@ -100,7 +100,7 @@ const routes: Routes = [
   {path: "finalizar-endereco-cobranca", component: FinalizarEnderecoCobrancaComponent},
   {path: "finalizar-endereco-entrega", component: FinalizarEnderecoEntregaComponent},
   {path: "produto-selecionado/:id", component: ProdutoSelecionadoComponent},
-  {path: "editar-produto", component: ModalEditarProdutosComponent},
+  {path: "editar-produto/:id", component: ModalEditarProdutosComponent},
   {path: "cadastrar-estoque/:id", component: ModalCadastrarEstoqueComponent},
   {path: "informacao-pedidos/:id", component: InformacaoPedidosComponent},
   {path: "info-pedido-escolhido/:id/:idpedido", component: InfoPedidoEscolhidoComponent},

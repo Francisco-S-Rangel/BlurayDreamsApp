@@ -31,8 +31,7 @@ export class InformacaoProdutoComponent implements OnInit {
     );
   }
 
+  editarProduto(id: number){this.router.navigate([`editar-produto/${id}`]);}
   backPage(){this.router.navigate(['consultar-produtos']);}
-
-  editarProduto(){this.router.navigate(['editar-produto']);}
 
 }

@@ -36,6 +36,7 @@ export class ModalCadastroProdutoComponent implements OnInit {
     categorias: any = [
       {cat: "Terror"},
       {cat: "Acão"},
+      {cat: "Drama"},     
       {cat: "Sci-fi"},
       {cat: "Comedia"},
 

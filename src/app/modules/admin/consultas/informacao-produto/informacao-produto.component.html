@@ -10,7 +10,7 @@
     <div class="col-md-12">
         <div style="display: flex;">
         <h1><strong>ID Produto: </strong><span style="color: rgb(37, 37, 189);">{{produto.id}}</span></h1>
-        <button style="margin-left: 74rem;"class="btn btn-primary" (click)="editarProduto()">Editar Produto</button>
+        <button style="margin-left: 74rem;"class="btn btn-primary" (click)="editarProduto(produto.id)">Editar Produto</button>
         </div>
     </div>
 
@@ -56,6 +56,7 @@
                     <th>Produtora</th>
                     <th>Duracao</th>
                     <th>Preço</th>
+                    <th>Estoque</th>
                 </tr>
             </thead>
             <tbody class="corpo">
@@ -68,6 +69,7 @@
                     <td>{{produto.produtora}}</td>
                     <td>{{produto.duracao}}</td>
                     <td>R$ {{produto.preco}}</td>
+                    <td>{{produto.estoque}}</td>
                 </tr>
             </tbody>
         </table>
