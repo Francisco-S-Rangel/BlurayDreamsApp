@@ -55,14 +55,19 @@ export class ProdutoSelecionadoComponent implements OnInit {
   }
 
   adicionarAoCarrinho() {
-    if (this.produto.estoque >= this.carrinhoProduto.quantidade) {
-      this.CarrinhoComprasService.addCarrinhoProdutos(1, this.carrinhoProduto).subscribe(
-        () => {
-          this.irParaCarrinho()
-        })
+    if (this.carrinhoProduto.quantidade <= 0) {
+      alert("Quantidade invalida!")
     } else {
-      alert(`Estoque do produto insuficiente! Quantidade atual: ${this.produto.estoque} `)
+      if (this.produto.estoque >= this.carrinhoProduto.quantidade) {
+        this.CarrinhoComprasService.addCarrinhoProdutos(1, this.carrinhoProduto).subscribe(
+          () => {
+            this.irParaCarrinho()
+          })
+      } else {
+        alert(`Estoque do produto insuficiente! Quantidade atual: ${this.produto.estoque} `)
+      }
     }
+
   }
 
   backPage() { this.router.navigate(['']) };

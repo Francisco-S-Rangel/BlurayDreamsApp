@@ -28,10 +28,10 @@
             </td>
             <td>{{producto.produto?.titulo}}</td>
             <td>{{producto.produto?.tipo}}</td>
-            <td> <input type="number" min="1" max="10" class="form-control" [(ngModel)]="producto.quantidade" /> <button
-                type="button" class="btn btn-success mt-1" (click)="alterarQuantidade(producto, producto.produto)">Alterar</button></td>
+            <td> <input type="number" min="1" max="10" class="form-control" [(ngModel)]="producto.quantidade" id="{{producto.produtoId}}" /> <button
+                type="button" class="btn btn-success mt-1" name="alterar" (click)="alterarQuantidade(producto, producto.produto)" id="alterar{{producto.produtoId}}">Alterar</button></td>
             <td><strong>{{producto.produto?.preco}} R$</strong></td>
-            <td><button class="btn btn-danger" (click)="excluirProduto(1, producto.produtoId)">Excluir</button></td>
+            <td><button class="btn btn-danger" name="excluir" (click)="excluirProduto(1, producto.produtoId)" id="excluir{{producto.produtoId}}">Excluir</button></td>
           </tr>
 
         </tbody>
@@ -49,7 +49,7 @@
           </div>
           <div class="col-3">
             <label class="form-label">Valor de credito que sera usado:</label>
-            <input class="form-control" placeholder="Insira o Credito:" (keypress)="keyPressNumbers($event)" (blur)="verificaValorExcesso()" [(ngModel)]="valorCredito">
+            <input class="form-control" id="credito" placeholder="Insira o Credito:" (keypress)="keyPressNumbers($event)" (blur)="verificaValorExcesso()" [(ngModel)]="valorCredito">
           </div>
         </div>
       </div>
@@ -60,18 +60,18 @@
       <div class="row ms-2">
         <div class="col-3">
           <label class="form-label">Calcular o Frete:</label>
-          <input type="text" class="form-control" placeholder="Insira o CEP:" [(ngModel)]="cep" maxlength="9" />
+          <input type="text" class="form-control" placeholder="Insira o CEP:" id="cep" [(ngModel)]="cep" maxlength="9" />
         </div>
         <div class="col-3">
-          <button type="button" class="btn-calcular mt-4" (click)="calcularFrete()">Calcular</button>
+          <button type="button" class="btn-calcular mt-4" (click)="calcularFrete()" id="botaoCep">Calcular</button>
         </div>
 
         <div class="col-3">
           <label class="form-label">Inserir o Cupom de Desconto:</label>
-          <input type="text" class="form-control" placeholder="Insira o Cupom:" [(ngModel)]="cupomDesconto" />
+          <input type="text" class="form-control" placeholder="Insira o Cupom:" id="cupom" [(ngModel)]="cupomDesconto" />
         </div>
         <div class="col-3">
-          <button type="button" class="btn-cupom mt-4" (click)="calcularCupom()">Calcular</button>
+          <button type="button" class="btn-cupom mt-4" (click)="calcularCupom()" id="botaoCupom">Calcular</button>
         </div>
       </div>
 
@@ -93,7 +93,7 @@
       <br>
 
       <div class="col-12 text-center">
-        <button class="btn btn-success" (click)="irParaCartao()" [disabled]="carrinho.carrinhoProduto?.length == 0">Finalizar Pedido</button>
+        <button class="btn btn-success" (click)="irParaCartao()" [disabled]="carrinho.carrinhoProduto?.length == 0" id="finalizar">Finalizar Pedido</button>
       </div>
 
       <br>

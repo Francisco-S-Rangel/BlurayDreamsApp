@@ -75,14 +75,14 @@
 
                 <div class="col">
                     <label style="margin-left: 12px;" class="form-label">Escolha a Quantidade:
-                        <input value="1" type="number" min="1" max="10" class="form-control" [(ngModel)]="this.carrinhoProduto.quantidade"/></label>
+                        <input value="1" type="number" min="1" max="10" class="form-control" name="quantidade" [(ngModel)]="this.carrinhoProduto.quantidade"/></label>
 
                 </div>
 
                 <div class="col">
                     <label class="form-label3">Comprar Produto:</label>
                     <br><br>
-                        <button class="btn-comprar" (click)="adicionarAoCarrinho()">COMPRAR</button>
+                        <button class="btn-comprar" name="comprar" (click)="adicionarAoCarrinho()">COMPRAR</button>
                 </div>
 
 
