@@ -18,6 +18,9 @@ export class FuncionarioService {
   getAll(): Observable<Funcionario[]>{
     return this.http.get<Funcionario[]>(`${this.baseUrl}`);
   }
+  getFuncionariosPorNome(nome: String): Observable<Funcionario[]>{
+    return this.http.get<Funcionario[]>(`${this.baseUrl}/${nome}/funcionario`);
+  }
   getById(id: number): Observable<Funcionario>{
     return this.http.get<Funcionario>(`${this.baseUrl}/${id}`);
   }
