@@ -28,6 +28,9 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
   formCliente!: FormGroup;
   formEndereco!: FormGroup;
 
+  frete: number = 0
+  frete2: number = 0
+
   public cliente: Cliente;
   enderecosCliente?: EnderecoEntregas[]
 
@@ -50,6 +53,14 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
   };
 
   carrinhoPut: Carrinho = {
+    id: 1,
+    clienteId: 1,
+    desconto: 0,
+    frete: 0,
+    precoFinal: 0
+  };
+
+  carrinhoPut2: Carrinho = {
     id: 1,
     clienteId: 1,
     desconto: 0,
@@ -93,7 +104,17 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
     this.validacao();
     this.carregarEnderecosCliente(1);
     this.carregarCarrinho();
+
+    this.frete = this.valorFreteAleatorio()
+    this.frete2 = this.valorFreteAleatorio()
+
     this.validacao2();
+  }
+
+  valorFreteAleatorio() {
+    return Math.floor(
+      Math.random() * (15 - 5) + 5
+    )
   }
 
   carregarEnderecosCliente(id: number) {
@@ -108,8 +129,11 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
   carregarCarrinho(){
     this.CarrinhoComprasService.getCarrinhoProdutos(1).subscribe((carrinho) => {
       this.carrinho = carrinho
+      this.carrinhoPut2.frete = this.carrinho.frete
+      this.carrinhoPut2.desconto = this.carrinho.desconto
+      this.carrinhoPut2.precoFinal = this.carrinho.precoFinal
+      console.log(this.carrinhoPut2)
       console.log(this.carrinho)
-
 
       for (let i = 0; i < this.carrinho.carrinhoProduto!.length; i++) {
         this.ProdutoService.getById(carrinho.carrinhoProduto![i].produtoId).subscribe((produto) => {
@@ -137,10 +161,22 @@ export class FinalizarEnderecoEntregaComponent implements OnInit {
       this.radioUsarEndereco = true
     } else {
       this.radioUsarEndereco = false
+      this.enderecoId = 0
     }
   }
 
   cadastrarEndereco() {
+
+    if(this.radioUsarEndereco){
+      this.carrinhoPut2.frete = this.frete
+    } else {
+      this.carrinhoPut2.frete = this.frete2
+    }
+    this.carrinhoPut2.precoFinal += this.carrinhoPut2.frete
+
+    this.CarrinhoComprasService.put(1, this.carrinhoPut2).subscribe(() => {
+
+    })
 
     if (this.radioUsarEndereco) {
       let id: number = 0;

@@ -221,16 +221,18 @@ export class CarrinhoComprasComponent implements OnInit {
 
     this.carrinhoPut.desconto = this.valorDesconto
 
-    if (this.valorFrete == 0) {
+    /*if (this.valorFrete == 0) {
       this.carrinhoPut.frete = this.valorFreteAleatorio()
       this.valorFinal += this.carrinhoPut.frete
     } else {
       this.carrinhoPut.frete = this.valorFrete
-    }
+    }*/
+    this.carrinhoPut.frete = 0
 
     if (this.valorFinal == -0) {
       this.valorFinal = 0
     }
+    this.valorFinal -= this.valorFrete
     this.carrinhoPut.precoFinal = parseFloat(this.valorFinal.toFixed(2))
     console.log(this.carrinhoPut)
     this.CarrinhoComprasService.put(1, this.carrinhoPut).subscribe(() => {

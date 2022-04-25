@@ -21,7 +21,7 @@
           </label>
         </div>
         <select class="form-select mt-2" (change)="selectChange($event)" [disabled]="radioUsarEndereco==false">
-          <option selected value="0">-- Escolha um Endereço --</option>
+          <option selected value="0" [selected]="radioUsarEndereco==false">-- Escolha um Endereço --</option>
           <option *ngFor="let endereco of enderecosCliente;" [value]="endereco.id">
             {{endereco.cep}} - {{endereco.apelido}}
           </option>
@@ -141,6 +141,9 @@
             Não
           </label>
         </div>
+      </div>
+      <div class="col-12 text-center mt-5" [hidden]="(radioUsarEndereco && enderecoId == 0) || (radioUsarEndereco == false && formEndereco.invalid)">
+        <div>O frete com esse endereço sera de: <span *ngIf="radioUsarEndereco">{{frete}}</span> <span *ngIf="radioUsarEndereco == false">{{frete2}}</span> reais</div>
       </div>
       <div class="col-12 text-center">
         <button type="button" class="btn btn-primary mt-3" [disabled]="(radioUsarEndereco && enderecoId == 0) || (radioUsarEndereco == false && formEndereco.invalid)"
