@@ -12,14 +12,14 @@
           <label class="form-label">Usar Um Cartão Cadastrado?</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked (change)="radioChange($event)">
-          <label class="form-check-label" for="exampleRadios1">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado1" value="1" checked (change)="radioChange($event)">
+          <label class="form-check-label" for="radioCadastrado1">
             Sim
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="2" (change)="radioChange($event)">
-          <label class="form-check-label" for="exampleRadios2">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado2" value="2" (change)="radioChange($event)">
+          <label class="form-check-label" for="radioCadastrado2">
             Não
           </label>
         </div>
@@ -87,7 +87,7 @@
         </div>
       </div>
       <div class="col-12 text-center">
-        <button type="button" class="btn btn-primary mt-3"
+        <button type="button" class="btn btn-primary mt-3" id="finalizarCartao"
           (click)="cadastrarCartao()" [disabled]="(radioUsarCartao && cartaoId == 0) || (radioUsarCartao == false && formCartao.invalid)">Proximo</button>
       </div>
     </form>

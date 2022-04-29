@@ -11,7 +11,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class BandeiraCartaoService {
 
-  baseUrl = `${environment.API_url}/CartaoCreditos`;
+  baseUrl = `${environment.API_url}/BandeiraCartaos`;
 
   constructor(private http: HttpClient) { }
 

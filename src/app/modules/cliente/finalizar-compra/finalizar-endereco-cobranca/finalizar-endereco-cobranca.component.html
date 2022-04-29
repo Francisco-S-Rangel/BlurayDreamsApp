@@ -20,7 +20,7 @@
             Não
           </label>
         </div>
-        <select class="form-select mt-2" (change)="selectChange($event)" [disabled]="radioUsarEndereco==false">
+        <select class="form-select mt-2" (change)="selectChange($event)" id="selectEnd" [disabled]="radioUsarEndereco==false">
           <option selected value="0">-- Escolha um Endereço --</option>
           <option *ngFor="let endereco of enderecosCliente;" [value]="endereco.id">
             {{endereco.cep}}
@@ -129,7 +129,7 @@
       </div>
 
       <div class="col-12 text-center">
-        <button type="button" class="btn btn-primary mt-3"
+        <button type="button" class="btn btn-primary mt-3" id="finalizarEnd"
           (click)="cadastrarEndereco()" [disabled]="(radioUsarEndereco && enderecoId == 0) || (radioUsarEndereco == false && formEndereco.invalid)">Proximo</button>
       </div>
     </form>

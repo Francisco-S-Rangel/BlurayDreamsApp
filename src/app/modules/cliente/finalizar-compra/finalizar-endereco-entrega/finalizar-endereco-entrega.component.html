@@ -9,14 +9,14 @@
           <label class="form-label">Usar Um Endereço Cadastrado?</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked (change)="radioChange($event)">
-          <label class="form-check-label" for="exampleRadios1">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="radio1" value="1" checked (change)="radioChange($event)">
+          <label class="form-check-label" for="radio1">
             Sim
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="2" (change)="radioChange($event)">
-          <label class="form-check-label" for="exampleRadios2">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="radio2" value="2" (change)="radioChange($event)">
+          <label class="form-check-label" for="radio2">
             Não
           </label>
         </div>
@@ -143,10 +143,13 @@
         </div>
       </div>
       <div class="col-12 text-center mt-5" [hidden]="(radioUsarEndereco && enderecoId == 0) || (radioUsarEndereco == false && formEndereco.invalid)">
-        <div>O frete com esse endereço sera de: <span *ngIf="radioUsarEndereco">{{frete}}</span> <span *ngIf="radioUsarEndereco == false">{{frete2}}</span> reais</div>
+        <div class="label">O frete com esse endereço sera de R$ <span *ngIf="radioUsarEndereco">{{frete}}</span> <span *ngIf="radioUsarEndereco == false">{{frete2}}</span>.</div>
+      </div>
+      <div class="col-12 text-center" [hidden]="(radioUsarEndereco && enderecoId == 0) || (radioUsarEndereco == false && formEndereco.invalid)">
+        <div class="label">O preço final sera de R$ <span *ngIf="radioUsarEndereco">{{frete + carrinho.precoFinal}}</span> <span *ngIf="radioUsarEndereco == false">{{frete2 + carrinho.precoFinal}}</span>.</div>
       </div>
       <div class="col-12 text-center">
-        <button type="button" class="btn btn-primary mt-3" [disabled]="(radioUsarEndereco && enderecoId == 0) || (radioUsarEndereco == false && formEndereco.invalid)"
+        <button type="button" class="btn btn-primary mt-3" id="finalizarEnd" [disabled]="(radioUsarEndereco && enderecoId == 0) || (radioUsarEndereco == false && formEndereco.invalid)"
           (click)="cadastrarEndereco()">Finalizar</button>
       </div>
     </form>

@@ -9,7 +9,7 @@ describe('Condução de Venda (adição de produtos)', () => {
 
   it('Cliente tenta escolher uma quantidade maior que o estoque.', () => {
 
-    cy.get('input[name="quantidade"]').clear().type("5")
+    cy.get('input[name="quantidade"]').clear().type("9")
 
     cy.get('button[name="comprar"]').click()
 

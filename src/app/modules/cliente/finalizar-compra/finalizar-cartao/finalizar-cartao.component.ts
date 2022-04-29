@@ -1,3 +1,4 @@
+import { BandeiraCartaoService } from './../../../shared/services/cadastro-dados-cliente/bandeira-cartao.service';
 import { EfetivarCompraRequest } from './../../../shared/models/efetivarCompraRequest';
 import { CartaoCredito } from 'src/app/modules/shared/models/cartaoCredito';
 import { CartaoCreditoService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cartao-credito.service';
@@ -25,7 +26,7 @@ export class FinalizarCartaoComponent implements OnInit {
     cartaoId: 0
   }
 
-  bandeiraCartao: any = [
+  /*bandeiraCartao: any = [
     {
       bandeira: "visa"
     },
@@ -35,7 +36,9 @@ export class FinalizarCartaoComponent implements OnInit {
     {
       bandeira: "elo"
     }
-  ]
+  ]*/
+
+  bandeiras: any = []
 
   cartaoCreditos =
     {
@@ -50,11 +53,12 @@ export class FinalizarCartaoComponent implements OnInit {
   cartoesCliente?: CartaoCredito[]
 
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
-    ,private cartaoCreditoService: CartaoCreditoService) { }
+    ,private cartaoCreditoService: CartaoCreditoService, private BandeiraCartaoService: BandeiraCartaoService) { }
 
   ngOnInit(): void {
     this.validacao();
     this.carregarCartoesCliente(1)
+    this.carregarBandeiras()
   }
 
   carregarCartoesCliente(id: number) {
@@ -63,6 +67,13 @@ export class FinalizarCartaoComponent implements OnInit {
         this.cartoesCliente = cartaoCreditos;
       }
     )
+  }
+
+  carregarBandeiras(){
+    this.BandeiraCartaoService.getAll().subscribe((bandeiras)=>{
+      this.bandeiras = bandeiras
+      console.log(this.bandeiras)
+    })
   }
 
   selectChange(event: any){
@@ -139,9 +150,9 @@ export class FinalizarCartaoComponent implements OnInit {
       const control = formGroup.controls[controlName]
       let match: boolean = false
 
-      for (let i = 0; i < this.bandeiraCartao.length; i++) {
+      for (let i = 0; i < this.bandeiras.length; i++) {
 
-        if (control.value.toLowerCase() == this.bandeiraCartao[i].bandeira) {
+        if (control.value.toLowerCase() == this.bandeiras[i].nome) {
           match = true
         }
 
