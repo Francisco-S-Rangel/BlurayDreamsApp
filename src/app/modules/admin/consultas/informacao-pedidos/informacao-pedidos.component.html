@@ -22,7 +22,7 @@
                 <td>{{pedido.id}}</td>
                 <td>R$ {{pedido.precoFinal}}</td>
                 <td>{{pedido.status}}</td>
-                <td><button type="button" class="btn btn-info" (click)="irPedidoEscolhido(cliente.id, pedido.id)" >Detalhes</button></td>
+                <td><button type="button" class="btn btn-info" (click)="irPedidoEscolhido(cliente.id, pedido.id)" id="pedido{{pedido.id}}" >Detalhes</button></td>
               </tr>
             </tbody>
           </table>

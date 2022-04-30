@@ -45,7 +45,7 @@
               <td>{{pedido.id}}</td>
               <td>{{pedido.precoFinal}} R$</td>
               <td>{{pedido.status}}</td>
-              <td><button type="button" class="btn btn-success" (click)="irParaTrocas(pedido.id)">Detalhes</button></td>
+              <td><button type="button" class="btn btn-success" id="verDetalhesPedido{{pedido.id}}" (click)="irParaTrocas(pedido.id)" >Detalhes</button></td>
             </tr>
           </tbody>
         </table>
@@ -66,7 +66,7 @@
               <td>{{troca.id}}</td>
               <td>{{troca.pedidoId}}</td>
               <td>{{troca.status}}</td>
-              <td><button type="button" class="btn btn-success" (click)="irParaDetalhesTrocas(troca.id)">Detalhes</button></td>
+              <td><button type="button" class="btn btn-success" (click)="irParaDetalhesTrocas(troca.id)" id="verDetalhesTroca{{troca.id}}">Detalhes</button></td>
             </tr>
           </tbody>
         </table>

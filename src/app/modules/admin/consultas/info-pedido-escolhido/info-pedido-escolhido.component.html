@@ -10,7 +10,7 @@
     </div>
     <div class="row justify-content-md-center mb-5" [hidden]="pedido.status!='Em processamento'">
       <div class="col-md-auto">
-        <button type="button" class="btn btn-primary mt-4" (click)="aprovarCompra(pedido.id)">Confirmar</button>
+        <button type="button" class="btn btn-primary mt-4" (click)="aprovarCompra(pedido.id)" id="aceitarPedido">Confirmar</button>
       </div>
       <div class="col-md-auto">
         <button type="button" class="btn btn-danger mt-4" (click)="recusarCompra(pedido.id)">Recusar</button>
@@ -18,12 +18,12 @@
     </div>
     <div class="row justify-content-md-center mb-5" [hidden]="pedido.status!='Aprovado'">
       <div class="col-md-auto">
-        <button type="button" class="btn btn-primary mt-4" (click)="enviarParaEntrega(pedido.id)">Enviar para Entrega</button>
+        <button type="button" class="btn btn-primary mt-4" (click)="enviarParaEntrega(pedido.id)" id="enviarEntrega">Enviar para Entrega</button>
       </div>
     </div>
     <div class="row justify-content-md-center mb-5" [hidden]="pedido.status!='Em transporte'">
       <div class="col-md-auto">
-        <button type="button" class="btn btn-primary mt-4" (click)="pedidoEntregue(pedido.id)">Pedido entregue</button>
+        <button type="button" class="btn btn-primary mt-4" (click)="pedidoEntregue(pedido.id)" id="finalizarEntrega">Pedido entregue</button>
       </div>
     </div>
     <div class="card">

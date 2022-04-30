@@ -1,8 +1,8 @@
 describe('Condução de Venda (manipulando o carrinho)', () => {
 
   it('Cliente tenta alterar a quantidade de um produto para uma quantidade invalida', () => {
-    /*cy.visit('carrinho-compras')
-    cy.wait(400)*/
+    cy.visit('carrinho-compras')
+    cy.wait(400)
 
     cy.get('input[id=1]').clear().type("5")
 
@@ -28,7 +28,7 @@ describe('Condução de Venda (manipulando o carrinho)', () => {
 
   it('Cliente digita uma quantidade superior ao preco do carrinho', () => {
 
-    cy.get('#credito').click().clear().type("103.99").blur()
+    cy.get('#credito').click().clear().type("150.99").blur()
   })
 
   it('Cliente digita uma quantidade inferior ao preco do carrinho', () => {
@@ -67,5 +67,6 @@ describe('Condução de Venda (manipulando o carrinho)', () => {
   it('Cliente clica em finalizar o pedido', () => {
 
     cy.get('#finalizar').click()
+
   })
 })

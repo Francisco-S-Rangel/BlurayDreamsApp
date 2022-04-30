@@ -2,8 +2,6 @@ describe('Condução de Venda (finalizando a compra)', () => {
 
   it('Cliente escolhe cadastrar um novo cartão.', () => {
 
-    cy.visit('finalizar-cartao')
-
     cy.get('input[id=radioCadastrado2]').click()
 
   })
@@ -85,6 +83,8 @@ describe('Condução de Venda (finalizando a compra)', () => {
     cy.get('#observacao').type('Minha casa em Mogi das Cruzes')
 
     cy.get('#finalizarEnd').click()
+
+    cy.wait(300)
 
 
   })

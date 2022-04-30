@@ -1,7 +1,7 @@
 <div class="container-fluid my-4 mx-auto">
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
-      <button class="custom-btn-back" type="button" (click)="backPage()">Retornar</button>
+      <button class="custom-btn-back" type="button" (click)="backPage()" id="retornar">Retornar</button>
     </div>
   </div>
   <hr>
@@ -162,19 +162,19 @@
     <div class="row justify-content-md-center mb-5" [hidden]="troca?.status != 'Troca aceita'">
       <h2 class="label text-center">O produto trocado deve ser re-estocado?</h2>
       <div class="col-md-auto">
-        <button type="button" class="btn btn-primary mt-4" (click)="adicionarEstoque()">Sim</button>
+        <button type="button" class="btn btn-primary mt-4" (click)="adicionarEstoque()" id="restocarSim">Sim</button>
       </div>
       <div class="col-md-auto">
-        <button type="button" class="btn btn-danger mt-4" (click)="naoAdicionarEstoque()">Não</button>
+        <button type="button" class="btn btn-danger mt-4" (click)="naoAdicionarEstoque()" id="restocarNao">Não</button>
       </div>
     </div>
 
     <div class="row justify-content-md-center mb-5" [hidden]="troca?.status != 'Em troca'">
       <div class="col-md-auto">
-        <button type="button" class="btn btn-primary mt-4" (click)="aceitarTroca()">Aceitar Troca</button>
+        <button type="button" class="btn btn-primary mt-4" (click)="aceitarTroca()" id="aceitarTroca">Aceitar Troca</button>
       </div>
       <div class="col-md-auto">
-        <button type="button" class="btn btn-danger mt-4" (click)="recusarTroca()">Recusar Troca</button>
+        <button type="button" class="btn btn-danger mt-4" (click)="recusarTroca()" id="recusarTroca">Recusar Troca</button>
       </div>
     </div>
 

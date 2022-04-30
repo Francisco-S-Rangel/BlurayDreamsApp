@@ -146,7 +146,7 @@
         <div class="label">O frete com esse endereço sera de R$ <span *ngIf="radioUsarEndereco">{{frete}}</span> <span *ngIf="radioUsarEndereco == false">{{frete2}}</span>.</div>
       </div>
       <div class="col-12 text-center" [hidden]="(radioUsarEndereco && enderecoId == 0) || (radioUsarEndereco == false && formEndereco.invalid)">
-        <div class="label">O preço final sera de R$ <span *ngIf="radioUsarEndereco">{{frete + carrinho.precoFinal}}</span> <span *ngIf="radioUsarEndereco == false">{{frete2 + carrinho.precoFinal}}</span>.</div>
+        <div class="label">O preço final sera de R$ <span *ngIf="radioUsarEndereco">{{(frete + carrinho.precoFinal).toFixed(2)}}</span> <span *ngIf="radioUsarEndereco == false">{{(frete2 + carrinho.precoFinal).toFixed(2)}}</span>.</div>
       </div>
       <div class="col-12 text-center">
         <button type="button" class="btn btn-primary mt-3" id="finalizarEnd" [disabled]="(radioUsarEndereco && enderecoId == 0) || (radioUsarEndereco == false && formEndereco.invalid)"

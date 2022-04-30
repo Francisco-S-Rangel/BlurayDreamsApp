@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-12" *ngFor="let cliente of clientes">
                             <mat-accordion>
-                                <mat-expansion-panel>
+                                <mat-expansion-panel id="cli{{cliente.id}}">
                                     <mat-expansion-panel-header expandedHeight="auto" collapsedHeight="auto">
                                         <mat-panel-title>
                                             <div class="col-12">
@@ -62,7 +62,7 @@
                                                             <div style="margin-left: -12%;" class="col-3">
                                                                 <strong>Status: </strong>
                                                                 <span class="dado-cliente">
-                                                                    {{cliente.status}} 
+                                                                    {{cliente.status}}
                                                                 </span>
                                                             </div>
 
@@ -105,7 +105,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td><button class="btn btn-primary" type="button" (click)="irInformacaoCliente(cliente.id)">Visualizar</button></td>
+                                                            <td><button class="btn btn-primary" type="button" (click)="irInformacaoCliente(cliente.id)" id="cliVisualizar{{cliente.id}}">Visualizar</button></td>
                                                             <td><button class="btn btn-danger" type="button" (click)="deletarCliente(cliente.id)">Excluir</button></td>
                                                             <td><button class="btn btn-success" type="button" [disabled]="cliente.status == true" (click)="ativarCliente(cliente.id)">Ativar</button></td>
                                                             <td><button class="btn btn-warning" type="button" [disabled]="cliente.status == false" (click)="inativarCliente(cliente.id)">Inativar</button></td>

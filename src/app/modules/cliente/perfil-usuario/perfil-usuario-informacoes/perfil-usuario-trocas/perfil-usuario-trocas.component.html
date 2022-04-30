@@ -23,7 +23,7 @@
               <td>{{producto.produto!.preco}}</td>
               <td>{{producto.produto!.tipo}}</td>
               <td>{{producto.quantidade}}</td>
-              <td><select (change)="selectChange($event, producto.id, index)" [disabled]="pedido.status!='Entregue'">
+              <td><select (change)="selectChange($event, producto.id, index)" id="selectTroca{{index}}" [disabled]="pedido.status!='Entregue'">
                 <option value="0" selected>0</option>
                 <option *ngFor="let i of [].constructor(producto.quantidade); let index=index" [value]="index+1">
                   {{index+1}}
@@ -51,7 +51,7 @@
         </div>
         <div class="row justify-content-md-center mb-5" [hidden]="pedido.status!='Entregue'">
           <div class="col-md-auto">
-            <button type="button" class="btn btn-primary mt-4" (click)="solicitarTroca()">Solicitar Troca</button>
+            <button type="button" class="btn btn-primary mt-4" (click)="solicitarTroca()" id="solicitarTroca">Solicitar Troca</button>
           </div>
           <div class="col-md-auto">
             <button type="button" class="btn btn-danger mt-4">Solicitar Cancelamento</button>

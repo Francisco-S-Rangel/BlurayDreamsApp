@@ -49,6 +49,18 @@ describe('Condução de Venda (adição de produtos)', () => {
     cy.get('input[name="quantidade"]').clear().type("1")
 
     cy.get('button[name="comprar"]').click()
+
+  })
+
+  it('Volta a pagina inicial e clica/adiciona outro produto', () => {
+
+    cy.visit('/')
+
+    cy.get('#3').click()
+
+    cy.get('input[name="quantidade"]').clear().type("1")
+
+    cy.get('button[name="comprar"]').click()
   })
 
 })

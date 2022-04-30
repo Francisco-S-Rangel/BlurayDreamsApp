@@ -29,7 +29,7 @@
 
                         <div class="col-12" *ngFor="let troca of trocas">
                             <mat-accordion>
-                                <mat-expansion-panel>
+                                <mat-expansion-panel id="troca{{troca.id}}">
                                     <mat-expansion-panel-header expandedHeight="auto" collapsedHeight="auto">
                                         <mat-panel-title>
                                             <div class="col-12">
@@ -95,7 +95,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td><button class="btn btn-primary" type="button" (click)="irParaInformacaoTroca(troca.id)">Visualizar</button></td>
+                                                        <td><button class="btn btn-primary" type="button" (click)="irParaInformacaoTroca(troca.id)" id="trocaVisualizar{{troca.id}}">Visualizar</button></td>
                                                         <td><button class="btn btn-danger"
                                                                 type="button">Excluir</button></td>
                                                     </tr>
