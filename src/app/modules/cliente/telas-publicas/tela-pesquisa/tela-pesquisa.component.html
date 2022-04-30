@@ -1,30 +1,65 @@
-<div class="container">
+ <div class="container">
      
     <br>
     <br>
 
     <div class="col-12 text-center">
         <h2>Resultado de busca por:</h2>
-        <h1 style="color: rgb(36, 96, 187);"><strong>Rocky</strong></h1>
+        <h1 style="color: rgb(36, 96, 187);"><strong>{{resultado}}</strong></h1>
     </div>
 
     <br>
-    <hr>
+    <div style="background-color:rgba(35, 35, 35, 0.204);">
+    <hr style="border: 2px solid black;">
     <br>
     
-    <div class="row">
+    <div class="row" *ngIf="produtos">
         
-        <ng-container *ngFor="let filme of filmes">
-            <div class="card col-md-6">
-                <img src="{{filme.img}}" alt="">
-                <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{filme.titulo}}</h5>
-                <div class="precos"><small class="dvd"><strong>Dvd:</strong> R${{filme.dvd}}</small> <small class="bluray"><strong>Bluray:</strong> R${{filme.bluray}}</small></div>
-                <button class="btn-carrinho">Adicionar ao carrinho</button>
-            </div>
-        </ng-container>
+            <ng-container *ngFor="let produto of produtos">
+                <div class="card col-md-6">
+                    <div *ngIf="produto.status == true">
+                        <a (click)="produtoSelecionado(produto.id)">
+                            <img src="{{produto.img}}" alt="">
+                            <h4 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
+                                {{produto.titulo}} - <strong style="color: rgb(37, 85, 182);">{{produto.tipo}}</strong>
+                            </h4>
+                            <div class="precos"><strong class="dvd">R$ {{produto.preco}}</strong></div>
+                        </a>
+                        <div class="text-center">
+                        <button class="btn-carrinho" (click)="produtoSelecionado(produto.id)">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                    <div *ngIf="produto.status == false">
+                        <a>
+                            <img src="{{produto.img}}" alt="">
+                            <h4 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
+                                {{produto.titulo}} - <strong style="color: rgb(37, 85, 182);">{{produto.tipo}}</strong>
+                            </h4>
+                            <div class="precos"><strong class="dvd">R$ {{produto.preco}}</strong></div>
+                            <div class="text-center">
+                            <h3 style="color:red"><strong>Produto Indisponivel</strong></h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </ng-container>
     </div>
 
-    <br><hr><br>
+    <div class="row" *ngIf="comparacao > 0">
+        <br>
+        <br>
+        <div class="text-center">
+            <h1 style="font-weight:600;color:red;">O Item não foi encontrado!</h1>
+            <h3 style="font-weight:600;color: rgb(36, 96, 187);">Verifique se não há erro de digitação.</h3>
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <br>
+    <hr style="border: 2px solid black;">
+    </div>
+    <br>
     <div class="row">
     <div class="col-12 mt-3">
         <nav>

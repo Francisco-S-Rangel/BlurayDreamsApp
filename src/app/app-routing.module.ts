@@ -95,7 +95,7 @@ const routes: Routes = [
   {path: "perfil-usuario-altera-usuario", component: PerfilUsuarioAlteraUsuarioComponent},
   {path: "finalizar-cupom-troca", component: FinalizarCupomTrocaComponent},
   {path: "finalizar-cartao", component: FinalizarCartaoComponent},
-  {path: "tela-pesquisa", component: TelaPesquisaComponent},
+  {path: "tela-pesquisa/:titulo", component: TelaPesquisaComponent},
   {path: "cadastrar-produto", component: ModalCadastroProdutoComponent},
   {path: "finalizar-endereco-cobranca", component: FinalizarEnderecoCobrancaComponent},
   {path: "finalizar-endereco-entrega", component: FinalizarEnderecoEntregaComponent},
