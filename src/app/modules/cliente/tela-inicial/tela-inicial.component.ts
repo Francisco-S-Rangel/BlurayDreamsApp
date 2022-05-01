@@ -1,6 +1,6 @@
 import { Produto } from './../../shared/models/produto';
 import { ProdutoService } from './../../shared/services/cadastro-dados-pedido/produto.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

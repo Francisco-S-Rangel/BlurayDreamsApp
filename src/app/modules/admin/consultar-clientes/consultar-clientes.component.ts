@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../../shared/services/cadastro-dados-cliente/cliente.service';
 import { Cliente } from '../../shared/models/cliente';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-consultar-clientes',
@@ -12,6 +13,7 @@ export class ConsultarClientesComponent implements OnInit {
 
   public paginacao = [1,2,3];
   public clientes?: Cliente[];
+  public pesquisaNome = new FormControl('');
 
   constructor(private router: Router,private clienteService : ClienteService ) { }
 
@@ -39,6 +41,8 @@ export class ConsultarClientesComponent implements OnInit {
   }
   // Botões
   backPage() { this.router.navigate(['tela-funcionario']); }
+
+  pesquisarCliente() {  this.router.navigate([`pesquisa-cliente/${this.pesquisaNome.value}`])}
 
   cadastrarCliente(){ this.router.navigate(['cadastrar-cliente']); }
 

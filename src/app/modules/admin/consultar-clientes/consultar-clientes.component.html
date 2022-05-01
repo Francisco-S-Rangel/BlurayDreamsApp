@@ -15,7 +15,11 @@
         <div class="row">
             <div style="margin-left: 0" class="col-12">
                 <label class="custom-label">
-                    <input class="custom-input" type="text" placeholder="Pesquise o Cliente" />
+                    <form>
+                    <input class="custom-input" type="search" [formControl]="pesquisaNome" placeholder="Pesquise o Cliente"  aria-label="Search"/>
+                    <button type="submit" style="background: transparent; border: none !important;
+                    font-size:0;" (click)="pesquisarCliente()"></button>
+                    </form>
                 </label>
             </div>
         </div>
