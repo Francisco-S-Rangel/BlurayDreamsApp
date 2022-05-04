@@ -42,7 +42,11 @@ export class ConsultarClientesComponent implements OnInit {
   // Botões
   backPage() { this.router.navigate(['tela-funcionario']); }
 
-  pesquisarCliente() {  this.router.navigate([`pesquisa-cliente/${this.pesquisaNome.value}`])}
+  pesquisarCliente() {  
+    console.log(this.pesquisaNome.value);
+    
+    this.router.navigate([`pesquisa-cliente/${this.pesquisaNome.value}`])
+  }
 
   cadastrarCliente(){ this.router.navigate(['cadastrar-cliente']); }
 

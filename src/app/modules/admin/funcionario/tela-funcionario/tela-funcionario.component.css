@@ -12,6 +12,11 @@
     background-color: rgb(245, 245, 245);
     margin-top: 20px
 }
+.card3 {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: rgb(245, 245, 245);
+    margin-top: 20px
+}
 .opcoes {
     background-color: white;
 }
