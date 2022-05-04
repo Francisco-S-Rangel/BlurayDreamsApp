@@ -15,6 +15,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 export class FinalizarCartaoComponent implements OnInit {
 
   public formCartao!: FormGroup;
+  public formCartao2!: FormGroup;
   public radioUsarCartao: boolean = true;
   public radioCadastrarCartao: boolean = true;
   cartaoId: number = 0;

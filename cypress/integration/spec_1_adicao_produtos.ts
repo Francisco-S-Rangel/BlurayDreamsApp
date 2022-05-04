@@ -11,6 +11,8 @@ describe('Condução de Venda (adição de produtos)', () => {
 
     cy.get('input[name="quantidade"]').clear().type("9")
 
+    cy.pause()
+
     cy.get('button[name="comprar"]').click()
 
   })
@@ -19,6 +21,8 @@ describe('Condução de Venda (adição de produtos)', () => {
 
     cy.get('input[name="quantidade"]').clear().type("-3")
 
+    cy.pause()
+
     cy.get('button[name="comprar"]').click()
   })
 
@@ -26,7 +30,11 @@ describe('Condução de Venda (adição de produtos)', () => {
 
     cy.get('input[name="quantidade"]').clear().type("2")
 
+    cy.pause()
+
     cy.get('button[name="comprar"]').click()
+
+    cy.pause()
   })
 
   it('Volta a pagina inicial e clica/adiciona outro produto', () => {
@@ -37,7 +45,11 @@ describe('Condução de Venda (adição de produtos)', () => {
 
     cy.get('input[name="quantidade"]').clear().type("2")
 
+    cy.pause()
+
     cy.get('button[name="comprar"]').click()
+
+    cy.pause()
   })
 
   it('Volta a pagina inicial e clica/adiciona um produto ja presente no carrinho', () => {
