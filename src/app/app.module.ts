@@ -77,6 +77,7 @@ import { ModalEditarFuncionarioComponent } from './modules/admin/modal-alteracoe
 import { ModalEditarFuncionarioEnderecoComponent } from './modules/admin/modal-alteracoes/modal-editar-funcionario-endereco/modal-editar-funcionario-endereco.component';
 import { PerfilUsuarioTrocasDetalhesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-trocas-detalhes/perfil-usuario-trocas-detalhes.component';
 import { PesquisaClienteComponent } from './modules/admin/consultar-clientes/pesquisa-cliente/pesquisa-cliente.component';
+import { DashboardVendasComponent } from './modules/admin/funcionario/dashboard-vendas/dashboard-vendas.component';
 
 @NgModule({
   declarations: [
@@ -141,7 +142,8 @@ import { PesquisaClienteComponent } from './modules/admin/consultar-clientes/pes
     ModalEditarFuncionarioComponent,
     ModalEditarFuncionarioEnderecoComponent,
     PerfilUsuarioTrocasDetalhesComponent,
-    PesquisaClienteComponent
+    PesquisaClienteComponent,
+    DashboardVendasComponent
   ],
   imports: [
     BrowserModule,

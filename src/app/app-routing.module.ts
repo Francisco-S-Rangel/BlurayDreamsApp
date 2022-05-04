@@ -1,3 +1,4 @@
+import { DashboardVendasComponent } from './modules/admin/funcionario/dashboard-vendas/dashboard-vendas.component';
 import { PesquisaClienteComponent } from './modules/admin/consultar-clientes/pesquisa-cliente/pesquisa-cliente.component';
 import { PerfilUsuarioTrocasDetalhesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-trocas-detalhes/perfil-usuario-trocas-detalhes.component';
 import { ModalEditarFuncionarioEnderecoComponent } from './modules/admin/modal-alteracoes/modal-editar-funcionario-endereco/modal-editar-funcionario-endereco.component';
@@ -118,7 +119,8 @@ const routes: Routes = [
   {path: "editar-funcionario/:id", component: ModalEditarFuncionarioComponent},
   {path: "editar-funcionario-endereco/:id/:funcionarioid", component: ModalEditarFuncionarioEnderecoComponent},
   {path: "perfil-usuario-trocas-detalhes/:idTroca", component: PerfilUsuarioTrocasDetalhesComponent},
-  {path: "pesquisa-cliente/:nome", component: PesquisaClienteComponent}
+  {path: "pesquisa-cliente/:nome", component: PesquisaClienteComponent},
+  {path: "dashboard-vendas", component: DashboardVendasComponent}
 ];
 
 @NgModule({
