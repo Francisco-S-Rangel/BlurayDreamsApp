@@ -1,6 +1,8 @@
 describe('Condução de Venda (manipulando o carrinho)', () => {
 
   it('Cliente tenta alterar a quantidade de um produto para uma quantidade invalida', () => {
+    cy.pause()
+
     cy.visit('carrinho-compras')
     cy.wait(400)
 
@@ -10,6 +12,7 @@ describe('Condução de Venda (manipulando o carrinho)', () => {
   })
 
   it('Cliente altera a quantidade de um produto para uma quantidade valida', () => {
+    cy.pause()
 
     cy.get('input[id=1]').clear().type("3")
 
@@ -17,26 +20,31 @@ describe('Condução de Venda (manipulando o carrinho)', () => {
   })
 
   it('Cliente exclui um produto do carrinho', () => {
+    cy.pause()
 
     cy.get('button[id=excluir3]').click()
   })
 
   it('Cliente digita uma quantidade superior aos seus creditos', () => {
+    cy.pause()
 
     cy.get('#credito').click().clear().type("1000.00").blur()
   })
 
   it('Cliente digita uma quantidade superior ao preco do carrinho', () => {
+    cy.pause()
 
     cy.get('#credito').click().clear().type("150.99").blur()
   })
 
   it('Cliente digita uma quantidade inferior ao preco do carrinho', () => {
+    cy.pause()
 
     cy.get('#credito').click().clear().type("39.50").blur()
   })
 
   it('Cliente digita um cep errado para calcular o frete', () => {
+    cy.pause()
 
     cy.get('#cep').click().type("123abc")
 
@@ -44,6 +52,7 @@ describe('Condução de Venda (manipulando o carrinho)', () => {
   })
 
   it('Cliente digita um cep correto para calcular o frete', () => {
+    cy.pause()
 
     cy.get('#cep').click().clear().type("08923-429")
 
@@ -51,6 +60,7 @@ describe('Condução de Venda (manipulando o carrinho)', () => {
   })
 
   it('Cliente digita um cupom invalido', () => {
+    cy.pause()
 
     cy.get('#cupom').click().type("asb333")
 
@@ -58,6 +68,7 @@ describe('Condução de Venda (manipulando o carrinho)', () => {
   })
 
   it('Cliente digita um cupom valido para aplicar ao carrinho', () => {
+    cy.pause()
 
     cy.get('#cupom').click().clear().type("abc123")
 
@@ -65,6 +76,7 @@ describe('Condução de Venda (manipulando o carrinho)', () => {
   })
 
   it('Cliente clica em finalizar o pedido', () => {
+    cy.pause()
 
     cy.get('#finalizar').click()
 
