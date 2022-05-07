@@ -40,4 +40,7 @@ export class PedidoService {
   postTrocaporPedido(clienteId: number,request: TrocaRequest[]){
     return this.http.post(`${this.baseUrl}/${clienteId}/troca`,request);
   }
+  pegarCategoriaporData(dataInit: string,dataFinal: string){
+    return this.http.get<any>(`${this.baseUrl}/dashboard-vendas?dataInit=${dataInit}%2000%3A00%3A00-03&dataFinal=${dataFinal}%2000%3A00%3A00-03`);
+  }
 }
