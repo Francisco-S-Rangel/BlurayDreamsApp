@@ -13,17 +13,24 @@ export class Pedido {
         this.desconto=0,
         this.frete=0,
         this.precoFinal=0,
-        this.status=""
+        this.status="",
+        this.datapedido="",
+        this.cartaoCreditoId2 =0,
+        this.cartaoCreditoId3 =0
+
     }
     id: number;
     clienteId: number;
     enderecoCobrancaId: number;
     enderecoEntregaId: number;
     cartaoCreditoId: number;
+    cartaoCreditoId2: number;
+    cartaoCreditoId3: number;
     desconto: number;
     frete: number;
     precoFinal: number;
     status: string;
+    datapedido: string;
     enderecoCobrancas?: EnderecoCobrancas;
     enderecoEntregas?: EnderecoEntregas;
     cartaoCredito?: CartaoCredito;
