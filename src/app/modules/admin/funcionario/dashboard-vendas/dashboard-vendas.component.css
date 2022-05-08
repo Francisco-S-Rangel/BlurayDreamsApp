@@ -16,9 +16,34 @@
 .custom-btn-back:hover {
     background-color: rgb(142, 142, 142);
 }
+.btn-consulta {
+    margin-left: 4px;
+    width: 162px;
+    height: 64px;
+    background-color: rgb(58, 118, 248);
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-consulta:hover {
+    background-color:  rgb(5, 84, 255);
+}
 .titulo {
     font-size: 32px;
     font-weight: 600;
     color: rgb(56, 107, 208);
     margin-top: 32px;
+}
+.labels {
+    color: rgb(13, 71, 187);
+    font-size: 14px;
+    font-weight: bold;
+  }
+.card {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: rgb(245, 245, 245);
+    margin-top: 20px
 }
