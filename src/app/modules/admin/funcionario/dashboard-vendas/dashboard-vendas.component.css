@@ -20,7 +20,7 @@
     margin-left: 4px;
     width: 162px;
     height: 64px;
-    background-color: rgb(58, 118, 248);
+    background-color: rgb(5, 84, 255);
     color: white;
     font-size: 18px;
     font-weight: 500;
@@ -29,7 +29,7 @@
     cursor: pointer;
 }
 .btn-consulta:hover {
-    background-color:  rgb(5, 84, 255);
+    background-color: rgb(13, 71, 187);
 }
 .titulo {
     font-size: 32px;

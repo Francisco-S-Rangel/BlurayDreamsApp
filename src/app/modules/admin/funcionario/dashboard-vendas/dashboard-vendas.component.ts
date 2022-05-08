@@ -70,7 +70,6 @@ export class DashboardVendasComponent implements OnInit {
     let datas = this.form.value;
     let dataInit = (`${datas.dataInit}`);
     let dataFinal = (`${datas.dataFinal}`);
-    console.log(dataFinal,dataFinal);
 
     this.pedidoService.pegarCategoriaporData(dataInit,dataFinal).subscribe(
       (obj: any)=>{
