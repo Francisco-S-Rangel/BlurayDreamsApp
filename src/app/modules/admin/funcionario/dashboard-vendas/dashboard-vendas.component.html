@@ -6,8 +6,53 @@
 
         <div class="col-12 text-center">
             <h1 class="titulo">Dashboard de Vendas</h1>
+            <br>
         </div>
 
-        <hr>
+        <hr style=" border: 3px solid black;">
+
+        <div class="col-12 text-center">
+
+            <br>
+            <div id="linechart_material" style="width: 900px; height: 500px;margin-right: 6rem;"></div>
+            <br>
+
+        </div>
+
+        <hr style=" border: 3px solid black;">
+        <br>
+        <div class="container">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-12'">
+                        <div class="p-3 py-5">
+                            <div class="col-6 offset-md-1">
+                                <h1 style="font-weight:600;color: rgb(13, 71, 187);">Consultar Categoria por um periodo
+                                    de tempo</h1>
+                            </div>
+
+
+                            <form [formGroup]="form">
+                                <div class="row">
+
+                                    <div class="col-md-4 offset-md-1"><label class="labels"
+                                            style="text-align: center;">Data
+                                            Inicial</label><input type="date" class="form-control"
+                                            placeholder="Digite o Ano do Produto" formControlName="dataInit"></div>
+
+                                    <div class="col-md-4"><label class="labels">Data Final</label><input type="date"
+                                            class="form-control" placeholder="Digite o Ano do Produto"
+                                            formControlName="dataFinal"></div>
+                                </div>
+                            </form>
+
+                            <div class="col-md-2 offset-md-10"><button type="button" class="btn-consulta"
+                                    [disabled]="!form.valid" (click)="pegarCategoriasProdutos()">Consultar</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pedido } from '../../models/pedido';
+import { Data } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
