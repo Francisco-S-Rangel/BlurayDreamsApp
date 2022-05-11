@@ -1,3 +1,4 @@
+import { ValidadorSenha } from './../../../shared/helpers/ValidadorSenha';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PedidoService } from './../../../shared/services/cadastro-dados-pedido/pedido.service';
 import { Component, OnInit } from '@angular/core';
@@ -62,9 +63,26 @@ export class DashboardVendasComponent implements OnInit {
     var data = new google.visualization.DataTable();
 
     console.log(this.Resposta);
+
+    data.addColumn('number', 'Mes');
+    this.Resposta.response.forEach((element: { categoria: any; }) => {
+      data.addColumn('number', element.categoria);
+    });
+
+    for(let i = 0; i <= this.Resposta.meses.length; i++){
+      let row = [];
+      row.push(this.Resposta.meses);
+      this.Resposta.response.forEach((element: { valores: { quantidade: any; }[]; }) => {
+        row.push(element.valores[i].quantidade);
+      });
+      console.log(row);
+      data.addRows(row);
+    }
+  
     
-    data.addColumn('number', 'Day');
-    data.addColumn('number', 'Guardians of the Galaxy');
+    /*
+    data.addColumn('number', 'Mes');
+    data.addColumn('number', 'cssssxssx');
     data.addColumn('number', 'The Avengers');
     data.addColumn('number', 'Transformers: Age of Extinction');
 
@@ -84,7 +102,6 @@ export class DashboardVendasComponent implements OnInit {
       [13,  4.8,  6.3,  3.6],
       [14,  4.2,  6.2,  3.4]
     ]);
-    /*
     var chartItems = [];
     chartItems.push();*/
 
@@ -121,7 +138,6 @@ export class DashboardVendasComponent implements OnInit {
       (obj: any)=>{
         this.Resposta = obj;
         console.log(this.Resposta);
-        console.log(this.Resposta[0]);
         this.buildChart();
       }
     );
