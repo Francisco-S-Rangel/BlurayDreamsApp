@@ -14,6 +14,7 @@ export class DashboardVendasComponent implements OnInit {
 
   public Resposta: any;
   form!: FormGroup;
+  contador: number =0;
 
   constructor(private router: Router,private pedidoService: PedidoService,private fb: FormBuilder ) { }
 
@@ -136,9 +137,11 @@ export class DashboardVendasComponent implements OnInit {
       dataInit: ['', Validators.required],
       dataFinal: ['', Validators.required]
     });
+    this.contador=0;
   }
 
   pegarCategoriasProdutos(){
+    this.contador++;
     let datas = this.form.value;
     let dataInit = (`${datas.dataInit}`);
     let dataFinal = (`${datas.dataFinal}`);
