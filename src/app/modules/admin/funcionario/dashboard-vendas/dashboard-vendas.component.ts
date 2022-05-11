@@ -64,20 +64,29 @@ export class DashboardVendasComponent implements OnInit {
 
     console.log(this.Resposta);
 
-    data.addColumn('number', 'Mes');
+    data.addColumn('string', 'Mes');
     this.Resposta.response.forEach((element: { categoria: any; }) => {
       data.addColumn('number', element.categoria);
     });
 
-    for(let i = 0; i <= this.Resposta.meses.length; i++){
+    let rows: any = []
+
+    let aux = 1
+
+    for(let i = 0; i < this.Resposta.meses.length; i++){
       let row = [];
-      row.push(this.Resposta.meses);
+      row.push(this.Resposta.meses[i]);
+      //row.push(aux)
       this.Resposta.response.forEach((element: { valores: { quantidade: any; }[]; }) => {
         row.push(element.valores[i].quantidade);
       });
       console.log(row);
-      data.addRows(row);
+      rows.push(row)
+      aux += 1
     }
+    console.log(rows)
+
+    data.addRows(rows);
   
     
     /*
