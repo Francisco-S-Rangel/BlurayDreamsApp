@@ -63,8 +63,6 @@ export class DashboardVendasComponent implements OnInit {
     let renderChart = (chart: any)=>{
     var data = new google.visualization.DataTable();
 
-    console.log(this.Resposta);
-
     data.addColumn('string', 'Mes');
     this.Resposta.response.forEach((element: { categoria: any; }) => {
       data.addColumn('number', element.categoria);
@@ -81,7 +79,6 @@ export class DashboardVendasComponent implements OnInit {
       this.Resposta.response.forEach((element: { valores: { quantidade: any; }[]; }) => {
         row.push(element.valores[i].quantidade);
       });
-      console.log(row);
       rows.push(row)
       aux += 1
     }
