@@ -76,7 +76,7 @@ export class DashboardVendasComponent implements OnInit {
 
     for(let i = 0; i < this.Resposta.meses.length; i++){
       let row = [];
-      row.push(this.Resposta.meses[i]);
+      row.push(this.convertUTCDateToLocalDate(this.Resposta.meses[i]));
       //row.push(aux)
       this.Resposta.response.forEach((element: { valores: { quantidade: any; }[]; }) => {
         row.push(element.valores[i].quantidade);
@@ -154,7 +154,14 @@ export class DashboardVendasComponent implements OnInit {
       }
     );
   }
+   convertUTCDateToLocalDate(date: string) {
+    let data= new Date (date);
+    let mes = data.getMonth()+1;
+    let ano = data.getFullYear();
 
+ 
+    return mes+'/'+ano;   
+  }
   backPage() {
     this.router.navigate(['tela-funcionario'])
   }
