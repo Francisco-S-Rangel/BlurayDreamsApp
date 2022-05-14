@@ -6,19 +6,29 @@
     <div class="col-12 text-center">
       <label class="label">Escolher Cartão</label>
     </div>
+
+    <label class="form-label">Deseja usar quantos cartões?</label>
+    <select class="form-select mb-3" (change)="selectChangeQtdCartoes($event)">
+      <option *ngFor="let number of [1,2,3]" [value]="number">
+        {{number}}
+      </option>
+    </select>
+
     <form class="row g-3" [formGroup]="formCartao">
       <div class="col-12">
         <div class="row">
           <label class="form-label">Usar Um Cartão Cadastrado?</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado1" value="1" checked (change)="radioChange($event)">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado1" value="1" checked
+            (change)="radioChange($event)">
           <label class="form-check-label" for="radioCadastrado1">
             Sim
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado2" value="2" (change)="radioChange($event)">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado2" value="2"
+            (change)="radioChange($event)">
           <label class="form-check-label" for="radioCadastrado2">
             Não
           </label>
@@ -33,8 +43,9 @@
       <div class="col-md-6">
         <label class="form-label">Número do Cartão</label>
         <input type="email" class="form-control" id="numeroCartao"
-          [ngClass]="{ 'is-invalid': f.numeroCartao.errors && f.numeroCartao.touched && radioUsarCartao==false }" formControlName="numeroCartao"
-          placeholder="Digite seu Número do Cartão" [(ngModel)]="cartaoCreditos.numeroCartao" [readonly]="radioUsarCartao==true">
+          [ngClass]="{ 'is-invalid': f.numeroCartao.errors && f.numeroCartao.touched && radioUsarCartao==false }"
+          formControlName="numeroCartao" placeholder="Digite seu Número do Cartão"
+          [(ngModel)]="cartaoCreditos.numeroCartao" [readonly]="radioUsarCartao==true">
         <div *ngIf="f.numeroCartao.errors?.required" class="invalid-feedback">
           Número do Cartão é obrigatorio.
         </div>
@@ -42,8 +53,9 @@
       <div class="col-md-6">
         <label class="form-label">Nome do Titular</label>
         <input type="text" class="form-control" id="NomeTitular"
-          [ngClass]="{'is-invalid': f.NomeTitular.errors && f.NomeTitular.touched && radioUsarCartao==false}" formControlName="NomeTitular"
-          placeholder="Digite o Nome do Titular" [(ngModel)]="cartaoCreditos.nomeTitular" [readonly]="radioUsarCartao==true">
+          [ngClass]="{'is-invalid': f.NomeTitular.errors && f.NomeTitular.touched && radioUsarCartao==false}"
+          formControlName="NomeTitular" placeholder="Digite o Nome do Titular" [(ngModel)]="cartaoCreditos.nomeTitular"
+          [readonly]="radioUsarCartao==true">
         <div *ngIf="f.NomeTitular.errors?.required" class="invalid-feedback">
           Nome do Titular é obrigatorio.
         </div>
@@ -63,8 +75,9 @@
       </div>
       <div class="col-6">
         <label class="form-label">CVV</label>
-        <input type="text" class="form-control" id="cvv" [ngClass]="{'is-invalid': f.cvv.errors && f.cvv.touched && radioUsarCartao==false}"
-          formControlName="cvv" placeholder="Digite seu CVV" [(ngModel)]="cartaoCreditos.cvv" [readonly]="radioUsarCartao==true">
+        <input type="text" class="form-control" id="cvv"
+          [ngClass]="{'is-invalid': f.cvv.errors && f.cvv.touched && radioUsarCartao==false}" formControlName="cvv"
+          placeholder="Digite seu CVV" [(ngModel)]="cartaoCreditos.cvv" [readonly]="radioUsarCartao==true">
         <div class="invalid-feedback">
           CVV é obrigatorio.
         </div>
@@ -74,23 +87,225 @@
           <label class="form-label">Adicionar cartão a sua conta?</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="radio2" id="radio21" value="1" checked [disabled]="radioUsarCartao==true" (change)="radioAddCartaoChange($event)">
+          <input class="form-check-input" type="radio" name="radio2" id="radio21" value="1" checked
+            [disabled]="radioUsarCartao==true" (change)="radioAddCartaoChange($event)">
           <label class="form-check-label" for="radio21">
             Sim
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="radio2" id="radio22" value="2" [disabled]="radioUsarCartao==true" (change)="radioAddCartaoChange($event)">
+          <input class="form-check-input" type="radio" name="radio2" id="radio22" value="2"
+            [disabled]="radioUsarCartao==true" (change)="radioAddCartaoChange($event)">
           <label class="form-check-label" for="radio22">
             Não
           </label>
         </div>
       </div>
-      <div class="col-12 text-center">
-        <button type="button" class="btn btn-primary mt-3" id="finalizarCartao"
-          (click)="cadastrarCartao()" [disabled]="(radioUsarCartao && cartaoId == 0) || (radioUsarCartao == false && formCartao.invalid)">Proximo</button>
+    </form>
+
+    <form class="row g-3" [formGroup]="formCartao2" [hidden]="qtdCartoes==1">
+      <hr>
+      <div class="col-12">
+        <div class="row">
+          <label class="form-label">Usar Um Cartão Cadastrado?</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado1" value="1" checked
+            (change)="radioChange2($event)">
+          <label class="form-check-label" for="radioCadastrado1">
+            Sim
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado2" value="2"
+            (change)="radioChange2($event)">
+          <label class="form-check-label" for="radioCadastrado2">
+            Não
+          </label>
+        </div>
+        <select class="form-select mt-2" (change)="selectChange2($event)" [disabled]="radioUsarCartao2==false">
+          <option selected value="0">-- Escolha um Cartão --</option>
+          <option *ngFor="let cartoes of cartoesCliente;let index=index;" [value]="cartoes.id">
+            {{cartoes.numeroCartao}}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Número do Cartão</label>
+        <input type="email" class="form-control" id="numeroCartao2"
+          [ngClass]="{ 'is-invalid': f2.numeroCartao2.errors && f2.numeroCartao2.touched && radioUsarCartao2==false }"
+          formControlName="numeroCartao2" [(ngModel)]="cartaoCreditos2.numeroCartao" placeholder="Digite seu Número do Cartão" [readonly]="radioUsarCartao2==true">
+        <div *ngIf="f2.numeroCartao2.errors?.required" class="invalid-feedback">
+          Número do Cartão é obrigatorio.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Nome do Titular</label>
+        <input type="text" class="form-control" id="NomeTitular2"
+          [ngClass]="{'is-invalid': f2.NomeTitular2.errors && f2.NomeTitular2.touched && radioUsarCartao2==false}"
+          formControlName="NomeTitular2" [(ngModel)]="cartaoCreditos2.nomeTitular" placeholder="Digite o Nome do Titular" [readonly]="radioUsarCartao2==true">
+        <div *ngIf="f2.NomeTitular2.errors?.required" class="invalid-feedback">
+          Nome do Titular é obrigatorio.
+        </div>
+      </div>
+      <div class="col-6">
+        <label class="form-label">Bandeira do Cartão</label>
+        <input type="text" class="form-control" id="bandeiraCartao2"
+          [ngClass]="{'is-invalid': f2.BandeiraCartao2.errors && f2.BandeiraCartao2.touched && radioUsarCartao2==false}"
+          formControlName="BandeiraCartao2" [(ngModel)]="cartaoCreditos2.bandeiraCartao" placeholder="Digite sua Bandeira do Cartão"
+          [readonly]="radioUsarCartao2==true">
+        <div *ngIf="f2.BandeiraCartao2.errors?.required" class="invalid-feedback">
+          Bandeira do Cartão é obrigatorio.
+        </div>
+        <div *ngIf="f2.BandeiraCartao2.errors?.notValid" class="invalid-feedback">
+          Esta bandeira não é permitida.
+        </div>
+      </div>
+      <div class="col-6">
+        <label class="form-label">CVV</label>
+        <input type="text" class="form-control" id="cvv2"
+          [ngClass]="{'is-invalid': f2.cvv2.errors && f2.cvv2.touched && radioUsarCartao2==false}"
+          formControlName="cvv2" [(ngModel)]="cartaoCreditos2.cvv" placeholder="Digite seu CVV" [readonly]="radioUsarCartao2==true">
+        <div *ngIf="f2.cvv2.errors?.required" class="invalid-feedback">
+          CVV é obrigatorio.
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="row">
+          <label class="form-label">Adicionar cartão a sua conta?</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radio2" id="radio21" value="1" checked
+            [disabled]="radioUsarCartao2==true" (change)="radioAddCartaoChange2($event)">
+          <label class="form-check-label" for="radio21">
+            Sim
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radio2" id="radio22" value="2"
+            [disabled]="radioUsarCartao2==true" (change)="radioAddCartaoChange2($event)">
+          <label class="form-check-label" for="radio22">
+            Não
+          </label>
+        </div>
       </div>
     </form>
+
+    <form class="row g-3" [formGroup]="formCartao3" [hidden]="qtdCartoes==1 || qtdCartoes==2">
+      <hr>
+      <div class="col-12">
+        <div class="row">
+          <label class="form-label">Usar Um Cartão Cadastrado?</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado1" value="1" checked
+            (change)="radioChange3($event)">
+          <label class="form-check-label" for="radioCadastrado1">
+            Sim
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado2" value="2"
+            (change)="radioChange3($event)">
+          <label class="form-check-label" for="radioCadastrado2">
+            Não
+          </label>
+        </div>
+        <select class="form-select mt-2" (change)="selectChange3($event)" [disabled]="radioUsarCartao3==false">
+          <option selected value="0">-- Escolha um Cartão --</option>
+          <option *ngFor="let cartoes of cartoesCliente;let index=index;" [value]="cartoes.id">
+            {{cartoes.numeroCartao}}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Número do Cartão</label>
+        <input type="email" class="form-control" id="numeroCartao3"
+          [ngClass]="{ 'is-invalid': f3.numeroCartao3.errors && f3.numeroCartao3.touched && radioUsarCartao3==false }"
+          formControlName="numeroCartao3" placeholder="Digite seu Número do Cartão" [(ngModel)]="cartaoCreditos3.numeroCartao" [readonly]="radioUsarCartao3==true">
+        <div *ngIf="f3.numeroCartao3.errors?.required" class="invalid-feedback">
+          Número do Cartão é obrigatorio.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Nome do Titular</label>
+        <input type="text" class="form-control" id="NomeTitular3"
+          [ngClass]="{'is-invalid': f3.NomeTitular3.errors && f3.NomeTitular3.touched && radioUsarCartao3==false}"
+          formControlName="NomeTitular3" [(ngModel)]="cartaoCreditos3.nomeTitular" placeholder="Digite o Nome do Titular" [readonly]="radioUsarCartao3==true">
+        <div *ngIf="f3.NomeTitular3.errors?.required" class="invalid-feedback">
+          Nome do Titular é obrigatorio.
+        </div>
+      </div>
+      <div class="col-6">
+        <label class="form-label">Bandeira do Cartão</label>
+        <input type="text" class="form-control" id="bandeiraCartao3"
+          [ngClass]="{'is-invalid': f3.BandeiraCartao3.errors && f3.BandeiraCartao3.touched && radioUsarCartao3==false}"
+          formControlName="BandeiraCartao3" [(ngModel)]="cartaoCreditos3.bandeiraCartao" placeholder="Digite sua Bandeira do Cartão"
+          [readonly]="radioUsarCartao3==true">
+        <div *ngIf="f3.BandeiraCartao3.errors?.required" class="invalid-feedback">
+          Bandeira do Cartão é obrigatorio.
+        </div>
+        <div *ngIf="f3.BandeiraCartao3.errors?.notValid" class="invalid-feedback">
+          Esta bandeira não é permitida.
+        </div>
+      </div>
+      <div class="col-6">
+        <label class="form-label">CVV</label>
+        <input type="text" class="form-control" id="cvv3"
+          [ngClass]="{'is-invalid': f3.cvv3.errors && f3.cvv3.touched && radioUsarCartao3==false}"
+          formControlName="cvv3" [(ngModel)]="cartaoCreditos3.cvv" placeholder="Digite seu CVV" [readonly]="radioUsarCartao3==true">
+        <div class="invalid-feedback">
+          CVV é obrigatorio.
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="row">
+          <label class="form-label">Adicionar cartão a sua conta?</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radio2" id="radio21" value="1" checked
+            [disabled]="radioUsarCartao3==true" (change)="radioAddCartaoChange3($event)">
+          <label class="form-check-label" for="radio21">
+            Sim
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="radio2" id="radio22" value="2"
+            [disabled]="radioUsarCartao3==true" (change)="radioAddCartaoChange3($event)">
+          <label class="form-check-label" for="radio22">
+            Não
+          </label>
+        </div>
+      </div>
+    </form>
+
+    <!--<div>{{formCartao.valid}} {{formCartao2.valid}} {{formCartao3.valid}}</div>
+    <div>{{radioUsarCartao}} {{radioUsarCartao2}} {{radioUsarCartao3}}</div>
+    <div>{{radioCadastrarCartao}} {{radioCadastrarCartao2}} {{radioCadastrarCartao3}}</div>-->
+
+    <div class="col-12 text-center mt-3 mb-3" [hidden]="qtdCartoes==1">
+      <div><b>Valor restante a pagar: <span class="text-red">R$ {{(precoFinal - valorCartao - valorCartao2 - valorCartao3).toFixed(2)}}</span></b></div>
+    </div>
+
+    <div class="row">
+      <div class="col-4" [hidden]="qtdCartoes==1">
+        <label class="form-label">Valor cartão 1</label>
+        <input type="text" class="form-control" id="valor" placeholder="Insira o Valor 1:" (keypress)="keyPressNumbers($event)" (blur)="verificarValorDigitado()" [(ngModel)]="valorCartao">
+      </div>
+      <div class="col-4" [hidden]="qtdCartoes==1">
+        <label class="form-label">Valor cartão 2</label>
+        <input type="text" class="form-control" id="valor2" placeholder="Insira o Valor 2:" (keypress)="keyPressNumbers($event)" (blur)="verificarValorDigitado2()" [(ngModel)]="valorCartao2">
+      </div>
+      <div class="col-4" [hidden]="qtdCartoes==1 || qtdCartoes==2">
+        <label class="form-label">Valor cartão 3</label>
+        <input type="text" class="form-control" id="valor3" placeholder="Insira o Valor 3:" (keypress)="keyPressNumbers($event)" (blur)="verificarValorDigitado3()" [(ngModel)]="valorCartao3">
+      </div>
+    </div>
+
+    <div class="col-12 text-center">
+      <button type="button" class="btn btn-primary mt-3" id="finalizarCartao" (click)="cadastrarCartao3()"
+        [disabled]="verificarBotaoFinalizar()">Proximo</button>
+    </div>
 
   </div>
   <div class="col-12 text-center mt-4">

@@ -41,7 +41,6 @@ export class FinalizarEnderecoCobrancaComponent implements OnInit {
   constructor(private router: Router, private fb: FormBuilder, private shared: SharedDataService
     , private route: ActivatedRoute, private EnderecoCobrancaService: EnderecoCobrancaService) {
     this.EfetivarCompraRequest = this.shared.getRequest()
-    //alert(this.EfetivarCompraRequest)
   }
 
   ngOnInit() {
