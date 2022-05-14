@@ -14,6 +14,7 @@ export class DashboardVendasComponent implements OnInit {
 
   public Resposta: any;
   form!: FormGroup;
+  contador: number =0;
 
   constructor(private router: Router,private pedidoService: PedidoService,private fb: FormBuilder ) { }
 
@@ -64,20 +65,29 @@ export class DashboardVendasComponent implements OnInit {
 
     console.log(this.Resposta);
 
-    data.addColumn('number', 'Mes');
+    data.addColumn('string', 'Mes');
     this.Resposta.response.forEach((element: { categoria: any; }) => {
       data.addColumn('number', element.categoria);
     });
 
-    for(let i = 0; i <= this.Resposta.meses.length; i++){
+    let rows: any = []
+
+    let aux = 1
+
+    for(let i = 0; i < this.Resposta.meses.length; i++){
       let row = [];
-      row.push(this.Resposta.meses);
+      row.push(this.convertUTCDateToLocalDate(this.Resposta.meses[i]));
+      //row.push(aux)
       this.Resposta.response.forEach((element: { valores: { quantidade: any; }[]; }) => {
         row.push(element.valores[i].quantidade);
       });
       console.log(row);
-      data.addRows(row);
+      rows.push(row)
+      aux += 1
     }
+    console.log(rows)
+
+    data.addRows(rows);
   
     
     /*
@@ -127,9 +137,11 @@ export class DashboardVendasComponent implements OnInit {
       dataInit: ['', Validators.required],
       dataFinal: ['', Validators.required]
     });
+    this.contador=0;
   }
 
   pegarCategoriasProdutos(){
+    this.contador++;
     let datas = this.form.value;
     let dataInit = (`${datas.dataInit}`);
     let dataFinal = (`${datas.dataFinal}`);
@@ -142,7 +154,14 @@ export class DashboardVendasComponent implements OnInit {
       }
     );
   }
+   convertUTCDateToLocalDate(date: string) {
+    let data= new Date (date);
+    let mes = data.getMonth()+1;
+    let ano = data.getFullYear();
 
+ 
+    return mes+'/'+ano;   
+  }
   backPage() {
     this.router.navigate(['tela-funcionario'])
   }
