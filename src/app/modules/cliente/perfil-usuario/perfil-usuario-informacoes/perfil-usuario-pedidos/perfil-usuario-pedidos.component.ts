@@ -50,4 +50,6 @@ export class PerfilUsuarioPedidosComponent implements OnInit {
 
   irParaDetalhesTrocas(idTroca: number){this.router.navigate([`/perfil-usuario-trocas-detalhes/${idTroca}`])}
 
+  irParaNotificacoes(){this.router.navigate(['/perfil-usuario-notificacoes'])}
+
 }

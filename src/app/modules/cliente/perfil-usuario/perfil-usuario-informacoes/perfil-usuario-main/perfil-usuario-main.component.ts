@@ -21,4 +21,6 @@ export class PerfilUsuarioMainComponent implements OnInit {
 
   irParaAlterarDados(){this.router.navigate(['/perfil-usuario-altera-usuario'])}
 
+  irParaNotificacoes(){this.router.navigate(['/perfil-usuario-notificacoes'])}
+
 }
