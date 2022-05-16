@@ -25,6 +25,8 @@ export class InfoPedidoEscolhidoComponent implements OnInit {
   public cliente!: Cliente;
   public pedido!: Pedido
   public cartaoCredito!: CartaoCredito
+  public cartaoCredito2!: CartaoCredito
+  public cartaoCredito3!: CartaoCredito
   public enderecoEntrega!: EnderecoEntregas
   public enderecoCobranca!: EnderecoCobrancas
 
@@ -72,7 +74,7 @@ export class InfoPedidoEscolhidoComponent implements OnInit {
         })
       }
 
-      this.carregarCartao(this.pedido.cartaoCreditoId)
+      this.carregarCartao()
       this.carregarEndEntrega(this.pedido.enderecoEntregaId)
       this.carregarEndCobranca(this.pedido.enderecoCobrancaId)
 
@@ -80,11 +82,31 @@ export class InfoPedidoEscolhidoComponent implements OnInit {
 
   }
 
-  carregarCartao(idcartao: number) {
-    this.CartaoCreditoService.getById(idcartao).subscribe((cartao) => {
+  carregarCartao() {
+
+    this.CartaoCreditoService.getById(this.pedido.cartaoCreditoId).subscribe((cartao) => {
       this.cartaoCredito = cartao
       //console.log(this.cartaoCredito)
     })
+
+    if (this.pedido.cartaoCreditoId2 == 0) {
+
+    } else {
+      this.CartaoCreditoService.getById(this.pedido.cartaoCreditoId2).subscribe((cartao) => {
+        this.cartaoCredito2 = cartao
+        //console.log(this.cartaoCredito)
+      })
+    }
+
+    if (this.pedido.cartaoCreditoId3 == 0) {
+
+    } else {
+      this.CartaoCreditoService.getById(this.pedido.cartaoCreditoId3).subscribe((cartao) => {
+        this.cartaoCredito3 = cartao
+        //console.log(this.cartaoCredito)
+      })
+    }
+
   }
 
   carregarEndEntrega(idendereco: number) {
@@ -101,23 +123,23 @@ export class InfoPedidoEscolhidoComponent implements OnInit {
     })
   }
 
-  aprovarCompra(idPedido: number){
+  aprovarCompra(idPedido: number) {
     this.pedidoPut.status = "Aprovado"
-    this.PedidoService.put(idPedido, this.pedidoPut).subscribe(()=>{})
+    this.PedidoService.put(idPedido, this.pedidoPut).subscribe(() => { })
   }
-  recusarCompra(idPedido: number){
+  recusarCompra(idPedido: number) {
     this.pedidoPut.status = "Reprovado"
-    this.PedidoService.put(idPedido, this.pedidoPut).subscribe(()=>{})
+    this.PedidoService.put(idPedido, this.pedidoPut).subscribe(() => { })
   }
 
-  enviarParaEntrega(idPedido: number){
+  enviarParaEntrega(idPedido: number) {
     this.pedidoPut.status = "Em transporte"
-    this.PedidoService.put(idPedido, this.pedidoPut).subscribe(()=>{})
+    this.PedidoService.put(idPedido, this.pedidoPut).subscribe(() => { })
   }
 
-  pedidoEntregue(idPedido: number){
+  pedidoEntregue(idPedido: number) {
     this.pedidoPut.status = "Entregue"
-    this.PedidoService.put(idPedido, this.pedidoPut).subscribe(()=>{})
+    this.PedidoService.put(idPedido, this.pedidoPut).subscribe(() => { })
   }
 
   backPage() { this.router.navigate([`informacao-pedidos/${this.id}`]); }

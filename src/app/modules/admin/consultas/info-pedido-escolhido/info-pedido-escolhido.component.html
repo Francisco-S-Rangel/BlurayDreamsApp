@@ -190,7 +190,7 @@
         </div>
 
         <div class="col-12">
-            <h1 class="espaco">Cartao de Credito: <span class="color">{{cartaoCredito.id}}</span></h1>
+            <h1 class="espaco">Cartao de Credito: <span class="color">{{cartaoCredito.id}}</span>-<span class="color">{{cartaoCredito2?.id}}</span>-<span class="color">{{cartaoCredito3?.id}}</span></h1>
             <table class="table table-hover">
                 <thead class="table-danger">
                   <tr>
@@ -206,6 +206,22 @@
                     <td>{{cartaoCredito.bandeiraCartao}}</td>
                     <td>{{cartaoCredito.cvv}}</td>
                     <td>{{cartaoCredito.nomeTitular}}</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>{{cartaoCredito2?.numeroCartao}}</td>
+                    <td>{{cartaoCredito2?.bandeiraCartao}}</td>
+                    <td>{{cartaoCredito2?.cvv}}</td>
+                    <td>{{cartaoCredito2?.nomeTitular}}</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>{{cartaoCredito3?.numeroCartao}}</td>
+                    <td>{{cartaoCredito3?.bandeiraCartao}}</td>
+                    <td>{{cartaoCredito3?.cvv}}</td>
+                    <td>{{cartaoCredito3?.nomeTitular}}</td>
                   </tr>
                 </tbody>
               </table>
