@@ -1,5 +1,12 @@
 describe('Condução de Venda (finalizando a compra)', () => {
 
+  it('Cliente escolhe utilizar dois cartões para a compra.', () => {
+    cy.pause()
+
+    cy.get('#selectQtd').select(1)
+
+  })
+
   it('Cliente escolhe cadastrar um novo cartão.', () => {
     cy.pause()
 
@@ -42,10 +49,30 @@ describe('Condução de Venda (finalizando a compra)', () => {
 
   })
 
-  it('Cliente escolhe nao adicionar o cartão em sua conta e finaliza a tela de cartões.', () => {
+  it('Cliente escolhe nao adicionar o cartão em sua conta.', () => {
     cy.pause()
 
-    cy.get('input[id=radio22]').click()
+    cy.get('input[id=radioCadastrar2]').click()
+
+  })
+
+  it('Cliente escolhe um cartão ja cadastrado em sua conta.', () => {
+    cy.pause()
+
+    cy.get('#escolherCartao2').select(1)
+
+  })
+
+  it('Cliente digita a quantidade que sera paga em cada cartão.', () => {
+    cy.pause()
+
+    cy.get('#valor').type("19.99")
+
+    cy.get('#valor2').type("60.11")
+  })
+
+  it('Cliente Finaliza a tela de Cartões.', () => {
+    cy.pause()
 
     cy.get('button[id=finalizarCartao]').click()
 

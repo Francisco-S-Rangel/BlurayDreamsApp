@@ -8,7 +8,7 @@
     </div>
 
     <label class="form-label">Deseja usar quantos cartões?</label>
-    <select class="form-select mb-3" (change)="selectChangeQtdCartoes($event)">
+    <select class="form-select mb-3" (change)="selectChangeQtdCartoes($event)" id="selectQtd">
       <option *ngFor="let number of [1,2,3]" [value]="number">
         {{number}}
       </option>
@@ -20,14 +20,14 @@
           <label class="form-label">Usar Um Cartão Cadastrado?</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado1" value="1" checked
+          <input class="form-check-input" type="radio" name="radioCadastrado" id="radioCadastrado1" value="1" checked
             (change)="radioChange($event)">
           <label class="form-check-label" for="radioCadastrado1">
             Sim
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado2" value="2"
+          <input class="form-check-input" type="radio" name="radioCadastrado" id="radioCadastrado2" value="2"
             (change)="radioChange($event)">
           <label class="form-check-label" for="radioCadastrado2">
             Não
@@ -87,14 +87,14 @@
           <label class="form-label">Adicionar cartão a sua conta?</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="radio2" id="radio21" value="1" checked
+          <input class="form-check-input" type="radio" name="radioCadastrar1" id="radioCadastrar1" value="1" checked
             [disabled]="radioUsarCartao==true" (change)="radioAddCartaoChange($event)">
           <label class="form-check-label" for="radio21">
             Sim
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="radio2" id="radio22" value="2"
+          <input class="form-check-input" type="radio" name="radioCadastrar1" id="radioCadastrar2" value="2"
             [disabled]="radioUsarCartao==true" (change)="radioAddCartaoChange($event)">
           <label class="form-check-label" for="radio22">
             Não
@@ -102,6 +102,7 @@
         </div>
       </div>
     </form>
+    <br>
 
     <form class="row g-3" [formGroup]="formCartao2" [hidden]="qtdCartoes==1">
       <hr>
@@ -110,20 +111,20 @@
           <label class="form-label">Usar Um Cartão Cadastrado?</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado1" value="1" checked
+          <input class="form-check-input" type="radio" name="radioCadastrado2" id="radioCadastrado21" value="1" checked
             (change)="radioChange2($event)">
           <label class="form-check-label" for="radioCadastrado1">
             Sim
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado2" value="2"
+          <input class="form-check-input" type="radio" name="radioCadastrado2" id="radioCadastrado22" value="2"
             (change)="radioChange2($event)">
           <label class="form-check-label" for="radioCadastrado2">
             Não
           </label>
         </div>
-        <select class="form-select mt-2" (change)="selectChange2($event)" [disabled]="radioUsarCartao2==false">
+        <select class="form-select mt-2" (change)="selectChange2($event)" id="escolherCartao2" [disabled]="radioUsarCartao2==false">
           <option selected value="0">-- Escolha um Cartão --</option>
           <option *ngFor="let cartoes of cartoesCliente;let index=index;" [value]="cartoes.id">
             {{cartoes.numeroCartao}}
@@ -175,14 +176,14 @@
           <label class="form-label">Adicionar cartão a sua conta?</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="radio2" id="radio21" value="1" checked
+          <input class="form-check-input" type="radio" name="radioCadastrar2" id="radioCadastrar21" value="1" checked
             [disabled]="radioUsarCartao2==true" (change)="radioAddCartaoChange2($event)">
           <label class="form-check-label" for="radio21">
             Sim
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="radio2" id="radio22" value="2"
+          <input class="form-check-input" type="radio" name="radioCadastrar2" id="radioCadastrar22" value="2"
             [disabled]="radioUsarCartao2==true" (change)="radioAddCartaoChange2($event)">
           <label class="form-check-label" for="radio22">
             Não
@@ -190,6 +191,7 @@
         </div>
       </div>
     </form>
+    <br>
 
     <form class="row g-3" [formGroup]="formCartao3" [hidden]="qtdCartoes==1 || qtdCartoes==2">
       <hr>
@@ -198,14 +200,14 @@
           <label class="form-label">Usar Um Cartão Cadastrado?</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado1" value="1" checked
+          <input class="form-check-input" type="radio" name="radioCadastrado3" id="radioCadastrado31" value="1" checked
             (change)="radioChange3($event)">
           <label class="form-check-label" for="radioCadastrado1">
             Sim
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="exampleRadios" id="radioCadastrado2" value="2"
+          <input class="form-check-input" type="radio" name="radioCadastrado3" id="radioCadastrado32" value="2"
             (change)="radioChange3($event)">
           <label class="form-check-label" for="radioCadastrado2">
             Não
@@ -263,14 +265,14 @@
           <label class="form-label">Adicionar cartão a sua conta?</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="radio2" id="radio21" value="1" checked
+          <input class="form-check-input" type="radio" name="radioCadastrar3" id="radioCadastrar31" value="1" checked
             [disabled]="radioUsarCartao3==true" (change)="radioAddCartaoChange3($event)">
           <label class="form-check-label" for="radio21">
             Sim
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="radio2" id="radio22" value="2"
+          <input class="form-check-input" type="radio" name="radioCadastrar3" id="radioCadastrar32" value="2"
             [disabled]="radioUsarCartao3==true" (change)="radioAddCartaoChange3($event)">
           <label class="form-check-label" for="radio22">
             Não
