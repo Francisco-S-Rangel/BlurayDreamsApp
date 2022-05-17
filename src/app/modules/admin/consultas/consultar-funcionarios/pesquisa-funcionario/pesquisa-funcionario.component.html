@@ -1,0 +1,165 @@
+<div class="container-fluid my-4 mx-auto">
+    <div class="row">
+        <div class="col-12">
+            <button class="custom-btn-back" type="button" (click)="backPage()">Retornar</button>
+        </div>
+
+        <div class="col-12">
+            <h1 class="titulo">Consultar Funcionarios</h1>
+        </div>
+
+        <hr>
+    </div>
+
+    <div class="col-12">
+        <div class="row">
+            <div style="margin-left: 0" class="col-12">
+                <label class="custom-label">
+                    <input class="custom-input" type="text" placeholder="Pesquise o Funcionario" />
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade show">
+        <div class="row">
+            <div class="col-12">
+                <div>
+                    <div class="row">
+                        <div class="col-12" *ngFor="let funcionario of funcionarios">
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header expandedHeight="auto" collapsedHeight="auto">
+                                        <mat-panel-title>
+                                            <div class="col-12">
+                                                <div class="row" style="margin-top: 1%;margin-bottom: 1%;">
+                                                    <div class="col">
+                                                        <div class="row">
+
+                                                            <div class="col-3">
+                                                                <div class="col">
+                                                                    <strong>Funcionario: </strong>
+                                                                    <span class="dado-cliente">
+                                                                        {{funcionario.nome}}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div style="margin-left: -6.5%;" class="col-3">
+                                                                <strong>Id: </strong>
+                                                                <span class="dado-cliente">
+                                                                    {{funcionario.id}}
+                                                                </span>
+                                                            </div>
+
+                                                            <div style="margin-left: -18.5%;" class="col-3">
+                                                                <strong>CPF: </strong>
+                                                                <span class="dado-cliente">
+                                                                    {{funcionario.cpf}}
+                                                                </span>
+                                                            </div>
+
+                                                            <div style="margin-left: -13.5%;" class="col-3">
+                                                                <strong>Status: </strong>
+                                                                <span class="dado-cliente">
+                                                                    {{funcionario.status}}
+                                                                </span>
+                                                            </div>
+
+                                                            <div style="margin-left: -13.5%;" class="col-3">
+                                                                <strong>Nascimento: </strong>
+                                                                <span class="dado-cliente">
+                                                                    {{funcionario.dataNascimento |  date: 'dd/MM/yyyy'}}
+                                                                </span>
+                                                            </div>
+
+                                                            <div style="margin-left: -10%;" class="col-3">
+                                                                <strong>Email: </strong>
+                                                                <span class="dado-cliente">
+                                                                    {{funcionario.email}}
+                                                                </span>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+
+
+                                        <div class="col-12 mt-2 mb-2 custom-table-form-box">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
+                                                <table style="margin-top: 2%;" cellspacing="0" cellpadding="0" class="table custom-table mt-3">
+
+                                                    <thead>
+                                                        <tr style="border-bottom: 1px solid #E6E6E6;">
+
+                                                            <th scope="col">Dados do Funcionario</th>
+                                                            <th scope="col">Excluir o Funcionario</th>
+                                                            <th scope="col">Ativar Funcionario</th>
+                                                            <th scope="col">Inativar Funcionario</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><button class="btn btn-primary" type="button" (click)="irParaFuncionario(funcionario.id)">Visualizar</button></td>
+                                                            <td><button class="btn btn-danger" type="button" (click)="deletarFuncionario(funcionario.id)" >Excluir</button></td>
+                                                            <td><button class="btn btn-success" type="button" [disabled]="funcionario.status == true" (click)="ativarFuncionario(funcionario.id)" >Ativar</button></td>
+                                                            <td><button class="btn btn-warning" type="button" [disabled]="funcionario.status == false" (click)="inativarFuncionario(funcionario.id)" >Inativar</button></td>
+                                                        </tr>
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+                                        </div>
+
+
+                                </mat-expansion-panel>
+                            </mat-accordion>
+
+                            <br>
+                        </div>
+
+                    </div>
+
+                    <br>
+                        <button class="btn btn-success" type="button"  style="margin-left: 40rem;" (click)="irParaCadastrarFuncionario()">Cadastrar Novo Funcionario</button>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><hr><br>
+    <div class="row">
+    <div class="col-12 mt-3">
+        <nav>
+            <ul class="pagination pagination-sm justify-content-center">
+
+                <li class="page-item">
+                    <a class="page-link" tabindex="-1">
+                        <img class="passador"src=".\assets\icons8-chevron-esquerda-50.png" alt="Anterior">
+                    </a>
+                </li>
+                <li class="page-item" *ngFor="let pag of paginacao;let i = index">
+                    <a class="page-link">{{i+1}}</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link">
+                        <img class="passador" src=".\assets\icons8-chevron-right-50.png" alt="Próximo">
+                    </a>
+                </li>
+            </ul>
+            <ul class="pagination pagination-sm justify-content-center">
+                <li>
+                    <span>1 de 12</span>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    </div>
+
+</div>
