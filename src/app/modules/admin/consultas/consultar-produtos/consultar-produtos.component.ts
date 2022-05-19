@@ -2,6 +2,7 @@ import { Produto } from './../../../shared/models/produto';
 import { ProdutoService } from './../../../shared/services/cadastro-dados-pedido/produto.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class ConsultarProdutosComponent implements OnInit {
   public paginacao = [1,2,3];
   public produtos?: Produto[];
+  public pesquisaTitulo = new FormControl('');
 
   constructor(private router: Router,private produtoService: ProdutoService) { }
 
@@ -54,6 +56,14 @@ export class ConsultarProdutosComponent implements OnInit {
   }
 
   backPage() { this.router.navigate(['tela-funcionario']); }
+
+  pesquisarProdutos(){
+    if(this.pesquisaTitulo.value == ""){
+
+    }else{
+      this.router.navigate([`pesquisa-produto/${this.pesquisaTitulo.value}`]);
+    }
+  }
 
 
 }

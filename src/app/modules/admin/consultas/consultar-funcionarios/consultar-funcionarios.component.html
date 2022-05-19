@@ -15,7 +15,13 @@
         <div class="row">
             <div style="margin-left: 0" class="col-12">
                 <label class="custom-label">
-                    <input class="custom-input" type="text" placeholder="Pesquise o Funcionario" />
+                    <form>
+                        <label class="custom-label">
+                            <input class="custom-input" type="search" placeholder="Pesquise o Funcionario" [formControl]="pesquisaNome" aria-label="Search" />
+                            <button type="submit" style="background: transparent; border: none !important;
+                            font-size:0;" (click)="pesquisarFuncionarios()"></button>
+                        </label>
+                        </form>
                 </label>
             </div>
         </div>

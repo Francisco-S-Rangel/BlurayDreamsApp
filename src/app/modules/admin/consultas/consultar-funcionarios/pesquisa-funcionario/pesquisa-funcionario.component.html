@@ -14,9 +14,13 @@
     <div class="col-12">
         <div class="row">
             <div style="margin-left: 0" class="col-12">
+                <form>
                 <label class="custom-label">
-                    <input class="custom-input" type="text" placeholder="Pesquise o Funcionario" />
+                    <input class="custom-input" type="search" placeholder="Pesquise o Funcionario" [formControl]="pesquisaNome" aria-label="Search" />
+                    <button type="submit" style="background: transparent; border: none !important;
+                    font-size:0;" (click)="pesquisarFuncionarios()"></button>
                 </label>
+                </form>
             </div>
         </div>
     </div>
@@ -123,6 +127,17 @@
                             <br>
                         </div>
 
+                    </div>
+
+                    <div class="row" *ngIf="comparacao > 0">
+                        <br>
+                        <br>
+                        <div class="text-center">
+                            <h1 style="font-weight:600;color:red;">O Funcionario não foi encontrado!</h1>
+                            <h3 style="font-weight:600;color: rgb(36, 96, 187);">Verifique se não há erro de digitação.</h3>
+                        </div>
+                        <br>
+                        <br>
                     </div>
 
                     <br>

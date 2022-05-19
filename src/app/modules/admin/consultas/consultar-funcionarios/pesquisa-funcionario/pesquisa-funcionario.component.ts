@@ -24,12 +24,12 @@ export class PesquisaFuncionarioComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(x=>{
       this.nome = x[`nome`];
-      this.carregarClientesporNome(this.nome);
+      this.carregarFuncionariosporNome(this.nome);
       this.resultado = this.nome;
     });
   }
 
-  carregarClientesporNome(nome: string){
+  carregarFuncionariosporNome(nome: string){
     this.funcionarioService.getFuncionariosPorNome(nome).subscribe(
       (funcionarios: Funcionario[])=>{
         this.funcionarios = funcionarios;
@@ -58,5 +58,11 @@ export class PesquisaFuncionarioComponent implements OnInit {
   inativarFuncionario(id: number){this.router.navigate([`motivo-inativacao-funcionario/${id}`]);}
   ativarFuncionario(id: number){this.router.navigate([`motivo-ativacao-funcionario/${id}`]);}
   irParaCadastrarFuncionario(){this.router.navigate(['cadastrar-funcionario']);}
-
+  pesquisarFuncionarios(){
+    if(this.pesquisaNome.value == ""){
+      this.router.navigate([`consultar-funcionarios`]);
+    }else{
+      this.router.navigate([`pesquisa-funcionario/${this.pesquisaNome.value}`])
+    }
+  }
 }

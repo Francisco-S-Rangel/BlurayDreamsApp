@@ -1,3 +1,5 @@
+import { PesquisaProdutoComponent } from './modules/admin/consultas/consultar-produtos/pesquisa-produto/pesquisa-produto.component';
+import { PesquisaFuncionarioComponent } from './modules/admin/consultas/consultar-funcionarios/pesquisa-funcionario/pesquisa-funcionario.component';
 import { PerfilUsuarioNotificacoesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-notificacoes/perfil-usuario-notificacoes.component';
 import { DashboardVendasComponent } from './modules/admin/funcionario/dashboard-vendas/dashboard-vendas.component';
 import { PesquisaClienteComponent } from './modules/admin/consultar-clientes/pesquisa-cliente/pesquisa-cliente.component';
@@ -122,7 +124,9 @@ const routes: Routes = [
   {path: "perfil-usuario-trocas-detalhes/:idTroca", component: PerfilUsuarioTrocasDetalhesComponent},
   {path: "pesquisa-cliente/:nome", component: PesquisaClienteComponent},
   {path: "dashboard-vendas", component: DashboardVendasComponent},
-  {path: "perfil-usuario-notificacoes", component: PerfilUsuarioNotificacoesComponent}
+  {path: "perfil-usuario-notificacoes", component: PerfilUsuarioNotificacoesComponent},
+  {path: "pesquisa-funcionario/:nome", component: PesquisaFuncionarioComponent},
+  {path: "pesquisa-produto/:titulo", component: PesquisaProdutoComponent}
 ];
 
 @NgModule({

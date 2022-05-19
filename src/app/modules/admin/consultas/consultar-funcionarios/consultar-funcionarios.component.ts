@@ -2,6 +2,7 @@ import { Funcionario } from 'src/app/modules/shared/models/funcionario';
 import { FuncionarioService } from './../../../shared/services/cadastro-dados-funcionario/funcionario.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-consultar-funcionarios',
@@ -12,6 +13,7 @@ export class ConsultarFuncionariosComponent implements OnInit {
 
   public paginacao = [1,2,3];
   public funcionarios?: Funcionario[];
+  public pesquisaNome = new FormControl('');
 
   constructor(private router: Router,private funcionarioService: FuncionarioService) { }
 
@@ -45,5 +47,12 @@ export class ConsultarFuncionariosComponent implements OnInit {
   inativarFuncionario(id: number){this.router.navigate([`motivo-inativacao-funcionario/${id}`]);}
   ativarFuncionario(id: number){this.router.navigate([`motivo-ativacao-funcionario/${id}`]);}
   irParaCadastrarFuncionario(){this.router.navigate(['cadastrar-funcionario']);}
+  pesquisarFuncionarios(){
+    if(this.pesquisaNome.value == ""){
+      
+    }else{
+      this.router.navigate([`pesquisa-funcionario/${this.pesquisaNome.value}`])
+    }
+  }
 
 }
