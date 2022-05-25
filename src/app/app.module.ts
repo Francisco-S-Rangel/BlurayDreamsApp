@@ -81,6 +81,7 @@ import { DashboardVendasComponent } from './modules/admin/funcionario/dashboard-
 import { PerfilUsuarioNotificacoesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-notificacoes/perfil-usuario-notificacoes.component';
 import { PesquisaFuncionarioComponent } from './modules/admin/consultas/consultar-funcionarios/pesquisa-funcionario/pesquisa-funcionario.component';
 import { PesquisaProdutoComponent } from './modules/admin/consultas/consultar-produtos/pesquisa-produto/pesquisa-produto.component';
+import { PesquisaTrocaComponent } from './modules/admin/consultas/consultar-trocas/pesquisa-troca/pesquisa-troca.component';
 
 @NgModule({
   declarations: [
@@ -149,7 +150,8 @@ import { PesquisaProdutoComponent } from './modules/admin/consultas/consultar-pr
     DashboardVendasComponent,
     PerfilUsuarioNotificacoesComponent,
     PesquisaFuncionarioComponent,
-    PesquisaProdutoComponent
+    PesquisaProdutoComponent,
+    PesquisaTrocaComponent
 
   ],
   imports: [

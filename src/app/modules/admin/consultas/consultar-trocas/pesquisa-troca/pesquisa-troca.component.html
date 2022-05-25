@@ -15,11 +15,7 @@
         <div class="row">
             <div style="margin-left: 0" class="col-12">
                 <label class="custom-label">
-                    <form>
-                    <input class="custom-input" type="search" [formControl]="id" type="text" placeholder="Pesquise a Troca" aria-label="Search"/>
-                    <button type="submit" style="background: transparent; border: none !important;
-                    font-size:0;" (click)="pesquisarTroca()"></button>
-                    </form>
+                    <input class="custom-input" type="text" placeholder="Pesquise a Troca" />
                 </label>
             </div>
         </div>
@@ -31,7 +27,7 @@
                 <div>
                     <div class="row">
 
-                        <div class="col-12" *ngFor="let troca of trocas">
+                        <div class="col-12" *ngIf="troca">
                             <mat-accordion>
                                 <mat-expansion-panel id="troca{{troca.id}}">
                                     <mat-expansion-panel-header expandedHeight="auto" collapsedHeight="auto">
@@ -155,3 +151,4 @@
     </div>
 
 </div>
+

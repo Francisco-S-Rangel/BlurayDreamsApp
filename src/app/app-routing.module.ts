@@ -62,6 +62,7 @@ import { CadastroEnderecoComponent } from './modules/cliente/cadastro-endereco/c
 import { CadastroCartaoComponent } from './modules/cliente/cadastro-cartao/cadastro-cartao.component';
 import { ConsultarClientesComponent } from './modules/admin/consultar-clientes/consultar-clientes.component';
 import { ConsultarFuncionariosComponent } from './modules/admin/consultas/consultar-funcionarios/consultar-funcionarios.component';
+import { PesquisaTrocaComponent } from './modules/admin/consultas/consultar-trocas/pesquisa-troca/pesquisa-troca.component';
 
 
 const routes: Routes = [
@@ -126,7 +127,8 @@ const routes: Routes = [
   {path: "dashboard-vendas", component: DashboardVendasComponent},
   {path: "perfil-usuario-notificacoes", component: PerfilUsuarioNotificacoesComponent},
   {path: "pesquisa-funcionario/:nome", component: PesquisaFuncionarioComponent},
-  {path: "pesquisa-produto/:titulo", component: PesquisaProdutoComponent}
+  {path: "pesquisa-produto/:titulo", component: PesquisaProdutoComponent},
+  {path: "pesquisa-troca/:id", component: PesquisaTrocaComponent}
 ];
 
 @NgModule({
