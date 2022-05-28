@@ -44,6 +44,10 @@ export class ConsultarTrocasComponent implements OnInit {
   backPage() { this.router.navigate(['tela-funcionario']); }
   irParaInformacaoTroca(idTroca: number) { this.router.navigate([`informacao-trocas/${idTroca}`]); }
   pesquisarTroca(){
-    
+    if(this.id.value == ""){
+
+    }else{
+      this.router.navigate([`pesquisa-troca/${this.id.value}`]);
+    }
   }
 }

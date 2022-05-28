@@ -33,11 +33,23 @@ export class PesquisaTrocaComponent implements OnInit {
     this.TrocaService.getById(id).subscribe(
       (troca: Troca) =>{
         this.troca = troca;
+        this.comparacao = 1;
+       
+      },
+      (err : any)=>{
+        this.troca = undefined;
+        this.comparacao = 0;
       }
     );
   }
 
   backPage() { this.router.navigate(['tela-funcionario']); }
   irParaInformacaoTroca(idTroca: number) { this.router.navigate([`informacao-trocas/${idTroca}`]); }
-
+  pesquisarTroca(){
+    if(this.idtroca.value == ""){
+      this.router.navigate([`consultar-trocas`]);
+    }else{
+      this.router.navigate([`pesquisa-troca/${this.idtroca.value}`]);
+    }
+  }
 }
