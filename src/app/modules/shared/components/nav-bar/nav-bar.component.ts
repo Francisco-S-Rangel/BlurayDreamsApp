@@ -19,7 +19,11 @@ export class NavBarComponent implements OnInit {
   }
 
   Pesquisar(){
+    if(this.pesquisaTitulo.value ==""){
+      this.router.navigate([``])
+    }else{
     this.router.navigate([`tela-pesquisa/${this.pesquisaTitulo.value}`])
+  }
   };
 
 }

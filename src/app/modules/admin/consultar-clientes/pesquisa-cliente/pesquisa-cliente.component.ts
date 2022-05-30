@@ -57,7 +57,12 @@ export class PesquisaClienteComponent implements OnInit {
   backPage() { this.router.navigate(['tela-funcionario']); }
 
   pesquisarCliente() { 
-     this.router.navigate([`pesquisa-cliente/${this.pesquisaNome.value}`])}
+    if(this.pesquisaNome.value == ""){
+      this.router.navigate([`consultar-clientes`])
+    }else{
+     this.router.navigate([`pesquisa-cliente/${this.pesquisaNome.value}`])
+    }
+    }
 
   cadastrarCliente(){ this.router.navigate(['cadastrar-cliente']); }
 

@@ -351,7 +351,6 @@ export class FinalizarCartaoComponent implements OnInit {
               this.EfetivarCompraRequest.cartaoId = cartoesCreditos[cartoesCreditos.length - this.qtdCartoes].id
               this.EfetivarCompraRequest.enderecoCobrancaId = 0
               this.EfetivarCompraRequest.enderecoEntregaId = 0
-              alert("Entrou cadastro cartao 1")
 
 
             })
@@ -377,7 +376,7 @@ export class FinalizarCartaoComponent implements OnInit {
           this.cartaoCreditoService.post(this.cartaoCreditos2).subscribe(() => {
             this.cartaoCreditoService.getByClienteId(1).subscribe((cartoesCreditos) => {
               this.EfetivarCompraRequest.cartaoId2 = cartoesCreditos[cartoesCreditos.length - this.qtdCartoes + 1].id
-              alert("Entrou cadastro cartao 2")
+              
             })
           })
 

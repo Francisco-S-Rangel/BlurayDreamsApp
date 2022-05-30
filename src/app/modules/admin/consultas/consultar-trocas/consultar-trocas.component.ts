@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { ClienteService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cliente.service';
 import { TrocaService } from './../../../shared/services/cadastro-dados-pedido/troca.service';
 import { Troca } from './../../../shared/models/troca';
@@ -13,6 +14,7 @@ export class ConsultarTrocasComponent implements OnInit {
   public paginacao = [1, 2, 3];
 
   public trocas?: Troca[]
+  public id= new FormControl('');
 
   constructor(private router: Router, private TrocaService: TrocaService, private ClienteService: ClienteService) { }
 
@@ -41,4 +43,11 @@ export class ConsultarTrocasComponent implements OnInit {
 
   backPage() { this.router.navigate(['tela-funcionario']); }
   irParaInformacaoTroca(idTroca: number) { this.router.navigate([`informacao-trocas/${idTroca}`]); }
+  pesquisarTroca(){
+    if(this.id.value == ""){
+
+    }else{
+      this.router.navigate([`pesquisa-troca/${this.id.value}`]);
+    }
+  }
 }

@@ -1,3 +1,6 @@
+import { PesquisaProdutoComponent } from './modules/admin/consultas/consultar-produtos/pesquisa-produto/pesquisa-produto.component';
+import { PesquisaFuncionarioComponent } from './modules/admin/consultas/consultar-funcionarios/pesquisa-funcionario/pesquisa-funcionario.component';
+import { PerfilUsuarioNotificacoesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-notificacoes/perfil-usuario-notificacoes.component';
 import { DashboardVendasComponent } from './modules/admin/funcionario/dashboard-vendas/dashboard-vendas.component';
 import { PesquisaClienteComponent } from './modules/admin/consultar-clientes/pesquisa-cliente/pesquisa-cliente.component';
 import { PerfilUsuarioTrocasDetalhesComponent } from './modules/cliente/perfil-usuario/perfil-usuario-informacoes/perfil-usuario-trocas-detalhes/perfil-usuario-trocas-detalhes.component';
@@ -59,6 +62,7 @@ import { CadastroEnderecoComponent } from './modules/cliente/cadastro-endereco/c
 import { CadastroCartaoComponent } from './modules/cliente/cadastro-cartao/cadastro-cartao.component';
 import { ConsultarClientesComponent } from './modules/admin/consultar-clientes/consultar-clientes.component';
 import { ConsultarFuncionariosComponent } from './modules/admin/consultas/consultar-funcionarios/consultar-funcionarios.component';
+import { PesquisaTrocaComponent } from './modules/admin/consultas/consultar-trocas/pesquisa-troca/pesquisa-troca.component';
 
 
 const routes: Routes = [
@@ -120,7 +124,11 @@ const routes: Routes = [
   {path: "editar-funcionario-endereco/:id/:funcionarioid", component: ModalEditarFuncionarioEnderecoComponent},
   {path: "perfil-usuario-trocas-detalhes/:idTroca", component: PerfilUsuarioTrocasDetalhesComponent},
   {path: "pesquisa-cliente/:nome", component: PesquisaClienteComponent},
-  {path: "dashboard-vendas", component: DashboardVendasComponent}
+  {path: "dashboard-vendas", component: DashboardVendasComponent},
+  {path: "perfil-usuario-notificacoes", component: PerfilUsuarioNotificacoesComponent},
+  {path: "pesquisa-funcionario/:nome", component: PesquisaFuncionarioComponent},
+  {path: "pesquisa-produto/:titulo", component: PesquisaProdutoComponent},
+  {path: "pesquisa-troca/:id", component: PesquisaTrocaComponent}
 ];
 
 @NgModule({

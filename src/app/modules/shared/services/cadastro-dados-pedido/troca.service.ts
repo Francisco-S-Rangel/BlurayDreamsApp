@@ -21,6 +21,9 @@ export class TrocaService {
   getById(id: number): Observable<Troca>{
     return this.http.get<Troca>(`${this.baseUrl}/${id}`);
   }
+  getTrocaPorClienteNome(nome: String): Observable<Troca[]>{
+    return this.http.get<Troca[]>(`${this.baseUrl}/(nome)/cliente?nome=${nome}`);
+  }
   put(id: number,troca: Troca){
     
     return this.http.put(`${this.baseUrl}/${id}`, troca).pipe(catchError(this.errorHandler))

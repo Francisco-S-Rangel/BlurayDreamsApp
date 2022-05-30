@@ -5,7 +5,7 @@
         </div>
 
         <div class="col-12">
-            <h1 class="titulo">Consultar Clientes</h1>
+            <h1 class="titulo">Consultar Funcionarios</h1>
         </div>
 
         <hr>
@@ -14,13 +14,13 @@
     <div class="col-12">
         <div class="row">
             <div style="margin-left: 0" class="col-12">
+                <form>
                 <label class="custom-label">
-                    <form>
-                    <input class="custom-input" type="search" [formControl]="pesquisaNome" placeholder="Pesquise o cliente pelo nome"  aria-label="Search"/>
+                    <input class="custom-input" type="search" placeholder="Pesquise o funcionario pelo nome" [formControl]="pesquisaNome" aria-label="Search" />
                     <button type="submit" style="background: transparent; border: none !important;
-                    font-size:0;" (click)="pesquisarCliente()"></button>
-                    </form>
+                    font-size:0;" (click)="pesquisarFuncionarios()"></button>
                 </label>
+                </form>
             </div>
         </div>
     </div>
@@ -30,9 +30,9 @@
             <div class="col-12">
                 <div>
                     <div class="row">
-                        <div class="col-12" *ngFor="let cliente of clientes">
+                        <div class="col-12" *ngFor="let funcionario of funcionarios">
                             <mat-accordion>
-                                <mat-expansion-panel id="cli{{cliente.id}}">
+                                <mat-expansion-panel>
                                     <mat-expansion-panel-header expandedHeight="auto" collapsedHeight="auto">
                                         <mat-panel-title>
                                             <div class="col-12">
@@ -42,45 +42,45 @@
 
                                                             <div class="col-3">
                                                                 <div class="col">
-                                                                    <strong>Cliente: </strong>
+                                                                    <strong>Funcionario: </strong>
                                                                     <span class="dado-cliente">
-                                                                        {{cliente.nome}}
+                                                                        {{funcionario.nome}}
                                                                     </span>
                                                                 </div>
                                                             </div>
 
-                                                            <div style="margin-left: -7.5%;" class="col-3">
+                                                            <div style="margin-left: -6.5%;" class="col-3">
                                                                 <strong>Id: </strong>
                                                                 <span class="dado-cliente">
-                                                                    {{cliente.id}}
+                                                                    {{funcionario.id}}
                                                                 </span>
                                                             </div>
 
-                                                            <div style="margin-left: -20.5%;" class="col-3">
+                                                            <div style="margin-left: -18.5%;" class="col-3">
                                                                 <strong>CPF: </strong>
                                                                 <span class="dado-cliente">
-                                                                    {{cliente.cpf}}
+                                                                    {{funcionario.cpf}}
                                                                 </span>
                                                             </div>
 
-                                                            <div style="margin-left: -12%;" class="col-3">
+                                                            <div style="margin-left: -13.5%;" class="col-3">
                                                                 <strong>Status: </strong>
                                                                 <span class="dado-cliente">
-                                                                    {{cliente.status}}
+                                                                    {{funcionario.status}}
                                                                 </span>
                                                             </div>
 
-                                                            <div style="margin-left: -14.5%;" class="col-3">
+                                                            <div style="margin-left: -13.5%;" class="col-3">
                                                                 <strong>Nascimento: </strong>
                                                                 <span class="dado-cliente">
-                                                                    {{cliente.dataNascimento |  date: 'dd/MM/yyyy'}}
+                                                                    {{funcionario.dataNascimento |  date: 'dd/MM/yyyy'}}
                                                                 </span>
                                                             </div>
 
                                                             <div style="margin-left: -10%;" class="col-3">
                                                                 <strong>Email: </strong>
                                                                 <span class="dado-cliente">
-                                                                    {{cliente.email}}
+                                                                    {{funcionario.email}}
                                                                 </span>
                                                             </div>
 
@@ -101,18 +101,18 @@
                                                     <thead>
                                                         <tr style="border-bottom: 1px solid #E6E6E6;">
 
-                                                            <th scope="col">Dados do Cliente</th>
-                                                            <th scope="col">Excluir o cliente</th>
-                                                            <th scope="col">Ativar Cliente</th>
-                                                            <th scope="col">Inativar Cliente</th>
+                                                            <th scope="col">Dados do Funcionario</th>
+                                                            <th scope="col">Excluir o Funcionario</th>
+                                                            <th scope="col">Ativar Funcionario</th>
+                                                            <th scope="col">Inativar Funcionario</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td><button class="btn btn-primary" type="button" (click)="irInformacaoCliente(cliente.id)" id="cliVisualizar{{cliente.id}}">Visualizar</button></td>
-                                                            <td><button class="btn btn-danger" type="button" (click)="deletarCliente(cliente.id)">Excluir</button></td>
-                                                            <td><button class="btn btn-success" type="button" [disabled]="cliente.status == true" (click)="ativarCliente(cliente.id)">Ativar</button></td>
-                                                            <td><button class="btn btn-warning" type="button" [disabled]="cliente.status == false" (click)="inativarCliente(cliente.id)">Inativar</button></td>
+                                                            <td><button class="btn btn-primary" type="button" (click)="irParaFuncionario(funcionario.id)">Visualizar</button></td>
+                                                            <td><button class="btn btn-danger" type="button" (click)="deletarFuncionario(funcionario.id)" >Excluir</button></td>
+                                                            <td><button class="btn btn-success" type="button" [disabled]="funcionario.status == true" (click)="ativarFuncionario(funcionario.id)" >Ativar</button></td>
+                                                            <td><button class="btn btn-warning" type="button" [disabled]="funcionario.status == false" (click)="inativarFuncionario(funcionario.id)" >Inativar</button></td>
                                                         </tr>
                                                     </tbody>
 
@@ -133,7 +133,7 @@
                         <br>
                         <br>
                         <div class="text-center">
-                            <h1 style="font-weight:600;color:red;">O Cliente não foi encontrado!</h1>
+                            <h1 style="font-weight:600;color:red;">O Funcionario não foi encontrado!</h1>
                             <h3 style="font-weight:600;color: rgb(36, 96, 187);">Verifique se não há erro de digitação.</h3>
                         </div>
                         <br>
@@ -141,14 +141,12 @@
                     </div>
 
                     <br>
-                        <button class="btn btn-success" type="button" (click)="cadastrarCliente()" style="margin-left: 40rem;">Cadastrar Novo Cliente</button>
+                        <button class="btn btn-success" type="button"  style="margin-left: 40rem;" (click)="irParaCadastrarFuncionario()">Cadastrar Novo Funcionario</button>
                     <br>
                 </div>
             </div>
         </div>
     </div>
-
-    
 
     <br><hr><br>
     <div class="row">

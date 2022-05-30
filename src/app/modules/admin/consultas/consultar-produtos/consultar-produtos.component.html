@@ -14,9 +14,16 @@
   <div class="col-12">
     <div class="row">
       <div style="margin-left: 0" class="col-12">
-        <label class="custom-label">
-          <input class="custom-input" type="text" placeholder="Pesquise o Produto" />
-        </label>
+
+        <form>
+          <label class="custom-label">
+            <input class="custom-input" type="search" placeholder="Pesquise o produto pelo título" [formControl]="pesquisaTitulo"
+              aria-label="Search" />
+            <button type="submit" style="background: transparent; border: none !important;
+                font-size:0;" (click)="pesquisarProdutos()"></button>
+          </label>
+        </form>
+
       </div>
     </div>
   </div>
@@ -116,9 +123,12 @@
                             <td><button class="btn btn-primary" type="button"
                                 (click)="informacaoProduto(produto.id)">Visualizar</button></td>
                             <td><button class="btn btn-danger" type="button">Excluir</button></td>
-                            <td><button class="btn btn-secondary" type="button" (click)="adicionarEstoque(produto.id)">Adicionar</button></td>
-                            <td><button class="btn btn-success" type="button" [disabled]="produto.status == true" (click)="ativarProduto(produto.id)">Ativar</button></td>
-                            <td><button class="btn btn-warning" type="button" [disabled]="produto.status == false" (click)="inativarProduto(produto.id)">Inativar</button></td>
+                            <td><button class="btn btn-secondary" type="button"
+                                (click)="adicionarEstoque(produto.id)">Adicionar</button></td>
+                            <td><button class="btn btn-success" type="button" [disabled]="produto.status == true"
+                                (click)="ativarProduto(produto.id)">Ativar</button></td>
+                            <td><button class="btn btn-warning" type="button" [disabled]="produto.status == false"
+                                (click)="inativarProduto(produto.id)">Inativar</button></td>
                           </tr>
                         </tbody>
 

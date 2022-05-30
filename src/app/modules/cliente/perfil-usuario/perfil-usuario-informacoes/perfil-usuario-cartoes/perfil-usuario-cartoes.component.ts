@@ -22,5 +22,7 @@ export class PerfilUsuarioCartoesComponent implements OnInit {
   irParaAlteraCartao(){this.router.navigate(['/perfil-usuario-altera-cartao'])}
 
   irParaCadastrarCartao(){this.router.navigate(['/perfil-usuario-cadastrar-cartao'])}
+  
+  irParaNotificacoes(){this.router.navigate(['/perfil-usuario-notificacoes'])}
 
 }

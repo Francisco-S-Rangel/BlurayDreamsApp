@@ -23,9 +23,12 @@
               <li><a class="dropdown-item" id="botFuncionario"  [routerLink]="'tela-funcionario'">Área do Funcionario</a></li>
             </ul>
           </li>
+          <li class="nav-item" >
+            <a class="nav-link" [routerLink]="'perfil-usuario-notificacoes'"><b>Notificações</b> <img class="carrinhoImg" src=".\assets\icons8-sino-64.png"/></a>
+          </li>
         </ul>
         <form class="d-flex">
-          <input id="pesquisar" class="form-control me-2"  type="search" [formControl]="pesquisaTitulo" placeholder="Busque aqui pelo Filme, Diretor ou Ator" aria-label="Search">
+          <input id="pesquisar" class="form-control me-2"  type="search" [formControl]="pesquisaTitulo" placeholder="Busque aqui o filme pelo nome!" aria-label="Search">
           <button class="btn-busca" type="submit" (click)="Pesquisar()"><img class="pesquisarImg" src=".\assets\icons8-pesquisar-50.png"/></button>
         </form>
       </div>

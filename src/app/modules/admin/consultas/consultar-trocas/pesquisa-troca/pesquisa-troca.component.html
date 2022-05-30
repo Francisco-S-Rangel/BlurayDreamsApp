@@ -16,10 +16,10 @@
             <div style="margin-left: 0" class="col-12">
                 <label class="custom-label">
                     <form>
-                    <input class="custom-input" type="search" [formControl]="id" type="text" placeholder="Pesquise a troca pelo numero de requisição" aria-label="Search"/>
-                    <button type="submit" style="background: transparent; border: none !important;
-                    font-size:0;" (click)="pesquisarTroca()"></button>
-                    </form>
+                        <input class="custom-input" type="search" [formControl]="idtroca" type="text" placeholder="Pesquise a troca pelo numero de requisição" aria-label="Search"/>
+                        <button type="submit" style="background: transparent; border: none !important;
+                        font-size:0;" (click)="pesquisarTroca()"></button>
+                        </form>
                 </label>
             </div>
         </div>
@@ -31,7 +31,7 @@
                 <div>
                     <div class="row">
 
-                        <div class="col-12" *ngFor="let troca of trocas">
+                        <div class="col-12" *ngIf="troca">
                             <mat-accordion>
                                 <mat-expansion-panel id="troca{{troca.id}}">
                                     <mat-expansion-panel-header expandedHeight="auto" collapsedHeight="auto">
@@ -118,6 +118,17 @@
 
                     </div>
 
+                    <div class="row" *ngIf="comparacao == 0">
+                        <br>
+                        <br>
+                        <div class="text-center">
+                            <h1 style="font-weight:600;color:red;">Id de troca não  encontrado!</h1>
+                            <h3 style="font-weight:600;color: rgb(36, 96, 187);">Verifique se não há erro de digitação.</h3>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+
 
                 </div>
             </div>
@@ -155,3 +166,4 @@
     </div>
 
 </div>
+

@@ -1,0 +1,36 @@
+.labels {
+    font-size: 11px
+}
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.nome-usuario {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.email-usuario{
+  font-size: 15px;
+}
+
+.labels {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.links {
+  cursor: pointer;
+  font-size: 20px;
+  color: #737373;
+}
+
+.links:hover {
+  color: #bfbfbf;
+}
+
+.padding {
+  padding-top: 33%;
+  padding-left: 10%;
+}

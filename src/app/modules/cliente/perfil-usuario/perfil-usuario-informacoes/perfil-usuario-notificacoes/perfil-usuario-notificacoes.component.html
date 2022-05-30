@@ -1,0 +1,66 @@
+<div class="container card mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="d-flex justify-content-center">
+          <div class="padding">
+            <div class="row mb-5">
+              <div class="col-md-12"><label class="links" (click)="irParaPerfil()">Perfil</label></div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-md-12"><label class="links" (click)="irParaEnderecos()">Endereços</label></div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-md-12"><label class="links" (click)="irParaMetPagamentos()">Metodos de Pagamento</label>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-md-12"><label class="links" (click)="irParaPedidos()" >Meus Pedidos</label></div>
+            </div>
+            <div class="mb-5">
+              <div class="col-md-12"><label class="links" (click)="irParaNotificacoes()" id="verPedidos">Notificações</label></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="d-flex flex-column align-items-center text-center"><img class="rounded-circle mt-4" width="250px"
+            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
+            class="nome-usuario pb-2">Nome Usuario</span><span
+            class="text-black-50 email-usuario mb-3">Teste@gmail.com</span>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="p-3 py-5">
+          <div class="d-flex mb-3">
+            <h1 class="text-right">Notificações</h1>
+          </div>
+          <table class="table table-striped">
+            <thead class="">
+              <tr class="text-center">
+                <th>Mensagem</th>
+                <th>Núm. Troca</th>
+                <th>Ver Detalhes</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr *ngFor="let troca of trocas" class="text-center align-middle">
+
+                <td *ngIf="troca.status == 'Troca concluida' ">Seu pedido de troca foi: <b style="color:rgb(60, 190, 77)">Aprovado!</b></td>
+                <td *ngIf="troca.status == 'Troca concluida' ">{{troca.id}}</td>
+                <td *ngIf="troca.status == 'Troca concluida' "><button type="button" class="btn btn-success" (click)="irParaDetalhesTrocas(troca.id)" id="verDetalhesTroca{{troca.id}}">Detalhes</button></td>
+
+                <td *ngIf="troca.status == 'Troca recusada' ">Seu pedido de troca foi: <b style="color:rgb(234, 41, 41)">Recusado!</b></td>
+                <td *ngIf="troca.status == 'Troca recusada' ">{{troca.id}}</td>
+                <td *ngIf="troca.status == 'Troca recusada' "><button type="button" class="btn btn-success" (click)="irParaDetalhesTrocas(troca.id)" id="verDetalhesTroca{{troca.id}}">Detalhes</button></td>
+                
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  

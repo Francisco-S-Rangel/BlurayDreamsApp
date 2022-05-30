@@ -1,3 +1,4 @@
+import { UrlService } from './../../../../shared/services/url.service';
 import { Produto } from 'src/app/modules/shared/models/produto';
 import { Troca } from './../../../../shared/models/troca';
 import { TrocaService } from './../../../../shared/services/cadastro-dados-pedido/troca.service';
@@ -6,7 +7,7 @@ import { Pedido } from './../../../../shared/models/pedido';
 import { ClienteService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cliente.service';
 import { ProdutoService } from './../../../../shared/services/cadastro-dados-pedido/produto.service';
 import { PedidoService } from './../../../../shared/services/cadastro-dados-pedido/pedido.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -16,7 +17,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilUsuarioTrocasDetalhesComponent implements OnInit {
 
-  public idTroca: number = 0
+  public idTroca: number = 0;
+  previousUrl: string = '';
 
   public troca!: Troca
   public pedido!: Pedido
@@ -26,6 +28,8 @@ export class PerfilUsuarioTrocasDetalhesComponent implements OnInit {
     private PedidoService: PedidoService, private ProdutoService: ProdutoService, private TrocaService: TrocaService) { }
 
   ngOnInit() {
+
+
     this.route.params.subscribe(x => {
       this.idTroca = x[`idTroca`];
     });

@@ -14,6 +14,10 @@
     width: 32px;
     height: 32px;
 }
+.sinoImg {
+    width: 32px;
+    height: 32px;
+}
 
 /*Media query*/
 @media screen and (max-width: 600px) {

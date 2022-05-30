@@ -27,4 +27,7 @@ export class PerfilUsuarioEnderecosComponent implements OnInit {
 
   irParaCadastroEntrega(){this.router.navigate(['/perfil-usuario-cadastrar-entrega'])}
 
+  
+  irParaNotificacoes(){this.router.navigate(['/perfil-usuario-notificacoes'])}
+
 }
