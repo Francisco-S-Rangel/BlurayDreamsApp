@@ -30,7 +30,36 @@
         </div>
       </div>
       <div class="col-md-7">
+        <div class="p-3 py-5">
+          <div class="d-flex mb-3">
+            <h1 class="text-right">Notificações</h1>
+          </div>
+          <table class="table table-striped">
+            <thead class="">
+              <tr class="text-center">
+                <th>Mensagem</th>
+                <th>Núm. Troca</th>
+                <th>Ver Detalhes</th>
+              </tr>
+            </thead>
+            <tbody>
 
+              <tr *ngFor="let troca of trocas" class="text-center align-middle">
+
+                <td *ngIf="troca.status == 'Troca concluida' ">Seu pedido de troca foi: <b style="color:rgb(60, 190, 77)">Aprovado!</b></td>
+                <td *ngIf="troca.status == 'Troca concluida' ">{{troca.id}}</td>
+                <td *ngIf="troca.status == 'Troca concluida' "><button type="button" class="btn btn-success" (click)="irParaDetalhesTrocas(troca.id)" id="verDetalhesTroca{{troca.id}}">Detalhes</button></td>
+
+                <td *ngIf="troca.status == 'Troca recusada' ">Seu pedido de troca foi: <b style="color:rgb(234, 41, 41)">Recusado!</b></td>
+                <td *ngIf="troca.status == 'Troca recusada' ">{{troca.id}}</td>
+                <td *ngIf="troca.status == 'Troca recusada' "><button type="button" class="btn btn-success" (click)="irParaDetalhesTrocas(troca.id)" id="verDetalhesTroca{{troca.id}}">Detalhes</button></td>
+                
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
       </div>
     </div>
   </div>

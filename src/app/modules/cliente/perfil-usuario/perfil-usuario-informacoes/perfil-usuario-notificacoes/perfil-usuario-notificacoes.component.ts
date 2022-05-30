@@ -1,5 +1,7 @@
+import { Troca } from './../../../../shared/models/troca';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TrocaService } from 'src/app/modules/shared/services/cadastro-dados-pedido/troca.service';
 
 @Component({
   selector: 'app-perfil-usuario-notificacoes',
@@ -8,9 +10,19 @@ import { Router } from '@angular/router';
 })
 export class PerfilUsuarioNotificacoesComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  public trocas?: Troca[];
+
+  constructor(private router: Router, private TrocaService: TrocaService) { }
 
   ngOnInit(): void {
+    this.carregarTroca();
+  }
+
+  carregarTroca(){
+    this.TrocaService.getAll().subscribe((trocas)=>{
+      this.trocas = trocas
+      console.log(this.trocas)
+    })
   }
 
   irParaPerfil(){ this.router.navigate(['/perfil-usuario-main'])}
