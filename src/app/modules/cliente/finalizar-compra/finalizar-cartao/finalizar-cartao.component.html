@@ -9,8 +9,14 @@
 
     <label class="form-label">Deseja usar quantos cartões?</label>
     <select class="form-select mb-3" (change)="selectChangeQtdCartoes($event)" id="selectQtd">
-      <option *ngFor="let number of [1,2,3]" [value]="number">
-        {{number}}
+      <option [value] = 1>
+        {{1}}
+      </option>
+      <option [value] = 2 [disabled]="precoFinal < 40">
+        {{2}}
+      </option>
+      <option [value] = 3 [disabled]="precoFinal < 60">
+        {{3}}
       </option>
     </select>
 

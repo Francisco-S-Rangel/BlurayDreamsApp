@@ -6,7 +6,7 @@
     <form class="row g-3" [formGroup]="form">
       <div class="col-md-6">
         <label class="form-label">Nome</label>
-        <input type="email" class="form-control" id="nome" [ngClass]="{ 'is-invalid': f.Nome.errors && f.Nome.touched }" formControlName="Nome" placeholder="Digite seu Nome Completo" [(ngModel)]="Clientes.Nome">
+        <input type="text" class="form-control" id="nome" [ngClass]="{ 'is-invalid': f.Nome.errors && f.Nome.touched }" formControlName="Nome" placeholder="Digite seu Nome Completo" [(ngModel)]="Clientes.Nome">
         <div *ngIf="f.Nome.errors?.required" class="invalid-feedback">
           Nome é obrigatorio.
         </div>
@@ -36,7 +36,7 @@
       </div>
       <div class="col-3">
         <label class="form-label">DDD</label>
-        <input type="text" class="form-control" id="ddd" [ngClass]="{'is-invalid': f.ddd.errors && f.ddd.touched}" formControlName="ddd" placeholder="Digite seu DDD" [(ngModel)]="Clientes.ddd" (keypress)="keyPressNumbers($event)">
+        <input type="text" class="form-control" id="ddd" maxlength="3" [ngClass]="{'is-invalid': f.ddd.errors && f.ddd.touched}" formControlName="ddd" placeholder="Digite seu DDD" [(ngModel)]="Clientes.ddd" (keypress)="keyPressNumbers($event)">
         <div class="invalid-feedback">
           DDD é obrigatorio
         </div>
@@ -84,7 +84,7 @@
         </div>
       </div>
       <div class="col-12 text-center">
-        <button type="button" class="btn btn-primary mt-3" [disabled]="!form.valid" (click)="cadastrarCliente()">Proximo</button>
+        <button type="button" class="btn btn-primary mt-3" id="finaliza" [disabled]="!form.valid" (click)="cadastrarCliente()">Proximo</button>
       </div>
     </form>
   </div>

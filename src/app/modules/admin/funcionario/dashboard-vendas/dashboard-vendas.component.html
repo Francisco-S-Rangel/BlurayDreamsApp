@@ -38,16 +38,16 @@
                                     <div class="col-md-4 offset-md-1"><label class="labels"
                                             style="text-align: center;">Data
                                             Inicial</label><input type="date" class="form-control"
-                                            placeholder="Digite o Ano do Produto" formControlName="dataInit"></div>
+                                            placeholder="Digite o Ano do Produto" id="datainicio" formControlName="dataInit"></div>
 
                                     <div class="col-md-4"><label class="labels">Data Final</label><input type="date"
-                                            class="form-control" placeholder="Digite o Ano do Produto"
+                                            class="form-control" id="datafim" placeholder="Digite o Ano do Produto"
                                             formControlName="dataFinal"></div>
                                 </div>
                             </form>
 
                             <div class="col-md-2 offset-md-10"><button type="button" class="btn-consulta"
-                                    [disabled]="!form.valid" (click)="pegarCategoriasProdutos()">Consultar</button>
+                                    [disabled]="!form.valid" id="botaoconsulta" (click)="pegarCategoriasProdutos()">Consultar</button>
                             </div>
 
                         </div>

@@ -18,7 +18,7 @@ describe('Condução de Venda (adição de produtos)', () => {
 
   })
 
-  it('Cliente tenta colar uma quantidade invalida (zero ou números negativos)', () => {
+  it('Cliente tenta colar uma quantidade invalida (zero, números negativos ou uma string)', () => {
 
     cy.pause()
 
