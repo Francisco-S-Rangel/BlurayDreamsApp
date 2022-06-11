@@ -1,4 +1,3 @@
-import { UrlService } from './../../../../shared/services/url.service';
 import { Produto } from 'src/app/modules/shared/models/produto';
 import { Troca } from './../../../../shared/models/troca';
 import { TrocaService } from './../../../../shared/services/cadastro-dados-pedido/troca.service';
@@ -7,8 +6,10 @@ import { Pedido } from './../../../../shared/models/pedido';
 import { ClienteService } from 'src/app/modules/shared/services/cadastro-dados-cliente/cliente.service';
 import { ProdutoService } from './../../../../shared/services/cadastro-dados-pedido/produto.service';
 import { PedidoService } from './../../../../shared/services/cadastro-dados-pedido/pedido.service';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd, RoutesRecognized } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { SharedDataService } from 'src/app/modules/shared/services/shared-data.service';
+import { filter, pairwise } from 'rxjs';
 
 @Component({
   selector: 'app-perfil-usuario-trocas-detalhes',
@@ -18,21 +19,25 @@ import { Component, OnInit } from '@angular/core';
 export class PerfilUsuarioTrocasDetalhesComponent implements OnInit {
 
   public idTroca: number = 0;
-  previousUrl: string = '';
 
   public troca!: Troca
   public pedido!: Pedido
   public produtoTrocado!: Produto
 
-  constructor(private router: Router, private route: ActivatedRoute, private clienteService: ClienteService,
+  constructor(private router: Router, private route: ActivatedRoute, private clienteService: ClienteService, private urlService: SharedDataService,
     private PedidoService: PedidoService, private ProdutoService: ProdutoService, private TrocaService: TrocaService) { }
 
   ngOnInit() {
-
-
     this.route.params.subscribe(x => {
       this.idTroca = x[`idTroca`];
     });
+    this.router.events
+    .pipe( filter(        (evt:any)=>evt instanceof RoutesRecognized),pairwise())
+    .subscribe((events: RoutesRecognized[]) =>{        
+        this.urlService.setPreviousUrl(events[0].urlAfterRedirects);
+        console.log('previous',events[0].urlAfterRedirects);//previous url
+        console.log('current url',events[1].urlAfterRedirects);//current url
+      }    );
     this.carregarTroca()
   }
 
@@ -70,8 +75,17 @@ export class PerfilUsuarioTrocasDetalhesComponent implements OnInit {
     console.log(this.pedido)
   }
 
-  irParaPedidos() { this.router.navigate(['/perfil-usuario-pedidos']) }
+  irParaPedidos() {
 
+    console.log(this.urlService.getPreviousUrl());
+    if(this.urlService.getPreviousUrl() == '/perfil-usuario-notificacoes'){
+      this.router.navigate(['/perfil-usuario-notificacoes']) 
+    }else{
+     this.router.navigate(['/perfil-usuario-pedidos']) 
+    }
+
+
+    }
 
 
 }
