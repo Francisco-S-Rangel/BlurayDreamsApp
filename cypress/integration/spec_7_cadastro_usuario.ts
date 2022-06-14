@@ -154,4 +154,126 @@ describe('Cadastrando um Novo Usuário', () => {
 
   })
 
+  it('Cliente digita o campo CEP com letras.', () => {
+
+    cy.pause()
+
+    cy.get('#cep').type('teste')
+
+
+  })
+
+  it('Cliente digita o campo CEP com números.', () => {
+
+    cy.pause()
+
+    cy.get('#cep').clear().type('08900001')
+
+
+  })
+
+  it('Cliente digita todos os campos do endereço de entrega corretamente.', () => {
+
+    cy.pause()
+
+    cy.get('#TipoResidencia').type('Casa')
+
+    cy.get('#Logradouro').type('Rua Tal')
+
+    cy.get('#TipoLogradouro').type('Rua')
+
+    cy.get('#bairro').type('Rodeio')
+
+    cy.get('#Cidade').type('Mogi das Cruzes')
+
+    cy.get('#Estado').type('São Paulo')
+
+    cy.get('#Pais').type('Brasil')
+
+    cy.get('#Numero').type('312')
+
+    cy.get('#Apelido').type('Minha casa')
+
+  })
+
+  it('Cliente tenta finalizar o pedido sem ter cadastrado o endereço de cobrança.', () => {
+
+    cy.pause()
+
+    cy.get('#finalizaEnd').click()
+
+  })
+
+  it('Cliente cadastra o endereço de cobrança.', () => {
+
+    cy.pause()
+
+    cy.get('#cep2').type('0855520')
+
+    cy.get('#TipoResidencia2').type('Apartamento')
+
+    cy.get('#Logradouro2').type('Rua Teste')
+
+    cy.get('#TipoLogradouro2').type('Rua')
+
+    cy.get('#bairro2').type('Rodeio')
+
+    cy.get('#Cidade2').type('Mogi das Cruzes')
+
+    cy.get('#Estado2').type('São Paulo')
+
+    cy.get('#Pais2').type('Brasil')
+
+    cy.get('#Numero2').type('312')
+
+  })
+
+  it('Cliente tenta finalizar o pedido sem ter cadastrado o campo observação (opcional).', () => {
+
+    cy.pause()
+
+    cy.get('#finalizaEnd').click()
+
+  })
+
+  it('Cliente cadastra o número de cartão.', () => {
+
+    cy.pause()
+
+    cy.get('#numeroCartao').type('4012 4123 2231 4122')
+
+  })
+
+  it('Cliente cadastra a bandeira do cartão, com uma bandeira não aceita pelo sistema.', () => {
+
+    cy.pause()
+
+    cy.get('#bandeiraCartao').type('elost')
+
+  })
+
+  it('Cliente cadastra a bandeira do cartão, com uma bandeira não aceita pelo sistema.', () => {
+
+    cy.pause()
+
+    cy.get('#bandeiraCartao').clear().type('visa')
+
+  })
+
+  it('Cliente cadastra o CVV.', () => {
+
+    cy.pause()
+
+    cy.get('#cvv').type('231')
+
+  })
+
+  it('Cliente finaliza o seu cadastro.', () => {
+
+    cy.pause()
+
+    cy.get('#finalizar').click()
+
+  })
+
 })
