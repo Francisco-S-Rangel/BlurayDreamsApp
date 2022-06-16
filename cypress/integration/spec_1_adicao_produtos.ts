@@ -1,7 +1,6 @@
 describe('Condução de Venda (adição de produtos)', () => {
 
   it('Visita a pagina inicial e clica no primeiro produto', () => {
-    cy.pause()
     cy.visit('/')
     cy.wait(400)
 
@@ -10,7 +9,6 @@ describe('Condução de Venda (adição de produtos)', () => {
 
   it('Cliente tenta escolher uma quantidade maior que o estoque.', () => {
 
-    cy.pause()
 
     cy.get('input[name="quantidade"]').clear().type("9")
 
@@ -20,7 +18,6 @@ describe('Condução de Venda (adição de produtos)', () => {
 
   it('Cliente tenta colar uma quantidade invalida (zero, números negativos ou uma string)', () => {
 
-    cy.pause()
 
     cy.get('input[name="quantidade"]').clear().type("-3")
 
@@ -29,7 +26,6 @@ describe('Condução de Venda (adição de produtos)', () => {
 
   it('Cliente digita uma quantidade valida', () => {
 
-    cy.pause()
 
     cy.get('input[name="quantidade"]').clear().type("2")
 
@@ -39,7 +35,6 @@ describe('Condução de Venda (adição de produtos)', () => {
 
   it('Volta a pagina inicial e clica/adiciona outro produto', () => {
 
-    cy.pause()
 
     cy.visit('/')
 
@@ -53,7 +48,6 @@ describe('Condução de Venda (adição de produtos)', () => {
 
   it('Volta a pagina inicial e clica/adiciona um produto ja presente no carrinho', () => {
 
-    cy.pause()
 
     cy.visit('/')
 
@@ -67,7 +61,6 @@ describe('Condução de Venda (adição de produtos)', () => {
 
   it('Volta a pagina inicial e clica/adiciona outro produto', () => {
 
-    cy.pause()
 
     cy.visit('/')
 
