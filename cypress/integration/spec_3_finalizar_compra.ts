@@ -109,8 +109,6 @@ describe('Condução de Venda (finalizando a compra)', () => {
 
     cy.get('#observacao').type('Minha casa em Mogi das Cruzes')
 
-    cy.pause()
-
     cy.get('#finalizarEnd').click()
 
     cy.wait(300)

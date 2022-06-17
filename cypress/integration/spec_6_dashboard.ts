@@ -35,7 +35,7 @@ describe('Usando o Dashboard de Vendas', () => {
 
   it('Cliente visita a tela de dashboard e tenta digitar uma data valida (periodo de 3 meses)', () => {
 
-    cy.get('#datainicio').type('2022-04-30')
+    cy.get('#datainicio').type('2022-04-01')
 
     cy.get('#datafim').type('2022-06-30')
 
@@ -47,7 +47,7 @@ describe('Usando o Dashboard de Vendas', () => {
 
   it('Cliente visita a tela de dashboard e tenta digitar uma data valida (periodo de 2 meses)', () => {
 
-    cy.get('#datainicio').type('2022-05-30')
+    cy.get('#datainicio').type('2022-05-02')
 
     cy.get('#datafim').type('2022-06-30')
 
