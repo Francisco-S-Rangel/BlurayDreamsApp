@@ -20,7 +20,7 @@ describe('Condução de Venda (Manipular pedidos)', () => {
 
   it('Funcionario seleciona pedido realizado do cliente e valida a compra.', () => {
 
-    cy.get('#pedido1').click()
+    cy.get('#pedido76').click()
 
     cy.get("#aceitarPedido").click()
 
@@ -35,6 +35,8 @@ describe('Condução de Venda (Manipular pedidos)', () => {
   it('Funcionario finaliza a entrega.', () => {
 
     cy.get('#finalizarEntrega').click()
+
+    cy.pause()
 
   })
 
@@ -52,7 +54,9 @@ describe('Condução de Venda (Manipular pedidos)', () => {
 
   it('Cliente clica em detalhes do seu pedido.', () => {
 
-    cy.get('#verDetalhesPedido1').click()
+    cy.get('#verDetalhesPedido76').click()
+
+    cy.pause()
 
   })
 })

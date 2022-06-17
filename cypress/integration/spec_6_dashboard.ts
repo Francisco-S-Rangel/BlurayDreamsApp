@@ -17,6 +17,8 @@ describe('Usando o Dashboard de Vendas', () => {
 
     cy.get('#botaoconsulta').click()
 
+    cy.pause()
+
   })
 
   it('Cliente visita a tela de dashboard e tenta digitar uma data valida (periodo de 6 meses)', () => {
@@ -26,6 +28,8 @@ describe('Usando o Dashboard de Vendas', () => {
     cy.get('#datafim').type('2022-05-30')
 
     cy.get('#botaoconsulta').click()
+
+    cy.pause()
 
   })
 
@@ -37,6 +41,8 @@ describe('Usando o Dashboard de Vendas', () => {
 
     cy.get('#botaoconsulta').click()
 
+    cy.pause()
+
   })
 
   it('Cliente visita a tela de dashboard e tenta digitar uma data valida (periodo de 2 meses)', () => {
@@ -46,6 +52,8 @@ describe('Usando o Dashboard de Vendas', () => {
     cy.get('#datafim').type('2022-06-30')
 
     cy.get('#botaoconsulta').click()
+
+    cy.pause()
 
   })
 

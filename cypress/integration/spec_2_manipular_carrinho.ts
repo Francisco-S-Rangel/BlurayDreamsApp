@@ -29,7 +29,7 @@ describe('Condução de Venda (manipulando o carrinho)', () => {
 
   it('Cliente digita uma quantidade superior ao preco do carrinho', () => {
 
-    cy.get('#credito').click().clear().type("150.99").blur()
+    cy.get('#credito').click().clear().type("140.20").blur()
   })
 
   it('Cliente digita uma quantidade inferior ao preco do carrinho', () => {
@@ -63,6 +63,8 @@ describe('Condução de Venda (manipulando o carrinho)', () => {
     cy.get('#cupom').click().clear().type("abc123")
 
     cy.get('#botaoCupom').click()
+
+    cy.pause()
   })
 
   it('Cliente clica em finalizar o pedido', () => {

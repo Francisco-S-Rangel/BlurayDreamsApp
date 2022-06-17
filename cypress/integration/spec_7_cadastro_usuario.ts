@@ -94,13 +94,13 @@ describe('Cadastrando um Novo Usuário', () => {
 
     cy.get('#finaliza').click()
 
-
   })
 
   it('Cliente digita corretamente a confirmação de senha', () => {
 
     cy.get('#confsenha').clear().type('12345678')
 
+    cy.pause()
 
   })
 
@@ -173,6 +173,8 @@ describe('Cadastrando um Novo Usuário', () => {
 
     cy.get('#Numero2').type('312')
 
+    cy.pause()
+
   })
 
   it('Cliente tenta finalizar o pedido sem ter cadastrado o campo observação (opcional).', () => {
@@ -208,6 +210,8 @@ describe('Cadastrando um Novo Usuário', () => {
   it('Cliente cadastra o CVV.', () => {
 
     cy.get('#cvv').type('231')
+
+    cy.pause()
 
   })
 

@@ -2,11 +2,13 @@ describe('Condução de Venda (Realizar Trocas)', () => {
 
   it('Cliente seleciona a quantidade de produtos que deseja trocar e solicita a troca.', () => {
 
-    cy.visit("perfil-usuario-trocas/1/1")
+    cy.visit("perfil-usuario-trocas/76/1")
 
     cy.get('#selectTroca0').select(1)
 
     cy.get('#selectTroca1').select(1)
+
+    cy.pause()
 
     cy.get("#solicitarTroca").click()
 
@@ -20,15 +22,17 @@ describe('Condução de Venda (Realizar Trocas)', () => {
 
     cy.get("#botTrocas").click()
 
-    cy.get("#troca1").click()
+    cy.get("#troca5").click()
 
-    cy.get("#trocaVisualizar1").click()
+    cy.get("#trocaVisualizar5").click()
 
   })
 
   it('Funcionario aceita a troca e re-estoca o produto.', () => {
 
     cy.get('#aceitarTroca').click()
+
+    cy.pause()
 
     cy.get('#restocarSim').click()
 
@@ -38,15 +42,17 @@ describe('Condução de Venda (Realizar Trocas)', () => {
 
     cy.get('#retornar').click()
 
-    cy.get("#troca2").click()
+    cy.get("#troca6").click()
 
-    cy.get("#trocaVisualizar2").click()
+    cy.get("#trocaVisualizar6").click()
 
   })
 
   it('Funcionario recusa a troca.', () => {
 
     cy.get('#recusarTroca').click()
+
+    cy.pause()
 
   })
 
@@ -60,7 +66,9 @@ describe('Condução de Venda (Realizar Trocas)', () => {
 
     cy.get('#verPedidos').click()
 
-    cy.get('#verDetalhesTroca1').click()
+    cy.get('#verDetalhesTroca5').click()
+
+    cy.pause()
 
   })
 
@@ -68,7 +76,9 @@ describe('Condução de Venda (Realizar Trocas)', () => {
 
     cy.get('#retornar').click()
 
-    cy.get('#verDetalhesTroca2').click()
+    cy.get('#verDetalhesTroca6').click()
+
+    cy.pause()
 
   })
 

@@ -59,6 +59,8 @@ describe('Condução de Venda (finalizando a compra)', () => {
     cy.get('#valor').type("19.99")
 
     cy.get('#valor2').type("60.11")
+
+    cy.pause()
   })
 
   it('Cliente Finaliza a tela de Cartões.', () => {
@@ -70,6 +72,8 @@ describe('Condução de Venda (finalizando a compra)', () => {
   it('Cliente escolhe um endereço ja cadastrado em sua conta e finaliza o endereço de cobrança.', () => {
 
     cy.get('#selectEnd').select(1)
+
+    cy.pause()
 
     cy.get('#finalizarEnd').click()
 
@@ -104,6 +108,8 @@ describe('Condução de Venda (finalizando a compra)', () => {
     cy.get('#Apelido').type('Minha casa')
 
     cy.get('#observacao').type('Minha casa em Mogi das Cruzes')
+
+    cy.pause()
 
     cy.get('#finalizarEnd').click()
 
