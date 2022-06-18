@@ -376,7 +376,7 @@ export class FinalizarCartaoComponent implements OnInit {
           this.cartaoCreditoService.post(this.cartaoCreditos2).subscribe(() => {
             this.cartaoCreditoService.getByClienteId(1).subscribe((cartoesCreditos) => {
               this.EfetivarCompraRequest.cartaoId2 = cartoesCreditos[cartoesCreditos.length - this.qtdCartoes + 1].id
-              
+
             })
           })
 

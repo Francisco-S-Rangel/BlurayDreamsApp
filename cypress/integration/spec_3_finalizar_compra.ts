@@ -2,6 +2,8 @@ describe('Condução de Venda (finalizando a compra)', () => {
 
   it('Cliente escolhe utilizar dois cartões para a compra.', () => {
 
+    cy.visit('/finalizar-cartao')
+
     cy.get('#selectQtd').select(1)
 
   })
@@ -54,11 +56,21 @@ describe('Condução de Venda (finalizando a compra)', () => {
 
   })
 
-  it('Cliente digita a quantidade que sera paga em cada cartão.', () => {
+  it('Cliente digita a quantidade que sera paga em cada cartão e tenta finalizar, porém a quantidade é menor que a quantidade total a pagar.', () => {
 
     cy.get('#valor').type("19.99")
 
-    cy.get('#valor2').type("60.11")
+    cy.get('#valor2').type("50.11")
+
+    cy.get('button[id=finalizarCartao]').click()
+
+  })
+
+  it('Cliente digita a quantidade que sera paga em cada cartão com a quantidade correta.', () => {
+
+    cy.get('#valor').clear().type("19.99")
+
+    cy.get('#valor2').clear().type("60.11")
 
     cy.pause()
   })

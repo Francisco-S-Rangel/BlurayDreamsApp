@@ -298,15 +298,15 @@
     <div class="row">
       <div class="col-4" [hidden]="qtdCartoes==1">
         <label class="form-label">Valor cartão 1</label>
-        <input type="text" class="form-control" id="valor" placeholder="Insira o Valor 1:" (keypress)="keyPressNumbers($event)" (blur)="verificarValorDigitado()" [(ngModel)]="valorCartao">
+        <input type="text" class="form-control" id="valor" placeholder="Insira o Valor 1:" (keypress)="keyPressNumbers($event)" (change)="verificarValorDigitado()" [(ngModel)]="valorCartao">
       </div>
       <div class="col-4" [hidden]="qtdCartoes==1">
         <label class="form-label">Valor cartão 2</label>
-        <input type="text" class="form-control" id="valor2" placeholder="Insira o Valor 2:" (keypress)="keyPressNumbers($event)" (blur)="verificarValorDigitado2()" [(ngModel)]="valorCartao2">
+        <input type="text" class="form-control" id="valor2" placeholder="Insira o Valor 2:" (keypress)="keyPressNumbers($event)" (change)="verificarValorDigitado2()" [(ngModel)]="valorCartao2">
       </div>
       <div class="col-4" [hidden]="qtdCartoes==1 || qtdCartoes==2">
         <label class="form-label">Valor cartão 3</label>
-        <input type="text" class="form-control" id="valor3" placeholder="Insira o Valor 3:" (keypress)="keyPressNumbers($event)" (blur)="verificarValorDigitado3()" [(ngModel)]="valorCartao3">
+        <input type="text" class="form-control" id="valor3" placeholder="Insira o Valor 3:" (keypress)="keyPressNumbers($event)" (change)="verificarValorDigitado3()" [(ngModel)]="valorCartao3">
       </div>
     </div>
 
