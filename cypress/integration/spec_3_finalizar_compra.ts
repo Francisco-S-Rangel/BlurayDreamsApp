@@ -2,8 +2,6 @@ describe('Condução de Venda (finalizando a compra)', () => {
 
   it('Cliente escolhe utilizar dois cartões para a compra.', () => {
 
-    cy.visit('/finalizar-cartao')
-
     cy.get('#selectQtd').select(1)
 
   })
