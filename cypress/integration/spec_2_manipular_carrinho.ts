@@ -64,7 +64,6 @@ describe('Condução de Venda (manipulando o carrinho)', () => {
 
     cy.get('#botaoCupom').click()
 
-    cy.pause()
   })
 
   it('Cliente clica em finalizar o pedido', () => {

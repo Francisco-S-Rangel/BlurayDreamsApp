@@ -8,7 +8,6 @@ describe('Condução de Venda (Realizar Trocas)', () => {
 
     cy.get('#selectTroca1').select(1)
 
-    cy.pause()
 
     cy.get("#solicitarTroca").click()
 
@@ -22,9 +21,9 @@ describe('Condução de Venda (Realizar Trocas)', () => {
 
     cy.get("#botTrocas").click()
 
-    cy.get("#troca5").click()
+    cy.get("#troca4").click()
 
-    cy.get("#trocaVisualizar5").click()
+    cy.get("#trocaVisualizar4").click()
 
   })
 
@@ -32,7 +31,6 @@ describe('Condução de Venda (Realizar Trocas)', () => {
 
     cy.get('#aceitarTroca').click()
 
-    cy.pause()
 
     cy.get('#restocarSim').click()
 
@@ -42,9 +40,9 @@ describe('Condução de Venda (Realizar Trocas)', () => {
 
     cy.get('#retornar').click()
 
-    cy.get("#troca6").click()
+    cy.get("#troca5").click()
 
-    cy.get("#trocaVisualizar6").click()
+    cy.get("#trocaVisualizar5").click()
 
   })
 
@@ -52,7 +50,6 @@ describe('Condução de Venda (Realizar Trocas)', () => {
 
     cy.get('#recusarTroca').click()
 
-    cy.pause()
 
   })
 
@@ -66,9 +63,8 @@ describe('Condução de Venda (Realizar Trocas)', () => {
 
     cy.get('#verPedidos').click()
 
-    cy.get('#verDetalhesTroca5').click()
+    cy.get('#verDetalhesTroca4').click()
 
-    cy.pause()
 
   })
 
@@ -76,9 +72,8 @@ describe('Condução de Venda (Realizar Trocas)', () => {
 
     cy.get('#retornar').click()
 
-    cy.get('#verDetalhesTroca6').click()
+    cy.get('#verDetalhesTroca5').click()
 
-    cy.pause()
 
   })
 

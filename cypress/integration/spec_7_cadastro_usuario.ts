@@ -100,7 +100,6 @@ describe('Cadastrando um Novo Usuário', () => {
 
     cy.get('#confsenha').clear().type('12345678')
 
-    cy.pause()
 
   })
 
@@ -173,7 +172,6 @@ describe('Cadastrando um Novo Usuário', () => {
 
     cy.get('#Numero2').type('312')
 
-    cy.pause()
 
   })
 
@@ -211,7 +209,6 @@ describe('Cadastrando um Novo Usuário', () => {
 
     cy.get('#cvv').type('231')
 
-    cy.pause()
 
   })
 

@@ -70,7 +70,6 @@ describe('Condução de Venda (finalizando a compra)', () => {
 
     cy.get('#valor2').clear().type("60.11")
 
-    cy.pause()
   })
 
   it('Cliente Finaliza a tela de Cartões.', () => {
@@ -83,7 +82,6 @@ describe('Condução de Venda (finalizando a compra)', () => {
 
     cy.get('#selectEnd').select(1)
 
-    cy.pause()
 
     cy.get('#finalizarEnd').click()
 

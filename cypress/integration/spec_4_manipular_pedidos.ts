@@ -36,7 +36,6 @@ describe('Condução de Venda (Manipular pedidos)', () => {
 
     cy.get('#finalizarEntrega').click()
 
-    cy.pause()
 
   })
 
@@ -56,7 +55,6 @@ describe('Condução de Venda (Manipular pedidos)', () => {
 
     cy.get('#verDetalhesPedido76').click()
 
-    cy.pause()
 
   })
 })
